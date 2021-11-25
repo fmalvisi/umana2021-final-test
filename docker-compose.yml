@@ -1,0 +1,76 @@
+version: '3'
+
+volumes:
+  postgres_data:
+      driver: local
+
+services:
+  cypress:
+    image: cypress
+    build: ./e2e-tests
+    container_name: cypress
+    depends_on:
+      - frontend
+    environment:
+      - CYPRESS_baseUrl=http://frontend:80
+      - NO_COLORS=1
+    entrypoint: ["/bin/sh","-c"]
+    command:
+      - |
+        ./wait-for-it.sh mockapi:3000
+        npx cypress run
+    volumes:
+      - ./e2e-tests/cypress:/app/cypress
+      - ./e2e-tests/cypress.json:/app/cypress.json
+  frontend:
+    build: ./
+    volumes:
+      - ./source-app:/src/
+    container_name: frontend
+    ports:
+      - 4200:80
+    environment:
+      - KEYCLOAK_URL=http://keycloak:8080
+      - KEYCLOAK_REALM=test
+      - KEYCLOAK_CLIENT_ID=frontend
+      - BACKEND_BASE_PATH=http://backend:9000
+    depends_on:
+      - mockapi
+  postgres:
+      image: postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_DB: keycloak
+        POSTGRES_USER: keycloak
+        POSTGRES_PASSWORD: password
+  keycloak:
+      image: bitnami/keycloak:15.0.2-debian-10-r0
+      volumes:
+        - ./keycloak/imports:/opt/bitnami/keycloak/imports
+        - ./keycloak/themes/frontend/:/opt/bitnami/keycloak/themes/frontend
+      environment:
+        KEYCLOAK_EXTRA_ARGS: -Dkeycloak.import=/opt/bitnami/keycloak/imports/frontend-realm.json -Dkeycloak.profile.feature.scripts=enabled -Dkeycloak.profile.feature.upload_scripts=enabled
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_SCHEMA: public
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: password
+      ports:
+        - 8080:8080
+      depends_on:
+        - postgres
+  mockapi:
+    build: ./mock-api
+    entrypoint: ["/bin/sh","-c"]
+    command:
+      - |
+        ./wait-for-it.sh keycloak:8080
+        npm start
+    ports:
+      - 3000:3000
+    depends_on:
+      - keycloak

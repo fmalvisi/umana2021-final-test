@@ -1,0 +1,12 @@
+{
+  "baseUrl": "http://localhost:4200",
+  "chromeWebSecurity": false,
+  "viewportWidth": 1250,
+  "viewportHeight": 800,
+  "defaultCommandTimeout": 5000,
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "cypress/results/output.xml"
+  },
+  "experimentalStudio": true
+}

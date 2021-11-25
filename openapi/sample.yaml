@@ -1,0 +1,564 @@
+openapi: 3.0.0
+info:
+  title: frontend api
+  description: frontend api with KeyCloakAuth
+  version: 1.0.0
+servers:
+  - url: 'https://dev.frontend.local/api/v1'
+    description: Development AgroAdvisor Platform server
+security:
+  - KeyCloakAuth: [ ]
+paths:
+  /category:
+    get:
+      tags:
+        - category
+      summary: get Categories
+      operationId: getCategories
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/NameLikeFilter'
+        - $ref: '#/components/parameters/NameExactFilter'
+      responses:
+        '200':
+          description: paginated categories
+          headers:
+            X-Total-Count:
+              description: Total number of Categories.
+              required: true
+              schema:
+                type: integer
+                format: int32
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryList'
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    post:
+      tags:
+        - category
+      summary: insert Category
+      operationId: createCategory
+      requestBody:
+        $ref: '#/components/requestBodies/Category'
+      responses:
+        '201':
+          description: created Category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+  /category/{id}:
+    get:
+      tags:
+        - category
+      summary: get Category
+      operationId: getCategory
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    put:
+      tags:
+        - category
+      summary: put Category
+      operationId: updateCategory
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        $ref: '#/components/requestBodies/Category'
+      responses:
+        '200':
+          description: Category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    delete:
+      tags:
+        - category
+      summary: delete Category
+      operationId: deleteCategory
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Category deleted
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+  /items:
+    get:
+      tags:
+        - items
+      summary: get items
+      operationId: getItems
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/NameLikeFilter'
+        - $ref: '#/components/parameters/NameExactFilter'
+      responses:
+        '200':
+          description: paginated items
+          headers:
+            X-Total-Count:
+              description: Total number of items.
+              required: true
+              schema:
+                type: integer
+                format: int32
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemList'
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    post:
+      tags:
+        - items
+      summary: insert item
+      operationId: createItem
+      requestBody:
+        $ref: '#/components/requestBodies/Item'
+      responses:
+        '201':
+          description: created item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+  /items/{id}:
+    get:
+      tags:
+        - items
+      summary: get item
+      operationId: getItem
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    put:
+      tags:
+        - items
+      summary: put item
+      operationId: updateItem
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        $ref: '#/components/requestBodies/Item'
+      responses:
+        '200':
+          description: item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    patch:
+      tags:
+        - items
+      summary: patch item
+      operationId: updateItemFields
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        $ref: '#/components/requestBodies/Item'
+      responses:
+        '200':
+          description: item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    delete:
+      tags:
+        - items
+      summary: delete Item
+      operationId: deleteItem
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: item deleted
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+  /users:
+    get:
+      tags:
+        - users
+      summary: get users
+      operationId: getUsers
+      parameters:
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/NameLikeFilter'
+        - $ref: '#/components/parameters/NameExactFilter'
+      responses:
+        '200':
+          description: paginated users
+          headers:
+            X-Total-Count:
+              description: Total number of users.
+              required: true
+              schema:
+                type: integer
+                format: int32
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    post:
+      tags:
+        - users
+      summary: insert user
+      operationId: createUser
+      requestBody:
+        $ref: '#/components/requestBodies/User'
+      responses:
+        '201':
+          description: created user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+  /users/{id}:
+    get:
+      tags:
+        - users
+      summary: get user
+      operationId: getUser
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    put:
+      tags:
+        - users
+      summary: put user
+      operationId: updateUser
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        $ref: '#/components/requestBodies/User'
+      responses:
+        '200':
+          description: user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+    delete:
+      tags:
+        - users
+      summary: delete User
+      operationId: deleteUser
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: user deleted
+
+        '500':
+          description: Generic error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppError'
+
+components:
+
+  parameters:
+    PageNumber:
+      name: _page
+      in: query
+      description: A page number within the paginated result set.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        default: 1
+    PageSize:
+      name: _limit
+      in: query
+      description: Number of results returned per page.
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 1000
+        default: 1000
+    NameExactFilter:
+      name: name
+      in: query
+      description: name exact search
+      schema:
+        type: string
+    NameLikeFilter:
+      name: name_like
+      in: query
+      description: name exact search
+      schema:
+        type: string
+    Search:
+      name: q
+      in: query
+      description: Full-text search
+      schema:
+        type: string
+
+  requestBodies:
+    Category:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Category'
+      required: true
+
+    Item:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Item'
+      required: true
+
+    User:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+      required: true
+
+  schemas:
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          nullable: true
+        name:
+          type: string
+        description:
+          type: string
+      required:
+        - id
+        - name
+        - description
+
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+          nullable: true
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        category:
+          type: integer
+          nullable: true
+        owner:
+          type: integer
+          nullable: true
+      required:
+        - id
+        - name
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          nullable: true
+        name:
+          type: string
+        surname:
+          type: string
+        dob:
+          type: string
+        email:
+          type: string
+      required:
+        - id
+        - name
+        - surname
+        - dob
+        - email
+
+    CategoryList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Category'
+
+    UserList:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+
+    ItemList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Item'
+
+    AppError:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+        code:
+          type: string
