@@ -4,6 +4,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { ShowUsersComponent } from './show-users/show-users.component';
 import { AggiungiComponent } from './aggiungi/aggiungi.component';
 import { ModificaComponent } from './modifica/modifica.component';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,11 @@ import { ModificaComponent } from './modifica/modifica.component';
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    ReactiveFormsModule
+  ],
+  providers:[
+    FormBuilder
   ]
 })
 export class UsersModule { }

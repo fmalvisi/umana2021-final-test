@@ -1,1 +1,11 @@
 <p>modifica works!</p>
+<div>{{id}}</div>
+<div>{{utente.id}}</div>
+<div>{{utente.name}}</div>
+<div>{{utente.surname}}</div>
+<div>{{utente.dob}}</div>
+<div>{{utente.email}}</div>
+<form action="" [formGroup]='checkform'>
+<input type="text" id="name" [placeholder]='utente.name' formControlName="nome">
+</form>
+<p>{{checkform.invalid}}</p>
