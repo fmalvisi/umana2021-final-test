@@ -1,1 +1,41 @@
-<p>aggiungi works!</p>
+<h3>Aggiungi utente</h3>
+<form #form="ngForm" >
+    <div class="form-group">
+        <label for="Nome">Nome:</label>
+        <input type="text" class="form-control" name="nome" placeholder="Enter nome" required="required" minlength="4"  ngModel #nome="ngModel">
+                <div *ngIf="nome.invalid && (nome.dirty || nome.touched)"class="alert">
+                <div *ngIf="nome.errors?.['required']">
+                Name is required.</div>
+                <div *ngIf="nome.errors?.['minlength']">
+                Name must be at least 4 characters long.</div>
+            </div>
+    </div>        
+    <div class="form-group">
+        <label for="cnome">Cognome:</label>
+        <input type="text" class="form-control" name="cognome" placeholder="Enter cognome" ngModel #cognome="ngModel" minlength="4" required="required" >
+                <div *ngIf="email.invalid && (email.dirty || nome.touched)"class="alert">
+                <div *ngIf="email.errors?.['required']">
+                  Cognome is required.</div>
+                <div *ngIf="email.errors?.['pattern']">
+                  Cognome is not valid.</div>  
+                </div>
+    </div>        
+    <div class="form-group">
+      <label for="Email">Email address:</label>
+      <input type="email" class="form-control" name="email" placeholder="Enter email" ngModel #email="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" size="30" required="required" >
+        <div *ngIf="email.invalid && (email.dirty || nome.touched)" class="alert">
+            <div *ngIf="email.errors?.['required']">
+            Email is required.</div>
+            <div *ngIf="email.errors?.['pattern']">
+            Email is not valid.</div>  
+        </div> 
+    </div>
+    <div class="form-group">
+      <label for="dob">Data di nascita:</label>
+      <input type="date" class="form-control" name="data" ngModel #data="ngModel" >
+    </div> <br>
+    <div>
+        <button type="submit" value="btn" (click)="onsubmit(form)">Aggiungi</button>
+    </div>
+</form>  
+<br><br>

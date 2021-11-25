@@ -4,6 +4,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { ShowUsersComponent } from './show-users/show-users.component';
 import { AggiungiComponent } from './aggiungi/aggiungi.component';
 import { ModificaComponent } from './modifica/modifica.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,11 +12,13 @@ import { ModificaComponent } from './modifica/modifica.component';
   declarations: [
     ShowUsersComponent,
     AggiungiComponent,
-    ModificaComponent
+    ModificaComponent,
+    
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    FormsModule
   ]
 })
 export class UsersModule { }
