@@ -1,0 +1,6 @@
+{
+  "keycloakUrl": "http://keycloak:8080/auth",
+  "keycloakRealm": "frontend",
+  "keycloakClientId": "webclient",
+  "apiBasePath": "http://localhost:3000/api"
+}

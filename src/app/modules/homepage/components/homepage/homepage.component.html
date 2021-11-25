@@ -1,0 +1,141 @@
+<div class='container-fluid'>
+
+  <h1 class='display-1'>Angular Academy</h1>
+
+  <h1 class='display-4'>Esercitazione Finale</h1>
+
+  <section class='my-4'>
+    <p>
+      L'idea è quella di implementare un portale su cui si possono caricare oggetti (item) di seconda mano, catalogarli
+      assegnando loro una categoria (category) e assegnarli a utenti (user). Le entità principali sono dunque:
+    </p>
+    <div class='list-group'>
+      <a href='#card-categorie' class="list-group-item list-group-item-action">Categorie</a>
+      <a href='#card-oggetti' class="list-group-item list-group-item-action">Oggetti</a>
+      <a href='#card-utenti' class="list-group-item list-group-item-action">Utenti</a>
+    </div>
+  </section>
+
+  <section class='my-4'>
+    <div class="alert alert-warning" role="alert">
+      <h1 class="alert-heading">PER TUTTI I GRUPPI</h1>
+      <p>
+        Sarà necessario rispettare i seguenti vincoli:
+      </p>
+      <ul>
+        <li>Preservare uno stile di pagina coerente con quello della Homepage</li>
+        <li>Rispettare le strutture auto-generate da open-api quando vi interfacciate con l'API</li>
+        <li>La pagina di dettaglio degli elementi dovrà sfruttare un RESOLVER per recuperare l'elemento in questione</li>
+        <li>Implementare test unitari per raggiungere una code-coverage di ALMENO <strong>95%</strong></li>
+        <li>Implementare test E2E su cypress per le funzionalità principali dei propri moduli</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class='my-4'>
+    <h1 class='display-5'>
+      Di seguito i dettagli per ogni entità:
+    </h1>
+
+    <div class='card bg-light my-5' id='card-categorie'>
+      <div class='card-title'>
+        <h1 class='display-5'>Categorie</h1>
+      </div>
+      <div class='card-body'>
+        <p>Il modulo di gestione delle categorie dovrà avere un router interno che permetta di visualizzare:</p>
+
+        <ul>
+          <li>l'elenco di tutte le categorie</li>
+          <li>il dettaglio e modifica di una singola categoria</li>
+          <li>una pagina di aggiunta delle categorie</li>
+        </ul>
+
+        <p>
+          L'elenco delle categorie dovrà essere ordinato in modo decrescente sulla base del numero di oggetti associati
+          ad ognuna di esse (visualizzare una tabella con le relative informazioni).
+        </p>
+        <p>
+          Nella pagina di elenco categorie, dovrà essere possibile filtrare per nome le categorie visualizzate e
+          nascondere le altre.
+        </p>
+        <p>Si potrà eliminare una categoria soltanto se nessun oggetto è associato ad essa.</p>
+        <p>Nell'elenco delle categorie, tramite una pipe custom, di fianco al nome ci dovrà essere un'icona personalizzata.</p>
+      </div>
+    </div>
+
+    <div class='card bg-light my-5' id='card-oggetti'>
+      <div class='card-title'>
+        <h1 class='display-5'>Oggetti</h1>
+      </div>
+      <div class='card-body'>
+        <p>Il modulo di gestione degli oggetti dovrà avere un router interno che permetta di visualizzare:</p>
+
+        <ul>
+          <li>l'elenco di tutti gli oggetti</li>
+          <li>il dettaglio e modifica di un singolo oggetto</li>
+          <li>una pagina di aggiunta degli oggetti</li>
+        </ul>
+
+        <p>
+          Nella pagina di elenco oggetti, dovrà essere possibile filtrare per nome, proprietario o categoria e
+          visualizzare o nascondere gli altri.
+        </p>
+        <p>
+          In fase di creazione/modifica dovrà essere possibile associare una categoria e/o un utente esistente all'oggetto.
+        </p>
+        <p>Sfruttare una pipe custom per aggiungere il simbolo di valuta "€" laddove venga indicato il suo prezzo</p>
+      </div>
+    </div>
+
+    <div class='card bg-light my-5' id='card-utenti'>
+      <div class='card-title'>
+        <h1 class='display-5'>Utenti</h1>
+      </div>
+      <div class='card-body'>
+        <p>Il modulo di gestione degli utenti dovrà avere un router interno che permetta di visualizzare:</p>
+
+        <ul>
+          <li>l'elenco di tutti gli utenti</li>
+          <li>il dettaglio e modifica di un singolo utente</li>
+          <li>una pagina di aggiunta degli utenti</li>
+        </ul>
+
+        <p>
+          Nella pagina di elenco utenti, dovrà essere possibile filtrare per nome e/o cognome e visualizzare o nascondere
+          gli altri.
+        </p>
+        <p>
+          Nella pagina di dettaglio dell'utente dovranno essere visualizzati gli oggetti ad esso appartenenti e dovrà
+          essere possibile associare all'utente gli oggetti che al momento non presentano proprietario oppure "liberare"
+          degli oggetti in suo possesso.
+        </p>
+        <p>Si potrà eliminare un utente soltanto se non possiede nessun oggetto.</p>
+        <p>
+          Sfruttare una pipe custom per indicare l'età dell'utente in anni.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class='my-4'>
+    <h1 class='display-5'>Bonus</h1>
+    <p>
+      Nello scheletro dell'applicazione predisposto si nasconde un piccolo bug FE.
+
+      Provate a individuarlo e a risolverlo! (ovviamente, solo se vi avanza del tempo)
+    </p>
+  </section>
+
+  <section class='my-4'>
+    <h4 class='display-5'>Alcune risorse utili</h4>
+
+    <p>
+      Se vi trovate in difficoltà, <strong>è assolutamente consentito consultare documentazione on-line!</strong>
+    </p>
+    <p>Di seguito alcune risorse utili:</p>
+    <ul>
+      <li><a href='https://getbootstrap.com/docs/5.1/getting-started/introduction/'>Bootstrap (CSS framework)</a></li>
+      <li><a href='https://angular.io/docs'>Angular Documentation</a></li>
+    </ul>
+  </section>
+</div>
