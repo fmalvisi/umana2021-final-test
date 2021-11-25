@@ -6,6 +6,9 @@ import { ListItemsComponent } from './list-items/list-items.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { DetailsItemComponent } from './details-item/details-item.component';
 import { ModifyItemComponent } from './modify-item/modify-item.component';
+import { CurrencyEurPipe } from './../../shared/pipes/currency.pipe';
+
+
 
 
 @NgModule({
@@ -13,7 +16,8 @@ import { ModifyItemComponent } from './modify-item/modify-item.component';
     ListItemsComponent, 
     AddItemComponent,
     DetailsItemComponent,
-    ModifyItemComponent
+    ModifyItemComponent,
+    CurrencyEurPipe
   ],
   imports: [
     CommonModule,
