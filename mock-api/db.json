@@ -4,8 +4,48 @@
       "id": 1,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-      "price": 15.50,
-      "category": null,
+      "price": 15.5,
+      "category": "Casa",
+      "owner": null
+    },
+    {
+      "id": 2,
+      "name": "Testcasa",
+      "description": "Usata bene.",
+      "price": 9.99,
+      "category": "Casa",
+      "owner": null
+    },
+    {
+      "id": 3,
+      "name": "Testcucina1",
+      "description": "Usata male.",
+      "price": 50.0,
+      "category": "Cucina",
+      "owner": null
+    },
+    {
+      "id": 4,
+      "name": "Testcucina2",
+      "description": "Usata male.",
+      "price": 30.0,
+      "category": "Cucina",
+      "owner": null
+    },
+    {
+      "id": 5,
+      "name": "Testbagno1",
+      "description": "Usata bene.",
+      "price": 50.0,
+      "category": "Bagno",
+      "owner": null
+    },
+    {
+      "id": 6,
+      "name": "Testbagno2",
+      "description": "Usata male.",
+      "price": 11.5,
+      "category": "Bagno",
       "owner": null
     }
   ],
@@ -14,6 +54,16 @@
       "id": 1,
       "name": "Casa",
       "description": "cose per la casa"
+    },
+    {
+      "id": 2,
+      "name": "Cucina",
+      "description": "cose per la cucina"
+    },
+    {
+      "id": 3,
+      "name": "Bagno",
+      "description": "cose per il bagno"
     }
   ],
   "users": [
