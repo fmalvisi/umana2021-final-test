@@ -42,9 +42,22 @@
     {
       "id": 4,
       "name": "Roberto",
+<<<<<<< HEAD
       "surname": "Verdicchi",
       "dob": "08-11-2021",
       "email": "roberto.verdi@gmail.com"
+=======
+      "surname": "Verdi",
+      "email": "roberto.verdi@gmail.com",
+      "dob": "23-06-1980"
+    },
+    {
+      "id": 5,
+      "name": "barisla",
+      "surname": "derraj",
+      "email": "barilsidaderraj@gmail.com",
+      "dob": "2022-12-31"
+>>>>>>> d2aeba1501d00ee284547b60fa8f31b94529e862
     }
   ]
 }
