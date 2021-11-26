@@ -15,16 +15,6 @@
       "id": 1,
       "name": "Casa",
       "description": "cose per la casa"
-    },
-    {
-      "id": 2,
-      "name": "Cucina",
-      "description": "cose per la cucina"
-    },
-    {
-      "id": 3,
-      "name": "Bagno",
-      "description": "cose per il bagno"
     }
   ],
   "users": [
