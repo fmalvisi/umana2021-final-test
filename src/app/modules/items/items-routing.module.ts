@@ -19,7 +19,7 @@ const routes: Routes = [
         component: DetailsItemComponent
       },
       {
-        path: 'modifica-oggetto',
+        path: 'modifica-oggetto/:id',
         component: ModifyItemComponent
       }
     ]}
