@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CategoryService, ItemsService } from 'src/app/core/api/generated';
+import {
+  CategoryService,
+  ItemsService,
+  Category,
+} from 'src/app/core/api/generated';
 
 @Component({
   selector: 'app-categories-detail',
@@ -15,6 +19,8 @@ export class CategoriesDetailComponent implements OnInit {
   categoryN = 1;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   categoryItems: any = [];
+
+  newCat: Category[] = [];
 
   constructor(
     private categoryService: CategoryService,
@@ -38,5 +44,38 @@ export class CategoriesDetailComponent implements OnInit {
         }
       }
     });
+  }
+
+  edit() {
+    this.categoryService.getCategories().subscribe(cats => {
+      for (let i = 0; i < cats.length; i++) {
+        console.log(cats[i].description);
+        cats[1].description = 'cose per la casaa';
+      }
+    });
+  }
+
+  add() {
+    // var fakeCat: Category = {
+    //   id: 4,
+    //   name: 'Camera',
+    //   description: 'cose per la camera',
+    // };
+    // this.categoryService
+    //   .createCategory(fakeCat)
+    //   .subscribe(items => console.log('Nome:', items));
+    // this.categoryService.getCategories().subscribe(itemsObj => {
+    //   this.newCat = itemsObj;
+    // });
+    // var updateCat: Category = {
+    //   id: 1,
+    //   name: 'Casa',
+    //   description: 'cose per la casaaaa',
+    // };
+    // this.categoryService.updateCategory(
+    //   updateCat.id,
+    //   updateCat.name,
+    //   updateCat.description,
+    // );
   }
 }

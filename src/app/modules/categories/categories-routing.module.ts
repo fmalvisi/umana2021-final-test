@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoriesResolver } from './categories-resolver.resolver';
 
 import { CategoriesAddComponent } from './components/categories-add/categories-add.component';
 // import { CategoriesDetailComponent } from './components/categories-detail/categories-detail.component';
@@ -11,7 +12,13 @@ const routes: Routes = [
     component: CategoriesTableComponent,
     children: [
       // { path: 'detail', component: CategoriesDetailComponent },
-      { path: 'add', component: CategoriesAddComponent },
+      {
+        path: 'add',
+        component: CategoriesAddComponent,
+        resolve: {
+          res: CategoriesResolver,
+        },
+      },
     ],
   },
 ];
