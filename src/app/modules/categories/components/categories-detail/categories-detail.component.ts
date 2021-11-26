@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CategoryService, ItemsService } from 'src/app/core/api/generated';
 
 @Component({
@@ -10,6 +10,7 @@ export class CategoriesDetailComponent implements OnInit {
   name = '';
   description = '';
   items = '';
+  @Input() item: number | null = 0;
   constructor(
     private categoryService: CategoryService,
     private itemService: ItemsService,
