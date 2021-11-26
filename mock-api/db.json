@@ -6,7 +6,7 @@
       "description": "Usata, a metà.",
       "price": 15.50,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": null,
+      "category": 1,
       "owner": null
     },
     {
@@ -14,7 +14,7 @@
       "name": "Testcasa",
       "description": "Usata bene.",
       "price": 9.99,
-      "category": "Casa",
+      "category": 1,
       "owner": null
     },
     {
@@ -22,7 +22,7 @@
       "name": "Testcucina1",
       "description": "Usata male.",
       "price": 50.0,
-      "category": "Cucina",
+      "category": 2,
       "owner": null
     },
     {
@@ -30,7 +30,7 @@
       "name": "Testcucina2",
       "description": "Usata male.",
       "price": 30.0,
-      "category": "Cucina",
+      "category": 2,
       "owner": null
     },
     {
@@ -38,7 +38,7 @@
       "name": "Testbagno1",
       "description": "Usata bene.",
       "price": 50.0,
-      "category": "Bagno",
+      "category": 3,
       "owner": null
     },
     {
@@ -46,7 +46,7 @@
       "name": "Testbagno2",
       "description": "Usata male.",
       "price": 11.5,
-      "category": "Bagno",
+      "category": 3,
       "owner": null
     }
   ],

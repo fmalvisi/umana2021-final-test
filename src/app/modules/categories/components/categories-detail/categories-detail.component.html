@@ -1,6 +1,7 @@
 <h3>Dettaglio Categorie</h3>
 
 <p>Categoria {{categoryN}}</p>
-<p *ngFor="let items in categoryItems">Oggetti: {{categoryItems[items]}}</p>
+<p *ngFor="let items of categoryItems">Oggetti: {{items}}</p>
+
 
 <button>Toggle</button>

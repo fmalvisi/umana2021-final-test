@@ -12,7 +12,8 @@ export class CategoriesDetailComponent implements OnInit {
   items = '';
   @Input() categoryName: number | null = 0;
 
-  categoryN: any = 'Bagno';
+  categoryN = 1;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   categoryItems: any = [];
 
   constructor(
@@ -27,7 +28,9 @@ export class CategoriesDetailComponent implements OnInit {
         this.description = item.description;
       }
     });
+  }
 
+  ngOnChanges(): void {
     this.itemService.getItems().subscribe(items => {
       for (let i = 0; i < items.length; i++) {
         if (this.categoryN == items[i].category) {

@@ -41,8 +41,8 @@ export class CategoriesTableComponent implements OnInit {
     }); */
   }
 
-  hide(): boolean {
-    console.log(this.hideShow);
-    return (this.hideShow = !this.hideShow);
+  hide(func: any): void {
+    console.log(func);
+    this.hideShow = !this.hideShow;
   }
 }
