@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
-import { CategoryService, ItemsService, UsersService } from '../../../core/api/generated';
+import { CategoryService, Item, ItemsService, UsersService } from '../../../core/api/generated';
  
 
 @Component({
@@ -10,10 +10,10 @@ import { CategoryService, ItemsService, UsersService } from '../../../core/api/g
 export class ListItemsComponent implements OnInit {
   
   message: string|null = null;
-  items:any = [];
+  items:Item[] = [];
 
-  oggettoProva = {
-    "id": 2,
+  oggettoProva:Item = {
+    "id": 4,
     "name": "Mouse",
     "description": "Usato",
     "price": 30,
@@ -29,8 +29,11 @@ export class ListItemsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //this.itemService.getItems().subscribe(items => console.log('PROVAA:', items));
+    this.itemService.createItem(this.oggettoProva).subscribe(items => console.log('PROVAA:', items));
+    this.itemService.getItems().subscribe(itemsObj => {this.items = itemsObj});  
       
-     this.itemService.getItems().subscribe(itemsObj => {this.items = itemsObj});  
+     
   }
 
 }
