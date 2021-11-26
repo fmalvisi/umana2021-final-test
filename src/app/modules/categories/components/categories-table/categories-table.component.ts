@@ -10,11 +10,17 @@ import { Category, Item } from 'src/app/core/api/generated';
   styleUrls: ['./categories-table.component.scss'],
 })
 export class CategoriesTableComponent implements OnInit {
-/*   name = '';
+  /*   name = '';
   description = '';
   items = '';*/
+  categoryArr: Category[] = [];
 
+<<<<<<< HEAD
  
+=======
+  currentItem: number | null = 0;
+  hideShow = false;
+>>>>>>> b93f2749627dbaa4f62b27ca5caa39f43af190e1
 
   constructor(
     private categoryService: CategoryService,
@@ -82,18 +88,17 @@ export class CategoriesTableComponent implements OnInit {
       console.log('assigned categories: ', this.categoryArr);
     });
 
-    this.itemService.getItems().subscribe(items => {
-      this.itemArr = items;
-      console.log('assigned items: ', this.itemArr);
-    });
-
-    this.sortCategories();
+    /* this.itemService.getItems().subscribe(items => {
+      for (const item of items) {
+        console.log(item.name);
+        this.items += item.name;
+        // this.currentItem = item.id;
+      }
+    }); */
   }
 
-  
-
-  hide(): boolean {
-    console.log(this.hideShow);
-    return (this.hideShow = !this.hideShow);
+  hide(func: any): void {
+    console.log(func);
+    this.hideShow = !this.hideShow;
   }
 }

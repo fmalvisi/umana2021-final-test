@@ -5,29 +5,28 @@
 
 
 <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Descrizione</th>
-        <th scope="col">Numero di oggetti</th>
-        <th scope="col">Dettagli</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let category of categoryArr">
-        <th scope="row">{{category.id}}</th>
-        <td>{{category.name}}</td>
-        <td>{{category.description}}</td> 
-        <td>###</td>
-        <td>  
-            <button (click)="hide()">Dettagli</button>
-        </td> 
-      </tr>
-    </tbody>
-  </table>
-  
- <app-categories-detail *ngIf="hideShow" [categoryName]="'Casa'">hide and show content ...</app-categories-detail>
-<!-- <router-outlet></router-outlet> -->
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrizione</th>
+      <th scope="col">Numero di oggetti</th>
+      <th scope="col">Dettagli</th>
 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categoryArr">
+      <th scope="row">{{category.id}}</th>
+      <td>{{category.name}}</td>
+      <td>{{category.description}}</td>
+      <td>###</td>
+      <td>
+        <button (click)="hide(category.id)">Dettagli</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-categories-detail *ngIf="hideShow" [categoryName]="currentItem">hide and show content ...</app-categories-detail>
+<router-outlet></router-outlet>
