@@ -1,7 +1,9 @@
 <div class="container">
   <div class="container" style="display: flex; justify-content: center; align-items: center;">
-   
-     <button class="btn btn-success" style="margin: 5%;"  [routerLink]='"/users/aggiungi"'>AGGIUNGI</button>
+    <div  style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 5%;">
+      <h2>AGGIUNGI UN NUOVO UTENTE</h2>
+      <button class="btn btn-success" style="margin: 5%;"  [routerLink]='"/users/aggiungi"'>AGGIUNGI</button>
+    </div>
    
   </div>
   <div style="width: 40%; margin: 0 auto;">
@@ -16,17 +18,18 @@
          </tr>
        </thead>
        <tbody>
-         <tr>
-           <th scope="row">1</th>
-           <td>Mark</td>
-           <td>Otto</td>
+
+         <tr *ngFor="let utente of utenti">
+           <th scope="row">{{utente.id}}</th>
+           <td>{{utente.name}}</td>
+           <td>{{utente.surname}}</td>
            <td>
              <div style="display: flex; justify-content: center; align-items: center;">
-               <button class="btn btn-primary" style="margin-left: 20%; margin-right: 5%;">delete</button> 
-               <button class="btn btn-success" >edit</button>
+               <button class="btn btn-success" ><a [routerLink]="['/users/modifica', utente.id] ">edit</a></button>
              </div> 
            </td>
          </tr>
+
        </tbody>
      </table>
    </div>
