@@ -8,12 +8,13 @@
   </div>
   <div style="width: 40%; margin: 0 auto;">
 
-    <table class="table table-dark table-hover">
+    <table style="background-color: #15172b; border-radius: 20px; box-sizing: border-box; padding: 20%; width: 80%; color: white;">
       <thead>
         <tr>
           <th scope="col">id</th>
           <th scope="col">nome</th>
           <th scope="col">cognome</th>
+          <th scope="col">email</th>
           <th scope="col"></th>
          </tr>
        </thead>
@@ -23,9 +24,10 @@
            <th scope="row">{{utente.id}}</th>
            <td>{{utente.name}}</td>
            <td>{{utente.surname}}</td>
+           <td>{{utente.email}}</td>
            <td>
              <div style="display: flex; justify-content: center; align-items: center;">
-               <button class="btn btn-success" ><a [routerLink]="['/users/modifica', utente.id] ">edit</a></button>
+               <button class="btn btn-success" ><a style="color: white;  outline: none; text-decoration: none;" [routerLink]="['/users/modifica', utente.id] ">edit</a></button>
              </div> 
            </td>
          </tr>
