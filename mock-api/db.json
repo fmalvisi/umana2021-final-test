@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-      "price": 15.50,
+      "price": 15.5,
       "category": null,
       "owner": null
     }
@@ -30,6 +30,20 @@
       "surname": "Bianchi",
       "email": "paolo.bianchi@email.com",
       "dob": "'02-01-1970"
+    },
+    {
+      "id": 3,
+      "name": "barisla",
+      "surname": "derraj",
+      "email": "barilsidaderraj@gmail.com",
+      "dob": "18-"
+    },
+    {
+      "id": 4,
+      "name": "barisla",
+      "surname": "derraj",
+      "email": "barilsidaderraj@gmail.com",
+      "dob": "18-05-1997"
     }
   ]
 }

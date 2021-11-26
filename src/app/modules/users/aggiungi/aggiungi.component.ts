@@ -12,7 +12,7 @@ import { NgModel } from '@angular/forms';
 })
 export class AggiungiComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, protected router: Router, private userservice: UsersService) { }
+  constructor(private route: ActivatedRoute, protected router: Router, private api: UsersService) { }
 
   ngOnInit(): void { }
 
@@ -22,8 +22,16 @@ export class AggiungiComponent implements OnInit {
     let cognome = form.controls['cognome'].value;
     let email = form.controls['email'].value;
     let data = form.controls['data'].value;
-    console.log(nome);
-    this.userservice.createUser(nome, cognome,email,data );
+    console.log(data);
+    let utente : User= { id : null,
+    name : nome,
+    surname: cognome,
+     email: email,
+    dob:data}
+    console.log(utente);
+    this.api.createUser(utente).subscribe(error=>{
+      console.log(error);
+    });
    
     }
   }
