@@ -1,39 +1,107 @@
-<div class='container-fluid'>
-    <h1 class='display-4'>Modifica oggetto</h1>
-    <label>Nome oggetto: </label>
-    <input type="text" value={{name_objects}} id="name_input">
-    <br>
-    <label>Descrizione ogetto: </label>
-    <input type="text" value ={{description}}>
-    <br>
-    <label>Prezzo: </label>
-    <input type="number" value= {{price}}>
-    <br>
+<div class='container-fluid'>  
+    <div class="row">
+        <h1 class='display-4'>Modifica oggetto</h1>
 
-    <div class="dropdown">
-        <label>Categoria: </label>
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Scegli Categoria
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" >prova1</a></li>
-            <li><a class="dropdown-item" >prova2</a></li> 
-        </ul>
-    </div>  
+        <div class=col>
+            <h1>Dettagli oggetto:</h1>
+            <!--<img>-->
+           <p>Nome oggetto: {{name_objects}}
+               <br>
+               Descrizione oggetto: {{description}}
+               <br>
+               Prezzo: {{price_euro}},{{price_centesimi}}
+               <br>
+               Categoria: {{category}}
+               <br>
+               Proprietario: {{owner}}
+               <br>
+               Url foto: {{url_photo}}
+            </p>
 
-    <div class="dropdown">
-        <label>Proprietario: </label>
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Scegli proprietario
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" >prova1</a></li>
-            <li><a class="dropdown-item" >prova2</a></li> 
-        </ul>
-    </div>  
+        </div>
+        <div class="col">
+            <h1>Modifica:</h1>
+            <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate>       
+                <div class="form-group">
+                    <!--Nome oggetto:-->
+                    <label for ="name_input">Nome oggetto: </label>
+                    <input type="text" class="form-control"  name="name_input" ngModel required #name_input="ngModel">
+                    <!--controllo required-->
+                    <div *ngIf="name_input.errors?.['required']">
+                        campo obbligatorio
+                    </div>
+                    <br>
 
-    <label>Carica url immagine (facoltativo)</label>
-    <input type="url" value={{url_photo}}>
-    <br>
-    <button (click)="send()">Invia</button>
+                    <!--Descrizione oggetto:-->
+                    <label for ="description_input">Descrizione ogetto: </label>
+                    <input type="text" class="form-control"  name="description_input"  ngModel required #description_input="ngModel">
+                    <!--controllo required-->
+                    <div *ngIf="description_input.errors?.['required']">
+                        campo obbligatorio
+                    </div>
+                    <br>
+
+                    <!--Prezzo-->
+                    <label>Prezzo: </label>
+                    <div class="row">
+                        <div class="col">
+                            <label for ="price_euro">euro</label>
+                            <input type="number" class="form-control"  name="price_euro" min=0 ngModel required #description_input="ngModel" >
+                        </div>
+                        <div class="col">
+                            <label for ="centesimi">centesimi</label>
+                            <input type="number" class="form-control"  name="price_centesimi" min=0  ngModel required #description_input="ngModel" value= {{price_centesimi}}>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col">
+
+                            <!--Categoria-->
+                            <div class="dropdown">
+                                <label >Categoria: </label>
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Scegli Categoria
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" >prova1</a></li>
+                                    <li><a class="dropdown-item" >prova2</a></li> 
+                                </ul>
+                            </div>  
+                        </div>
+
+                        <div class="col">
+                            <!--Proprietario-->
+                        <div class="dropdown">
+                            <label>Proprietario: </label>
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Scegli proprietario
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" >prova1</a></li>
+                                <li><a class="dropdown-item" >prova2</a></li> 
+                            </ul> 
+                        </div>   
+                        </div>
+                    </div>
+
+                   
+
+                  
+                    
+                    <!--Url immagine-->
+                    <label for ="url">Carica url immagine (facoltativo)</label>
+                     <input type="url" class="form-control"  name="url"  >
+
+                    <br>
+
+                    <div class="button_container">
+                        <button  type="button" class="btn btn-secondary"(click)="send()">Invia</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>
