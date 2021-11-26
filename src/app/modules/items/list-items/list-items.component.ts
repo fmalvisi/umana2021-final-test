@@ -17,6 +17,7 @@ export class ListItemsComponent implements OnInit {
   fetchedItems :Item[] = [];
   itemProva$?: Observable<Item>;
   itemProva2$ = of(true);
+  mostra = true;
   
   constructor(
     private superService : SuperItemService,
@@ -25,14 +26,18 @@ export class ListItemsComponent implements OnInit {
   ngOnInit(): void {     
      this.items = this.superService.getItemList();
      console.log('itemsaaaaaaaaaa',this.items);
-     this.superService.getProva(1).subscribe(res => {
-       this.item = res;
-       console.log("dentro",this.item)
-     })
-     console.log("fuori",this.item)
-     this.itemProva$ = this.superService.getProva(1);
+    //  this.superService.getProva(1).subscribe(res => {
+    //    this.item = res;
+    //    console.log("dentro",this.item)
+    //  })
+    //  console.log("fuori",this.item)
+    //  this.itemProva$ = this.superService.getProva(1);
   }
 
+  modify(index: number){
+    this.mostra = false;
+    console.log("indice: ", index)
+  }
   
 
 }

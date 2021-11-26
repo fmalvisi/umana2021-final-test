@@ -50,10 +50,10 @@ export class ModifyItemComponent implements OnInit {
   ngOnInit(): void {
     this.items = this.superService.getItemList();
 
-    this.superService.getProva(1).subscribe(res => {
-      this.item = res;
-      console.log("dentro",this.item)
-    })
+    // this.superService.getProva(1).subscribe(res => {
+    //   this.item = res;
+    //   console.log("dentro",this.item)
+    // })
 
   }
 

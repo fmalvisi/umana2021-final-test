@@ -38,9 +38,27 @@ export class SuperItemService {
     }
 
 
-    getProva(index: number): Observable<Item> {
-        return this.itemsService.getItem(index).pipe( tap(values => {
-            console.log("valori", values);
-        }));
-    }
+    // getProva(index: number): Observable<Item> {
+    //     return this.itemsService.getItem(index).pipe( tap(values => {
+    //         console.log("valori", values);
+    //     }));
+    // }
+
+    // getItem(index: number): Promise<Item> {
+    //     console.log("chiamato getItem con id: ", index);
+    //     const _promise = new Promise<Item>((resolve, reject) => {
+    //         this.itemsService.getItem(index).toPromise().then(
+    //             res =>{
+    //                 console.log("risposta getItem", res);
+    //                 resolve(res);
+    //             },
+    //             error => {
+    //                 console.log("errore getItem: ", error);
+    //                 reject(error);
+    //             } 
+    //         );
+    //     });
+    //     return _promise;
+    // }
+
 }
