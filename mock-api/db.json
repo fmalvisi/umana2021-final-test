@@ -29,10 +29,6 @@
       "id": 2,
       "name": "Paolo",
       "surname": "Bianchi",
-<<<<<<< HEAD
-      "dob": "",
-      "email": "paolo.bianchi@email.com"
-=======
       "email": "paolo.bianchi@email.com",
       "dob": "'02-01-1970"
     },
@@ -49,7 +45,6 @@
       "surname": "Verdi",
       "email": "roberto.verdi@gmail.com",
       "dob": "23-06-1980"
->>>>>>> f2b44f28c1389453705e38ffee54c151be0d0690
     }
   ]
 }

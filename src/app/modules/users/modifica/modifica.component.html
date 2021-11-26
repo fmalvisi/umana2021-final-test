@@ -52,7 +52,7 @@
         <div class="col-md-6">
             <div class="title">oggetti da comprare</div>
             <div *ngFor="let oggetto of oggetti">
-                <div *ngIf="oggetto.owner==utente.id || oggetto.owner==null" class="d-inline block" [style.background-image]="'url('+oggetto.imgurl+')'" style="max-width:100px;max-height:100px;background-size: cover;">
+                <div *ngIf="oggetto.owner==null" class="d-inline block" [style.background-image]="'url('+oggetto.imgurl+')'" style="max-width:100px;max-height:100px;background-size: cover;">
                     <span>{{oggetto.id}}</span>
                     <span>{{oggetto.name}}</span>
                     <span>{{oggetto.owner}}</span>
