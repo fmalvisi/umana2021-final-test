@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService, Item, ItemsService, UsersService } from '../../../core/api/generated';
+//import { CategoryService, Item, ItemsService, UsersService } from '../../../core/api/generated';
+import { Form, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
+
 
 
 @Component({
@@ -10,8 +14,12 @@ import { CategoryService, Item, ItemsService, UsersService } from '../../../core
 export class ModifyItemComponent implements OnInit {
   name_objects="nome_prova_pipe";
   description="descrizione_prova_pipe";
-  price="14.3";
+  price_euro="14";
+  price_centesimi="22";
+  category="categoria_prova"
   url_photo="url_prova_pipe";
+  owner="proprietario"
+
 
   send(){
     var name_prov = document.getElementById("name_input") as HTMLInputElement
@@ -20,12 +28,17 @@ export class ModifyItemComponent implements OnInit {
   }
   
 
+  onFormSubmit(userForm: NgForm) {
+    console.log(userForm.value);
+    console.log('Nome:' + userForm.controls['name_input'].value);
+   
+}
+
 
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.name_objects)
 
   }
 
