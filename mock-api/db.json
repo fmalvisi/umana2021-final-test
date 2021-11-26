@@ -20,10 +20,10 @@
   "users": [
     {
       "id": 1,
-      "name": "Mariottide",
+      "name": "Mar",
       "surname": "Rossi",
-      "email": "mario.rossi@email.com",
-      "dob": "01-01-1970"
+      "dob": "",
+      "email": "mario.rossi@email.com"
     },
     {
       "id": 2,

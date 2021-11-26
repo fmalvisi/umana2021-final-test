@@ -32,6 +32,7 @@ export class ModificaComponent implements DoCheck {
     this.route.data.subscribe(data=>{
       //console.log("ok ",data);
       this.utente=data.utente;
+      this.oggetti=[];
       for(let oggetto of data.items){
         if(oggetto.owner==this.utente.id || oggetto.owner==null){
           this.oggetti.push(oggetto);
@@ -51,6 +52,9 @@ export class ModificaComponent implements DoCheck {
     return this.showForm;
   }
 
+  Oggetti(){
+    return this.oggetti;
+  }
   aggiorna(){
     /*let fields=['name','surname','email'];
     let valori=[this.utente.name,this.utente.surname,this.utente.email];
