@@ -3,8 +3,10 @@
         <h1 class='display-4'>Modifica oggetto</h1>
 
         <div class=col>
-            <h1>Dettagli oggetto:</h1>
+            <h1 class="display-5">Dettagli oggetto:</h1>
             <!--<img>-->
+
+           
            <p>Nome oggetto: {{name_objects}}
                <br>
                Descrizione oggetto: {{description}}
@@ -20,7 +22,7 @@
 
         </div>
         <div class="col">
-            <h1>Modifica:</h1>
+            <h1 class="display-5">Modifica:</h1>
             <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate>       
                 <div class="form-group">
                     <!--Nome oggetto:-->
@@ -85,10 +87,6 @@
                         </div>   
                         </div>
                     </div>
-
-                   
-
-                  
                     
                     <!--Url immagine-->
                     <label for ="url">Carica url immagine (facoltativo)</label>

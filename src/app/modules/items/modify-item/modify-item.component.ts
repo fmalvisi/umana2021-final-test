@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 //import { CategoryService, Item, ItemsService, UsersService } from '../../../core/api/generated';
 import { Form, NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
-
+import { Observable, of } from 'rxjs';
+import { SuperItemService } from 'src/app/core/services/superItemService';
+import { Item } from '../../../core/api/generated';
+ 
 
 
 @Component({
@@ -20,6 +22,13 @@ export class ModifyItemComponent implements OnInit {
   url_photo="url_prova_pipe";
   owner="proprietario"
 
+  //prova api
+  message: string|null = null;
+  items:Item[] = [];
+  item? : Item;
+  fetchedItems :Item[] = [];
+  itemProva$?: Observable<Item>;
+  itemProva2$ = of(true);
 
   send(){
     var name_prov = document.getElementById("name_input") as HTMLInputElement
@@ -36,9 +45,15 @@ export class ModifyItemComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor( private superService : SuperItemService,) { }
 
   ngOnInit(): void {
+    this.items = this.superService.getItemList();
+
+    this.superService.getProva(1).subscribe(res => {
+      this.item = res;
+      console.log("dentro",this.item)
+    })
 
   }
 
