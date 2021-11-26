@@ -9,11 +9,12 @@ import { Category } from 'src/app/core/api/generated';
   styleUrls: ['./categories-table.component.scss'],
 })
 export class CategoriesTableComponent implements OnInit {
-/*   name = '';
+  /*   name = '';
   description = '';
   items = '';*/
+  categoryArr: Category[] = [];
 
-  currentItem: string | null = '';
+  currentItem: number | null = 0;
   hideShow = false;
 
   constructor(
@@ -30,9 +31,6 @@ export class CategoriesTableComponent implements OnInit {
       this.categoryArr = categories;
       console.log('assigned categories: ', this.categoryArr);
     });
-
-
-
 
     /* this.itemService.getItems().subscribe(items => {
       for (const item of items) {

@@ -10,7 +10,10 @@ export class CategoriesDetailComponent implements OnInit {
   name = '';
   description = '';
   items = '';
-  @Input() categoryName: string | null = '';
+  @Input() categoryName: number | null = 0;
+
+  categoryN: any = 'Bagno';
+  categoryItems: any = [];
 
   constructor(
     private categoryService: CategoryService,
@@ -27,9 +30,8 @@ export class CategoriesDetailComponent implements OnInit {
 
     this.itemService.getItems().subscribe(items => {
       for (let i = 0; i < items.length; i++) {
-        console.log(this.categoryName);
-        if (this.categoryName == items[i].category) {
-          console.log(items[i].name);
+        if (this.categoryN == items[i].category) {
+          this.categoryItems.push(items[i].name);
         }
       }
     });
