@@ -12,6 +12,7 @@ import { ResolverleoResolver } from './resolver/resolverleo.resolver';
 
 
 
+import { CustomPipeEta } from './etapipe.pipe';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ResolverleoResolver } from './resolver/resolverleo.resolver';
     ShowUsersComponent,
     AggiungiComponent,
     ModificaComponent,
+    CustomPipeEta
     
   ],
   imports: [
@@ -29,7 +31,8 @@ import { ResolverleoResolver } from './resolver/resolverleo.resolver';
   ],
   providers:[
     FormBuilder,
-    UserResolverResolver
+    UserResolverResolver, 
+    CustomPipeEta
   ]
 })
 export class UsersModule { }

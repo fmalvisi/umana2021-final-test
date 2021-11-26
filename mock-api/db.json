@@ -36,28 +36,14 @@
       "name": "barisla",
       "surname": "derraj",
       "email": "barilsidaderraj@gmail.com",
-      "dob": "18-"
+      "dob": "18-05-1997"
     },
     {
       "id": 4,
-      "name": "barisla",
-      "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "18-05-1997"
-    },
-    {
-      "id": 5,
-      "name": "",
-      "surname": "",
-      "email": "",
-      "dob": "18-05-1997"
-    },
-    {
-      "id": 6,
-      "name": "barilsa",
-      "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "18-05-1997"
+      "name": "Roberto",
+      "surname": "Verdi",
+      "email": "roberto.verdi@gmail.com",
+      "dob": "23-06-1980"
     }
   ]
 }
