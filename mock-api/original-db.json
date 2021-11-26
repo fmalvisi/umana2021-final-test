@@ -4,12 +4,8 @@
       "id": 1,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-<<<<<<< HEAD
-      "price": 15.5,
-=======
       "price": 15.50,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
->>>>>>> develop
       "category": null,
       "owner": null
     }
@@ -24,15 +20,10 @@
   "users": [
     {
       "id": 1,
-      "name": "Mariottide",
+      "name": "Mario",
       "surname": "Rossi",
-<<<<<<< HEAD
-      "dob": "1965-10-05",
-      "email": "mario.rossi@email.com"
-=======
       "email": "mario.rossi@email.com",
       "dob": "01-01-1970"
->>>>>>> develop
     },
     {
       "id": 2,
