@@ -1,7 +1,10 @@
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { CategoryService, ItemsService } from 'src/app/core/api/generated';
 
-import { Category } from 'src/app/core/api/generated';
+import { Category, Item } from 'src/app/core/api/generated';
 
 @Component({
   selector: 'app-categories-table',
@@ -9,12 +12,8 @@ import { Category } from 'src/app/core/api/generated';
   styleUrls: ['./categories-table.component.scss'],
 })
 export class CategoriesTableComponent implements OnInit {
-  /*   name = '';
-  description = '';
-  items = '';*/
-  categoryArr: Category[] = [];
-
-  currentItem: number | null = 0;
+  
+  
   hideShow = false;
 
   constructor(
@@ -22,27 +21,60 @@ export class CategoriesTableComponent implements OnInit {
     private itemService: ItemsService,
   ) {}
 
+  currentCategory: number | null = 0; 
+
+  categoryArr: Category[] = [];
+
+  itemArr: Item[] = [];
+
+  numOfItemsArr: any[] = [];
+
+  getNumOfItemsPerCategory(categoryID: number|null):number{
+    let counter = 0;
+    for( let item of this.itemArr){
+      if(item.category === categoryID){
+        counter++;
+      }
+    }
+    return counter;
+  }
+
+ 
+  
+
   ngOnInit(): void {
+    
+
+    this.itemService.getItems().subscribe(items => {
+      this.itemArr = items;
+      console.log('assegnato itemArr: ', this.itemArr);
+    });
+
     this.categoryService.getCategories().subscribe(categories => {
-      /* for (const item of cats) {
-        this.name = item.name;
-        this.description = item.description;
-      } */
-      this.categoryArr = categories;
+      this.categoryArr = categories.sort((categoryA, categoryB):number =>{
+        if(this.getNumOfItemsPerCategory(categoryA.id) > this.getNumOfItemsPerCategory(categoryB.id)){
+          return -1;
+        }
+        if(this.getNumOfItemsPerCategory(categoryA.id) > this.getNumOfItemsPerCategory(categoryB.id)){
+          return 1;
+        }
+        return 0;
+      });
       console.log('assigned categories: ', this.categoryArr);
     });
 
-    /* this.itemService.getItems().subscribe(items => {
-      for (const item of items) {
-        console.log(item.name);
-        this.items += item.name;
-        // this.currentItem = item.id;
-      }
-    }); */
+
+   
+
+    console.log('array categorie ordinato: ' ,this.categoryArr)
   }
 
-  hide(func: any): void {
-    console.log(func);
+  updateCurrentCategory(categoryID:number | null){
+    this.currentCategory = categoryID;
+  }
+
+  hide(catgoryID :number | null): void {
+    this.updateCurrentCategory(catgoryID);
     this.hideShow = !this.hideShow;
   }
 }
