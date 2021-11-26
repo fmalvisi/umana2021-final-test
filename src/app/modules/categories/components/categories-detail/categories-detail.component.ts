@@ -10,11 +10,13 @@ export class CategoriesDetailComponent implements OnInit {
   name = '';
   description = '';
   items = '';
-  @Input() item: number | null = 0;
+  @Input() categoryName: string | null = '';
+
   constructor(
     private categoryService: CategoryService,
     private itemService: ItemsService,
   ) {}
+
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(cats => {
       for (const item of cats) {
@@ -24,9 +26,11 @@ export class CategoriesDetailComponent implements OnInit {
     });
 
     this.itemService.getItems().subscribe(items => {
-      for (const item of items) {
-        console.log(item.name);
-        this.items += item.name;
+      for (let i = 0; i < items.length; i++) {
+        console.log(this.categoryName);
+        if (this.categoryName == items[i].category) {
+          console.log(items[i].name);
+        }
       }
     });
   }
