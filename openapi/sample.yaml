@@ -507,6 +507,8 @@ components:
           type: string
         price:
           type: number
+        imgurl:
+          type: string
         category:
           type: integer
           nullable: true
