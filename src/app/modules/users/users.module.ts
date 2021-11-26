@@ -7,6 +7,10 @@ import { ModificaComponent } from './modifica/modifica.component';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { UserResolverResolver } from './resolver/user-resolver.resolver';
+import { ResolverleoResolver } from './resolver/resolverleo.resolver';
+
+
+
 
 
 
