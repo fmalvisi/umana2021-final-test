@@ -19,10 +19,10 @@
   "users": [
     {
       "id": 1,
-      "name": "Mario",
+      "name": "Mariottide",
       "surname": "Rossi",
-      "email": "mario.rossi@email.com",
-      "dob": "'01-01-1970"
+      "dob": "1965-10-05",
+      "email": "mario.rossi@email.com"
     },
     {
       "id": 2,
@@ -30,20 +30,6 @@
       "surname": "Bianchi",
       "email": "paolo.bianchi@email.com",
       "dob": "'02-01-1970"
-    },
-    {
-      "id": 3,
-      "name": "barisla",
-      "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "18-"
-    },
-    {
-      "id": 4,
-      "name": "barisla",
-      "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "18-05-1997"
     }
   ]
 }

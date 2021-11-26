@@ -7,7 +7,7 @@ import {
   ActivatedRoute
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { User, UsersService } from 'src/app/core/api/generated';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class UserResolverResolver implements Resolve<User> {
   utente:User | any=false;
   id=-1;
   constructor(private api:UsersService, private chkurl:Router, private rotta:ActivatedRoute){}
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):  Promise<User> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> | Promise<User> {
     /*this.id=route.params.id;
     console.log('id è ', this.id);
     this.api.getUser(this.id).subscribe(user=>{
@@ -30,18 +30,24 @@ export class UserResolverResolver implements Resolve<User> {
     })
     console.log(state.url , ' snapshot= ' , route.params.id);
     return this.utente;*/
-  
-    return this.api.getUser(route.params.id).pipe(map(res=>{
+    console.log("sono nel resolver");
+    return this.api.getUser(route.params.id).toPromise().catch(error=>{
+      console.log('utente non trovato');
+      this.chkurl.navigate(['users']);
+      throw error;
+    });/*.pipe(map(res=>{
       console.log(res);
-      if(res.id){
+      if(res){
       return res
       } else {
         console.log('utente non trovato');
-        this.chkurl.navigate(['/user']);
+        this.chkurl.navigate(['users']);
         return res;
       }
     }
-    )).toPromise();
+    ),catchError(error=>{
+      throw error;
+    })).toPromise();*/
   }
 
 
