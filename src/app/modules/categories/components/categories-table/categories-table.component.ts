@@ -1,4 +1,5 @@
 
+
 import { Component, OnInit } from '@angular/core';
 import { CategoryService, ItemsService } from 'src/app/core/api/generated';
 
@@ -13,21 +14,15 @@ export class CategoriesTableComponent implements OnInit {
   /*   name = '';
   description = '';
   items = '';*/
-  categoryArr: Category[] = [];
-
-<<<<<<< HEAD
- 
-=======
-  currentItem: number | null = 0;
+  
   hideShow = false;
->>>>>>> b93f2749627dbaa4f62b27ca5caa39f43af190e1
 
   constructor(
     private categoryService: CategoryService,
     private itemService: ItemsService,
   ) {}
 
-  currentItem: number | null = 0; 
+  currentCategory: number | null = 0; 
 
   categoryArr: Category[] = [];
 
@@ -35,7 +30,7 @@ export class CategoriesTableComponent implements OnInit {
 
   numOfItemsArr: any[] = [];
 
-  sortCategories(){
+  /* sortCategories(){
 
     let containerArr = [];
 
@@ -53,6 +48,8 @@ export class CategoriesTableComponent implements OnInit {
       containerArr.push(categoryItems);
     }
 
+    console.log('containerArr 0: ', containerArr);
+
     containerArr = containerArr.sort((itemA, itemB):number =>{
       if(itemA.items.length > itemB.items.length){
         return 1;
@@ -63,24 +60,30 @@ export class CategoriesTableComponent implements OnInit {
       return 0;
     });
 
+    console.log('container arr1 : ', containerArr);
+
     this.numOfItemsArr = containerArr;
 
     let sortedCategoryArr: Category[] = [];
 
+    console.log('array di items ordinato: ', this.numOfItemsArr);
+
     for(let itemGroup of this.numOfItemsArr){
       for(let category of this.categoryArr){
         if(category.id === itemGroup.id){
+          console.log('sto pushando');
           sortedCategoryArr.push(category);
         }
       }
     }
 
     this.categoryArr = sortedCategoryArr;
+    console.log('categoryArr ordinato: ', this.categoryArr);
 
-  }
+  } */
 
 
-  hideShow = false;
+  
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(categories => {
@@ -88,17 +91,20 @@ export class CategoriesTableComponent implements OnInit {
       console.log('assigned categories: ', this.categoryArr);
     });
 
-    /* this.itemService.getItems().subscribe(items => {
-      for (const item of items) {
-        console.log(item.name);
-        this.items += item.name;
-        // this.currentItem = item.id;
-      }
-    }); */
+    this.itemService.getItems().subscribe(items => {
+      this.itemArr = items;
+      console.log('assegnato itemArr: ', this.itemArr);
+    });
+
+  /*   this.sortCategories(); */
   }
 
-  hide(func: any): void {
-    console.log(func);
+  updateCurrentCategory(categoryID:number | null){
+    this.currentCategory = categoryID;
+  }
+
+  hide(catgoryID :number | null): void {
+    this.updateCurrentCategory(catgoryID);
     this.hideShow = !this.hideShow;
   }
 }

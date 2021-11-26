@@ -48,6 +48,14 @@
       "price": 11.5,
       "category": 3,
       "owner": null
+    },
+    {
+      "id": 7,
+      "name": "Testbagno3",
+      "description": "Usata male.",
+      "price": 11.5,
+      "category": 3,
+      "owner": null
     }
   ],
   "category": [
