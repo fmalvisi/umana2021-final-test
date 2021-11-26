@@ -29,8 +29,27 @@
       "id": 2,
       "name": "Paolo",
       "surname": "Bianchi",
+<<<<<<< HEAD
       "dob": "",
       "email": "paolo.bianchi@email.com"
+=======
+      "email": "paolo.bianchi@email.com",
+      "dob": "'02-01-1970"
+    },
+    {
+      "id": 3,
+      "name": "barisla",
+      "surname": "derraj",
+      "email": "barilsidaderraj@gmail.com",
+      "dob": "18-05-1997"
+    },
+    {
+      "id": 4,
+      "name": "Roberto",
+      "surname": "Verdi",
+      "email": "roberto.verdi@gmail.com",
+      "dob": "23-06-1980"
+>>>>>>> f2b44f28c1389453705e38ffee54c151be0d0690
     }
   ]
 }
