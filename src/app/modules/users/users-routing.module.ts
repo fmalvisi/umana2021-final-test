@@ -5,11 +5,15 @@ import { ModificaComponent } from './modifica/modifica.component';
 import { ItemsResolverResolver } from './resolver/items-resolver.resolver';
 import { UserResolverResolver } from './resolver/user-resolver.resolver';
 import { ShowUsersComponent } from './show-users/show-users.component';
+import { ResolverleoResolver } from './resolver/resolverleo.resolver';
 
 const routes: Routes = [
   {
     path:"",
-    component:ShowUsersComponent
+    component:ShowUsersComponent,
+    resolve:{
+      utente:ResolverleoResolver
+    }
   },
   {
     path:"aggiungi",
