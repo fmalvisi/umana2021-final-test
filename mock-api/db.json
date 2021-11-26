@@ -58,6 +58,13 @@
       "surname": "derraj",
       "email": "barilsidaderraj@gmail.com",
       "dob": "18-05-1997"
+    },
+    {
+      "id": 7,
+      "name": "Roberto",
+      "surname": "Verdi",
+      "email": "roberto.verdi@gmail.com",
+      "dob": "23-06-1980"
     }
   ]
 }
