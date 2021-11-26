@@ -1,51 +1,31 @@
-<p>list-items works!</p>
+<!-- <a [routerLink]="['aggiungi-oggetto']">Aggiungi</a> -->
 
-<a [routerLink]="['aggiungi-oggetto']">Aggiungi</a>
-<a [routerLink]="['dettagli-oggetto']">Aggiungi</a>
-<a [routerLink]="['modifica-oggetto']">Aggiungi</a>
-<router-outlet></router-outlet>
 
-<div>
-  <p>{{ itemProva$ | async  | json }}</p>
-  <p>{{ itemProva2$ | async | json }}</p>
-</div>
+<!-- <div>
+  <p>{{ itemProva$ | async | json }}</p>
+  <p>{{ itemProva2$ | async | json }}</p>  
+</div> -->
 
-<div class="carouselWrapper">
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div *ngFor="let item of items;" class="card" style="width: 18rem;">
-          <!-- <img src="..." class="card-img-top" alt="..."> -->
-          <div class="card-body">
-            <h5 class="card-title">{{item.name}}</h5>
-            <p class="card-text">{{item.price! | currencyEur}}</p>  
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Opzioni
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Dettagli</a></li>
-                <li><a class="dropdown-item" href="#">Modifica</a></li> 
-              </ul>
-            </div>
-          </div>    
-        </div> 
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+
+<div *ngFor="let item of items;" class="card" style="width: 18rem;">
+  <img [src]="item.imgurl" class="card-img-top" alt="item"> 
+  <div class="dropdown d-flex">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Opzioni
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" [routerLink]="['dettagli-oggetto']">Dettagli</a></li> 
+      <li><a class="dropdown-item" [routerLink]="['modifica-oggetto']">Modifica</a></li> 
+    </ul>
   </div>
-</div>
+  <div class="card-body">
+    <h5 class="card-title">{{item.name}}</h5>
+    <p class="card-text">{{item.price! | currencyEur}}</p>    
+  </div>    
+</div> 
+
 
   
+
+
+<router-outlet></router-outlet>
