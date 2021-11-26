@@ -8,7 +8,8 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { User, UsersService } from 'src/app/core/api/generated';
+import { ItemsService, User, UsersService } from 'src/app/core/api/generated';
+import { ItemsModule } from '../../items/items.module';
 
 @Injectable({
   providedIn: 'root'
@@ -30,12 +31,19 @@ export class UserResolverResolver implements Resolve<User> {
     })
     console.log(state.url , ' snapshot= ' , route.params.id);
     return this.utente;*/
+
+
+
     console.log("sono nel resolver");
     return this.api.getUser(route.params.id).toPromise().catch(error=>{
-      console.log('utente non trovato');
+      //console.log('utente non trovato');
       this.chkurl.navigate(['users']);
       throw error;
-    });/*.pipe(map(res=>{
+    });
+    
+    
+    
+    /*.pipe(map(res=>{
       console.log(res);
       if(res){
       return res
@@ -48,6 +56,10 @@ export class UserResolverResolver implements Resolve<User> {
     ),catchError(error=>{
       throw error;
     })).toPromise();*/
+
+
+
+
   }
 
 
