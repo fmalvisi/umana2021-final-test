@@ -17,6 +17,7 @@ export class ModificaComponent implements AfterViewInit {
     dob:'',
     email:''
   };
+  showForm=false;
   checkform=this.fb.group({
     nome:['',[Validators.required,Validators.pattern(/^[a-zA-Z]*$/)]],
     cognome:['',[Validators.required,Validators.pattern(/^[a-zA-Z]*$/)]],
@@ -26,13 +27,13 @@ export class ModificaComponent implements AfterViewInit {
 
 
   constructor(private api:UsersService, private route:ActivatedRoute, private chkurl:Router, private fb:FormBuilder) {
+    console.log('parto da qui');
     this.route.data.subscribe(data=>{
-      console.log(data);
-      try{
+      console.log("ok ",data);
       this.utente=data.utente;
-      }catch(error){
-        console.log(error);
-      }
+    },error=>{
+      console.log(error);
+      this.chkurl.navigate(['/users']);
     })
     
     /*chkurl.events.subscribe((val)=>{
@@ -40,8 +41,12 @@ export class ModificaComponent implements AfterViewInit {
     })*/
   }
 
+  mostra(){
+    return this.showForm;
+  }
+
   aggiorna(){
-    let fields=['name','surname','email'];
+    /*let fields=['name','surname','email'];
     let valori=[this.utente.name,this.utente.surname,this.utente.email];
     
     for(let c=0;c<fields.length;c++){
@@ -52,7 +57,8 @@ export class ModificaComponent implements AfterViewInit {
     let idob=document.getElementById('dob') as HTMLInputElement;
     let dob=this.utente.dob.substr(7,4)+"-"+this.utente.dob.substr(4,2)+"-"+this.utente.dob.substr(1,2);
     console.log('dob è '+dob)
-    idob.value=dob;
+    idob.value=dob;*/
+    this.showForm=true;
     this.checkform.setValue({
       nome:this.utente.name,
       cognome:this.utente.surname,
@@ -73,11 +79,26 @@ export class ModificaComponent implements AfterViewInit {
   }
 
   
-  cambiautente(){
-    this.chkurl.navigate(["/users/modifica/2"]);
+
+  onsubmit(){
+    let id=this.utente.id;
+    let name=(document.getElementById('name') as HTMLInputElement).value;
+    let surname=(document.getElementById('surname') as HTMLInputElement).value;
+    let dob=(document.getElementById('dob') as HTMLInputElement).value;
+    let email=(document.getElementById('email') as HTMLInputElement).value;
+    let editUser:User={
+      id:id,
+      name:name,
+      surname:surname,
+      dob:dob,
+      email:email
+    }
+    this.utente=editUser;
+    this.api.updateUser(id!,editUser).subscribe(error=>{
+      console.log('errore', error)
+    });
+    
   }
-
-
 
  
   

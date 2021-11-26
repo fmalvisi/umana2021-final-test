@@ -22,20 +22,15 @@ export class AggiungiComponent implements OnInit {
       let cognome = form.controls['cognome'].value;
       let email = form.controls['email'].value;
       let data = form.controls['data'].value;
-     console.log(nome);
       let utente : User= { id : null,
       name : nome,
       surname: cognome,
       email: email,
       dob:data
       }
-    console.log(utente);
-
-      if((nome != "") && (cognome != "") && (email != "") && (data != "")){
-        console.log((nome != "") );
-        console.log((cognome!= "") );
-        console.log((email != "") );
-        console.log((data != "") );
+    
+    if((nome != "") && (cognome != "") && (email != "") && (data != "")){
+        console.log(utente);
         this.api.createUser(utente).subscribe(error=>{
         console.log(error);
         });
