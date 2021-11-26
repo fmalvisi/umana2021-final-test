@@ -15,7 +15,18 @@
 <div>{{checkform.controls.dob.invalid}}</div>
 <input type="text" id="email" [value]='utente.email' formControlName="email">
 <div>{{checkform.controls.email.invalid}}</div>
+<div *ngFor="let oggetto of oggetti" class="row m-5">
+    <div *ngIf="oggetto.owner==utente.id || oggetto.owner==null" class="d-inline block" [style.background-image]="'url('+oggetto.imgurl+')'" style="max-width:100px;max-height:100px;background-size: cover;">
+        <span>{{oggetto.id}}</span>
+        <span>{{oggetto.name}}</span>
+        <span>{{oggetto.owner}}</span>
+        <span>{{oggetto.description}}</span>
+        <span>{{oggetto.price}}</span>
+        <button *ngIf="oggetto.owner==null" (click)="setItems(oggetto)">aggiungi</button>
+        <button *ngIf="oggetto.owner==utente.id" (click)="setItems(oggetto)">togli</button>
+    </div>
+</div>
 <input type="submit">
 </form >
+<button (click)="distruggiUtente()">distruggi utente</button>
 </div>
-<p>{{checkform.invalid}}</p>

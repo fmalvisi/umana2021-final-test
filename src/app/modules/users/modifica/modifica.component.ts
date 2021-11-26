@@ -1,14 +1,15 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { User, UsersService } from 'src/app/core/api/generated';
+import { Item, ItemsService, User, UsersService } from 'src/app/core/api/generated';
 @Component({
   selector: 'app-modifica',
   templateUrl: './modifica.component.html',
   styleUrls: ['./modifica.component.scss']
 })
-export class ModificaComponent implements AfterViewInit {
+export class ModificaComponent implements DoCheck {
   nutenti=0;
+  oggetti:Array<Item>=[]
   id:number=-1;
   utente:User={
     id:null,
@@ -26,11 +27,16 @@ export class ModificaComponent implements AfterViewInit {
   })
 
 
-  constructor(private api:UsersService, private route:ActivatedRoute, private chkurl:Router, private fb:FormBuilder) {
+  constructor(private api:UsersService, private route:ActivatedRoute, private chkurl:Router, private fb:FormBuilder, private items:ItemsService) {
     console.log('parto da qui');
     this.route.data.subscribe(data=>{
-      console.log("ok ",data);
+      //console.log("ok ",data);
       this.utente=data.utente;
+      for(let oggetto of data.items){
+        if(oggetto.owner==this.utente.id || oggetto.owner==null){
+          this.oggetti.push(oggetto);
+        }
+      }
     },error=>{
       console.log(error);
       this.chkurl.navigate(['/users']);
@@ -66,6 +72,7 @@ export class ModificaComponent implements AfterViewInit {
       email:this.utente.email
     }
     )
+    //console.log(this.showForm);
   }
 
   prendiUtente(){
@@ -78,7 +85,17 @@ export class ModificaComponent implements AfterViewInit {
     });*/
   }
 
-  
+  setItems(oggetto:Item){
+    console.log(oggetto);
+    if(oggetto.owner==null){
+      oggetto.owner=this.utente.id;
+    } else {
+      oggetto.owner=null;
+    }
+    this.items.updateItem(oggetto.id!,oggetto).subscribe(error=>{
+      console.log(error)
+    });
+  }
 
   onsubmit(){
     let id=this.utente.id;
@@ -100,15 +117,29 @@ export class ModificaComponent implements AfterViewInit {
     
   }
 
- 
+  distruggiUtente(){
+    let posso=true;
+    for(let i=0;i<this.oggetti.length;i++){
+      if(this.oggetti[i].owner==this.utente.id){
+        posso=false;
+      }
+    }
+    if(posso){
+    this.api.deleteUser(this.utente.id!).subscribe(error=>{
+      console.log(error);
+    });
+    }
+  }
   
-  ngAfterViewInit(): void {
+  ngDoCheck(): void {
     /*this.route.params.subscribe(params=>{
       this.id=params.id;
       console.log('route attiva:',params.id);
       this.prendiUtente();
     })*/
+    if(!this.showForm){
     this.aggiorna();
+    }
     /*this.api.updateUser(this.id,this.utente).subscribe(user=>{
       console.log(user);
     })*/

@@ -5,8 +5,9 @@
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
       "price": 15.5,
+      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
-      "owner": null
+      "owner": 1
     }
   ],
   "category": [
@@ -19,45 +20,17 @@
   "users": [
     {
       "id": 1,
-      "name": "Mario",
+      "name": "Mariottide",
       "surname": "Rossi",
       "email": "mario.rossi@email.com",
-      "dob": "'01-01-1970"
+      "dob": "01-01-1970"
     },
     {
       "id": 2,
       "name": "Paolo",
       "surname": "Bianchi",
-      "email": "paolo.bianchi@email.com",
-      "dob": "'02-01-1970"
-    },
-    {
-      "id": 3,
-      "name": "barisla",
-      "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "18-"
-    },
-    {
-      "id": 4,
-      "name": "barisla",
-      "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "18-05-1997"
-    },
-    {
-      "id": 5,
-      "name": "",
-      "surname": "",
-      "email": "",
-      "dob": "18-05-1997"
-    },
-    {
-      "id": 6,
-      "name": "barilsa",
-      "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "18-05-1997"
+      "dob": "",
+      "email": "paolo.bianchi@email.com"
     }
   ]
 }
