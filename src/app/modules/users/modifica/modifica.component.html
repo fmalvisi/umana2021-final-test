@@ -6,6 +6,14 @@
 <div>{{utente.dob}}</div>
 <div>{{utente.email}}</div>
 <form action="" [formGroup]='checkform'>
-<input type="text" id="name" [placeholder]='utente.name' formControlName="nome">
+<input type="text" id="name" [value]='utente.name' formControlName="nome">
+<div>{{checkform.controls.nome.invalid}}</div>
+<input type="text" id="surname" [value]='utente.surname' formControlName="cognome">
+<div>{{checkform.controls.cognome.invalid}}</div>
+<input type="date" id="dob" [value]='utente.dob' formControlName="dob">
+<div>{{checkform.controls.dob.invalid}}</div>
+<input type="text" id="email" [value]='utente.email' formControlName="email">
+<div>{{checkform.controls.email.invalid}}</div>
 </form>
 <p>{{checkform.invalid}}</p>
+<p (click)="cambiautente()">cambiauser</p>

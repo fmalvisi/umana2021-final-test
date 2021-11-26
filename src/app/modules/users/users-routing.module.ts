@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AggiungiComponent } from './aggiungi/aggiungi.component';
 import { ModificaComponent } from './modifica/modifica.component';
+import { UserResolverResolver } from './resolver/user-resolver.resolver';
 import { ShowUsersComponent } from './show-users/show-users.component';
 
 const routes: Routes = [
@@ -15,7 +16,10 @@ const routes: Routes = [
   },
   {
     path:"modifica/:id",
-    component:ModificaComponent
+    component:ModificaComponent,
+    resolve:{
+      utente:UserResolverResolver
+    }
   }
 ];
 
