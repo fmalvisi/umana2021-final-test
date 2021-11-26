@@ -7,4 +7,4 @@
 <router-outlet></router-outlet>
 
 <button (click)="hide()">Toggle</button>
-<app-categories-detail *ngIf="hideShow" [item]="currentItem">hide and show content ...</app-categories-detail>
+<app-categories-detail *ngIf="hideShow" [categoryName]="currentItem">hide and show content ...</app-categories-detail>

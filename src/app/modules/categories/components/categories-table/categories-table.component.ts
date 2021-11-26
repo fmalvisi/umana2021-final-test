@@ -11,7 +11,7 @@ export class CategoriesTableComponent implements OnInit {
   description = '';
   items = '';
 
-  currentItem: number | null = 0;
+  currentItem: string | null = '';
   hideShow = false;
 
   constructor(
@@ -31,7 +31,7 @@ export class CategoriesTableComponent implements OnInit {
       for (const item of items) {
         console.log(item.name);
         this.items += item.name;
-        this.currentItem = item.id;
+        // this.currentItem = item.id;
       }
     });
   }
