@@ -1,0 +1,36 @@
+.carouselWrapper{
+    width: 80%;
+    height: auto;
+    padding: 2%;
+    margin-bottom: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;    
+    background-color: rgb(226, 170, 96);
+}
+
+.carousel-inner{
+    display: flex;
+}
+
+.carousel-item{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card{
+    margin: 2%;
+}
+
+.buttonMenu{
+    width: 80%;
+    height: auto;
+    padding: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: flex-end;
+}
