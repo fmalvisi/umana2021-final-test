@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'; 
-import { CategoryService, Item, ItemsService, UsersService } from '../../../core/api/generated';
+import { SuperItemService } from 'src/app/core/services/superItemService';
+import { Item, ItemsService } from '../../../core/api/generated';
  
 
 @Component({
@@ -11,6 +12,8 @@ export class ListItemsComponent implements OnInit {
   
   message: string|null = null;
   items:Item[] = [];
+  item? : Item;
+  fetchedItems :Item[] = [];
 
   oggettoProva:Item = {
     "id": 4,
@@ -22,18 +25,15 @@ export class ListItemsComponent implements OnInit {
   };
 
   constructor(
-    private itemService: ItemsService,
-    private categoryService: CategoryService,
-    private userService: UsersService ) { 
-    
+    private superService : SuperItemService,
+    private itemsService : ItemsService,
+    ) {}
+
+  ngOnInit(): void {     
+     this.items = this.superService.getItemList();
+     console.log(this.items);
   }
 
-  ngOnInit(): void {
-    //this.itemService.getItems().subscribe(items => console.log('PROVAA:', items));
-    this.itemService.createItem(this.oggettoProva).subscribe(items => console.log('PROVAA:', items));
-    this.itemService.getItems().subscribe(itemsObj => {this.items = itemsObj});  
-      
-     
-  }
+  
 
 }
