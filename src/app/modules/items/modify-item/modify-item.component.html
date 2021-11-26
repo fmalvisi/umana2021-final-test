@@ -1,1 +1,39 @@
-<p>modify-item works!</p>
+<div class='container-fluid'>
+    <h1 class='display-4'>Modifica oggetto</h1>
+    <label>Nome oggetto: </label>
+    <input type="text" value={{name_objects}} id="name_input">
+    <br>
+    <label>Descrizione ogetto: </label>
+    <input type="text" value ={{description}}>
+    <br>
+    <label>Prezzo: </label>
+    <input type="number" value= {{price}}>
+    <br>
+
+    <div class="dropdown">
+        <label>Categoria: </label>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Scegli Categoria
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" >prova1</a></li>
+            <li><a class="dropdown-item" >prova2</a></li> 
+        </ul>
+    </div>  
+
+    <div class="dropdown">
+        <label>Proprietario: </label>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Scegli proprietario
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" >prova1</a></li>
+            <li><a class="dropdown-item" >prova2</a></li> 
+        </ul>
+    </div>  
+
+    <label>Carica url immagine (facoltativo)</label>
+    <input type="url" value={{url_photo}}>
+    <br>
+    <button (click)="send()">Invia</button>
+</div>

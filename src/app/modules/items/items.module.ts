@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 
 import { ItemsRoutingModule } from './items-routing.module';
 import { ListItemsComponent } from './list-items/list-items.component'; 
@@ -21,7 +23,8 @@ import { CurrencyEurPipe } from './../../shared/pipes/currency.pipe';
   ],
   imports: [
     CommonModule,
-    ItemsRoutingModule
+    ItemsRoutingModule,
+    FormsModule
   ]
 })
 export class ItemsModule { }
