@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService, ItemsService } from 'src/app/core/api/generated';
 
-import { Category } from 'src/app/core/api/generated';
+import { Category, Item } from 'src/app/core/api/generated';
 
 @Component({
   selector: 'app-categories-table',
@@ -13,37 +13,47 @@ export class CategoriesTableComponent implements OnInit {
   description = '';
   items = '';*/
 
-  currentItem: number | null = 0; 
-
-  categoryArr: Category[] = []
-
-  hideShow = false;
+ 
 
   constructor(
     private categoryService: CategoryService,
     private itemService: ItemsService,
   ) {}
 
+  currentItem: number | null = 0; 
+
+  categoryArr: Category[] = [];
+
+  itemArr: Item[] = [];
+
+  sortCategories(){
+
+    let containerArr = [];
+
+    for(let category of this.categoryArr){
+      let categoryItems = {
+        name: category.name,
+        items: []
+      };
+     /*  for(let item of this.itemArr){
+        if(item.category === categoryItems.name)
+      } */
+    }
+  }
+
+
+  hideShow = false;
+
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(categories => {
-      /* for (const item of cats) {
-        this.name = item.name;
-        this.description = item.description;
-      } */
       this.categoryArr = categories;
       console.log('assigned categories: ', this.categoryArr);
     });
 
-
-
-
-    /* this.itemService.getItems().subscribe(items => {
-      for (const item of items) {
-        console.log(item.name);
-        this.items += item.name;
-        this.currentItem = item.id;
-      }
-    }); */
+    this.itemService.getItems().subscribe(items => {
+      this.itemArr = items;
+      console.log('assigned items: ', this.itemArr);
+    });
   }
 
   hide(): boolean {
