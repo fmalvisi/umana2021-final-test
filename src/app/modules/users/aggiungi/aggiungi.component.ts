@@ -18,21 +18,29 @@ export class AggiungiComponent implements OnInit {
 
   onsubmit(form: NgForm){
     
-    let nome = form.controls['nome'].value;
-    let cognome = form.controls['cognome'].value;
-    let email = form.controls['email'].value;
-    let data = form.controls['data'].value;
-    console.log(data);
-    let utente : User= { id : null,
-    name : nome,
-    surname: cognome,
-     email: email,
-    dob:data}
+      let nome = form.controls['nome'].value;
+      let cognome = form.controls['cognome'].value;
+      let email = form.controls['email'].value;
+      let data = form.controls['data'].value;
+     console.log(nome);
+      let utente : User= { id : null,
+      name : nome,
+      surname: cognome,
+      email: email,
+      dob:data
+      }
     console.log(utente);
-    this.api.createUser(utente).subscribe(error=>{
-      console.log(error);
-    });
-   
+
+      if((nome != "") && (cognome != "") && (email != "") && (data != "")){
+        console.log((nome != "") );
+        console.log((cognome!= "") );
+        console.log((email != "") );
+        console.log((data != "") );
+        this.api.createUser(utente).subscribe(error=>{
+        console.log(error);
+        });
+     }
+    
     }
   }
  
