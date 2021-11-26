@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { CategoryService, ItemsService } from 'src/app/core/api/generated';
 
@@ -26,19 +27,50 @@ export class CategoriesTableComponent implements OnInit {
 
   itemArr: Item[] = [];
 
+  numOfItemsArr: any[] = [];
+
   sortCategories(){
 
     let containerArr = [];
 
     for(let category of this.categoryArr){
+      
       let categoryItems = {
-        name: category.name,
-        items: []
+        id: category.id,
+        items: new Array<Item>()
       };
-     /*  for(let item of this.itemArr){
-        if(item.category === categoryItems.name)
-      } */
+      for(let item of this.itemArr){
+        if(item.category === categoryItems.id){
+          categoryItems.items.push(item)
+        }
+      }
+      containerArr.push(categoryItems);
     }
+
+    containerArr = containerArr.sort((itemA, itemB):number =>{
+      if(itemA.items.length > itemB.items.length){
+        return 1;
+      }
+      if(itemA.items.length < itemB.items.length){
+        return -1;
+      }
+      return 0;
+    });
+
+    this.numOfItemsArr = containerArr;
+
+    let sortedCategoryArr: Category[] = [];
+
+    for(let itemGroup of this.numOfItemsArr){
+      for(let category of this.categoryArr){
+        if(category.id === itemGroup.id){
+          sortedCategoryArr.push(category);
+        }
+      }
+    }
+
+    this.categoryArr = sortedCategoryArr;
+
   }
 
 
@@ -54,7 +86,11 @@ export class CategoriesTableComponent implements OnInit {
       this.itemArr = items;
       console.log('assigned items: ', this.itemArr);
     });
+
+    this.sortCategories();
   }
+
+  
 
   hide(): boolean {
     console.log(this.hideShow);
