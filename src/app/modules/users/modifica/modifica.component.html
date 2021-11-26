@@ -35,31 +35,34 @@
         <div class="col-md-6">
             <div class="title">Tuoi oggetti</div>
             <div *ngFor="let oggetto of oggetti">
-                <div *ngIf="oggetto.owner==utente.id" class="d-inline block" [style.background-image]="'url('+oggetto.imgurl+')'" style="max-width:100px;max-height:100px;background-size: cover;">
-                    <div class="card ic1 bg-light border rounded">
-                        <ul class="group-list">
-                        <li class="list-group-item">{{oggetto.id}}</li>
+                <div *ngIf="oggetto.owner==utente.id" class="d-inline block"  >
+                    <div class="card ic1 bg-light border rounded p-2">
+                        <ul class="group-list ps-0 text-center">
                         <li class="list-group-item">{{oggetto.name}}</li>
-                        <li class="list-group-item">{{oggetto.owner}}</li>
                         <li class="list-group-item">{{oggetto.description}}</li>
                         <li class="list-group-item">{{oggetto.price}}</li>
-                        <div><button *ngIf="oggetto.owner==utente.id" (click)="setItems(oggetto)">togli</button></div>
+                        
                     </ul>
+                    <div [style.background-image]="'url('+oggetto.imgurl+')'" style="background-size: contain;width:100%;height:10rem;background-repeat: no-repeat; background-position: center;"></div>
+                    <div><button  type="text" class="submit" (click)="setItems(oggetto)">togli</button></div>
                     </div>     
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="title">oggetti da comprare</div>
+            <div class="title">disponibili</div>
             <div *ngFor="let oggetto of oggetti">
-                <div *ngIf="oggetto.owner==null" class="d-inline block" [style.background-image]="'url('+oggetto.imgurl+')'" style="max-width:100px;max-height:100px;background-size: cover;">
-                    <span>{{oggetto.id}}</span>
-                    <span>{{oggetto.name}}</span>
-                    <span>{{oggetto.owner}}</span>
-                    <span>{{oggetto.description}}</span>
-                    <span>{{oggetto.price}}</span>
-                    <button *ngIf="oggetto.owner==null" (click)="setItems(oggetto)">aggiungi</button>
-                    <button *ngIf="oggetto.owner==utente.id" (click)="setItems(oggetto)">togli</button>
+                <div *ngIf="oggetto.owner==null" class="d-inline block"  >
+                    <div class="card ic1 bg-light border rounded p-2">
+                        <ul class="group-list ps-0 text-center">
+                        <li class="list-group-item">{{oggetto.name}}</li>
+                        <li class="list-group-item">{{oggetto.description}}</li>
+                        <li class="list-group-item">{{oggetto.price}}</li>
+                        
+                    </ul>
+                    <div [style.background-image]="'url('+oggetto.imgurl+')'" style="background-size: contain;width:100%;height:10rem;background-repeat: no-repeat; background-position: center;"></div>
+                    <div><button  type="text" class="submit" (click)="setItems(oggetto)">aggiungi</button></div>
+                    </div>     
                 </div>
             </div>
         </div>
