@@ -26,9 +26,9 @@
   </div>
   
   <div class="input-container ic2">
-    <input id="dob" class="input" type="date" placeholder=" " />
+    <input id="dob" class="input" type="date" placeholder=" " name="data" ngModel #data="ngModel" required="required"/>
     <div class="cut"></div>
-    <label for="dob" class="placeholder" name="data" ngModel #data="ngModel" required="required"> </label>
+    <label for="dob" class="placeholder" > </label>
         <div *ngIf="email.errors?.['required']">
            Data is required.
           </div>  
