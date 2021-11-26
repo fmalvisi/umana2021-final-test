@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User, UsersService } from 'src/app/core/api/generated';
 
 @Component({
@@ -9,11 +10,16 @@ import { User, UsersService } from 'src/app/core/api/generated';
 export class ShowUsersComponent implements OnInit {
   utenti: Array<User>=[]
 
-  constructor(private api: UsersService) {
-    this.api.getUsers().subscribe(users=>{
-      this.utenti = users;
-      console.log("ho caricato", this.utenti )
+  constructor(private route:ActivatedRoute, private api: UsersService) {
+    // this.api.getUsers().subscribe(users=>{
+    //   this.utenti = users;
+    //   console.log("ho caricato", this.utenti )
 
+    // })
+    this.route.data.subscribe(data => {
+      this.utenti = data.utente;
+    }, error => {
+      console.log(error);
     })
 
    }
