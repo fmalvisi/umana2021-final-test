@@ -1,6 +1,3 @@
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { CategoryService, ItemsService } from 'src/app/core/api/generated';
 
@@ -12,8 +9,6 @@ import { Category, Item } from 'src/app/core/api/generated';
   styleUrls: ['./categories-table.component.scss'],
 })
 export class CategoriesTableComponent implements OnInit {
-  
-  
   hideShow = false;
 
   constructor(
@@ -21,7 +16,7 @@ export class CategoriesTableComponent implements OnInit {
     private itemService: ItemsService,
   ) {}
 
-  currentCategory: number | null = 0; 
+  currentCategory: number | null = 0;
 
   categoryArr: Category[] = [];
 
@@ -29,52 +24,50 @@ export class CategoriesTableComponent implements OnInit {
 
   numOfItemsArr: any[] = [];
 
-  getNumOfItemsPerCategory(categoryID: number|null):number{
+  getNumOfItemsPerCategory(categoryID: number | null): number {
     let counter = 0;
-    for( let item of this.itemArr){
-      if(item.category === categoryID){
+    for (let item of this.itemArr) {
+      if (item.category === categoryID) {
         counter++;
       }
     }
     return counter;
   }
 
- 
-  
-
   ngOnInit(): void {
-    
-
     this.itemService.getItems().subscribe(items => {
       this.itemArr = items;
-      console.log('assegnato itemArr: ', this.itemArr);
+      // console.log('assegnato itemArr: ', this.itemArr);
     });
 
     this.categoryService.getCategories().subscribe(categories => {
-      this.categoryArr = categories.sort((categoryA, categoryB):number =>{
-        if(this.getNumOfItemsPerCategory(categoryA.id) > this.getNumOfItemsPerCategory(categoryB.id)){
+      this.categoryArr = categories.sort((categoryA, categoryB): number => {
+        if (
+          this.getNumOfItemsPerCategory(categoryA.id) >
+          this.getNumOfItemsPerCategory(categoryB.id)
+        ) {
           return -1;
         }
-        if(this.getNumOfItemsPerCategory(categoryA.id) > this.getNumOfItemsPerCategory(categoryB.id)){
+        if (
+          this.getNumOfItemsPerCategory(categoryA.id) >
+          this.getNumOfItemsPerCategory(categoryB.id)
+        ) {
           return 1;
         }
         return 0;
       });
-      console.log('assigned categories: ', this.categoryArr);
+      // console.log('assigned categories: ', this.categoryArr);
     });
 
-
-   
-
-    console.log('array categorie ordinato: ' ,this.categoryArr)
+    // console.log('array categorie ordinato: ', this.categoryArr);
   }
 
-  updateCurrentCategory(categoryID:number | null){
-    this.currentCategory = categoryID;
+  updateCurrentCategory(categoryID: number | null) {
+    return (this.currentCategory = categoryID);
   }
 
-  hide(catgoryID :number | null): void {
-    this.updateCurrentCategory(catgoryID);
+  hide(categoryID: number | null): void {
+    this.updateCurrentCategory(categoryID);
     this.hideShow = !this.hideShow;
   }
 }

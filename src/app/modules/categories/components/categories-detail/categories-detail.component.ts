@@ -15,10 +15,9 @@ export class CategoriesDetailComponent implements OnInit {
   description = '';
   items = '';
   @Input() categoryName: number | null = 0;
-
-  categoryN = 1;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   categoryItems: any = [];
+  categoryNames: any = 0;
 
   newCat: Category[] = [];
 
@@ -39,23 +38,16 @@ export class CategoriesDetailComponent implements OnInit {
   ngOnChanges(): void {
     this.itemService.getItems().subscribe(items => {
       for (let i = 0; i < items.length; i++) {
-        if (this.categoryN == items[i].category) {
+        if (this.categoryName == items[i].category) {
           this.categoryItems.push(items[i].name);
+          this.categoryNames = items[i].category;
         }
       }
     });
   }
 
   edit() {
-    this.categoryService.getCategories().subscribe(cats => {
-      for (let i = 0; i < cats.length; i++) {
-        console.log(cats[i].description);
-        cats[1].description = 'cose per la casaa';
-      }
-    });
-  }
-
-  add() {
+    console.log('add');
     // var fakeCat: Category = {
     //   id: 4,
     //   name: 'Camera',
@@ -67,15 +59,15 @@ export class CategoriesDetailComponent implements OnInit {
     // this.categoryService.getCategories().subscribe(itemsObj => {
     //   this.newCat = itemsObj;
     // });
-    // var updateCat: Category = {
-    //   id: 1,
-    //   name: 'Casa',
-    //   description: 'cose per la casaaaa',
-    // };
-    // this.categoryService.updateCategory(
-    //   updateCat.id,
-    //   updateCat.name,
-    //   updateCat.description,
-    // );
+    //   var updateCat: Category = {
+    //     id: 1,
+    //     name: 'Casa',
+    //     description: 'cose per la casaaaa',
+    //   };
+    //   this.categoryService.updateCategory(
+    //     updateCat.id,
+    //     updateCat.name,
+    //     updateCat.description,
+    //   );
   }
 }
