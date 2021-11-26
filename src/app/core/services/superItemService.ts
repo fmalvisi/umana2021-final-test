@@ -1,4 +1,6 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { tap } from "rxjs/operators";
 import { Item, ItemsService } from "../api/generated";
 
 @Injectable({
@@ -25,14 +27,20 @@ export class SuperItemService {
         return testItems;
     }
 
-    // getItem(index: number): Item {
-    //     console.log("chiamato getItem");
-    //     const testItem = new;
-    //     this.itemsService.getItem(index).subscribe(res => {
-    //         testItem = res;
-    //         this.singleItem = testItem
-    //     });
-    //     return this.singleItem!;
-    // }
+    getItem(index: number): Item {
+        console.log("chiamato getItem");
+        let testItem: Item;
+        this.itemsService.getItem(index).subscribe(res => {
+            testItem = res;
+            this.singleItem = testItem
+        });
+        return this.singleItem!;
+    }
 
+
+    getProva(index: number): Observable<Item> {
+        return this.itemsService.getItem(index).pipe( tap(values => {
+            console.log("valori", values);
+        }));
+    }
 }
