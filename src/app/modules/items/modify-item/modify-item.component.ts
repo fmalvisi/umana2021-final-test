@@ -13,14 +13,14 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./modify-item.component.scss']
 })
 export class ModifyItemComponent implements OnInit {
-  name_objects="nome";
-  description="descrizione_prova_pipe";
-  price_euro="14";
-  price_centesimi="22";
-  category="categoria_prova"
-  url_photo="url_prova_pipe";
-  owner="proprietario"
-  prova="prova";
+  name_objects="";
+  description="";
+  price_euro=0;
+  price_centesimi=0;
+  category=0
+  url_photo="";
+  owner=""
+  prova="";
   
   message: string|null = null;
   items:Item[] = [];
@@ -53,6 +53,13 @@ export class ModifyItemComponent implements OnInit {
 getItemsId(id:number){
   this.superService.getItemById(id).then((res: Item) => {
     this.item = res;
+    this.name_objects=this.item.name
+    this.description=this.item.description!
+    this.price_euro=this.item.price!
+    this.category=this.item.category!
+    this.url_photo=this.item.imgurl!
+    this.owner=this.owner!
+    
   }).catch((error) => {
     window.alert("errore di chiamata API" + error);
   })
@@ -65,10 +72,17 @@ getItemsId(id:number){
   ngOnInit(): void {
 
       this.route.paramMap.subscribe(params => {
-        var id = params.get('id');
+        let id = params.get('id');
         this.id = Number(id);
-        this.getItemsId(this.id);
+
+        //imposto valori da visualizzare negli input:
+
+
     });
+
+    this.getItemsId(this.id);
+
+    
 
   }
 
