@@ -52,7 +52,7 @@ export class ModifyItemComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.item = this.superService.getItem(2)
+    // this.item = this.superService.getItem(2)
 
   }
 }

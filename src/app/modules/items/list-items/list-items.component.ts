@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { SuperItemService } from 'src/app/core/services/superItemService';
 import { Item } from '../../../core/api/generated';
@@ -14,30 +15,48 @@ export class ListItemsComponent implements OnInit {
   message: string|null = null;
   items:Item[] = [];
   item? : Item;
-  fetchedItems :Item[] = [];
   itemProva$?: Observable<Item>;
   itemProva2$ = of(true);
   mostra = true;
   
   constructor(
     private superService : SuperItemService,
-    ) {}
+    private router : Router
+  ) {}
 
   ngOnInit(): void {     
-     this.items = this.superService.getItemList();
-     console.log('itemsaaaaaaaaaa',this.items);
     //  this.superService.getProva(1).subscribe(res => {
     //    this.item = res;
-    //    console.log("dentro",this.item)
     //  })
-    //  console.log("fuori",this.item)
     //  this.itemProva$ = this.superService.getProva(1);
+    this.getItems();
+    
   }
 
   modify(index: number){
     this.mostra = false;
     console.log("indice: ", index)
   }
-  
 
+  deleteItem(index: number){
+    if(index != null || index != 0){
+      this.superService.deleteItem(index).subscribe(() =>{
+        console.log('oggetto eliminato!')
+      })
+    }
+    this.getItems();
+  }
+  
+  returnHome() {
+    this.router.navigate(['/']);
+  }
+
+  getItems(){
+    this.superService.getItemList().then((res: Item[]) => {
+      this.items = res;
+    }).catch((error) => {
+      window.alert("errore di chiamata API" + error);
+      this.returnHome;
+    })
+  }
 }

@@ -1,11 +1,11 @@
 .carouselWrapper{
-    width: 80%;
+    width: 90%;
     height: auto;
     padding-top: 2%;
     padding-bottom: 2%;
     margin-bottom: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
     display: flex;    
     background-color: rgba(226, 158, 70, 0.534);
 }
@@ -26,12 +26,12 @@
 }
 
 .buttonMenu{
-    width: 80%;
+    width: 90%;
     height: auto;
-    padding: 2%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
     margin-top: 2%;
+    margin-bottom: 2%;
     display: flex;
     justify-content: flex-end;
 }
