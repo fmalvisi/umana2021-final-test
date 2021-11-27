@@ -21,6 +21,7 @@ export class ModifyItemComponent implements OnInit {
   url_photo="url_prova_pipe";
   owner="proprietario"
   prova="prova";
+  
   message: string|null = null;
   items:Item[] = [];
   item? : Item;
@@ -50,29 +51,28 @@ export class ModifyItemComponent implements OnInit {
 
 
 
-  constructor( private superService : SuperItemService, private route: ActivatedRoute,
+getItemsId(id:number){
+  this.superService.getItemById(id).then((res: Item) => {
+    this.item = res;
+  }).catch((error) => {
+    window.alert("errore di chiamata API" + error);
+  })
+}
+
+
+  constructor( private superService : SuperItemService, private route: ActivatedRoute, 
     ) { }
 
   ngOnInit(): void {
-    // this.item = this.superService.getItem(2) 
-     /* if (this.currentId !== '') {
-          this.colorService.getColor(+this.currentId).then((res: Color) => {
-            this.selectedColor = res;
-            this.createForm();
-          }).catch((error) => {
-            window.alert("Errore in chiamata API, torno indietro");
-            this.goBack();
-          })
-      } else {
-        this.createForm();
-      }*/
 
       this.route.paramMap.subscribe(params => {
         var id = params.get('id');
-        console.log(id);
+        //console.log(id);
         this.id = Number(id)
     });
 
+
+    this.getItemsId(this.id);
   }
 
 }

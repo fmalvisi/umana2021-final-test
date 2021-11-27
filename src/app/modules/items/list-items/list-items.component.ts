@@ -35,7 +35,7 @@ export class ListItemsComponent implements OnInit {
 
   modify(index: number){
     this.mostra = false;
-    console.log("indice: ", index)
+    //console.log("indice: ", index)
   }
 
   deleteItem(index: number){
