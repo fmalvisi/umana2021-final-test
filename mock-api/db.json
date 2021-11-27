@@ -7,7 +7,7 @@
       "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
-      "owner": 1
+      "owner": null
     }
   ],
   "category": [
@@ -20,7 +20,7 @@
   "users": [
     {
       "id": 1,
-      "name": "Mar",
+      "name": "Mario",
       "surname": "Rossi",
       "dob": "",
       "email": "mario.rossi@email.com"
@@ -34,15 +34,17 @@
     },
     {
       "id": 3,
-      "name": "barisla",
-      "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "18-05-1997"
+      "name": "barislasss",
+      "surname": "derrajjji",
+      "dob": "08-11-2021",
+      "email": "barilsidaderraj@gmail.com"
     },
     {
       "id": 4,
       "name": "Roberto",
-      "surname": "Verdi",
+
+      "surname": "Verdicchi",
+      "dob": "08-11-2021",
       "email": "roberto.verdi@gmail.com",
       "dob": "23-06-1980"
     },
@@ -52,20 +54,7 @@
       "surname": "derraj",
       "email": "barilsidaderraj@gmail.com",
       "dob": "2022-12-31"
-    },
-    {
-      "id": 6,
-      "name": "barisla",
-      "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "1997-05-18"
-    },
-    {
-      "id": 7,
-      "name": "Andrea",
-      "surname": "Fabri",
-      "email": "andrea.f@gmail.com",
-      "dob": "1980-06-25"
+
     }
   ]
 }

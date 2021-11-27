@@ -7,8 +7,9 @@ import { Item, ItemsService, User, UsersService } from 'src/app/core/api/generat
   templateUrl: './modifica.component.html',
   styleUrls: ['./modifica.component.scss']
 })
-export class ModificaComponent implements DoCheck {
-  nutenti=0;
+export class ModificaComponent implements DoCheck,AfterViewInit {
+
+  
   oggetti:Array<Item>=[]
   id:number=-1;
   utente:User={
@@ -25,6 +26,10 @@ export class ModificaComponent implements DoCheck {
     dob:['',[Validators.required]],
     email:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9.]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z0-9]{1,4}$/)]]
   })
+  gotdate=false;
+  dobc:string="01-01-1970";
+
+
 
 
   constructor(private api:UsersService, private route:ActivatedRoute, private chkurl:Router, private fb:FormBuilder, private items:ItemsService) {
@@ -33,6 +38,8 @@ export class ModificaComponent implements DoCheck {
       //console.log("ok ",data);
       this.utente=data.utente;
       this.oggetti=[];
+      this.aggiorna();
+      this.updateDate();
       for(let oggetto of data.items){
         if(oggetto.owner==this.utente.id || oggetto.owner==null){
           this.oggetti.push(oggetto);
@@ -46,6 +53,12 @@ export class ModificaComponent implements DoCheck {
     /*chkurl.events.subscribe((val)=>{
       this.ngOnInit();
     })*/
+  }
+
+  updateDate(){
+    try{
+      (document.getElementById('dob') as HTMLInputElement).value=this.dobc;
+    }catch(error){};
   }
 
   mostra(){
@@ -68,7 +81,11 @@ export class ModificaComponent implements DoCheck {
     let dob=this.utente.dob.substr(7,4)+"-"+this.utente.dob.substr(4,2)+"-"+this.utente.dob.substr(1,2);
     console.log('dob è '+dob)
     idob.value=dob;*/
+    //this.dobc=this.utente.dob.substr(7,4)+"-"+this.utente.dob.substr(4,2)+"-"+this.utente.dob.substr(1,2);
+    
     this.showForm=true;
+    this.dobc=this.utente.dob.substr(6,4)+"-"+this.utente.dob.substr(3,2)+"-"+this.utente.dob.substr(0,2);
+    console.log("dobc è "+this.dobc + " dob è "+this.utente.dob);
     this.checkform.setValue({
       nome:this.utente.name,
       cognome:this.utente.surname,
@@ -78,6 +95,17 @@ export class ModificaComponent implements DoCheck {
     )
     //console.log(this.showForm);
   }
+
+  showInvalid(controllo:boolean){
+    return {
+      'bg-danger':controllo
+    }
+  }
+
+  ngAfterViewInit(){
+    (document.getElementById('dob') as HTMLInputElement).value=this.dobc;
+  }
+
 
   prendiUtente(){
     /*this.api.getUser(this.id).subscribe(user=>{
@@ -107,11 +135,13 @@ export class ModificaComponent implements DoCheck {
     let surname=(document.getElementById('surname') as HTMLInputElement).value;
     let dob=(document.getElementById('dob') as HTMLInputElement).value;
     let email=(document.getElementById('email') as HTMLInputElement).value;
+    let dobu=dob.substr(8,2)+"-"+dob.substr(5,2)+"-"+dob.substr(0,4);
+    console.log('dobu è '+dobu);
     let editUser:User={
       id:id,
       name:name,
       surname:surname,
-      dob:dob,
+      dob:dobu,
       email:email
     }
     this.utente=editUser;
@@ -119,6 +149,16 @@ export class ModificaComponent implements DoCheck {
       console.log('errore', error)
     });
     
+  }
+
+
+  tinvalid(controllo:boolean):String{
+    if (controllo){
+      return "campo non valido";
+    }
+    else {
+      return "campo valido";
+    }
   }
 
   distruggiUtente(){
