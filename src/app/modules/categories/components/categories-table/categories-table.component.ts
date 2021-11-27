@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService, ItemsService } from 'src/app/core/api/generated';
-
+import { CategoryDataService } from '../../service/category-data.service';
 import { Category, Item } from 'src/app/core/api/generated';
 
 @Component({

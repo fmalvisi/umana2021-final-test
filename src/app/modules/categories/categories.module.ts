@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { CategoriesDetailComponent } from './components/categories-detail/categories-detail.component';
 import { CategoriesEditComponent } from './components/categories-edit/categories-edit.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { CategoryDataService } from './service/category-data.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,6 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
   ],
-  providers: [FormBuilder],
+  providers: [FormBuilder, CategoryDataService],
 })
 export class CategoriesModule {}

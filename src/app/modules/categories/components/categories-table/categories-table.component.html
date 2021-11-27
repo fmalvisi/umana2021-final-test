@@ -1,6 +1,4 @@
 <a routerLink="add">Add</a><br>
-<router-outlet></router-outlet>
-
 
 <table class="table table-striped">
   <thead>
@@ -27,3 +25,5 @@
 
 <app-categories-detail *ngIf="hideShow" [categoryName]="currentCategory">hide and show content ...
 </app-categories-detail>
+
+<router-outlet></router-outlet>

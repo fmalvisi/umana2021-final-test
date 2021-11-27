@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CategoryDataService } from '../../service/category-data.service';
+
 import {
   CategoryService,
   ItemsService,
@@ -18,12 +20,12 @@ export class CategoriesDetailComponent implements OnInit {
   items = '';
   categoryItems: Array<string> = [];
   categoryNames: any = 0;
-
   newCat: Category[] = [];
 
   constructor(
     private categoryService: CategoryService,
     private itemService: ItemsService,
+    private categoryDataService: CategoryDataService,
   ) {}
 
   ngOnInit(): void {
@@ -44,5 +46,10 @@ export class CategoriesDetailComponent implements OnInit {
         }
       }
     });
+  }
+
+  edit(): void {
+    console.log("editservicebutton")
+    this.categoryDataService.getCatId(this.categoryName);
   }
 }
