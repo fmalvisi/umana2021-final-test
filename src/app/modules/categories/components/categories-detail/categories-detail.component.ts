@@ -49,7 +49,6 @@ export class CategoriesDetailComponent implements OnInit {
   }
 
   edit(): void {
-    console.log("editservicebutton")
     this.categoryDataService.getCatId(this.categoryName);
   }
 }
