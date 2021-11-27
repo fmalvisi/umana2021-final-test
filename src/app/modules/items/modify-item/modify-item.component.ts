@@ -21,6 +21,9 @@ export class ModifyItemComponent implements OnInit {
   url_photo="";
   owner=""
   prova="";
+
+  //pattern per url:
+  url_pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
   
   message: string|null = null;
   items:Item[] = [];
