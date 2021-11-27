@@ -13,14 +13,14 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./modify-item.component.scss']
 })
 export class ModifyItemComponent implements OnInit {
-  name_objects="";
+  name_objects="nome";
   description="descrizione_prova_pipe";
   price_euro="14";
   price_centesimi="22";
   category="categoria_prova"
   url_photo="url_prova_pipe";
   owner="proprietario"
-
+  prova="prova";
   message: string|null = null;
   items:Item[] = [];
   item? : Item;
@@ -29,21 +29,21 @@ export class ModifyItemComponent implements OnInit {
   itemProva2$ = of(true);
   mostra = true;
 
+  currentId: String= '';
+
 
 
   send(){
     /*var name_prov = document.getElementById("name_input") as HTMLInputElement
     this.name_objects= name_prov.value;
-    console.log(this.name_objects)*/
-    console.log(this.item)
-    
+    console.log(this.name_objects)
+    console.log(this.item);*/
   }
   
 
   onFormSubmit(userForm: NgForm) {
     console.log(userForm.value);
     console.log('Nome:' + userForm.controls['name_input'].value);
-   
 }
 
 
@@ -52,10 +52,22 @@ export class ModifyItemComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    // this.item = this.superService.getItem(2)
+    // this.item = this.superService.getItem(2) 
+     /* if (this.currentId !== '') {
+          this.colorService.getColor(+this.currentId).then((res: Color) => {
+            this.selectedColor = res;
+            this.createForm();
+          }).catch((error) => {
+            window.alert("Errore in chiamata API, torno indietro");
+            this.goBack();
+          })
+      } else {
+        this.createForm();
+      }*/
+    }
 
   }
-}
+
 
 
 
