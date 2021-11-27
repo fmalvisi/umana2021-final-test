@@ -30,6 +30,8 @@ export class ModifyItemComponent implements OnInit {
   mostra = true;
 
   currentId: String= '';
+  id=0;//id per richiamare getitemById
+
 
 
 
@@ -64,11 +66,13 @@ export class ModifyItemComponent implements OnInit {
       } else {
         this.createForm();
       }*/
-    }
+
+      this.route.paramMap.subscribe(params => {
+        var id = params.get('id');
+        console.log(id);
+        this.id = Number(id)
+    });
 
   }
 
-
-
-
-
+}
