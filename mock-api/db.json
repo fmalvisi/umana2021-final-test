@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-      "price": 15.50,
+      "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": 1,
       "owner": null
@@ -21,7 +21,7 @@
       "id": 3,
       "name": "Testcucina1",
       "description": "Usata male.",
-      "price": 50.0,
+      "price": 50,
       "category": 2,
       "owner": null
     },
@@ -29,7 +29,7 @@
       "id": 4,
       "name": "Testcucina2",
       "description": "Usata male.",
-      "price": 30.0,
+      "price": 30,
       "category": 2,
       "owner": null
     },
@@ -37,7 +37,7 @@
       "id": 5,
       "name": "Testbagno1",
       "description": "Usata bene.",
-      "price": 50.0,
+      "price": 50,
       "category": 3,
       "owner": null
     },

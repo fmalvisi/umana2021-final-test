@@ -1,7 +1,8 @@
-<h3>Dettaglio Categorie</h3>
-
-<p>Categoria {{categoryN}}</p>
-<p *ngFor="let items of categoryItems">Oggetti: {{items}}</p>
-
-
-<button>Toggle</button>
+<section class='my-4'>
+    <div class="alert alert-warning">
+        <h3>Dettaglio Categorie</h3>
+        <p>Categoria {{categoryName}}</p>
+        <p *ngFor="let items of categoryItems">Oggetti: {{items}}</p>
+        <button routerLink="edit" (click)="edit()">Edit</button>
+    </div>
+</section>

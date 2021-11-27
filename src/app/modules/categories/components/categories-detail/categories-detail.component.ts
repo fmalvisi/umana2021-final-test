@@ -1,5 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CategoryService, ItemsService } from 'src/app/core/api/generated';
+import { CategoryDataService } from '../../service/category-data.service';
+
+import {
+  CategoryService,
+  ItemsService,
+  Category,
+} from 'src/app/core/api/generated';
 
 @Component({
   selector: 'app-categories-detail',
@@ -7,18 +13,19 @@ import { CategoryService, ItemsService } from 'src/app/core/api/generated';
   styleUrls: ['./categories-detail.component.scss'],
 })
 export class CategoriesDetailComponent implements OnInit {
+  @Input() categoryName: number | null = 0;
+
   name = '';
   description = '';
   items = '';
-  @Input() categoryName: number | null = 0;
-
-  categoryN = 1;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  categoryItems: any = [];
+  categoryItems: Array<string> = [];
+  categoryNames: any = 0;
+  newCat: Category[] = [];
 
   constructor(
     private categoryService: CategoryService,
     private itemService: ItemsService,
+    private categoryDataService: CategoryDataService,
   ) {}
 
   ngOnInit(): void {
@@ -33,10 +40,16 @@ export class CategoriesDetailComponent implements OnInit {
   ngOnChanges(): void {
     this.itemService.getItems().subscribe(items => {
       for (let i = 0; i < items.length; i++) {
-        if (this.categoryN == items[i].category) {
+        if (this.categoryName == items[i].category) {
           this.categoryItems.push(items[i].name);
+          this.categoryNames = items[i].category;
         }
       }
     });
+  }
+
+  edit(): void {
+    console.log("editservicebutton")
+    this.categoryDataService.getCatId(this.categoryName);
   }
 }
