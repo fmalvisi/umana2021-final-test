@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/core/api/generated';
 import { CategoryDataService } from '../../service/category-data.service';
 
@@ -8,41 +9,36 @@ import { CategoryDataService } from '../../service/category-data.service';
   styleUrls: ['./categories-edit.component.scss'],
 })
 export class CategoriesEditComponent implements OnInit {
-  name: Array<string> = [];
-  description = '';
-  baseURL: string;
-
-  selectedMessage: any;
-
-  private localURL = 'http://localhost:3000/category';
+  catId = 0;
+  catName = '';
+  catDescr = '';
 
   constructor(
     private categoryService: CategoryService,
     private categoryDataService: CategoryDataService,
-  ) {
-    this.baseURL = this.localURL;
-  }
+    protected router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.categoryDataService.currentMessage.subscribe(
-      message => (this.selectedMessage = message),
+      message => (this.catId = message),
     );
 
     this.categoryService.getCategories().subscribe(cats => {
-      for (const item of cats) {
-        this.name.push(item.name);
-        this.description = item.description;
-      }
+      let newId = this.catId - 1;
+      this.catName = cats[newId].name;
     });
   }
 
   delete(): void {
     console.log('delete');
-    console.log(this.selectedMessage);
   }
-  // editColor() {
-  //   if (!!this.color) {
-  //     this.router.navigate(['/color', this.color.id]);
-  //   }
-  // }
+
+  editCat() {
+    console.log('edit');
+    //   this.categoryService
+    //     .updateCategory()
+    //     .subscribe(items => console.log('Nome:', items));
+    // }
+  }
 }

@@ -1,12 +1,9 @@
 <h1>modifica</h1>
 
-<div class='bg-light my-5' *ngFor="let item of name">
-    <h1>{{item}}</h1>
-    <p>{{description}}</p>
-    <button class="btn btn-primary">edit</button>
+<div class='bg-light my-5'>
+    <h1>{{catName}}</h1>
+    <h1>{{catId}}</h1>
+    <p>{{catDescr}}</p>
+    <button (click)="editCat()" class="btn btn-primary">edit</button>
     <button (click)="delete()" class="btn btn-danger">Delete</button>
 </div>
-
-
-
-<!-- <form *ngIf="dataLoaded" class="form-container" [formGroup]="colorForm" (ngSubmit)="submit()"> -->
