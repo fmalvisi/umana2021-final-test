@@ -1,7 +1,5 @@
-<p>categories-table works!</p>
-
-<!-- <a routerLink="detail">Detail</a><br> -->
-<a routerLink="add">Add</a>
+<a routerLink="add">Add</a><br>
+<router-outlet></router-outlet>
 
 
 <table class="table table-striped">
@@ -12,7 +10,6 @@
       <th scope="col">Descrizione</th>
       <th scope="col">Numero di oggetti</th>
       <th scope="col">Dettagli</th>
-
     </tr>
   </thead>
   <tbody>
@@ -30,4 +27,3 @@
 
 <app-categories-detail *ngIf="hideShow" [categoryName]="currentCategory">hide and show content ...
 </app-categories-detail>
-<router-outlet></router-outlet>

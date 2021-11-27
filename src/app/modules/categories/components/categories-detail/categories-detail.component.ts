@@ -11,12 +11,12 @@ import {
   styleUrls: ['./categories-detail.component.scss'],
 })
 export class CategoriesDetailComponent implements OnInit {
+  @Input() categoryName: number | null = 0;
+
   name = '';
   description = '';
   items = '';
-  @Input() categoryName: number | null = 0;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  categoryItems: any = [];
+  categoryItems: Array<string> = [];
   categoryNames: any = 0;
 
   newCat: Category[] = [];
@@ -44,30 +44,5 @@ export class CategoriesDetailComponent implements OnInit {
         }
       }
     });
-  }
-
-  edit() {
-    console.log('add');
-    // var fakeCat: Category = {
-    //   id: 4,
-    //   name: 'Camera',
-    //   description: 'cose per la camera',
-    // };
-    // this.categoryService
-    //   .createCategory(fakeCat)
-    //   .subscribe(items => console.log('Nome:', items));
-    // this.categoryService.getCategories().subscribe(itemsObj => {
-    //   this.newCat = itemsObj;
-    // });
-    //   var updateCat: Category = {
-    //     id: 1,
-    //     name: 'Casa',
-    //     description: 'cose per la casaaaa',
-    //   };
-    //   this.categoryService.updateCategory(
-    //     updateCat.id,
-    //     updateCat.name,
-    //     updateCat.description,
-    //   );
   }
 }
