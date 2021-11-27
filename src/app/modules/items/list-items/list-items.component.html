@@ -1,6 +1,3 @@
-<!-- <a [routerLink]="['aggiungi-oggetto']">Aggiungi</a> -->
-
-
 <!-- <div>
   <p>{{ itemProva$ | async | json }}</p>
   <p>{{ itemProva2$ | async | json }}</p>  
@@ -12,41 +9,85 @@
     <div class="addItem"><a type="button addItem" [routerLink]="['aggiungi-oggetto']" class="btn btn-outline-success"><i class="fas fa-plus"></i>&nbsp;Nuovo Oggetto</a></div>
   </div>
 
-
-
-
   <div class="row">    
 
-    <div class="col-md-2">
+    <div class="col-md-3">
 
-      
-      <!-- <div class="dropdown">
-        <button class="btn btn-light dropdown-toggle filtri" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fas fa-filter"></i>&nbsp;Filtri
+      <!-- FILTRI -->
+      <div class="filtriWrapper">
+        <button class="btn btn-outline-dark btnFilter" type="button" id="btnFiltri"  aria-expanded="false" (click)="useFilter()">
+          <i class="fas fa-filter"></i>&nbsp;<strong>&nbsp;Filtri&nbsp;</strong>&nbsp;<i class="fas fa-caret-down" *ngIf="!mostraFiltri"></i><i class="fas fa-caret-up" *ngIf="mostraFiltri"></i>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
-            <div class="input-group mb-3">
-              &nbsp;<input type="text" class="form-control" placeholder="nomeOggetto" aria-label="Username" aria-describedby="basic-addon1">&nbsp;          
+      </div>
+      
+      <div class="accFilter" *ngIf="mostraFiltri">
+        <div class="accordion" id="accordionFilter">
+          <div class="accordion-item">
+            <h1 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="fa" aria-controls="collapseOne">
+                <i class="fas fa-list"></i>&nbsp;<strong>Categorie</strong>
+              </button>
+            </h1>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFilter">
+              <div class="accordion-body">
+                <div class="elencoCategorie">
+                  <div class="form-check form-switch" *ngFor="let category of categories">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="cursor: pointer;">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ category.name }}</label>
+                  </div>
+                </div>
+              </div>
             </div>
-          </li>
-          <li><hr class="dropdown-divider"></li> 
-          <li>
-            <div class="dropdown">
-              <div class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-list"></i>&nbsp;Categoria</div>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item">Nome Oggetto</a></li>     
-              </ul>       
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <i class="fas fa-user"></i>&nbsp;<strong>Utenti</strong>
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFilter">
+              <div class="accordion-body">
+                <div>
+                  <div>                    
+                    <a id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none;">
+                      <input type="text" class="form-control" id="inputUtente" placeholder="Inserisci un nome utente" (keyup)="filtraUtenti($event)">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 18%;">
+                      <li>
+                        <a class="dropdown-item" *ngFor="let user of searchUser" style="cursor: pointer;">{{ user.name + ' ' + user.surname }}</a></li>                        
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-          </li>
-          <li><hr class="dropdown-divider"></li> 
-          <li><a class="dropdown-item"><i class="fas fa-user"></i>&nbsp;Proprietario</a></li>
-        </ul>
-      </div> -->
-
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <i class="fas fa-gift"></i>&nbsp;<strong>Nome Oggetto</strong>
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFilter">
+              <div class="accordion-body">
+                <div>                    
+                  <a id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none;">
+                    <input type="text" class="form-control" id="inputUtente" placeholder="Inserisci oggetto" (keyup)="filtraOggetti($event)">
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 18%;">
+                    <li>
+                      <a class="dropdown-item" *ngFor="let item of searchItems" style="cursor: pointer;">{{ item.name }}</a></li>                        
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /FILTRI -->
+      
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-9">
 
       <!-- CAROSELLO -->
       <div id="carouselExampleIndicators" class="carousel slide carouselWrapper" data-bs-ride="carousel">
