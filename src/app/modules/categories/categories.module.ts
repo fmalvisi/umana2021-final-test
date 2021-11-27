@@ -10,13 +10,15 @@ import { CategoriesTableComponent } from './components/categories-table/categori
 
 import { FormsModule } from '@angular/forms';
 import { CategoryDataService } from './service/category-data.service';
+import { IconPipe } from './icon.pipe';
 
 @NgModule({
   declarations: [
     CategoriesAddComponent,
     CategoriesDetailComponent,
     CategoriesEditComponent,
-    CategoriesTableComponent
+    CategoriesTableComponent,
+    IconPipe
   ],
   imports: [
     CategoriesRoutingModule,
