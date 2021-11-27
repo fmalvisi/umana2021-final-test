@@ -1,15 +1,36 @@
-<form class="">
+<form #formadd="ngForm" class="">
+<!-- <form [ngForm]="#formadd" class=""> -->
   <h4>Aggiungi una categoria</h4>
 
   <div class="">
-    <label for="add-categ" class="form-label">Inserisci il nome di una nuova categoria</label>
-    <input type="email" class="form-control" id="add-categ" placeholder="es: Giardineria">
-  </div>
-  
-  <div class="">
-    <label for="add-categ" class="form-label">Inserisci la descrizione della nuova categoria</label>
-    <input type="email" class="form-control" id="add-categ" placeholder="es: accessori per il giardino">
+    <label for="add-categ-name" class="form-label">Inserisci il nome di una nuova categoria</label>
+    <input
+      type="text"
+      class="form-control"
+      id="add-categ-name"
+      placeholder="es: Giardineria"
+      name="name"
+      ngModel
+      required
+    >
   </div>
 
-  <button type="submit" class="btn btn-primary">Aggiungi</button>
+  <div class="">
+    <label for="add-categ" class="form-label">Inserisci la descrizione della nuova categoria</label>
+    <input
+      type="text"
+      class="form-control"
+      id="add-categ-descr"
+      placeholder="es: accessori per il giardino"
+      name="description"
+      ngModel
+      required
+    >
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    (click)="add(formadd)"
+  >Aggiungi</button>
 </form>
