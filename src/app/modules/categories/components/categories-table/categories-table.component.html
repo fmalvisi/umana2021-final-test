@@ -3,6 +3,15 @@
 <!-- <a routerLink="detail">Detail</a><br> -->
 <a routerLink="add">Add</a>
 
+<br>
+
+<label for="filter">Filtra:  </label><br>
+<input list="filter-opt" id="filter" name="filter" (change)="filterCategory(filter.value)" #filter>
+<datalist id="filter-opt">
+  <option *ngFor="let category of categoryArr" value={{category.name}}></option>
+</datalist>
+
+
 
 <table class="table table-striped">
   <thead>
@@ -16,13 +25,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let category of categoryArr">
+    <tr *ngFor="let category of categoryArr" id={{category.name.toLowerCase()}}>
       <th scope="row">{{category.id}}</th>
       <td>{{category.name}}</td>
       <td>{{category.description}}</td>
       <td>{{getNumOfItemsPerCategory(category.id)}}</td>
       <td>
-        <button (click)="hide(category.id)">Dettagli</button>
+        <button class="btn btn-light" (click)="hide(category.id)">Dettagli</button>
       </td>
     </tr>
   </tbody>

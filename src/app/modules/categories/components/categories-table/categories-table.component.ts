@@ -63,10 +63,28 @@ export class CategoriesTableComponent implements OnInit {
       console.log('assigned categories: ', this.categoryArr);
     });
 
+  }
 
-   
+  filterCategory(c: string):void{
+    console.log('selezionata categoria: ', c);
+    let toHide: string[] = [];
+    let toShow: string = c.toLowerCase();
 
-    console.log('array categorie ordinato: ' ,this.categoryArr)
+    for(let category of this.categoryArr){
+      if(category.name !== c){
+        toHide.push(category.name.toLowerCase());
+      }
+    }
+    console.log('categorie da nascondere: ', toHide);
+    for(let h of toHide){
+      if(toHide.length < this.categoryArr.length){
+        document.getElementById(h)?.classList.add('hidden');
+      }else {
+        document.getElementById(h)?.classList.remove('hidden');
+      } 
+    }
+    document.getElementById(toShow)?.classList.remove('hidden');
+
   }
 
   updateCurrentCategory(categoryID:number | null){
