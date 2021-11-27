@@ -13,14 +13,15 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./modify-item.component.scss']
 })
 export class ModifyItemComponent implements OnInit {
-  name_objects="nome";
-  description="descrizione_prova_pipe";
-  price_euro="14";
-  price_centesimi="22";
-  category="categoria_prova"
-  url_photo="url_prova_pipe";
-  owner="proprietario"
-  prova="prova";
+  name_objects="";
+  description="";
+  price_euro=0;
+  price_centesimi=0;
+  category=0
+  url_photo="";
+  owner=""
+  prova="";
+  
   message: string|null = null;
   items:Item[] = [];
   item? : Item;
@@ -29,7 +30,8 @@ export class ModifyItemComponent implements OnInit {
   itemProva2$ = of(true);
   mostra = true;
 
-  currentId: String= '';
+  id=0;//id per richiamare getitemById
+
 
 
 
@@ -48,27 +50,40 @@ export class ModifyItemComponent implements OnInit {
 
 
 
-  constructor( private superService : SuperItemService, private route: ActivatedRoute,
+getItemsId(id:number){
+  this.superService.getItemById(id).then((res: Item) => {
+    this.item = res;
+    this.name_objects=this.item.name
+    this.description=this.item.description!
+    this.price_euro=this.item.price!
+    this.category=this.item.category!
+    this.url_photo=this.item.imgurl!
+    this.owner=this.owner!
+    
+  }).catch((error) => {
+    window.alert("errore di chiamata API" + error);
+  })
+}
+
+
+  constructor( private superService : SuperItemService, private route: ActivatedRoute, 
     ) { }
 
   ngOnInit(): void {
-    // this.item = this.superService.getItem(2) 
-     /* if (this.currentId !== '') {
-          this.colorService.getColor(+this.currentId).then((res: Color) => {
-            this.selectedColor = res;
-            this.createForm();
-          }).catch((error) => {
-            window.alert("Errore in chiamata API, torno indietro");
-            this.goBack();
-          })
-      } else {
-        this.createForm();
-      }*/
-    }
+
+      this.route.paramMap.subscribe(params => {
+        let id = params.get('id');
+        this.id = Number(id);
+
+        //imposto valori da visualizzare negli input:
+
+
+    });
+
+    this.getItemsId(this.id);
+
+    
 
   }
 
-
-
-
-
+}
