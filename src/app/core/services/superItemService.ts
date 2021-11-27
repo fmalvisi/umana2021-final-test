@@ -133,6 +133,23 @@ export class SuperItemService {
         ).toPromise();
     }
 
+    getUserById(index: number): Promise<User> {
+        console.log("chiamato getItem con id: ", index);
+        const _promise = new Promise<User>((resolve, reject) => {
+            this.userService.getUser(index).toPromise().then(
+                res =>{
+                    console.log("risposta getItem", res);
+                    resolve(res);
+                },
+                error => {
+                    console.log("errore getItem: ", error);
+                    reject(error);
+                } 
+            );
+        });
+        return _promise;
+    }
+
     /*
     *   ritorna la lista delle categorie
     */
@@ -154,4 +171,20 @@ export class SuperItemService {
         ).toPromise();
     }
 
+    getCategoryById(index: number): Promise<Category> {
+        console.log("chiamato getItem con id: ", index);
+        const _promise = new Promise<Category>((resolve, reject) => {
+            this.categoryService.getCategory(index).toPromise().then(
+                res =>{
+                    console.log("risposta getItem", res);
+                    resolve(res);
+                },
+                error => {
+                    console.log("errore getItem: ", error);
+                    reject(error);
+                } 
+            );
+        });
+        return _promise;
+    }
 }

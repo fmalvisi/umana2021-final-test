@@ -35,7 +35,12 @@ export class ListItemsComponent implements OnInit {
 
   modify(index: number){
     this.mostra = false;
-    console.log("indice: ", index)
+    //console.log("indice: ", index)
+  }
+
+  details(index: number){
+    this.mostra = false;
+   // console.log("indice: ", index)
   }
 
   deleteItem(index: number){
@@ -49,6 +54,7 @@ export class ListItemsComponent implements OnInit {
   
   returnHome() {
     this.router.navigate(['/']);
+    
   }
 
   getItems(){

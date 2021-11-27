@@ -15,7 +15,7 @@ const routes: Routes = [
         component: AddItemComponent
       },
       {
-        path: 'dettagli-oggetto',
+        path: 'dettagli-oggetto/:id',
         component: DetailsItemComponent
       },
       {

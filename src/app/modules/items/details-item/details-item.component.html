@@ -1,1 +1,59 @@
-<p>details-item works!</p>
+<div class='dettaglistyle'>  
+    
+     
+    
+    <div class="row">
+        <h1 class='display-4'>Dettagli</h1>
+
+        <div class="styleimgurl ">
+            <img [src]="url_photo" alt="Immagine oggetto">
+        </div> 
+
+        <div class="">
+            <form #form="ngForm" novalidate>       
+                <div class="form-group">
+                    <!--Nome oggetto:-->
+                    <label for ="name_input">Nome oggetto: </label>
+                    <input disabled type="text" class="form-control" [value]="prova"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_objects_input="ngModel">
+                    <br>
+
+                    <!--Descrizione oggetto:-->
+                    <label for ="description_input">Descrizione oggetto: </label>
+                    <input disabled type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
+                    <br>
+
+                    <!--Prezzo-->
+                    <label>Prezzo: </label>
+                    <div class="row">
+                        <div class="col">
+                            <label for ="price_euro">Euro</label>
+                            <input disabled type="number" class="form-control"  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euro_input="ngModel" >
+                        </div>
+                    </div>
+                    <br>
+
+                    <!--Categoria oggetto:-->
+                    <label for ="categoria_input">Categoria oggetto: </label>
+                    <input disabled type="text" class="form-control"  name="categoria_input"  [(ngModel)]="categoryName" ngModel required #category_input="ngModel">
+                    <br>
+
+                    <!--Proprietario oggetto:-->
+                    <label for ="proprietario_input">Proprietario oggetto: </label>
+                    <input disabled type="text" class="form-control"  name="proprietario_input"  [(ngModel)]="ownerName" ngModel required #owner_input="ngModel">
+                    <br>
+                      
+                    <!--Url immagine-->
+                    <label for ="url">Url immagine (facoltativo)</label>
+                     <input disabled type="url" class="form-control" [(ngModel)]="url_photo" name="url"  >
+                    <br>
+
+                    <div class="button_container">
+                        <button  type="button" class="btn btn-secondary">Annulla</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
