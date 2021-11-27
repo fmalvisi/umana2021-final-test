@@ -1,26 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CategoriesRoutingModule } from './categories-routing.module';
-import { CategoriesTableComponent } from './components/categories-table/categories-table.component';
 import { RouterModule } from '@angular/router';
+
+import { CategoriesAddComponent } from './components/categories-add/categories-add.component';
 import { CategoriesDetailComponent } from './components/categories-detail/categories-detail.component';
 import { CategoriesEditComponent } from './components/categories-edit/categories-edit.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { CategoriesRoutingModule } from './categories-routing.module';
+import { CategoriesTableComponent } from './components/categories-table/categories-table.component';
+
+import { FormsModule } from '@angular/forms';
 import { CategoryDataService } from './service/category-data.service';
+import { IconPipe } from './icon.pipe';
 
 @NgModule({
   declarations: [
-    CategoriesTableComponent,
+    CategoriesAddComponent,
     CategoriesDetailComponent,
     CategoriesEditComponent,
+    CategoriesTableComponent,
+    IconPipe
   ],
   imports: [
     CategoriesRoutingModule,
     RouterModule,
     CommonModule,
-    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [FormBuilder, CategoryDataService],
+  providers: [CategoryDataService],
 })
 export class CategoriesModule {}
