@@ -30,7 +30,6 @@ export class ModifyItemComponent implements OnInit {
   itemProva2$ = of(true);
   mostra = true;
 
-  currentId: String= '';
   id=0;//id per richiamare getitemById
 
 
@@ -67,12 +66,10 @@ getItemsId(id:number){
 
       this.route.paramMap.subscribe(params => {
         var id = params.get('id');
-        //console.log(id);
-        this.id = Number(id)
+        this.id = Number(id);
+        this.getItemsId(this.id);
     });
 
-
-    this.getItemsId(this.id);
   }
 
 }
