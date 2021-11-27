@@ -56,6 +56,14 @@
       "price": 11.5,
       "category": 3,
       "owner": null
+    },
+    {
+      "id": 8,
+      "name": "Rastrello",
+      "description": "Usata male.",
+      "price": 11.5,
+      "category": 4,
+      "owner": null
     }
   ],
   "category": [
@@ -73,6 +81,11 @@
       "id": 3,
       "name": "Bagno",
       "description": "cose per il bagno"
+    },
+    {
+      "id": 4,
+      "name": "Giardinaggio",
+      "description": "accessori per il giardino"
     }
   ],
   "users": [
