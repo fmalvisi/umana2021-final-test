@@ -57,21 +57,10 @@
                         <label> <i class="fas fa-user"></i>Proprietario</label>
                        
                         <select class="form-select" id="inputGroupSelect01">
-                            <!--<option selected>{{user_array[0]}}</option>-->
-
-                          <!--<option  *ngFor="let user_array_i of user_array">{{user_array_i}}</option>-->
-                          <!--<option *ngFor ="let user_array_i of user_array">-->
-                              <!--option *ngIf="user_array[0] ===owner_objects_selected" > {{user_array[1]}}</option>-->
-
-                              <!--option *ngFor="let user_array_i of user_array">{{user_array_i}}</option>-->
-                             
-                                  <option *ngFor="let a of user_array; let i= index;">{{a}}</option>
-
+                            <option *ngFor="let a of user_array; let i= index;" [selected]="a == owner_objects_selected">{{a}}</option>
+                            <option>Nessun proprietario assegnato</option>
                         </select>
-                  
 
-                   
-                    
                       </div>
                     </div>                  
                 </div>
