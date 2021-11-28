@@ -1,13 +1,6 @@
 <router-outlet></router-outlet>
 
-<!-- <app-categories-detail *ngIf="hideShow" [categoryName]="currentCategory">
-</app-categories-detail> -->
-
-<div class="">
-  <a routerLink="add">Aggiungi una categoria</a>
-</div>
-
-<div class="">
+<div class="filter">
   <label for="filter">Filtra: </label><br>
   <input list="filter-opt" id="filter" name="filter" (change)="filterCategory(filter.value)" #filter>
   <datalist id="filter-opt">
@@ -37,7 +30,7 @@
 
     <tr  id={{category.name.toLowerCase()}}>
       <th scope="row">{{category.id}}</th>
-      <td><span class="icon">{{ category.id | icon }}</span>{{category.name}}</td>
+      <td><span class="icon">{{ category.id | icon }}</span> {{category.name}}</td>
       <td>{{category.description}}</td>
       <td>{{getNumOfItemsPerCategory(category.id)}}</td>
       <td>
@@ -57,3 +50,7 @@
   </ng-template>
   </tbody>
 </table>
+
+<div>
+  <a routerLink="add">Aggiungi una categoria</a>
+</div>
