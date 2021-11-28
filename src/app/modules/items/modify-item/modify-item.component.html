@@ -62,13 +62,20 @@
                         </select>
 
                       </div>
-                    </div>                  
+                    </div>  
+                    <div class="row">
+                        <div class="button_container">
+                            <!-- Testing (click)="send()"-->
+                            <button type="submit" class="btn btn-outline-primary" >Invia</button>
+                        </div>
+                    </div>                
                 </div>
             
             </form>
         </div>
         <div class="col">
-            <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate>      
+            <!-- da aggiungere todo (ngSubmit)="onFormSubmit(form)" -->
+            <form #caricaImgForm="ngForm"   novalidate>      
             
                 <div class="row">
                     <label for ="url">Carica url immagine (facoltativo)</label>
@@ -93,10 +100,6 @@
             </form>
         </div>
         
-        <div class="button_container">
-            <button type="button" class="btn btn-outline-primary" (click)="send()">Invia</button>
-        </div>
-
         <div class="button_container">
             <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-primary">indietro</button>
 

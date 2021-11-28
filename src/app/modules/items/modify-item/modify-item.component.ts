@@ -186,6 +186,14 @@ export class ModifyItemComponent implements OnInit {
 
   }
 
+    updateItem(item:Item){
+      getUserId(id:number){
+        this.superService.getUserById(id).then((res:User)=>{
+
+        });
+  }
+    
+
     showCarouselItems(){
       if (typeof Storage !== "undefined") { 
         sessionStorage.setItem("showCarousel", "true");
@@ -194,9 +202,9 @@ export class ModifyItemComponent implements OnInit {
       }
     }
 
-    onFormSubmit(userForm: NgForm) {
-      console.log(userForm.value);
-      console.log('NOME:' + userForm.controls["name_objects"].value);
+    onFormSubmit(form: NgForm) {
+      console.log(form.value);
+      console.log('NOME:' + form.controls["name_input"].value);
      
       //console.log('Password:' + userForm.controls['pass'].value);
   }
