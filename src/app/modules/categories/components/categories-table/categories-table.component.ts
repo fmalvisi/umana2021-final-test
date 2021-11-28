@@ -22,7 +22,7 @@ export class CategoriesTableComponent implements OnInit {
 
   itemArr: Item[] = [];
 
-  numOfItemsArr: any[] = [];
+ 
 
   getNumOfItemsPerCategory(categoryID: number | null): number {
     let counter = 0;
@@ -35,13 +35,18 @@ export class CategoriesTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.itemService.getItems().subscribe(items => {
+
+    this.itemService
+    .getItems()
+    .subscribe(items => {
       this.itemArr = items;
       // console.log('assegnato itemArr: ', this.itemArr);
     });
 
-    this.categoryService.getCategories().subscribe(categories => {
-      this.categoryArr = categories.sort((categoryA, categoryB): number => {
+    this.categoryService
+    .getCategories()
+    .subscribe(categories => {
+      this.categoryArr = categories.sort((categoryA, categoryB)=> {
         if (
           this.getNumOfItemsPerCategory(categoryA.id) >
           this.getNumOfItemsPerCategory(categoryB.id)
@@ -54,9 +59,10 @@ export class CategoriesTableComponent implements OnInit {
         ) {
           return 1;
         }
+       
         return 0;
       });
-      // console.log('assigned categories: ', this.categoryArr);
+      console.log('assigned categories: ', this.categoryArr);
     });
 
   }
@@ -81,6 +87,26 @@ export class CategoriesTableComponent implements OnInit {
     }
     document.getElementById(toShow)?.classList.remove('hidden');
 
+  }
+
+  //Cancella la categoria corrispondente se questa ha 0 oggetti
+  deleteCategory(id:any){
+
+    if(this.getNumOfItemsPerCategory(id) === 0){
+      this.categoryService.deleteCategory(id).subscribe(category => console.log('eliminata categoria: ', category));
+      location.reload();
+    }
+    else{
+      alert(`Impossibile cancellare, la categoria ha ${this.getNumOfItemsPerCategory(id)} oggetti al suo interno`);
+    }
+  }
+
+  //Disabilita i bottoni "Cancella" in caso la categoria abbia elementi
+  willBeDisabled(id:any){
+    if(this.getNumOfItemsPerCategory(id) !== 0){
+      return 'disabled';
+    }
+    return '' ;
   }
 
   updateCurrentCategory(categoryID: number | null) {

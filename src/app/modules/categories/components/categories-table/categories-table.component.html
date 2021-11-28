@@ -17,7 +17,7 @@
       <th scope="col">Nome</th>
       <th scope="col">Descrizione</th>
       <th scope="col">Numero di oggetti</th>
-      <th scope="col">Dettagli</th>
+      <th scope="col">Opzioni</th>
     </tr>
   </thead>
   <tbody>
@@ -28,6 +28,7 @@
       <td>{{getNumOfItemsPerCategory(category.id)}}</td>
       <td>
         <button class="btn btn-light" (click)="hide(category.id)">Dettagli</button>
+        <button class="btn btn-warning" [ngClass]="[willBeDisabled(category.id)]" (click)="deleteCategory(category.id)">Cancella</button>
       </td>
     </tr>
   </tbody>
