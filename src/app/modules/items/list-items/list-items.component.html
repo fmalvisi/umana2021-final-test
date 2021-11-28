@@ -17,6 +17,12 @@
       <div class="filtriWrapper">
         <button class="btn btn-outline-dark btnFilter" type="button" id="btnFiltri"  aria-expanded="false" (click)="useFilter()">
           <i class="fas fa-filter"></i>&nbsp;<strong>&nbsp;Filtri&nbsp;</strong>&nbsp;<i class="fas fa-caret-down" *ngIf="!mostraFiltri"></i><i class="fas fa-caret-up" *ngIf="mostraFiltri"></i>
+        </button>&nbsp;
+        <button class="btn btn-outline-danger" type="button" id="btnFiltri" *ngIf="mostraFiltri" aria-expanded="false" (click)="rimuoviFiltri()">
+          <i class="fas fa-times"></i>&nbsp;<strong>Rimuovi</strong>
+        </button>&nbsp;
+        <button class="btn btn-outline-success" type="button" id="btnFiltri" *ngIf="mostraFiltri" aria-expanded="false" (click)="applicaFiltri()">
+          <i class="fas fa-check"></i>&nbsp;<strong>Applica</strong>
         </button>
       </div>
       
@@ -32,7 +38,8 @@
               <div class="accordion-body">
                 <div class="elencoCategorie">
                   <div class="form-check form-switch" *ngFor="let category of categories">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="cursor: pointer;">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="cursor: pointer;" 
+                      (click)="chosenFilter('categoria', +category.id!, category.name, $event)">
                     <label class="form-check-label" for="flexSwitchCheckDefault">{{ category.name }}</label>
                   </div>
                 </div>
@@ -54,7 +61,8 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 18%;">
                       <li>
-                        <a class="dropdown-item" *ngFor="let user of searchUser" style="cursor: pointer;">{{ user.name + ' ' + user.surname }}</a></li>                        
+                        <a class="dropdown-item" *ngFor="let user of searchUser" style="cursor: pointer;"  
+                          (click)="chosenFilter('utente', +user.id!, user.name + ' ' + user.surname)">{{ user.name + ' ' + user.surname }}</a></li>                        
                     </ul>
                   </div>
                 </div>
@@ -75,7 +83,8 @@
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 18%;">
                     <li>
-                      <a class="dropdown-item" *ngFor="let item of searchItems" style="cursor: pointer;">{{ item.name }}</a></li>                        
+                      <a class="dropdown-item" *ngFor="let item of searchItems" style="cursor: pointer;" 
+                        (click)="chosenFilter('oggetto', +item.id!, item.name)">{{ item.name }}</a></li>                        
                   </ul>
                 </div>
               </div>
@@ -91,13 +100,8 @@
 
       <!-- CAROSELLO -->
       <div id="carouselExampleIndicators" class="carousel slide carouselWrapper" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" ></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" ></button>
-        </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-item">
             <div *ngFor="let item of items;" class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
               <img [src]="item.imgurl" class="card-img-top" alt="item">   
               <div class="card-body">
@@ -125,14 +129,6 @@
             </div> 
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" >
-          <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
-          <span class="visually-hidden" >Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true" ></span>
-          <span class="visually-hidden" >Next</span>
-        </button>
       </div>
       <!-- /CAROSELLO -->
 

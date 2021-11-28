@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
 import { SuperItemService } from 'src/app/core/services/superItemService';
 import { Category, Item, User } from '../../../core/api/generated';
  
@@ -25,6 +24,7 @@ export class ListItemsComponent implements OnInit {
   searchUser: User[] = [];
   saveItems: Item[] = [];
   searchItems: Item[] = [];
+  filtriInUso: any[] = [{tipo: '', id: 0, nome:''}];
   
   constructor(
     private superService : SuperItemService,
@@ -39,14 +39,17 @@ export class ListItemsComponent implements OnInit {
     this.getItems();    
   }
 
+  returnHome() {
+    this.router.navigate(['/']);
+    
+  }
+
   modify(index: number){
     this.mostra = false;
-    //console.log("indice: ", index) 
   }
 
   details(index: number){
     this.mostra = false;
-   // console.log("indice: ", index) 
   }
 
   deleteItem(index: number){
@@ -56,12 +59,7 @@ export class ListItemsComponent implements OnInit {
       })
     }
     this.getItems();
-  }
-  
-  returnHome() {
-    this.router.navigate(['/']);
-    
-  }
+  } 
 
   getItems(){
     this.superService.getItemList().then((res: Item[]) => {
@@ -134,5 +132,28 @@ export class ListItemsComponent implements OnInit {
       }
     }
   }
-  
+
+  applicaFiltri(){
+
+  }
+
+  rimuoviFiltri(){
+    this.filtriInUso = [];
+  }
+
+  chosenFilter(type: string, idF: number, name: string, event?: any){
+    let tmpArray = {tipo: type, id: idF, nome: name};
+    console.log(event === undefined);
+    if(event === undefined || event.target.checked === true){
+      this.filtriInUso.push(tmpArray);
+    // } else if(event !== undefined || event.target.cheched === false){
+    //   for(let i=0; i<this.filtriInUso.length; i++){
+    //     if(this.filtriInUso[i] === tmpArray){
+    //       this.filtriInUso.slice(i, 1);
+    //     }
+    //   }
+    }
+    
+    console.log("filtri in uso", this.filtriInUso)
+  }
 }
