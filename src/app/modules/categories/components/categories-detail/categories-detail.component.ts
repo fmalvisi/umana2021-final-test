@@ -14,9 +14,9 @@ import {
   styleUrls: ['./categories-detail.component.scss'],
 })
 export class CategoriesDetailComponent implements OnInit {
-  @Input() categoryName: number | null = 0;
+  @Input() categoryName: any = 0;
 
-  name = '';
+  name: any = '';
   description = '';
   items = '';
   categoryItems: Array<string> = [];
@@ -31,14 +31,16 @@ export class CategoriesDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // assegno nomi e descrizioni alla pagina html
     this.categoryService.getCategories().subscribe(cats => {
-      for (const item of cats) {
-        this.name = item.name;
-        this.description = item.description;
+      for (let i = 0; i < cats.length; i++) {
+        this.description = cats[i].description;
       }
+      // d
+      this.categoryName--;
+      this.name = cats[this.categoryName].name;
     });
   }
-
   ngOnChanges(): void {
     // prendo gli Items dal json e li assegno alla pagina
     this.itemService.getItems().subscribe(items => {
