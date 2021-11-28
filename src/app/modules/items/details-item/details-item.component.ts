@@ -32,6 +32,7 @@ export class DetailsItemComponent implements OnInit {
   itemProva2$ = of(true);
   mostra = true;
   id =0 ;
+ 
 
   currentId: String= '';
 
@@ -91,6 +92,15 @@ export class DetailsItemComponent implements OnInit {
       window.alert("errore di chiamata API" + error);
     })
   }
+  
+  showCarouselItems(){
+    if (typeof Storage !== "undefined") { 
+      sessionStorage.setItem("showCarousel", "true");
+    }else{
+      console.log( "Sorry, your browser does not support Web Storage...");
+    }
+  }
+
   }
 
  

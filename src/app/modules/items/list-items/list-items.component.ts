@@ -36,16 +36,43 @@ export class ListItemsComponent implements OnInit {
     this.filtriInUso.splice(0,1);
   }
 
+  ngDoCheck(){
+    if (typeof Storage !== "undefined") {  
+      let txtvalue =  sessionStorage.getItem("showCarousel"); 
+      if(txtvalue == null){
+        this.mostra = true;
+      }else{
+        if(txtvalue == "true"){
+          console.log("entrato2");
+          this.mostra = true;
+        }else{
+          console.log("entrato3");
+          this.mostra = false;
+        }
+    } 
+    }else {
+      console.log("Sorry, your browser does not support Web Storage..."); 
+    }
+  }
+
   returnHome() {
     this.router.navigate(['/']);    
   }
 
   modify(index: number){
-    this.mostra = false;
+    if (typeof Storage !== "undefined") { 
+      sessionStorage.setItem("showCarousel", "false");
+    }else{
+      console.log( "Sorry, your browser does not support Web Storage...");
+    }
   }
 
   details(index: number){
-    this.mostra = false;
+    if (typeof Storage !== "undefined") { 
+      sessionStorage.setItem("showCarousel", "false");
+    }else{
+      console.log( "Sorry, your browser does not support Web Storage...");
+    }
   }
 
   deleteItem(index: number){

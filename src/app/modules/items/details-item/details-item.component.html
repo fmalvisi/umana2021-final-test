@@ -1,15 +1,10 @@
-<div class='dettaglistyle'>  
-    
-     
-    
-    <div class="row">
-        <h1 class='display-4'>Dettagli</h1>
-
-        <div class="styleimgurl ">
+<h1 class='display-4'>Dettagli</h1>
+<div class="dettaglistyle">  
+        <div class="styleimgurl">
             <img [src]="url_photo" alt="Immagine oggetto">
         </div> 
 
-        <div class="">
+        <div class="stylecontainerdetails">
             <form #form="ngForm" novalidate>       
                 <div class="form-group">
                     <!--Nome oggetto:-->
@@ -25,9 +20,8 @@
                     <!--Prezzo-->
                     <label>Prezzo: </label>
                     <div class="row">
-                        <div class="col">
-                            <label for ="price_euro">Euro</label>
-                            <input disabled type="number" class="form-control"  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euro_input="ngModel" >
+                        <div class="col"> 
+                            <input disabled type="text" class="form-control"  name="price_euro" [ngModel]="price_euro | currencyEur" (ngModelChange)="price_euro=$event" ngModel required #price_euro_input="ngModel" >
                         </div>
                     </div>
                     <br>
@@ -40,20 +34,15 @@
                     <!--Proprietario oggetto:-->
                     <label for ="proprietario_input">Proprietario oggetto: </label>
                     <input disabled type="text" class="form-control"  name="proprietario_input"  [(ngModel)]="ownerName" ngModel required #owner_input="ngModel">
-                    <br>
-                      
-                    <!--Url immagine-->
-                    <label for ="url">Url immagine (facoltativo)</label>
-                     <input disabled type="url" class="form-control" [(ngModel)]="url_photo" name="url"  >
-                    <br>
+                    <br> 
 
                     <div class="button_container">
-                        <button  type="button" class="btn btn-secondary">Annulla</button>
+                        <button [routerLink]='"/items"' (click)="showCarouselItems()" type="button" class="btn btn-secondary">Annulla</button>
                     </div>
                 </div>
             </form>
         </div>
-    </div>
+     
 
 </div>
 

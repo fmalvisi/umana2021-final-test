@@ -1,13 +1,19 @@
 .dettaglistyle{
-    height: 100%;
-    width:50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; 
+    flex-direction: row;
+    width: 100%;
+    //justify-content: center;
+    //align-items: center;
 }
 .styleimgurl{
-    img{
-    width: 250px;
-    height: 250px;
-    }
+    width: 33.4%; 
+    margin: auto; 
 }
+.stylecontainerdetails{
+    width: 66.6%; 
+}
+img{
+    max-width: 450px;
+    max-height: 450px;
+    margin: auto; 
+    }
