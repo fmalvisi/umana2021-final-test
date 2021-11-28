@@ -10,7 +10,7 @@ export class IconPipe implements PipeTransform {
     //seleziono tutti gli elementi con classe "icon"
     var elements = document.getElementsByClassName('icon');
     //var test = "fa-address-book";
-    var favicons:string[] = new Array("fa-address-book","fa-bank", "bell", "cab");
+    var favicons:string[] = new Array("fa-address-book","fa-bank", "fa-bell", "fa-cab");
 
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i] as HTMLElement;
@@ -23,20 +23,20 @@ export class IconPipe implements PipeTransform {
     }
 
     /* se il value passato alla pipe (aka l'id della categoria) è pari a 1 */
-    if (value === 1) {
+    //if (value === 1) {
       //var icon = element.innerHTML = '<i class="fas fa-address-book"></i>';
       //return icon;
       //const element: HTMLElement = document.getElementById('test1') as HTMLElement
       //var icon = element.innerHTML = '<i class="fas fa-address-book"></i>';
       //return icon;
-    }
-    if (value === 3) {
+    //}
+    //if (value === 3) {
       //const element: HTMLElement = document.getElementById('test2') as HTMLElement
       //var icon = element.innerHTML = '<i class="fas fa-bank"></i>';
       //return icon;
-   } else {
-      return "La pipe NON funziona!"
-    } //fine condizione
+  //} else {
+      //return "La pipe NON funziona!"
+    //} //fine condizione
 
   }// fine transform
 
