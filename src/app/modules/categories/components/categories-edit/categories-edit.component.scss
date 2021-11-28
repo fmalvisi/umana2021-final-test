@@ -1,0 +1,40 @@
+form {
+  width: 90%;
+  margin: auto;
+  padding-top: 50px;
+  height: 90vh;
+
+  .form-container {
+    padding: 30px;
+    width: 60%;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+  }
+
+  h1 {
+    margin-bottom: 50px;
+  }
+
+  label {
+    width: 120px;
+    margin: 20px 0;
+  }
+
+  input {
+    width: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+  }
+
+  button {
+    margin: 20px 0;
+    display: block;
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+    &:hover {
+      color: #f8f9fa;
+      background-color: #212529;
+      border-color: #212529;
+    }
+  }
+}

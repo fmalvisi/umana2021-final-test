@@ -20,6 +20,7 @@
 <form
   class=""
   #formadd="ngForm"
+  (click)="testNome(formadd)"
   (ngSubmit)="onSubmit(formadd)"
   novalidate
 >
@@ -32,7 +33,7 @@
       type="text"
       class="form-control"
       id="add-categ-name"
-      placeholder="es: Giardineria"
+      placeholder="es: Giardinaggio"
       name="name"
       ngModel
       required
@@ -51,6 +52,9 @@
       <div *ngIf="categoryname.errors?.['maxlength']">
         Il nome della categoria deve avere massimo {{categoryname.errors?.['maxlength'].requiredLength}} caratteri.
       </div>
+    </div>
+    <div class="" id="nameMatch" style="display:none">
+      Questa categoria esiste già, inserisci un altro nome.
     </div>
   </div>
 
@@ -84,6 +88,7 @@
   </div>
 
   <button
+    id="button"
     type="submit"
     class="btn btn-primary"
     [disabled]="!formadd.valid"

@@ -40,7 +40,7 @@ export class CategoriesDetailComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    // prendo gli Items dal kson
+    // prendo gli Items dal json e li assegno alla pagina
     this.itemService.getItems().subscribe(items => {
       for (let i = 0; i < items.length; i++) {
         if (this.categoryName == items[i].category) {

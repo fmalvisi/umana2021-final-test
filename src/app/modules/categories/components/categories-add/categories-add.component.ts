@@ -18,9 +18,6 @@ export class CategoriesAddComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  //interpolazione con la pipe delle icone
-  favicon = "prova";
-
   /*
   funzione eseguita quando l'utente clicca su <button>, a cui passo come
   argomento la variabile (formadd) contenente l'NgForm del form
@@ -69,6 +66,38 @@ export class CategoriesAddComponent implements OnInit {
     }// fine if
 
   } // fine onSubmit()
+
+
+
+  name = "";
+  controllo:boolean = true;
+
+  testNome(formadd: NgForm) {
+    var nomecat = formadd.controls['name'].value;
+
+    this.categoryService
+      .getCategories()
+      .subscribe(
+        categories => {
+          for (const item of categories) {
+            this.name = item.name;
+            //console.log(item.name);
+
+            function doesItMatch() {
+              return (nomecat === item.name.toLowerCase())
+            }
+            var match = [item.name.toLowerCase()].some(doesItMatch);
+            console.log("match è: " + match);
+            if (match == true) {
+              //console.log("non puoi usare il nome");
+              const element: HTMLElement = document.getElementById('nameMatch') as HTMLElement
+              element.style.display = "block";
+              var button = (<HTMLButtonElement>document.getElementById("button"));
+              button.disabled = true;
+            }
+          }
+        });
+  }// fine testNome()
 
 
 }// fine classe
