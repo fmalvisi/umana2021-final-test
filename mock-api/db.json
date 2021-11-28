@@ -6,7 +6,7 @@
       "description": "Usata, a metà.",
       "price": 15.50,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": null,
+      "category": 1,
       "owner": null
     },
     {
@@ -60,6 +60,16 @@
       "id": 1,
       "name": "Casa",
       "description": "cose per la casa"
+    },
+    {
+      "id": 2,
+      "name": "Categoria prova2",
+      "description": "Test 2"
+    },
+    {
+      "id": 3,
+      "name": "Categoria prova3",
+      "description": "Test 3"
     }
   ],
   "users": [
