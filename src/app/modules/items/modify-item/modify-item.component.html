@@ -41,19 +41,26 @@
                             <!--Categoria-->
                             <label><i class="fas fa-list"></i>Categoria</label>
                             <div class="input-group mb-3" >
+
                                 <select class="form-select" id="inputGroupSelect01">
-                                  <option selected>{{category_objects_selected}}</option>
+
+                                    <!--<option selected>{{category_objects_selected}}</option>-->
+                                    <option selected>{{category_objects_selected}}</option>
+
                                   <option  *ngFor="let category of categories">{{category.name}}</option>
-                                 
                                 </select>
                             </div>
                         </div>
-                              
         
                         <div class="col">
                         <!--Proprietario-->
                         <label> <i class="fas fa-user"></i>Proprietario</label>
-ì                        </div>
+                        <select class="form-select" id="inputGroupSelect01">
+                            <option selected>{{owner_objects_selected}}</option>
+
+                          <option  *ngFor="let user of users">{{user.name + " " + user.surname}}</option>
+                        </select>
+                      </div>
                     </div>                  
                 </div>
             

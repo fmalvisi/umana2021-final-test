@@ -20,6 +20,8 @@ export class ModifyItemComponent implements OnInit {
   category_objects_selected="";
   url_photo="";
   owner="";
+  owner_objects_selected="";
+  owner_selected_id=0;
   prova="";
 
 
@@ -34,7 +36,8 @@ export class ModifyItemComponent implements OnInit {
   category?:Category;
   
   
-  users:User[]=[]
+  users:User[]=[];
+  user?:User;
 
   fetchedItems :Item[] = [];
   mostra = true;
@@ -61,7 +64,7 @@ export class ModifyItemComponent implements OnInit {
 }
 
 
-
+//Item
 getItemsId(id:number){
   this.superService.getItemById(id).then((res: Item) => {
     this.item = res;
@@ -73,12 +76,17 @@ getItemsId(id:number){
     this.owner=this.owner!
 
     this.getCategories();
+    this.getUser();
   }).catch((error) => {
     window.alert("errore di chiamata API" + error);
   })
 }
 
-getCategories(){
+
+
+//Category
+//richiamata in getItemId()
+getCategories(){ 
   this.superService.getCategoryList().then((res: Category[]) => {
     this.categories=res;
 
@@ -92,6 +100,7 @@ getCategories(){
   })
 }
 
+//richiamata in getCategory()
 getCategoryId(id:number){
   //this.getCategories();
 
@@ -109,6 +118,32 @@ getCategoryId(id:number){
   })
 }
 
+//users
+getUser(){
+  this.superService.getUserList().then((res:User[])=>{
+    this.users=res;
+
+    if(this.owner_objects_selected!=null){
+      this.getUserId(this.owner_selected_id)
+    }
+  });
+}
+
+getUserId(id:number){
+  this.superService.getUserById(id).then((res:User)=>{
+    this.user=res;
+    this.owner_selected_id=this.user.id!;
+
+    let controller_user=this.user.name + " " + this.user.surname
+      if(controller_user!==null){
+        this.owner_objects_selected=this.user.name + " " + this.user.surname
+      }
+    })
+  }
+
+
+
+
 
   constructor( private superService : SuperItemService, private route: ActivatedRoute, 
     ) { }
@@ -123,6 +158,7 @@ getCategoryId(id:number){
     });
 
     this.category_objects_selected="Nessuna categoria assegnata";
+    this.owner_objects_selected="Nessun utente assegnato"
 
     this.getItemsId(this.id);
 
