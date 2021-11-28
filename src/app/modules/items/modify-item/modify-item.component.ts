@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { SuperItemService } from 'src/app/core/services/superItemService';
-import { Item } from '../../../core/api/generated'; 
+import { Item,Category,User } from '../../../core/api/generated'; 
 import { Observable, of } from 'rxjs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
 @Component({
   selector: 'app-modify-item',
   templateUrl: './modify-item.component.html',
@@ -17,10 +16,12 @@ export class ModifyItemComponent implements OnInit {
   description="";
   price_euro=0;
   price_centesimi=0;
-  category=0
+  category_objects=0
+  category_objects_selected="";
   url_photo="";
-  owner=""
+  owner="";
   prova="";
+
 
   url_img_input=""
   url_controller=false;
@@ -29,8 +30,11 @@ export class ModifyItemComponent implements OnInit {
   items:Item[] = [];
   item? : Item;
 
-  items_category:Item[]=[];
-  item_category?:Item;
+  categories:Category[]=[];
+  category?:Category;
+  
+  
+  users:User[]=[]
 
   fetchedItems :Item[] = [];
   mostra = true;
@@ -64,24 +68,46 @@ getItemsId(id:number){
     this.name_objects=this.item.name
     this.description=this.item.description!
     this.price_euro=this.item.price!
-    this.category=this.item.category!
+    this.category_objects=this.item.category!
     this.url_photo=this.item.imgurl!
     this.owner=this.owner!
-    
+
+    this.getCategories();
   }).catch((error) => {
     window.alert("errore di chiamata API" + error);
   })
 }
 
-getCategory(){
-  this.superService.getCategoryList().then((res: Item[]) => {
-    this.items_category = res;
+getCategories(){
+  this.superService.getCategoryList().then((res: Category[]) => {
+    this.categories=res;
+
+    if(this.category_objects!=null){
+      this.getCategoryId(this.category_objects)
+    }
+
   }).catch((error) => {
     window.alert("errore di chiamata API" + error);
     //this.returnHome;
   })
 }
 
+getCategoryId(id:number){
+  //this.getCategories();
+
+  this.superService.getCategoryById(id).then((res:Category)=>{
+    this.category=res;
+
+    //imposto valore category_objects_selected
+    let controller_name=this.category.name;
+    if(controller_name!==null){
+    this.category_objects_selected=this.category.name;
+    }
+
+  }).catch((error)=>{
+    window.alert("errore di chiamata API" + error);
+  })
+}
 
 
   constructor( private superService : SuperItemService, private route: ActivatedRoute, 
@@ -96,11 +122,11 @@ getCategory(){
 
     });
 
+    this.category_objects_selected="Nessuna categoria assegnata";
+
     this.getItemsId(this.id);
-    this.getCategory();
 
-
-    
+   //this.getCategoryId(this.category_objects)
 
   }
 

@@ -23,10 +23,9 @@
                     <br>
         
                     <!--Prezzo-->
-                    <label>Prezzo: </label>
+                    <label>Prezzo (in euro): </label>
                     <div class="row">
                         <div class="col">
-                            <label for ="price_euro">euro</label>                    
                             <input type="number" class="form-control"  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
                         </div>
                         <!--controllo required-->
@@ -40,13 +39,12 @@
                     <div class="row">
                         <div class="col">
                             <!--Categoria-->
-                            <label>Categoria</label>
-                            <div class="input-group mb-3">
+                            <label><i class="fas fa-list"></i>Categoria</label>
+                            <div class="input-group mb-3" >
                                 <select class="form-select" id="inputGroupSelect01">
-                                  <option selected>Scegli la categoria...</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
+                                  <option selected>{{category_objects_selected}}</option>
+                                  <option  *ngFor="let category of categories">{{category.name}}</option>
+                                 
                                 </select>
                             </div>
                         </div>
@@ -54,9 +52,8 @@
         
                         <div class="col">
                         <!--Proprietario-->
-                        <label>Proprietario</label>
-                        <input type="text" class="form-control"  name="owner"  [(ngModel)]="owner" ngModel #owner_input="ngModel">
-                        </div>
+                        <label> <i class="fas fa-user"></i>Proprietario</label>
+ì                        </div>
                     </div>                  
                 </div>
             
