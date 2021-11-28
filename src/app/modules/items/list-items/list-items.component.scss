@@ -1,9 +1,8 @@
 .carouselWrapper{
     width: 90%;
-    height: auto;
+    height: 1000px;
     padding-top: 2%;
     padding-bottom: 2%;
-    margin-bottom: 5%;
     margin-left: 5%;
     margin-right: 5%;
     display: flex;    
@@ -11,7 +10,19 @@
 }
 
 .carousel-inner{
-    display: flex;
+    overflow-y: scroll;
+}
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb {        
+  box-shadow: inset rgb(233, 154, 97) 0 0 0 10px;
 }
 
 .carousel-item{
@@ -50,4 +61,8 @@
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.filterTable{
+    margin-top: 2%;
 }

@@ -1,7 +1,3 @@
-<!-- <div>
-  <p>{{ itemProva$ | async | json }}</p>
-  <p>{{ itemProva2$ | async | json }}</p>  
-</div> -->
 <div *ngIf="mostra">
   <h1 class='display-1' style="margin-top: 2%; text-align: center;">Bazar dell'usato</h1>
 
@@ -25,6 +21,12 @@
           <i class="fas fa-check"></i>&nbsp;<strong>Applica</strong>
         </button>
       </div>
+
+      <div class="filterTable"> 
+        <button class="btn" type="button" id="btnFiltri" *ngFor="let filtro of filtriInUso" 
+          (click)="removeOneFilter(filtro.tipo, +filtro.id!, filtro.nome)"><i class="fas fa-times"></i>&nbsp;<strong>{{ filtro.nome }}</strong>
+        </button>
+      </div>
       
       <div class="accFilter" *ngIf="mostraFiltri">
         <div class="accordion" id="accordionFilter">
@@ -42,6 +44,7 @@
                       (click)="chosenFilter('categoria', +category.id!, category.name, $event)">
                     <label class="form-check-label" for="flexSwitchCheckDefault">{{ category.name }}</label>
                   </div>
+                  <br/><small style="color: darkred">*Per rimuovere una categoria usare lo switch</small>
                 </div>
               </div>
             </div>
@@ -102,7 +105,32 @@
       <div id="carouselExampleIndicators" class="carousel slide carouselWrapper" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item">
-            <div *ngFor="let item of items;" class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+            <div *ngFor="let item of items;" [hidden]="oggettiFiltrati" class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+              <img [src]="item.imgurl" class="card-img-top" alt="item">   
+              <div class="card-body">
+                <h4 class="card-title">{{item.name}}</h4><br/>
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-text">{{item.price! | currencyEur}}</h5>  
+                  </div>
+                  <div class="col">
+                    <div class="dropdown" style="display: flex; justify-content: flex-end;">
+                      <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Opzioni
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" [routerLink]="['dettagli-oggetto/'+item.id]" (click)="details(+item.id!)"><i  class="fas fa-eye"></i>&nbsp;Dettagli</a></li>
+                        <li><hr class="dropdown-divider"></li> 
+                        <li><a class="dropdown-item" [routerLink]="['modifica-oggetto/'+item.id]" (click)="modify(+item.id!)"><i class="fas fa-edit"></i>&nbsp;Modifica</a></li>
+                        <li><hr class="dropdown-divider"></li> 
+                        <li><a class="dropdown-item" (click)="deleteItem(+item.id!)" style="cursor: pointer;"><i class="fas fa-trash-alt"></i>&nbsp;Elimina</a></li> 
+                      </ul>
+                    </div>
+                  </div>
+                </div>  
+              </div>    
+            </div> 
+            <div *ngFor="let item of itemsFiltrati;" [hidden]="!oggettiFiltrati" class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
               <img [src]="item.imgurl" class="card-img-top" alt="item">   
               <div class="card-body">
                 <h4 class="card-title">{{item.name}}</h4><br/>
