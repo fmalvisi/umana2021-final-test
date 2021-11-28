@@ -63,6 +63,7 @@ export class ModifyItemComponent implements OnInit {
   
   //Item
   getItemsId(id:number){
+
     this.superService.getItemById(id).then((res: Item) => {
       this.item = res;
       this.name_objects=this.item.name
@@ -72,7 +73,9 @@ export class ModifyItemComponent implements OnInit {
       this.url_photo=this.item.imgurl!
       this.owner=this.item.owner!
 
+
       this.getCategories();
+      
       this.getUser();
       
       
