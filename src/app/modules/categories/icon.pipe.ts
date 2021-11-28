@@ -5,19 +5,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class IconPipe implements PipeTransform {
 
-  favicon = "prova";
-
   transform(value: any): any {
 
     //seleziono tutti gli elementi con classe "icon"
     var elements = document.getElementsByClassName('icon');
+    var test = "fa-address-book";
 
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i] as HTMLElement;
       element.style.color = "red";
-      element.innerHTML = '<i class="fas fa-address-book"></i>';
+      //element.innerHTML = '<i class="fas fa-address-book"></i>';
       //element.innerHTML = '<i class="fas {{favicon}}"></i>';
       //element.innerHTML = '<i class="">{{favicon}}</i>'; lo mostra ma non interpola
+      element.innerHTML = '<i class="fas '+ test +'"></i>';
     }
 
     /* se il value passato alla pipe (aka l'id della categoria) è pari a 1 */
