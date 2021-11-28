@@ -1,6 +1,10 @@
 <router-outlet></router-outlet>
 
-<div class="filter">
+<div class="">
+  <button class="btn btn-warning my-2" routerLink="add" type="button" name="button">Aggiungi una categoria</button>
+</div>
+
+<div class="filter my-2">
   <label for="filter">Filtra: </label><br>
   <input list="filter-opt" id="filter" name="filter" (change)="filterCategory(filter.value)" #filter>
   <datalist id="filter-opt">
@@ -50,7 +54,3 @@
   </ng-template>
   </tbody>
 </table>
-
-<div>
-  <a routerLink="add">Aggiungi una categoria</a>
-</div>
