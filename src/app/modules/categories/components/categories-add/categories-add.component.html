@@ -1,16 +1,31 @@
 <div class="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <h5>PIPE TEST</h5>
   <div class="">
-    L'icona è:
-    <span id="test">
-      {{ "ciao" | icon }}
+    L'icona della pipe icon è:
+    <span id="test1" class="icon">
+      {{ 1 | icon }}
+    </span>
+  </div>
+  <div class="">
+    L'icona della pipe icon è:
+    <span id="test2" class="icon">
+      {{ 3 | icon }}
     </span>
   </div>
 </div>
 
-<form #formadd="ngForm" class="">
+<form
+  class=""
+  #formadd="ngForm"
+  (ngSubmit)="onSubmit(formadd)"
+  novalidate
+>
   <h4>Aggiungi una categoria</h4>
 
+  <!-- campo nome della nuova categoria -->
   <div class="">
     <label for="add-categ-name" class="form-label">Inserisci il nome di una nuova categoria</label>
     <input
@@ -21,11 +36,27 @@
       name="name"
       ngModel
       required
+      minlength="2"
+      maxlength="20"
+      #categoryname="ngModel"
     >
+    <div *ngIf="!categoryname?.valid && (categoryname?.dirty || categoryname?.touched)">
+      Il nome della categoria non è corretto.
+      <div *ngIf="categoryname.errors?.['required']">
+        Il nome della categoria è obbligatorio.
+      </div>
+      <div *ngIf="categoryname.errors?.['minlength']">
+        Il nome della categoria deve avere minimo {{categoryname.errors?.['minlength'].requiredLength}} caratteri.
+      </div>
+      <div *ngIf="categoryname.errors?.['maxlength']">
+        Il nome della categoria deve avere massimo {{categoryname.errors?.['maxlength'].requiredLength}} caratteri.
+      </div>
+    </div>
   </div>
 
+  <!-- campo descrizione della nuova categoria -->
   <div class="">
-    <label for="add-categ" class="form-label">Inserisci la descrizione della nuova categoria</label>
+    <label for="add-categ-descr" class="form-label">Inserisci la descrizione della nuova categoria</label>
     <input
       type="text"
       class="form-control"
@@ -34,12 +65,27 @@
       name="description"
       ngModel
       required
+      minlength="10"
+      maxlength="30"
+      #categorydescri="ngModel"
     >
+    <div *ngIf="!categorydescri?.valid && (categorydescri?.dirty || categorydescri?.touched)">
+      La descrizione della categoria non è corretta.
+      <div *ngIf="categorydescri.errors?.['required']">
+        La descrizione della categoria è obbligatoria.
+      </div>
+      <div *ngIf="categorydescri.errors?.['minlength']">
+        La descrizione della categoria deve avere minimo {{categorydescri.errors?.['minlength'].requiredLength}} caratteri.
+      </div>
+      <div *ngIf="categorydescri.errors?.['maxlength']">
+        La descrizione della categoria deve avere massimo {{categorydescri.errors?.['maxlength'].requiredLength}} caratteri.
+      </div>
+    </div>
   </div>
 
   <button
     type="submit"
     class="btn btn-primary"
-    (click)="add(formadd)"
+    [disabled]="!formadd.valid"
   >Aggiungi</button>
 </form>

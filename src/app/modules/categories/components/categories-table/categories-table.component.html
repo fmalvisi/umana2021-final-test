@@ -1,11 +1,8 @@
-<p>categories-table works!</p>
-
-<!-- <a routerLink="detail">Detail</a><br> -->
 <a routerLink="add">Add</a>
 
 <br>
 
-<label for="filter">Filtra:  </label><br>
+<label for="filter">Filtra: </label><br>
 <input list="filter-opt" id="filter" name="filter" (change)="filterCategory(filter.value)" #filter>
 <datalist id="filter-opt">
   <option *ngFor="let category of categoryArr" value={{category.name}}></option>
