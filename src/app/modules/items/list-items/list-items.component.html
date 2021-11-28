@@ -2,7 +2,7 @@
   <h1 class='display-1' style="margin-top: 2%; text-align: center;">Bazar dell'usato</h1>
 
   <div class="buttonMenu">
-    <div class="addItem"><a type="button addItem" [routerLink]="['aggiungi-oggetto']" class="btn btn-outline-success"><i class="fas fa-plus"></i>&nbsp;Nuovo Oggetto</a></div>
+    <div class="addItem"><a type="button addItem" [routerLink]="['aggiungi-oggetto']" (click)="add()" class="btn btn-outline-success"><i class="fas fa-plus"></i>&nbsp;Nuovo Oggetto</a></div>
   </div>
 
   <div class="row">    

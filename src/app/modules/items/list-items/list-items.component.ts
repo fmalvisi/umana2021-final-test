@@ -51,11 +51,9 @@ export class ListItemsComponent implements OnInit {
       if(txtvalue == null){
         this.mostra = true;
       }else{
-        if(txtvalue == "true"){
-          console.log("entrato2");
+        if(txtvalue == "true"){ 
           this.mostra = true;
-        }else{
-          console.log("entrato3");
+        }else{ 
           this.mostra = false;
         }
     } 
@@ -66,6 +64,14 @@ export class ListItemsComponent implements OnInit {
 
   returnHome() {
     this.router.navigate(['/']);    
+  }
+
+  add(){
+    if (typeof Storage !== "undefined") { 
+      sessionStorage.setItem("showCarousel", "false");
+    }else{
+      console.log( "Sorry, your browser does not support Web Storage...");
+    }
   }
 
   modify(index: number){

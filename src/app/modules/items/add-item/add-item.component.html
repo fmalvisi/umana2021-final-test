@@ -1,1 +1,100 @@
-<p>add-item works!</p>
+<div class='container-fluid'>  
+    <div class="row">
+        <h1 class='display-4'>Aggiungi oggetto</h1>
+        <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate>  
+        <div class="col">
+                 
+                <div class="form-group">
+                    <!--Nome oggetto:-->
+                    <label for ="name_input">Nome oggetto: </label>
+                    <input  type="text" class="form-control"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
+                    <!--controllo required-->
+                    <div *ngIf="name_input.errors?.['required']">
+                         campo obbligatorio
+                    </div>
+                    <br>
+        
+                    <!--Descrizione oggetto:-->
+                    <label for ="description_input">Descrizione ogetto: </label>
+                    <input type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
+                    <!--controllo required-->
+                    <div *ngIf="description_input.errors?.['required']">
+                        campo obbligatorio
+                    </div>
+                    <br>
+        
+                    <!--Prezzo-->
+                    <label>Prezzo (in euro): </label>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control"  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
+                        </div>
+                        <!--controllo required-->
+                        <div *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
+                            campo obbligatorio
+                        </div>
+                    
+                    </div>
+                    <br>
+        
+                    <div class="row">
+                        <div class="col">
+                            <!--Categoria-->
+                            <label><i class="fas fa-list"></i>Categoria</label>
+                            <div class="input-group mb-3" >
+
+                                <select class="form-select" [(ngModel)]="categorySelected" name="categorySelected">
+
+                                    <!--<option selected>{{category_objects_selected}}</option>-->
+                                    <option selected >{{category_objects_selected}}</option>
+
+                                  <option  *ngFor="let category of categories">{{category.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <div class="col">
+                        <!--Proprietario-->
+                        <label> <i class="fas fa-user"></i>Proprietario</label>
+                        <select class="form-select" [(ngModel)]="ownerSelected" name="ownerSelected">
+                            <option selected>{{owner_objects_selected}}</option>
+
+                          <option  *ngFor="let user of users">{{user.name + " " + user.surname}}</option>
+                        </select>
+                      </div>
+                    </div>                  
+                </div>
+            
+        </div>
+        <div class="col"> 
+                <div class="row">
+                    <label for ="url">Carica url immagine (facoltativo)</label>
+                    <div class="col">
+                        <input type="url" name="url" class="form-control" [(ngModel)]="url_photo" id ="url" pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})" name="url" #url_link="ngModel">
+                         <!--controllo pattern-->
+                        <div *ngIf="url_link.errors?.['pattern']">
+                            inserire url valido.
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <button type="button" class="btn btn-outline-primary"(click)="load_url()">Carica immagine</button>
+                    </div>
+                </div>
+
+                <div class="photo_container">
+                    <i *ngIf="!url_controller">carica un url per visualizzare l'immagine in quest'area.</i>
+                    <img *ngIf="url_controller" src={{url_img_input}}>
+                </div> 
+        </div>
+        <div class="button_container">
+            <button type="submit" class="btn btn-outline-primary">Invia</button>
+        </div>
+    </form>
+        
+
+        <div class="button_container">
+            <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-primary">Annulla</button>
+
+    </div>
+</div>
