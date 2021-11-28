@@ -22,6 +22,8 @@ export class CategoriesTableComponent implements OnInit {
 
   itemArr: Item[] = [];
 
+  detailCategoryArr: boolean[] = [];
+
  
 
   getNumOfItemsPerCategory(categoryID: number | null): number {
@@ -62,6 +64,9 @@ export class CategoriesTableComponent implements OnInit {
        
         return 0;
       });
+      for(let c of this.categoryArr){
+        this.detailCategoryArr.push(false);
+      }
       console.log('assigned categories: ', this.categoryArr);
     });
 
@@ -111,10 +116,32 @@ export class CategoriesTableComponent implements OnInit {
 
   updateCurrentCategory(categoryID: number | null) {
     return (this.currentCategory = categoryID);
+    
   }
 
-  hide(categoryID: number | null): void {
-    this.updateCurrentCategory(categoryID);
-    this.hideShow = !this.hideShow;
+
+
+  hide(categoryID: any): void {
+    
+    let areAllFalse = this.detailCategoryArr.every(bool => bool === false);
+
+    let detailIndex = 0;
+    for(let i = 0 ; i < this.categoryArr.length; i++){
+      if(this.categoryArr[i].id === categoryID){
+        detailIndex = i;
+      }
+    } 
+    
+    if(areAllFalse){
+      
+      this.updateCurrentCategory(categoryID);
+      this.detailCategoryArr[detailIndex] = !this.detailCategoryArr[detailIndex]
+
+    }else if(this.detailCategoryArr[detailIndex]){
+      this.detailCategoryArr[detailIndex] = false
+    }else {
+      alert('Puoi visualizzare solo i dettagli di una categoria alla volta.')
+    }
+    
   }
 }

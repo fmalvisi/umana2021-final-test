@@ -86,11 +86,6 @@
       "id": 4,
       "name": "Giardinaggio",
       "description": "accessori per il giardino"
-    },
-    {
-      "id": 5,
-      "name": "Barbecue",
-      "description": "accessori per il barbecue"
     }
   ],
   "users": [

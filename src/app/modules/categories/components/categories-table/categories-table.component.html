@@ -1,3 +1,9 @@
+
+<router-outlet></router-outlet>
+
+<!-- <app-categories-detail *ngIf="hideShow" [categoryName]="currentCategory">
+</app-categories-detail> -->
+
 <a routerLink="add">Add</a>
 
 <br>
@@ -21,7 +27,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let category of categoryArr" id={{category.name.toLowerCase()}}>
+    <!-- Generazione dinamica tabella  -->
+   <ng-template ngFor let-category [ngForOf]="categoryArr" let-i="index">
+
+    <tr  id={{category.name.toLowerCase()}}>
       <th scope="row">{{category.id}}</th>
       <td>{{category.name}}</td>
       <td>{{category.description}}</td>
@@ -34,10 +43,18 @@
         
       </td>
     </tr>
+    <tr  *ngIf="detailCategoryArr[i]">
+      <td colspan="5">
+        <app-categories-detail  [categoryName]="currentCategory">
+        </app-categories-detail>
+      </td>
+    </tr>
+
+  </ng-template>
+  
+
   </tbody>
 </table>
 
-<app-categories-detail *ngIf="hideShow" [categoryName]="currentCategory">hide and show content ...
-</app-categories-detail>
 
-<router-outlet></router-outlet>
+
