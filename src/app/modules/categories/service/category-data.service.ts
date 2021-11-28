@@ -13,5 +13,6 @@ export class CategoryDataService {
 
   getCatId(id: any) {
     this.messageSource.next(id);
+    window.localStorage.setItem('category', id);
   }
 }

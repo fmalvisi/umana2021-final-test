@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CategoryDataService } from '../../service/category-data.service';
+import { Router } from '@angular/router';
 
 import {
   CategoryService,
@@ -19,13 +20,14 @@ export class CategoriesDetailComponent implements OnInit {
   description = '';
   items = '';
   categoryItems: Array<string> = [];
-  categoryNames: any = 0;
+  categoryNames: number | null | undefined = 0;
   newCat: Category[] = [];
 
   constructor(
     private categoryService: CategoryService,
     private itemService: ItemsService,
     private categoryDataService: CategoryDataService,
+    protected router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +40,7 @@ export class CategoriesDetailComponent implements OnInit {
   }
 
   ngOnChanges(): void {
+    // prendo gli Items dal kson
     this.itemService.getItems().subscribe(items => {
       for (let i = 0; i < items.length; i++) {
         if (this.categoryName == items[i].category) {
@@ -48,7 +51,9 @@ export class CategoriesDetailComponent implements OnInit {
     });
   }
 
+  // Funzione per salvare ID tramite service e andare alla pagina relativa
   edit(): void {
     this.categoryDataService.getCatId(this.categoryName);
+    this.router.navigate(['categories/edit', this.categoryNames]);
   }
 }

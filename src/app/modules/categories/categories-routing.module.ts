@@ -20,10 +20,10 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     component: CategoriesEditComponent,
     resolve: {
-      res: CategoriesResolver,
+      category: CategoriesResolver,
     },
   },
 ];
