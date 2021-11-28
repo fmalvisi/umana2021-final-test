@@ -25,16 +25,19 @@ form {
     border: 1px solid rgba(0, 0, 0, 0.125);
   }
 
-  button {
-    margin: 20px 0;
+  .button-wrapper {
     display: block;
-    color: #664d03;
-    background-color: #fff3cd;
-    border-color: #ffecb5;
-    &:hover {
-      color: #f8f9fa;
-      background-color: #212529;
-      border-color: #212529;
+
+    button {
+      margin: 20px 50px 0 0;
+      color: #664d03;
+      background-color: #fff3cd;
+      border-color: #ffecb5;
+      &:hover {
+        color: #f8f9fa;
+        background-color: #212529;
+        border-color: #212529;
+      }
     }
   }
 }

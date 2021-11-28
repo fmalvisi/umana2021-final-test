@@ -2,13 +2,17 @@
     <h1>Modifica Categoria</h1>
     <div class="form-container bg-light">
         <label for="catName" class="">Nome: </label>
-        <input id="catName" type="text" value="{{catName}}" placeholder={{catName}} minlength="10" maxlength="30"
+        <input id="catName" type="text" value="{{catName}}" placeholder={{catName}} minlength="2" maxlength="20"
             #nameInput>
         <br>
         <label for="catDescr" class="">Descrizione: </label>
-        <input id="catDescr" type="text" value="{{catDescr}}" placeholder={{catDescr}} minlength="2" maxlength="20"
+        <input id="catDescr" type="text" value="{{catDescr}}" placeholder={{catDescr}} minlength="5" maxlength="40"
             #descrInput>
-        <button (click)="editCat(nameInput.value, descrInput.value)" class="btn btn-primary">Conferma
-            Modifica</button>
+            <p style="color: red">Error</p>
+        <div class="button-wrapper">
+            <button (click)="editCat(nameInput.value, descrInput.value)" class="btn btn-primary">Conferma
+                Modifica</button>
+            <button (click)="goBack()" class="btn btn-primary">Indietro </button>
+        </div>
     </div>
 </form>

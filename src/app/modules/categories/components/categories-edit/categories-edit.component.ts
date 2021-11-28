@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/core/api/generated';
 import { CategoryService } from 'src/app/core/api/generated';
 import { CategoryDataService } from '../../service/category-data.service';
@@ -27,6 +27,7 @@ export class CategoriesEditComponent implements OnInit {
     private categoryService: CategoryService,
     private categoryDataService: CategoryDataService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -52,12 +53,15 @@ export class CategoriesEditComponent implements OnInit {
 
   // Funzione per il popolare l'array con le modifiche e fare l'update del json
   editCat(name: string, descr: string): void {
-    console.log('nome: ', name);
     this.catt.name = name;
     this.catt.description = descr;
-    this.categoryService
-      .updateCategory(this.paramId, this.catt)
-      .subscribe(cats => console.log('Categoria aggiornata:', cats));
+    this.categoryService.updateCategory(this.paramId, this.catt).subscribe();
+    this.router.navigate(['categories']);
+  }
+
+  // Ritorna alla pagina precedente
+  goBack(): void {
+    this.router.navigate(['categories']);
   }
 
   // Funzione per l'assegnazione di nome e descrizione della categoria
