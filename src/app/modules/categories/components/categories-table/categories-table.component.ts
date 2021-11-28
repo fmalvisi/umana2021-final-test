@@ -113,6 +113,24 @@ export class CategoriesTableComponent implements OnInit {
     return (this.currentCategory = categoryID);
   }
 
+  toggleClose(categoryID:any){
+    
+
+    let detailIndex = 0;
+    for(let i = 0 ; i < this.categoryArr.length; i++){
+      if(this.categoryArr[i].id === categoryID){
+        detailIndex = i;
+      }
+    }
+
+    if(this.detailCategoryArr[detailIndex]){
+      return 'Chiudi';
+    }else {
+      return 'Dettagli';
+    }
+
+  }
+ 
   hide(categoryID: any): void {
     let areAllFalse = this.detailCategoryArr.every(bool => bool === false);
 
