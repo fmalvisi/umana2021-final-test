@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-      "price": 15.50,
+      "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": 1,
       "owner": 1
@@ -13,34 +13,25 @@
       "id": 2,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-      "price": 15.50,
+      "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": 2,
-      "owner": 2
-    },
-    {
-      "id": 3,
-      "name": "Yankee Candle",
-      "description": "Usata, a metà.",
-      "price": 15.50,
-      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": 1,
       "owner": 2
     },
     {
       "id": 4,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-      "price": 15.50,
+      "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category":2,
+      "category": 2,
       "owner": 1
     },
     {
       "id": 5,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-      "price": 15.50,
+      "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
       "owner": null
@@ -49,7 +40,7 @@
       "id": 6,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-      "price": 15.50,
+      "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
       "owner": null

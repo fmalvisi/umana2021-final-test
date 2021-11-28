@@ -19,6 +19,7 @@ export class ModifyItemComponent implements OnInit {
   category_objects=0
   category_objects_selected="";//
   user_array:string[]=[]; //salvataggio di tutte le categorie
+  user_array_i?:string;
 
   url_photo="";
   owner=0;
@@ -143,12 +144,13 @@ export class ModifyItemComponent implements OnInit {
   getUserId(id:number){
   this.superService.getUserById(id).then((res:User)=>{
       this.user=res;
+      var id_prov = this.user.id;
 
       this.user_array.push(this.user.name + " " + this.user.surname)
       //console.log("CCC" + this.user_array)
 
       //imposto valore owner_objects_selected
-      if(this.owner!==null){
+      if(this.owner===id_prov){
         this.owner_objects_selected=this.user.name + " " + this.user.surname;
         this.sortArrayUser();
 
@@ -163,20 +165,19 @@ export class ModifyItemComponent implements OnInit {
 
   //ordinamento corretto array
   sortArrayUser(){
-    let i_1;
+    let position_0=this.user_array[0];
 
     for(let i =0; i<this.user_array.length;i++){
-      i_1 =this.user_array[0];
 
       console.log(this.user_array[i])
       if(this.user_array[i]===this.owner_objects_selected){
-        /*let i_x = this.user_array[i];
+        let i_x = this.owner_objects_selected
         this.user_array[0]=i_x;
-        this.user_array[i]=i_1;*/
-        console.log("Trovato match " + i_1 + " " + this.user_array[i])
+        this.user_array[i]=position_0;
+        //console.log("Trovato match " + position_0 + " " + this.user_array[i])
 
         //this.user_array.splice(i);
-      }
+      } console.log("NUOVO ARRAY" + this.user_array[i] +" " + this.user_array[i-1])
       
     }
 
