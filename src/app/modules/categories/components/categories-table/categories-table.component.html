@@ -36,7 +36,7 @@
       <td>{{category.description}}</td>
       <td>{{getNumOfItemsPerCategory(category.id)}}</td>
       <td>
-        <button class="btn btn-light" (click)="hide(category.id)">Dettagli</button>
+        <button class="btn btn-light" (click)="hide(category.id)">{{toggleClose(category.id)}}</button>
         <span [ngClass]="[willBeDisabled(category.id)]">
           <button class="btn btn-warning" [ngClass]="[willBeDisabled(category.id)]" (click)="deleteCategory(category.id)">Cancella</button>
         </span>
