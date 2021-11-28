@@ -15,8 +15,8 @@
       "description": "Usata, a metà.",
       "price": 15.50,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": null,
-      "owner": null
+      "category": 2,
+      "owner": 2
     },
     {
       "id": 3,
@@ -24,8 +24,8 @@
       "description": "Usata, a metà.",
       "price": 15.50,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": null,
-      "owner": null
+      "category": 1,
+      "owner": 2
     },
     {
       "id": 4,
@@ -33,8 +33,8 @@
       "description": "Usata, a metà.",
       "price": 15.50,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": null,
-      "owner": null
+      "category":2,
+      "owner": 1
     },
     {
       "id": 5,

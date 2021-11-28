@@ -56,9 +56,10 @@
                         <!--Proprietario-->
                         <label> <i class="fas fa-user"></i>Proprietario</label>
                         <select class="form-select" id="inputGroupSelect01">
-                            <option selected>{{owner_objects_selected}}</option>
+                            <!--<option selected>{{user_array[0]}}</option>-->
 
-                          <option  *ngFor="let user of users">{{user.name + " " + user.surname}}</option>
+                          <option >{{owner_objects_selected}}</option>
+                          <option  *ngFor="let i of user_array">{{i}}</option>
                         </select>
                       </div>
                     </div>                  
