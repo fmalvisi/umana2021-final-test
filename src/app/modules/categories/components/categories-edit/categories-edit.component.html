@@ -1,11 +1,14 @@
-<h1>modifica</h1>
-
-<div class='bg-light my-5'>
-    <h1>{{catName}}</h1>
-    <h1 style="color: red">{{paramId}}</h1>
-
-    <h1>{{localId}}</h1>
-    <p>{{catDescr}}</p>
-    <button (click)="editCat()" class="btn btn-primary">edit</button>
-    <button (click)="delete()" class="btn btn-danger">Delete</button>
-</div>
+<form>
+    <h1>Modifica Categoria</h1>
+    <div class="form-container bg-light">
+        <label for="catName" class="">Nome: </label>
+        <input id="catName" type="text" value="{{catName}}" placeholder={{catName}} minlength="10" maxlength="30"
+            #nameInput>
+        <br>
+        <label for="catDescr" class="">Descrizione: </label>
+        <input id="catDescr" type="text" value="{{catDescr}}" placeholder={{catDescr}} minlength="2" maxlength="20"
+            #descrInput>
+        <button (click)="editCat(nameInput.value, descrInput.value)" class="btn btn-primary">Conferma
+            Modifica</button>
+    </div>
+</form>
