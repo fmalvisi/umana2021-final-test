@@ -5,14 +5,37 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class IconPipe implements PipeTransform {
 
-  transform(value: string): any {
-    if (value === "ciao") {
-      const element: HTMLElement = document.getElementById('test') as HTMLElement
-      var icon = element.innerHTML = '<img src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-check-icon.png" width="20" height="20" alt="una icona">';
-      return icon;
-    } else {
-      return "La pipe NON funziona!"
-    }
-  }
+  favicon = "prova";
 
-}
+  transform(value: any): any {
+
+    //seleziono tutti gli elementi con classe "icon"
+    var elements = document.getElementsByClassName('icon');
+
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i] as HTMLElement;
+      element.style.color = "red";
+      element.innerHTML = '<i class="fas fa-address-book"></i>';
+      //element.innerHTML = '<i class="fas {{favicon}}"></i>';
+      //element.innerHTML = '<i class="">{{favicon}}</i>'; lo mostra ma non interpola
+    }
+
+    /* se il value passato alla pipe (aka l'id della categoria) è pari a 1 */
+    if (value === 1) {
+      //var icon = element.innerHTML = '<i class="fas fa-address-book"></i>';
+      //return icon;
+      //const element: HTMLElement = document.getElementById('test1') as HTMLElement
+      //var icon = element.innerHTML = '<i class="fas fa-address-book"></i>';
+      //return icon;
+    }
+    if (value === 3) {
+      //const element: HTMLElement = document.getElementById('test2') as HTMLElement
+      //var icon = element.innerHTML = '<i class="fas fa-bank"></i>';
+      //return icon;
+   } else {
+      return "La pipe NON funziona!"
+    } //fine condizione
+
+  }// fine transform
+
+}// fine classe
