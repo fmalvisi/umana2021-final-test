@@ -28,9 +28,11 @@ export class ModifyItemComponent implements OnInit {
   message: string|null = null;
   items:Item[] = [];
   item? : Item;
+
+  items_category:Item[]=[];
+  item_category?:Item;
+
   fetchedItems :Item[] = [];
-  itemProva$?: Observable<Item>;
-  itemProva2$ = of(true);
   mostra = true;
 
   id=0;//id per richiamare getitemById
@@ -71,22 +73,32 @@ getItemsId(id:number){
   })
 }
 
+getCategory(){
+  this.superService.getCategoryList().then((res: Item[]) => {
+    this.items_category = res;
+  }).catch((error) => {
+    window.alert("errore di chiamata API" + error);
+    //this.returnHome;
+  })
+}
+
+
 
   constructor( private superService : SuperItemService, private route: ActivatedRoute, 
     ) { }
 
   ngOnInit(): void {
 
+    //recupero id da url
       this.route.paramMap.subscribe(params => {
         let id = params.get('id');
         this.id = Number(id);
 
-        //imposto valori da visualizzare negli input:
-
-
     });
 
     this.getItemsId(this.id);
+    this.getCategory();
+
 
     
 
