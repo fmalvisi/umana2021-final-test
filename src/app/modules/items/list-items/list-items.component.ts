@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { Router } from '@angular/router';
 import { SuperItemService } from 'src/app/core/services/superItemService';
-import { Category, Item, User } from '../../../core/api/generated';
- 
+import { Category, Item, User } from '../../../core/api/generated';  
 
 @Component({
   selector: 'app-list-items',
@@ -25,11 +24,13 @@ export class ListItemsComponent implements OnInit {
   saveItems: Item[] = [];
   searchItems: Item[] = [];
   filtriInUso = [{tipo: '', id: 0, nome:''}];
-  
+   
+
   constructor(
     private superService : SuperItemService,
     private router : Router
-  ) {}
+  ) { 
+  }
 
   ngOnInit(): void {      
     this.getItems();    
@@ -37,6 +38,14 @@ export class ListItemsComponent implements OnInit {
   }
 
   ngDoCheck(){
+    if(this.router.url == "/items"){
+      if (typeof Storage !== "undefined") { 
+        sessionStorage.setItem("showCarousel", "true");
+      }else{
+        console.log( "Sorry, your browser does not support Web Storage...");
+      }
+    }
+
     if (typeof Storage !== "undefined") {  
       let txtvalue =  sessionStorage.getItem("showCarousel"); 
       if(txtvalue == null){
