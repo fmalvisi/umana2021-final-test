@@ -93,9 +93,11 @@
         </div>
         
         <div class="button_container">
-            <button type="button" class="btn btn-outline-primary">Invia</button>
+            <button type="button" class="btn btn-outline-primary" (click)="send()">Invia</button>
         </div>
 
-        <a [routerLink]='"/items"'>Indietro</a>
+        <div class="button_container">
+            <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-primary">indietro</button>
+
     </div>
 </div>

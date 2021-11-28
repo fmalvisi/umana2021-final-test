@@ -19,7 +19,7 @@ export class ModifyItemComponent implements OnInit {
   category_objects=0
   category_objects_selected="";
   url_photo="";
-  owner="";
+  owner=0;
   owner_objects_selected="";
   owner_selected_id=0;
   prova="";
@@ -51,16 +51,14 @@ export class ModifyItemComponent implements OnInit {
   }
 
   send(){
-    /*var name_prov = document.getElementById("name_input") as HTMLInputElement
-    this.name_objects= name_prov.value;
-    console.log(this.name_objects)
-    console.log(this.item);*/
+    
+  
   }
   
 
   onFormSubmit(userForm: NgForm) {
-    console.log(userForm.value);
-    console.log('Nome:' + userForm.controls['name_input'].value);
+    //console.log(userForm.value);
+    alert('Nome:' + userForm.controls['name_input'].value);
 }
 
 
@@ -77,6 +75,8 @@ getItemsId(id:number){
 
     this.getCategories();
     this.getUser();
+
+    
   }).catch((error) => {
     window.alert("errore di chiamata API" + error);
   })
@@ -93,6 +93,7 @@ getCategories(){
     if(this.category_objects!=null){
       this.getCategoryId(this.category_objects)
     }
+
 
   }).catch((error) => {
     window.alert("errore di chiamata API" + error);
@@ -123,7 +124,8 @@ getUser(){
   this.superService.getUserList().then((res:User[])=>{
     this.users=res;
 
-    if(this.owner_objects_selected!=null){
+    
+    if(this.owner!==0){
       this.getUserId(this.owner_selected_id)
     }
   });
@@ -132,15 +134,19 @@ getUser(){
 getUserId(id:number){
   this.superService.getUserById(id).then((res:User)=>{
     this.user=res;
-    this.owner_selected_id=this.user.id!;
-
-    let controller_user=this.user.name + " " + this.user.surname
-      if(controller_user!==null){
-        this.owner_objects_selected=this.user.name + " " + this.user.surname
-      }
+    
+    this.owner_objects_selected=this.user.name + " " + this.user.surname
+      
     })
   }
 
+  showCarouselItems(){
+    if (typeof Storage !== "undefined") { 
+      sessionStorage.setItem("showCarousel", "true");
+    }else{
+      console.log( "Sorry, your browser does not support Web Storage...");
+    }
+  }
 
 
 
