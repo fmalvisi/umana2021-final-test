@@ -12,11 +12,7 @@ const routes: Routes = [
     path: '',
     component: CategoriesTableComponent,
     children: [
-      { path: 'detail', component: CategoriesDetailComponent },
-      {
-        path: 'add',
-        component: CategoriesAddComponent,
-      },
+      { path: 'detail', component: CategoriesDetailComponent }
     ],
   },
   {
@@ -26,6 +22,10 @@ const routes: Routes = [
       category: CategoriesResolver,
     },
   },
+  {
+    path: 'add',
+    component: CategoriesAddComponent
+  }
 ];
 
 @NgModule({

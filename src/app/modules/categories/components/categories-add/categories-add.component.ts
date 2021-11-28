@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/core/api/generated';
 import { Category } from 'src/app/core/api/generated';
 import { NgForm } from '@angular/forms';
-//import { NgModel } from '@angular/forms';
-//import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-categories-add',
@@ -68,34 +66,69 @@ export class CategoriesAddComponent implements OnInit {
   } // fine onSubmit()
 
 
-
+  //controllo che non esista già una categoria con lo stesso nome
   name = "";
   controllo:boolean = true;
 
   testNome(formadd: NgForm) {
-    var nomecat = formadd.controls['name'].value;
+    /*
+    creo la variabile "nomecat" e la pongo uguale al valore inserito
+    nell'<input> con attributo name="name", valore convertito in lowercase
+    */
+    var nomecat = formadd.controls['name'].value.toLowerCase();
 
+    /*
+    uso categoryService per accedere al metodo getCategories(), così da
+    recuperare i valori delle categorie contenute nel file db.json
+    */
     this.categoryService
       .getCategories()
       .subscribe(
         categories => {
           for (const item of categories) {
+            /*
+            recupero i nomi delle categorie e le pongo in "item", così da avere
+            un array dei nomi della categorie
+            */
             this.name = item.name;
             //console.log(item.name);
 
+            /*
+            creo una funzione che confronta il valore della variabile "nomecat"
+            con i nomi dell categorie contenute in "item", convertiti in lowercase
+            */
             function doesItMatch() {
               return (nomecat === item.name.toLowerCase())
             }
+            /*
+            creo la variabile "match" pari al risultato del metodo some(), che
+            passa la funzione doesItMatch() su tutti gli elementi dell'array
+            item.name, i cui nomi sono convertiti in lowercase.
+            la variabile match è pari a "true" quando il valore di nomecat è
+            pari ad uno dei nomi delle categorie nel db.json
+             */
             var match = [item.name.toLowerCase()].some(doesItMatch);
-            console.log("match è: " + match);
+            //console.log("match è: " + match);
+
+            /*
+            quando vi è una corrispondeza fra il nome della nuova categoria ed uno
+            dei nomi di categoria già presenti nel db, si mostra un messaggio
+            di errore contenuto in un <div>, cambiando il suo display da hidden
+            (che ha di default) a block.
+            Viene inoltre disabilitato il bottone che invia i dati della
+            nuova categoria al database.
+            */
             if (match == true) {
-              //console.log("non puoi usare il nome");
+              //console.log("non puoi usare questo nome");
+              // elemento HTML contente il messaggio di errore
               const element: HTMLElement = document.getElementById('nameMatch') as HTMLElement
               element.style.display = "block";
+
+              // bottone che invia i dati del form al database
               var button = (<HTMLButtonElement>document.getElementById("button"));
               button.disabled = true;
-            }
-          }
+            }// fine if
+          }// fine for
         });
   }// fine testNome()
 

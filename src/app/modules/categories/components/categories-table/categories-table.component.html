@@ -1,22 +1,26 @@
-
 <router-outlet></router-outlet>
 
 <!-- <app-categories-detail *ngIf="hideShow" [categoryName]="currentCategory">
 </app-categories-detail> -->
 
-<a routerLink="add">Add</a>
+<div class="">
+  <a routerLink="add">Aggiungi una categoria</a>
+</div>
 
-<br>
-
-<label for="filter">Filtra: </label><br>
-<input list="filter-opt" id="filter" name="filter" (change)="filterCategory(filter.value)" #filter>
-<datalist id="filter-opt">
-  <option *ngFor="let category of categoryArr" value={{category.name}}></option>
-</datalist>
-
-
+<div class="">
+  <label for="filter">Filtra: </label><br>
+  <input list="filter-opt" id="filter" name="filter" (change)="filterCategory(filter.value)" #filter>
+  <datalist id="filter-opt">
+    <option *ngFor="let category of categoryArr" value={{category.name}}></option>
+  </datalist>
+</div>
 
 <table class="table table-striped">
+  <!-- CDN per le icone -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -26,13 +30,14 @@
       <th scope="col">Opzioni</th>
     </tr>
   </thead>
+
   <tbody>
     <!-- Generazione dinamica tabella  -->
    <ng-template ngFor let-category [ngForOf]="categoryArr" let-i="index">
 
     <tr  id={{category.name.toLowerCase()}}>
       <th scope="row">{{category.id}}</th>
-      <td>{{category.name}}</td>
+      <td><span class="icon">{{ category.id | icon }}</span>{{category.name}}</td>
       <td>{{category.description}}</td>
       <td>{{getNumOfItemsPerCategory(category.id)}}</td>
       <td>
@@ -40,10 +45,9 @@
         <span [ngClass]="[willBeDisabled(category.id)]">
           <button class="btn btn-warning" [ngClass]="[willBeDisabled(category.id)]" (click)="deleteCategory(category.id)">Cancella</button>
         </span>
-        
       </td>
     </tr>
-    <tr  *ngIf="detailCategoryArr[i]">
+    <tr *ngIf="detailCategoryArr[i]">
       <td colspan="5">
         <app-categories-detail  [categoryName]="currentCategory">
         </app-categories-detail>
@@ -51,10 +55,5 @@
     </tr>
 
   </ng-template>
-  
-
   </tbody>
 </table>
-
-
-
