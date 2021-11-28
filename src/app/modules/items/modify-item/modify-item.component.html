@@ -1,85 +1,89 @@
 <div class='container-fluid'>  
-    <h1 class='display-4'>Modifica oggetto</h1>
-    <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate>       
-        <div class="form-group">
-            <!--Nome oggetto:-->
-            <label for ="name_input">Nome oggetto: </label>
-            <input  type="text" class="form-control" [value]="prova"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
-            <!--controllo required-->
-            <div *ngIf="name_input.errors?.['required']">
-                 campo obbligatorio
-            </div>
-            <br>
-
-            <!--Descrizione oggetto:-->
-            <label for ="description_input">Descrizione ogetto: </label>
-            <input type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
-            <!--controllo required-->
-            <div *ngIf="description_input.errors?.['required']">
-                campo obbligatorio
-            </div>
-            <br>
-
-            <!--Prezzo-->
-            <label>Prezzo: </label>
-            <div class="row">
-                <div class="col">
-                    <label for ="price_euro">euro</label>                    
-                    <input type="number" class="form-control"  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
-                </div>
-                <!--controllo required-->
-                <div *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
-                    campo obbligatorio
-                </div>
-            
-            </div>
-            <br>
-
-            <div class="row">
-                <div class="col">
-                    <!--Categoria-->
-                    <div class="dropdown">
-                        <label >Categoria: </label>
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Scegli Categoria
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" >prova1</a></li>
-                                <li><a class="dropdown-item" >prova2</a></li> 
-                            </ul>
-                        </div>  
+    <div class="row">
+        <h1 class='display-4'>Modifica oggetto</h1>
+        <div class="col">
+            <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate>       
+                <div class="form-group">
+                    <!--Nome oggetto:-->
+                    <label for ="name_input">Nome oggetto: </label>
+                    <input  type="text" class="form-control" [value]="prova"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
+                    <!--controllo required-->
+                    <div *ngIf="name_input.errors?.['required']">
+                         campo obbligatorio
                     </div>
-
-                    <div class="col">
-                        <!--Proprietario-->
-                        <div class="dropdown">
-                            <label>Proprietario: </label>
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Scegli proprietario
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" >prova1</a></li>
-                                <li><a class="dropdown-item" >prova2</a></li> 
-                            </ul> 
-                        </div>   
+                    <br>
+        
+                    <!--Descrizione oggetto:-->
+                    <label for ="description_input">Descrizione ogetto: </label>
+                    <input type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
+                    <!--controllo required-->
+                    <div *ngIf="description_input.errors?.['required']">
+                        campo obbligatorio
                     </div>
-            </div>
+                    <br>
+        
+                    <!--Prezzo-->
+                    <label>Prezzo: </label>
+                    <div class="row">
+                        <div class="col">
+                            <label for ="price_euro">euro</label>                    
+                            <input type="number" class="form-control"  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
+                        </div>
+                        <!--controllo required-->
+                        <div *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
+                            campo obbligatorio
+                        </div>
                     
-            <!--Url immagine-->
-            <label for ="url">Carica url immagine (facoltativo)</label>
-                <input type="url" class="form-control" [(ngModel)]="url_photo" pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})" name="url" #url_link="ngModel"  >
-            
-                <!--controllo pattern-->
-                <div *ngIf="url_link.errors?.['pattern']">
-                    Inserire url valido
+                    </div>
+                    <br>
+        
+                    <div class="row">
+                        <div class="col">
+                            <!--Categoria-->
+                            <label>Categoria</label>
+                            <div class="input-group mb-3">
+                                <select class="form-select" id="inputGroupSelect01">
+                                  <option selected>Scegli la categoria...</option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                              
+        
+                        <div class="col">
+                        <!--Proprietario-->
+                        <label>Proprietario</label>
+                        <input type="text" class="form-control"  name="owner"  [(ngModel)]="owner" ngModel #owner_input="ngModel">
+                        </div>
+                    </div>                  
                 </div>
-            <br>
 
+                <div class="button_container">
+                    <button type="button" class="btn btn-outline-primary">Invia</button>
+                </div>
+            
+            </form>
+            </div>
+            <div class="col">
+                <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate>      
+                
+                    <div class="row">
+                        <label for ="url">Carica url immagine (facoltativo)</label>
+                        <div class="col">
+                            <input type="url" class="form-control" [(ngModel)]="url_photo" id ="url" pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})" name="url" #url_link="ngModel">
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-primary"(click)="load_url()">Carica immagine</button>
+                        </div>
+                    </div>
+                    <div class="photo_container" *ngIf="url_controller">
+                        <img src={{url_img_input}}>
+                    </div>
+        
+                </form>
 
-            <div class="button_container">
-                <button  type="button" class="btn btn-secondary">Invia</button>
             </div>
         </div>
-    </form>
-
 </div>

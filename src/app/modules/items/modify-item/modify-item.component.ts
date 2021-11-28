@@ -22,8 +22,8 @@ export class ModifyItemComponent implements OnInit {
   owner=""
   prova="";
 
-  //pattern per url:
-  url_pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
+  url_img_input=""
+  url_controller=false;
   
   message: string|null = null;
   items:Item[] = [];
@@ -35,8 +35,11 @@ export class ModifyItemComponent implements OnInit {
 
   id=0;//id per richiamare getitemById
 
-
-
+  load_url(){
+    var url = document.getElementById("url") as HTMLInputElement
+    this.url_img_input=url.value;
+    this.url_controller=true;
+  }
 
   send(){
     /*var name_prov = document.getElementById("name_input") as HTMLInputElement

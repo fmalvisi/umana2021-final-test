@@ -1,5 +1,14 @@
+.modifiystyle{
+    height: 100%;
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .button_container{
-    text-align: center;
+    //text-align: center;
     .btn{
         width:30%
     }
@@ -11,4 +20,13 @@
 
 .dropdown-toggle{
     margin-left: 1%;
+}
+
+.photo_container{
+    //text-align: center;
+    img{
+        margin-top: 2%;
+        width:50%;
+        height: 50%;
+    }
 }
