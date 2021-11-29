@@ -8,6 +8,12 @@ import { CategoryDataService } from '../../service/category-data.service';
 
 import { CategoriesDetailComponent } from './categories-detail.component';
 
+describe('CategoriesDetailComponent tests', () => {
+  beforeEach(() => {
+    cy.visit("/#/categories"); 
+  });
+
+
 describe('CategoriesDetailComponent', () => {
   let component: CategoriesDetailComponent;
   let fixture: ComponentFixture<CategoriesDetailComponent>;
@@ -32,3 +38,4 @@ describe('CategoriesDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
