@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/core/api/generated';
 import { ShowUsersComponent } from './show-users.component';
 
@@ -18,6 +19,10 @@ class mockdata{
       dob : "test2"
   }
 ];
+data : Observable<any> = {
+  this.utenti
+}
+
 }
 
 fdescribe('ShowUsersComponent', () => {
