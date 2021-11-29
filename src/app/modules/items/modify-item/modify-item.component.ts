@@ -223,7 +223,7 @@ export class ModifyItemComponent implements OnInit {
       }
       this.newItemId = this.lastId + 1; 
       let newItem = {
-        "id": this.newItemId,
+        "id": this.id_object,
         "name": form.controls["name_input"].value,
         "description": form.controls["description_input"].value,
         "price": form.controls["price_euro"].value,

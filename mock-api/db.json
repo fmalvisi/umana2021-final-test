@@ -2,21 +2,21 @@
   "items": [
     {
       "id": 1,
-      "name": "Yankee Candle prova",
-      "description": "Mai usata",
-      "price": 20,
+      "name": "Yankee Candletttt",
+      "description": "Usata, a metà.",
+      "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": 0,
       "owner": 0
     },
     {
       "id": 2,
-      "name": "Yankee Candle",
+      "name": "Yankee Candle333333",
       "description": "Usata, a metà.",
       "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": 2,
-      "owner": 2
+      "category": 0,
+      "owner": 0
     },
     {
       "id": 4,
@@ -47,11 +47,20 @@
     },
     {
       "id": 7,
-      "name": "mouse",
+      "name": "mouse::::::::::::::::::",
       "description": "Usato, come nuovo",
       "price": 5.5,
       "imgurl": "https://www.gadgetzilla.it/i/7198d7d2-98d2-4f94-8cf7-b33ca6d7df4a.jpg",
-      "category": 2,
+      "category": 0,
+      "owner": 0
+    },
+    {
+      "id": 8,
+      "name": "sadsas",
+      "description": "sASas",
+      "price": 2222,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 1,
       "owner": 1
     }
   ],
