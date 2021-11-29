@@ -35,7 +35,7 @@ export class AddItemComponent implements OnInit {
 
   url_img_input=""
   url_controller=false;
-  
+  newUrl = "";
   message: string|null = null;
   items:Item[] = [];
   item? : Item;
@@ -102,9 +102,7 @@ export class AddItemComponent implements OnInit {
     this.superService.createItem(item).subscribe(() =>{
       console.log('oggetto aggiunto!');
       //this.getItems();   
-    })
-    
-    
+    }) 
   }
     
     showCarouselItems(){
@@ -117,6 +115,14 @@ export class AddItemComponent implements OnInit {
 
     returnHome() {
       this.route.navigate(['/items']); 
+    }
+
+    checkImgUrl(url:string){
+      if(url == ""){
+        this.newUrl = "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png";
+      }else{
+        this.newUrl = url;
+      }
     }
  
     onFormSubmit(userForm: NgForm) { 
@@ -136,12 +142,13 @@ export class AddItemComponent implements OnInit {
         this.lastId = it.id!;  
       }
       this.newItemId = this.lastId + 1; 
+      this.checkImgUrl(userForm.controls["url"].value);
       let newItem = {
         "id": this.newItemId,
         "name": userForm.controls["name_input"].value,
         "description": userForm.controls["description_input"].value,
         "price": userForm.controls["price_euro"].value,
-        "imgurl": userForm.controls["url"].value,
+        "imgurl": this.newUrl,
         "category": this.newCategoryId,
         "owner": this.newOwnerId
     }

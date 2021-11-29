@@ -65,7 +65,7 @@ export class DetailsItemComponent implements OnInit {
       this.ownerName = this.ownerObj.name!;
       console.log("OWNERNOME",this.ownerName);
     }).catch((error) => {
-      window.alert("errore di chiamata API" + error);
+      window.alert("errore di chiamata API22" + error);
     })
   }
 
@@ -76,13 +76,13 @@ export class DetailsItemComponent implements OnInit {
       this.name_objects= this.item.name;
       this.description= this.item.description!;
       this.price_euro= this.item.price!; 
-      if(this.item.category != null){
+      if(this.item.category != 0){
         this.getCategoryId(this.item.category!); 
       }else{
         this.categoryName = "Nessuna categoria";
       }
       this.url_photo= this.item.imgurl!;
-      if(this.item.owner != null){
+      if(this.item.owner != 0){
       this.getUserId(this.item.owner!);
       }else{
         this.ownerName = "Nessun proprietario";
