@@ -75,3 +75,34 @@ body {
   .submit:active {
     background-color: #06b;
   }
+
+  .altezza-in{
+    //height:692.4px-80px-54px;
+    max-height:692.4px-80px-54px;
+  }
+
+
+
+  @media screen and (min-width:1200px){
+    .altezza{
+      height:576px;
+      max-height: 576px;
+      margin-left:auto;
+      margin-right:2.5rem;
+      &-dx{
+        margin-right:auto;
+        height:692.4px;
+      max-height: 692.4px;
+      }
+    }
+
+
+      @media screen and (max-width:1199px){
+        body{
+          margin:0px 0px 0px 0px;
+          padding:0px 0px 0px 0px;
+        }
+
+    }
+  }
+    
