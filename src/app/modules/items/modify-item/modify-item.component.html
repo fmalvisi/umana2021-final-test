@@ -26,7 +26,7 @@
                     <label>Prezzo (in euro): </label>
                     <div class="row">
                         <div class="col">
-                            <input type="number" class="form-control"  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
+                            <input type="number" class="form-control" id=price_input  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
                         </div>
                         <!--controllo required-->
                         <div *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
@@ -42,12 +42,10 @@
                             <label><i class="fas fa-list"></i>Categoria</label>
                             <div class="input-group mb-3" >
 
-                                <select class="form-select" id="inputGroupSelect01">
+                                <select class="form-select" id="inputGroupCategory">
 
                                     <!--<option selected>{{category_objects_selected}}</option>-->
-                                    <option selected>{{category_objects_selected}}</option>
-
-                                  <option  *ngFor="let category of categories">{{category.name}}</option>
+                                  <option  *ngFor="let a of category_array; let i= index;" [selected]="a == category_objects_selected">{{a}}</option>
                                 </select>
                             </div>
                         </div>
@@ -56,7 +54,7 @@
                         <!--Proprietario-->
                         <label> <i class="fas fa-user"></i>Proprietario</label>
                        
-                        <select class="form-select" id="inputGroupSelect01">
+                        <select class="form-select" id="inputGroupUsers">
                             <option *ngFor="let a of user_array; let i= index;" [selected]="a == owner_objects_selected">{{a}}</option>
                             <option>Nessun proprietario assegnato</option>
                         </select>

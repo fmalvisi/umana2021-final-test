@@ -17,7 +17,9 @@ export class ModifyItemComponent implements OnInit {
   price_euro=0;
   price_centesimi=0;
   category_objects=0
+  category_id=0;
   category_objects_selected="";//
+  category_array:string[]=[]
   user_array:string[]=[]; //salvataggio di tutte le categorie
   user_array_i?:string;
 
@@ -91,7 +93,10 @@ export class ModifyItemComponent implements OnInit {
     this.superService.getCategoryList().then((res: Category[]) => {
       this.categories=res;
      
-  
+  /*riempimento category_array*/
+  for(let i =1; i<this.categories.length+1; i++){
+    this.getCategoryId(i)
+    }
 
       if(this.category_objects!=null){
         this.getCategoryId(this.category_objects)
@@ -109,14 +114,18 @@ export class ModifyItemComponent implements OnInit {
 
     this.superService.getCategoryById(id).then((res:Category)=>{
       this.category=res;
-
+      this.category_id=this.category.id!;
        this.prov = this.category.name;
       
+      //riempio category_arrey
+      this.category_array.push(this.category.name)
       //imposto valore category_objects_selected
       let controller_name=this.category.name;
 
-     
-      if(controller_name!==null){
+     //imposto valore category_id
+     var id_prov = this.category.id;
+
+      if(id_prov===this.category_objects){
         this.category_objects_selected=this.category.name;
       }
 
@@ -132,9 +141,6 @@ export class ModifyItemComponent implements OnInit {
   getUser(){
     this.superService.getUserList().then((res:User[])=>{
       this.users=res;
-     /* if(this.owner!=null){
-        this.getUserId(this.owner)
-      }*/
 
       /*riempimento user_array*/
       for(let i =1; i<this.users.length+1; i++){
@@ -150,15 +156,12 @@ export class ModifyItemComponent implements OnInit {
       var id_prov = this.user.id;
 
       this.user_array.push(this.user.name + " " + this.user.surname)
-      //console.log("CCC" + this.user_array)
 
       //imposto valore owner_objects_selected
       if(this.owner===id_prov){
         this.owner_objects_selected=this.user.name + " " + this.user.surname;
         this.sortArrayUser();
-
       }
-
 
     }).catch((error)=>{
       window.alert("errore di chiamata API" + error);
@@ -186,12 +189,26 @@ export class ModifyItemComponent implements OnInit {
 
   }
 
-    updateItem(item:Item){
-      getUserId(id:number){
-        this.superService.getUserById(id).then((res:User)=>{
+  sortArrayCategory(){
+    let position_0=this.category_array[0];
 
-        });
+    for(let i =0; i<this.category_array.length;i++){
+
+      console.log(this.category_array[i])
+      if(this.category_array[i]===this.category_objects_selected){
+        let i_x = this.category_objects_selected
+        this.category_array[0]=i_x;
+        this.category_array[i]=position_0;
+        //console.log("Trovato match " + position_0 + " " + this.user_array[i])
+
+        //this.user_array.splice(i);
+      } console.log("NUOVO ARRAYccccc" + this.category_array[i] +" " + this.category_array[i-1])
+      
+    }
+
   }
+
+  
     
 
     showCarouselItems(){
@@ -203,11 +220,32 @@ export class ModifyItemComponent implements OnInit {
     }
 
     onFormSubmit(form: NgForm) {
+
+      //in  onupdate?
       console.log(form.value);
-      console.log('NOME:' + form.controls["name_input"].value);
+      this.name_objects=form.controls["name_input"].value;
+      this.description=form.controls["description_input"].value;
+      this.price_euro=form.controls["price_euro"].value
+      var prov1= document.getElementById("inputGroupCategory") as HTMLInputElement
+      this.category_objects_selected=prov1.value;
+      var prov2= document.getElementById("inputGroupUsers") as HTMLInputElement
+      this.owner_objects_selected=prov2.value;
+      this.url_img_input;
+
+      console.log(this.url_img_input)
      
       //console.log('Password:' + userForm.controls['pass'].value);
   }
+
+  /*
+  updateItem(item:Item){
+    this.superService.updateItem(item).then((res:Item)=>{
+      this.item=res;
+      this.
+    }).catch((error)=>{
+      window.alert("errore di chiamata API" + error);
+    });
+  }*/
 
     constructor( private superService : SuperItemService, private route: ActivatedRoute, 
       ) { }
@@ -226,6 +264,8 @@ export class ModifyItemComponent implements OnInit {
 
     this.category_objects_selected="Nessuna categoria assegnata";
     this.owner_objects_selected="Nessun utente assegnato"
+    //this.category_array.push(this.owner_objects_selected)
+
 
     this.getItemsId(this.id);
     
