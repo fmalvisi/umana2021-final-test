@@ -7,7 +7,7 @@ body {
   }
   
   .form {
-    background-color: #15172b;
+    background-color: #fff3cd;
     border-radius: 20px;
     box-sizing: border-box;
     height: auto;
@@ -15,7 +15,7 @@ body {
   }
   
   .title {
-    color: #eee;
+    color: black;
     font-family: sans-serif;
     font-size: 36px;
     font-weight: 600;
@@ -23,7 +23,7 @@ body {
   }
   
   .subtitle {
-    color: #eee;
+    color:black;
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -45,11 +45,11 @@ body {
   }
   
   input {
-    background-color: #303840;
+    background-color: #fff3cd;
     border-radius: 12px;
-    border: 0;
+    border: solid 1px black;
     box-sizing: border-box;
-    color: #eee;
+    color: black;
     font-size: 18px;
     height: 100%;
     outline: 0;

@@ -7,11 +7,9 @@ import { ReactiveFormsModule, NgForm, FormsModule} from '@angular/forms';
 import { of } from 'rxjs';
 import { User, UsersService } from 'src/app/core/api/generated';
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
 import { CustomPipeEta } from '../etapipe.pipe';
-=======
 import { By } from '@angular/platform-browser';
->>>>>>> 46622488c232b79ad21e764c54c68e61354e58cc
+
 
 mockutente : UsersService;
 
@@ -47,7 +45,7 @@ xdescribe('AggiungiComponent', () => {
       imports: [
         RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule
       ],
-      declarations: [ AggiungiComponent,CustomPipeEta ],
+      //declarations: [ AggiungiComponent,CustomPipeEta ],
       providers: [
         { provide: ActivatedRoute, useValue: { paramMap: of(convertToParamMap({})) }},
         { provide: UsersService, useClass: MockUser},
@@ -67,7 +65,7 @@ xdescribe('AggiungiComponent', () => {
   });
  
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();  
   });
   

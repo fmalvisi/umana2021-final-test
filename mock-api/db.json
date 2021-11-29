@@ -7,7 +7,7 @@
       "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
-      "owner": 2
+      "owner": null
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
-      "owner": 2
+      "owner": null
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
-      "owner": 2
+      "owner": null
     },
     {
       "id": 4,
@@ -34,7 +34,7 @@
       "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
-      "owner": 2
+      "owner": null
     }
   ],
   "category": [
@@ -47,17 +47,10 @@
   "users": [
     {
       "id": 1,
-      "name": "Mario",
+      "name": "Mariottide",
       "surname": "Rossi",
-      "dob": "--",
+      "dob": "16-11-2021",
       "email": "mario.rossi@email.com"
-    },
-    {
-      "id": 2,
-      "name": "Paolo",
-      "surname": "Bianchi",
-      "email": "paolo.bianchi@email.com",
-      "dob": "02-01-1970"
     },
     {
       "id": 4,

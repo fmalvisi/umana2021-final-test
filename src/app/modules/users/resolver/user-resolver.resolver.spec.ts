@@ -49,7 +49,7 @@ class MockApi{
     return of(this.utenti[id-1]);
   }
 }
-fdescribe('UserResolverResolver', () => {
+describe('UserResolverResolver', () => {
   let resolver: UserResolverResolver;
   let state: RouterStateSnapshot;
   
@@ -124,7 +124,7 @@ class MockEuserService{
   }
 }
 
-fdescribe('resolver errore',()=>{
+describe('resolver errore',()=>{
   let resolver: UserResolverResolver;
   let state: RouterStateSnapshot;
   

@@ -69,6 +69,14 @@ class MockItemsService{
     {
       id:1,
       name:"",
+      owner:1
+    },{
+      id:5,
+      name:"",
+    },{
+      id:2,
+      name:"",
+      owner:2
     }
   ]
 
@@ -107,7 +115,12 @@ class MockData{
     [{id:1,
       name:"",},
       {id:3,
-      name:""}
+      name:""},
+      {
+        id:5,
+        name:"",
+        owner:4
+      }
   ]
 
 
@@ -176,6 +189,8 @@ describe('ModificaComponent', () => {
     expect(component.oggetti).toBeTruthy();
     expect(component.utente).toBeTruthy();
     expect(component.dobc).toMatch('-');
+    expect(component.oggetti.length).toEqual(2);
+    console.log('nel test oggetti di component è ',component.oggetti);
   })
 
   it('should return oggetti',()=>{

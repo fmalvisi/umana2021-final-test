@@ -34,7 +34,7 @@ class MockItemsService{
 
 }
 
-fdescribe('ItemsResolverResolver', () => {
+describe('ItemsResolverResolver', () => {
   let resolver: ItemsResolverResolver;
   let state: RouterStateSnapshot;
   
@@ -97,7 +97,7 @@ class MockEItemsService{
 }
 
 
-fdescribe('items resolver error',()=>{
+describe('items resolver error',()=>{
   let resolver: ItemsResolverResolver;
   let state: RouterStateSnapshot;
   let mockitems:MockEItemsService=new MockEItemsService;
@@ -128,11 +128,18 @@ fdescribe('items resolver error',()=>{
     snapshot.params={id:1};
     state = {url: '', root: snapshot};
     let errore=new Error('errore');
-    it('items resolve dovrebbe dare errore', ()=>{
+    /*it('items resolve dovrebbe dare errore', ()=>{
       resolver['items']=new MockEItemsService as unknown as ItemsService;
       spyOn(resolver['items'],'getItems');
       resolver.resolve(snapshot,state);
       expect(resolver['items'].getItems).toThrow('errore');
       
+    })*/
+    it('resolve dovrebbe dare errore',()=>{
+      resolver['items']=new MockEItemsService as unknown as ItemsService;
+      spyOn(resolver['items'],'getItems').and.callThrough();
+      resolver.resolve(snapshot,state);
+      expect(resolver['items'].getItems).toHaveBeenCalledTimes(1);
+  
     })
 })
