@@ -192,7 +192,7 @@ export class ModifyItemComponent implements OnInit {
       this.category_objects_selected=prov1.value;
       var prov2= document.getElementById("inputGroupUsers") as HTMLInputElement
       this.owner_objects_selected=prov2.value;
-      this.url_img_input;
+      this.url_img_input=form.controls['url'].value
 
       console.log(this.url_img_input)
      
@@ -224,8 +224,8 @@ export class ModifyItemComponent implements OnInit {
 
     this.category_objects_selected="Nessuna categoria assegnata";
     this.owner_objects_selected="Nessun utente assegnato"
-    this.category_array.push(this.owner_objects_selected)
-    this.user_array.push(this.category_objects_selected)
+    this.category_array.push(this.category_objects_selected)
+    this.user_array.push(this.owner_objects_selected)
 
 
     this.getItemsId(this.id);
