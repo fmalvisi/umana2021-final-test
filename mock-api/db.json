@@ -2,21 +2,21 @@
   "items": [
     {
       "id": 1,
-      "name": "Yankee Candletttt",
-      "description": "Usata, a metà.",
-      "price": 15.5,
-      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": 0,
-      "owner": 0
+      "name": "hhhhh",
+      "description": "sds",
+      "price": 10,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 1,
+      "owner": 2
     },
     {
       "id": 2,
-      "name": "Yankee Candle333333",
-      "description": "Usata, a metà.",
-      "price": 15.5,
-      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": 0,
-      "owner": 0
+      "name": "Sciarpa in lana rosa",
+      "description": "Usata, in buone condizioni",
+      "price": 5.5,
+      "imgurl": "https://woolrich-cdn.thron.com/delivery/public/image/woolrich/e28cd3ae-fc89-4773-9d11-00752497d6c7/zk128o/std/500x750/CFWRAC0057FRUF0587-8812.jpg?format=WEBP",
+      "category": 2,
+      "owner": 2
     },
     {
       "id": 4,
@@ -62,6 +62,85 @@
       "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
       "category": 1,
       "owner": 1
+    },
+    {
+      "id": 9,
+      "name": "666",
+      "description": "666",
+      "price": 666,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 1,
+      "owner": 1
+    },
+    {
+      "id": 10,
+      "name": "cp3",
+      "description": "uyuy",
+      "price": 22,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png"
+    },
+    {
+      "id": 11,
+      "name": "cp4",
+      "description": "",
+      "price": 0,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 1,
+      "owner": 0
+    },
+    {
+      "id": 12,
+      "name": "casa",
+      "description": "casa",
+      "price": 55,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 1,
+      "owner": 1
+    },
+    {
+      "id": 13,
+      "name": "xasa",
+      "description": "3333",
+      "price": 33,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 1,
+      "owner": 0
+    },
+    {
+      "id": 14,
+      "name": "cp2",
+      "description": "cp2",
+      "price": 1,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 2,
+      "owner": 1
+    },
+    {
+      "id": 15,
+      "name": "3333",
+      "description": "32323",
+      "price": 33,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 3,
+      "owner": 1
+    },
+    {
+      "id": 16,
+      "name": "rtdgd",
+      "description": "fdgdfgdfg",
+      "price": 5454,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 0,
+      "owner": 0
+    },
+    {
+      "id": 17,
+      "name": "paolo bianchi",
+      "description": "sdpds",
+      "price": 33,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 0,
+      "owner": 2
     }
   ],
   "category": [

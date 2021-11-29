@@ -38,7 +38,7 @@
                             <!--Categoria-->
                             <label><i class="fas fa-list"></i>Categoria</label>
                             <div class="input-group mb-3" >
-                                <select class="form-select" id="inputGroupCategory">
+                                <select class="form-select" id="inputGroupCategory" [(ngModel)]="categorySelected"  name="categorySelected">
                                     <option id="category_input" *ngFor="let a of category_array; let i= index;" [selected]="a == category_objects_selected">{{a}}</option>
                                 </select>
                             </div>
@@ -47,7 +47,7 @@
                         <div class="col">
                         <!--Proprietario-->
                         <label> <i class="fas fa-user"></i>Proprietario</label>
-                        <select class="form-select" id="inputGroupUsers">
+                        <select class="form-select" id="inputGroupUsers" name="ownerSelected" [(ngModel)]="ownerSelected">
                             <option *ngFor="let a of user_array; let i= index;" [selected]="a == owner_objects_selected">{{a}}</option>
                         </select>
                         </div>      

@@ -191,21 +191,15 @@ export class ModifyItemComponent implements OnInit {
       }
     }
 
+    checkImgUrl(url:string){
+      if(url == ""){
+        this.url_photo = "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png";
+      }else{
+        this.url_photo = url;
+      }
+    }
+
     onFormSubmit(form: NgForm) {
-
-      /*
-      console.log(form.value);
-      this.name_objects=form.controls["name_input"].value;
-      this.description=form.controls["description_input"].value;
-      this.price_euro=form.controls["price_euro"].value
-      var prov1= document.getElementById("inputGroupCategory") as HTMLInputElement
-      this.category_objects_selected=prov1.value;
-      var prov2= document.getElementById("inputGroupUsers") as HTMLInputElement
-      this.owner_objects_selected=prov2.value;
-      this.url_img_input=form.controls['url'].value;
-      this.category_objects=form.controls["category_input"].value;
-
-      console.log(this.category_objects)*/
 
       for (let cat of this.categories) {
         if(cat.name == this.categorySelected){
@@ -222,17 +216,20 @@ export class ModifyItemComponent implements OnInit {
         this.lastId = it.id!;  
       }
       this.newItemId = this.lastId + 1; 
+      this.checkImgUrl(form.controls["url"].value);
       let newItem = {
         "id": this.id_object,
         "name": form.controls["name_input"].value,
         "description": form.controls["description_input"].value,
         "price": form.controls["price_euro"].value,
-        "imgurl": form.controls["url"].value,
+        "imgurl": this.url_photo,
         "category": this.newCategoryId,
         "owner": this.newOwnerId
-      }
-
+    }
       this.updateItem(newItem); 
+      //this.getItems();
+      
+
     }
 
 
