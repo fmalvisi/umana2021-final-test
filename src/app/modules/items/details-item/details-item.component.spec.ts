@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CurrencyEurPipe } from 'src/app/shared/pipes/currency.pipe';
 
 import { DetailsItemComponent } from './details-item.component';
 
@@ -8,7 +12,8 @@ describe('DetailsItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DetailsItemComponent ]
+      imports: [HttpClientTestingModule, RouterTestingModule, FormsModule],
+      declarations: [ DetailsItemComponent, CurrencyEurPipe]
     })
     .compileComponents();
   });

@@ -16,7 +16,7 @@
                         <label for ="name_input"><strong>Nome oggetto: </strong></label>
                         <input  type="text" class="form-control" [value]="prova"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
                         <!--controllo required-->
-                        <div *ngIf="name_input.errors?.['required']">
+                        <div class="mandatoryfields" *ngIf="name_input.errors?.['required']">
                             campo obbligatorio
                         </div>
                         <br>
@@ -25,7 +25,7 @@
                         <label for ="description_input"><strong>Descrizione oggetto: </strong></label>
                         <input type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
                         <!--controllo required-->
-                        <div *ngIf="description_input.errors?.['required']">
+                        <div class="mandatoryfields" *ngIf="description_input.errors?.['required']">
                             campo obbligatorio
                         </div>
                         <br>
@@ -35,7 +35,7 @@
                         <input type="number" class="form-control" id=price_input  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
                 
                         <!--controllo required-->
-                        <div *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
+                        <div class="mandatoryfields" *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
                             campo obbligatorio
                         </div>
                         <br>
@@ -90,7 +90,7 @@
                         <!-- Testing (click)="send()"-->
                         <button type="submit" class="btn btn-outline-success" [disabled]="name_objects === '' || description === '' || price_euro === 0 || price_euro === null "  class="btn btn-outline-success"  >Invia</button>
                         <br>
-                        <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">indietro</button>
+                        <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">Indietro</button>
                     </div>
                 </div>
             </div>
