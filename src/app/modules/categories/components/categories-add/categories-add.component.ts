@@ -32,31 +32,56 @@ export class CategoriesAddComponent implements OnInit {
     var nomecat = name.toLowerCase();
 
     this.categoryService.getCategories().subscribe(categories => {
-      for (const item of categories) {
-        this.name = item.name;
-
-        function doesItMatch() {
-          return nomecat === item.name.toLowerCase();
+      console.log("la categories è: ", categories);
+      var test = categories.filter(
+        (c) => {
+          return nomecat === c.name.toLowerCase();
         }
-        var match = [item.name.toLowerCase()].some(doesItMatch);
+      );// fine test
+      console.log("test è uguale a: ", test);
+      if (test.length > 0) {
+        console.log("è stata trovata una corrispondenza");
+        const element: HTMLElement = document.getElementById('nameMatch') as HTMLElement;
+        element.style.display = 'block';
+        var button = <HTMLButtonElement>document.getElementById('button');
+        button.disabled = true;
+      } else {
+        this.categoryService
+         .createCategory(category)
+         .subscribe(category => console.log('Nuova categoria:', category));
+      }// fine if..else
+    });//fine subscribe()
 
-        if (match == true) {
-          const element: HTMLElement = document.getElementById('nameMatch') as HTMLElement;
-          element.style.display = 'block';
-          var button = <HTMLButtonElement>document.getElementById('button');
-          button.disabled = true;
+//       for (const item of categories) {
+//         this.name = item.name;
+// /*la some() nella categories*/
+//         function doesItMatch() {
+//           return nomecat === item.name.toLowerCase();
+//         }
+//         var match = [item.name.toLowerCase()].some(doesItMatch);
+//
+//         if (match == true) {
+//           const element: HTMLElement = document.getElementById('nameMatch') as HTMLElement;
+//           element.style.display = 'block';
+//           var button = <HTMLButtonElement>document.getElementById('button');
+//           button.disabled = true;
+//
+//           this.controlloGlobal = false;
+//           console.log(this.controlloGlobal);
+//         } // fine if
+//       } // fine for
+//       if (this.controlloGlobal === true) {
+//         this.categoryService
+//           .createCategory(category)
+//           .subscribe(category => console.log('Nuova categoria:', category));
+//       } // fine if
+//     }); // fine subscribe()
 
-          this.controlloGlobal = false;
-          console.log(this.controlloGlobal);
-        } // fine if
-      } // fine for
-    }); // fine subscribe()
-
-    if (this.controlloGlobal === true) {
-      this.categoryService
-        .createCategory(category)
-        .subscribe(category => console.log('Nuova categoria:', category));
-    } // fine if
+    // if (this.controlloGlobal === true) {
+    //   this.categoryService
+    //     .createCategory(category)
+    //     .subscribe(category => console.log('Nuova categoria:', category));
+    // } // fine if
   } // fine onSubmit()
 
 
