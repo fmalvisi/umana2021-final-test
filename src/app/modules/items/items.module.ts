@@ -9,6 +9,8 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { DetailsItemComponent } from './details-item/details-item.component';
 import { ModifyItemComponent } from './modify-item/modify-item.component';
 import { CurrencyEurPipe } from './../../shared/pipes/currency.pipe';
+import { SuperItemService } from './services/superItemService';
+
 
 
 
@@ -25,6 +27,7 @@ import { CurrencyEurPipe } from './../../shared/pipes/currency.pipe';
     CommonModule,
     ItemsRoutingModule,
     FormsModule
-  ]
+  ],
+  providers: [SuperItemService],
 })
 export class ItemsModule { }

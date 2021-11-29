@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { SuperItemService } from 'src/app/core/services/superItemService';
 import { Category, Item, User } from '../../../core/api/generated'; 
 import { Observable, of } from 'rxjs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { SuperItemService } from '../services/superItemService';
 
 @Component({
   selector: 'app-details-item',

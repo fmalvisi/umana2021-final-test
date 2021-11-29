@@ -16,7 +16,10 @@ const routes: Routes = [
   },
   {
     path: 'dettagli-oggetto/:id',
-    component: DetailsItemComponent
+    component: DetailsItemComponent,
+    resolve: {
+      item : DetailsItemComponent,
+    },
   },
   {
     path: 'modifica-oggetto/:id',
