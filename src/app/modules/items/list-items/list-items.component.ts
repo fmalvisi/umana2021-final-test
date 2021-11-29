@@ -33,8 +33,7 @@ export class ListItemsComponent implements OnInit {
   }
 
   ngOnInit(): void {      
-    this.getItems();  
-    console.log("provaprovaprova");  
+    this.getItems();
     this.filtriInUso.splice(0,1);
   }
 
@@ -71,31 +70,24 @@ export class ListItemsComponent implements OnInit {
   add(){
     if (typeof Storage !== "undefined") { 
       sessionStorage.setItem("showCarousel", "false");
-    }else{
-      console.log( "Sorry, your browser does not support Web Storage...");
     }
   }
 
   modify(index: number){
     if (typeof Storage !== "undefined") { 
       sessionStorage.setItem("showCarousel", "false");
-    }else{
-      console.log( "Sorry, your browser does not support Web Storage...");
     }
   }
 
   details(index: number){
     if (typeof Storage !== "undefined") { 
       sessionStorage.setItem("showCarousel", "false");
-    }else{
-      console.log( "Sorry, your browser does not support Web Storage...");
     }
   }
 
   deleteItem(index: number){
     if(index != null || index != 0){
       this.superService.deleteItem(index).subscribe(() =>{
-        console.log('oggetto eliminato!')
         this.getItems();
       })
     }
