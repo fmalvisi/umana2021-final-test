@@ -2,12 +2,12 @@
   "items": [
     {
       "id": 1,
-      "name": "Yankee Candle",
-      "description": "Usata, a metà.",
-      "price": 15.5,
+      "name": "Yankee Candle prova",
+      "description": "Mai usata",
+      "price": 20,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": 1,
-      "owner": 1
+      "category": 0,
+      "owner": 0
     },
     {
       "id": 2,
@@ -44,6 +44,15 @@
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
       "owner": null
+    },
+    {
+      "id": 7,
+      "name": "mouse",
+      "description": "Usato, come nuovo",
+      "price": 5.5,
+      "imgurl": "https://www.gadgetzilla.it/i/7198d7d2-98d2-4f94-8cf7-b33ca6d7df4a.jpg",
+      "category": 2,
+      "owner": 1
     }
   ],
   "category": [

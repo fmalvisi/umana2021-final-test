@@ -12,6 +12,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./modify-item.component.scss']
 })
 export class ModifyItemComponent implements OnInit {
+  id_object=0;
   name_objects="";
   description="";
   price_euro=0;
@@ -41,6 +42,14 @@ export class ModifyItemComponent implements OnInit {
   mostra = true;
   id=0;//id per richiamare getitemById
 
+
+
+  categorySelected ="null";
+  ownerSelected ="null"; 
+  newCategoryId = 0;
+  newOwnerId = 0;
+  newItemId = 0;
+  lastId = 0;
   //caricamento immagine
   load_url(){
     var url = document.getElementById("url") as HTMLInputElement
@@ -52,6 +61,7 @@ export class ModifyItemComponent implements OnInit {
   getItemsId(id:number){
     this.superService.getItemById(id).then((res: Item) => {
       this.item = res;
+      this.id_object=this.item.id!
       this.name_objects=this.item.name
       this.description=this.item.description!
       this.price_euro=this.item.price!
@@ -183,7 +193,7 @@ export class ModifyItemComponent implements OnInit {
 
     onFormSubmit(form: NgForm) {
 
-      //in  onupdate?
+      /*
       console.log(form.value);
       this.name_objects=form.controls["name_input"].value;
       this.description=form.controls["description_input"].value;
@@ -192,22 +202,46 @@ export class ModifyItemComponent implements OnInit {
       this.category_objects_selected=prov1.value;
       var prov2= document.getElementById("inputGroupUsers") as HTMLInputElement
       this.owner_objects_selected=prov2.value;
-      this.url_img_input=form.controls['url'].value
+      this.url_img_input=form.controls['url'].value;
+      this.category_objects=form.controls["category_input"].value;
 
-      console.log(this.url_img_input)
-     
-      //console.log('Password:' + userForm.controls['pass'].value);
-  }
+      console.log(this.category_objects)*/
 
-  /*
-  updateItem(item:Item){
-    this.superService.updateItem(item).then((res:Item)=>{
-      this.item=res;
-      this.
-    }).catch((error)=>{
-      window.alert("errore di chiamata API" + error);
-    });
-  }*/
+      for (let cat of this.categories) {
+        if(cat.name == this.categorySelected){
+          this.newCategoryId = cat.id!; 
+        }
+      }
+      for (let us of this.users) {
+        let fullname = us.name + " "+us.surname;
+        if(fullname == this.ownerSelected){
+          this.newOwnerId = us.id!; 
+        }
+      }
+      for (let it of this.items) {
+        this.lastId = it.id!;  
+      }
+      this.newItemId = this.lastId + 1; 
+      let newItem = {
+        "id": this.newItemId,
+        "name": form.controls["name_input"].value,
+        "description": form.controls["description_input"].value,
+        "price": form.controls["price_euro"].value,
+        "imgurl": form.controls["url"].value,
+        "category": this.newCategoryId,
+        "owner": this.newOwnerId
+      }
+
+      this.updateItem(newItem); 
+    }
+
+
+    updateItem(item:Item){
+      this.superService.updateItem(item).subscribe(() =>{
+        console.log('oggetto aggiunto!');
+        //this.getItems();   
+      })
+    }
 
     constructor( private superService : SuperItemService, private route: ActivatedRoute, 
       ) { }

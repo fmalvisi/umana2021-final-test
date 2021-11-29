@@ -39,7 +39,7 @@
                             <label><i class="fas fa-list"></i>Categoria</label>
                             <div class="input-group mb-3" >
                                 <select class="form-select" id="inputGroupCategory">
-                                    <option  *ngFor="let a of category_array; let i= index;" [selected]="a == category_objects_selected">{{a}}</option>
+                                    <option id="category_input" *ngFor="let a of category_array; let i= index;" [selected]="a == category_objects_selected">{{a}}</option>
                                 </select>
                             </div>
                         </div>
