@@ -9,10 +9,9 @@ export class CustomPipeEta implements PipeTransform {
     
 
   transform(user: User) {
-      let l="15-12-1997";
-      //const z=user.dob.split("-",3);
-      const z=l.split("-",3)
-
+    
+      const z=user.dob.split("-",3);
+  
       let d = z[0];
       let m = z[1];
       let a = z[2]; 
@@ -40,7 +39,7 @@ export class CustomPipeEta implements PipeTransform {
       }
 
       console.log(ageyear);
-      return (ageyear);
+      return (ageyear+"anni");
   }
 }
 

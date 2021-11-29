@@ -284,7 +284,7 @@ describe('ModificaComponent', () => {
 
   })
 
-  fit("setitem dovrebbe funzionare",waitForAsync(()=>{
+  it("setitem dovrebbe funzionare",waitForAsync(()=>{
     let oggetto:Item={
       id:1,
       name:"testitem",
