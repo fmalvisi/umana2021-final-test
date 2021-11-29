@@ -223,38 +223,46 @@ export class ModifyItemComponent implements OnInit {
 
     onFormSubmit(form: NgForm) {
 
-      for (let cat of this.categories) {
-        if(cat.name == this.categorySelected){
-          this.newCategoryId = cat.id!; 
+      if( form.controls["name_input"].value===""||form.controls["description_input"].value===""||form.controls["price_euro"].value===0){
+        alert("Riempire tutti i campi obbligatori")
+      }else{
+
+        for (let cat of this.categories) {
+          if(cat.name == this.categorySelected){
+            this.newCategoryId = cat.id!; 
+          
+          }
         }
-      }
-      for (let us of this.users) {
-        let fullname = us.name + " "+us.surname;
-        if(fullname == this.ownerSelected){
-          this.newOwnerId = us.id!; 
+        for (let us of this.users) {
+          let fullname = us.name + " "+us.surname;
+          if(fullname == this.ownerSelected){
+            this.newOwnerId = us.id!; 
+          }
         }
-      }
-      for (let it of this.items) {
-        this.lastId = it.id!;  
-      }
-      this.newItemId = this.lastId + 1; 
-      this.checkImgUrl(form.controls["url"].value);
-      let newItem = {
-        "id": this.id_object,
-        "name": form.controls["name_input"].value,
-        "description": form.controls["description_input"].value,
-        "price": form.controls["price_euro"].value,
-        "imgurl": this.url_photo,
-        "category": this.newCategoryId,
-        "owner": this.newOwnerId
-    }
-      this.updateItem(newItem); 
-      //this.getItems();
+        for (let it of this.items) {
+          this.lastId = it.id!;  
+        }
+        this.newItemId = this.lastId + 1; 
+        this.checkImgUrl(form.controls["url"].value);
+
       
 
+        let newItem = {
+          "id": this.id_object,
+          "name": form.controls["name_input"].value,
+          "description": form.controls["description_input"].value,
+          "price": form.controls["price_euro"].value,
+          "imgurl": this.url_photo,
+          "category": this.newCategoryId,
+          "owner": this.newOwnerId
+        }
+
+        this.updateItem(newItem); 
+        //this.getItems();
+        
+      }
+
     }
-
-
     updateItem(item:Item){
       this.superService.updateItem(item).subscribe(() =>{
         console.log('oggetto aggiunto!');
