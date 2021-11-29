@@ -1,5 +1,6 @@
+import { HttpEvent } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -49,12 +50,12 @@ class MockUserService{
   }
 
   updateUser(id:number,utente:User){
-    of(console.log("utente aggiornato"));
+    return of(console.log("utente aggiornato"));
   }
 
 
   deleteUser(id:number){
-    of(this.utenteCancellato);
+    return of(this.utenteCancellato);
   }
 
 }
@@ -283,7 +284,7 @@ describe('ModificaComponent', () => {
 
   })
 
-  it("setitem dovrebbe funzionare",()=>{
+  fit("setitem dovrebbe funzionare",waitForAsync(()=>{
     let oggetto:Item={
       id:1,
       name:"testitem",
@@ -291,12 +292,14 @@ describe('ModificaComponent', () => {
     }
     component.setItems(oggetto);
     expect(oggetto.owner).toBeNull;
-    component['items'].updateItem(oggetto.id!,oggetto).subscribe(items=>{
-      console.log(items);
-    });
+    component['items'].updateItem(oggetto.id!,oggetto);
+    fixture.whenStable().then(()=>{
     component.setItems(oggetto);
     expect(oggetto.owner).toEqual(1);
-  })
+    expect(component.setitemsprova).toBeTrue();
+    });
+    
+  }))
 
 
   it('dob si dovrebbe aggiornare',()=>{
@@ -364,7 +367,22 @@ class MockEuserService{
   deleteUser(id:number):Observable<any>{
     return of(throwError(new Error("errore finto")));
   }*/
-
+  errore=throwError(new Error('errore'));
+  getUser(id:number):Observable<any>{
+    return this.errore.pipe(catchError(err=>{
+      return err;
+    }));
+  }
+  updateUser(id:number,utente:User):Observable<any>{
+    return this.errore.pipe(catchError(err=>{
+      return err;
+    }));
+  }
+  deleteUser(id:number):Observable<any>{
+    return this.errore.pipe(catchError(err=>{
+      return err;
+    }));
+  }
 }
 
 
@@ -382,6 +400,12 @@ class MockEItemsService{
   updateItem():Observable<any>{
     return of(throwError(new Error('errore finto')));
   }*/
+  errore=throwError(new Error('errore'));
+  getItems():Observable<any>{
+    return this.errore.pipe(catchError(err=>{
+      return err;
+    }));
+  }
 }
 
 
@@ -403,7 +427,7 @@ class EMockData{
 describe('ModificaComponent errori', () => {
   let component: ModificaComponent;
   let fixture: ComponentFixture<ModificaComponent>;
-
+  let spiarouter={navigate:jasmine.createSpy("navigate")};
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports:[
@@ -417,7 +441,7 @@ describe('ModificaComponent errori', () => {
         {provider:ItemsService, useClass:MockEItemsService},
         {provide:ActivatedRoute,useClass:EMockData},
         FormBuilder,
-        //Router,
+        {provide:Router,useValue:spiarouter}
       ],
 
     })
@@ -431,7 +455,60 @@ describe('ModificaComponent errori', () => {
   });
 
   it("constructor should be error",()=>{
-    expect(component['chkurl'].url).toMatch('/users');
-  })
+    expect(spiarouter.navigate).toHaveBeenCalledTimes(1);
+  });
   
 })
+
+describe('errori api',()=>{
+  let component: ModificaComponent;
+  let fixture: ComponentFixture<ModificaComponent>;
+beforeEach(async () => {
+  await TestBed.configureTestingModule({
+    imports:[
+      RouterTestingModule,
+      HttpClientTestingModule,
+      ReactiveFormsModule
+    ],
+    declarations: [ ModificaComponent ],
+    providers:[
+      {provider:UsersService, useClass:MockEuserService},
+      {provider:ItemsService, useClass:MockEItemsService},
+      {provide:ActivatedRoute,useClass:MockData},
+      FormBuilder,
+      //Router,
+    ],
+
+  })
+  .compileComponents();
+});
+
+beforeEach(() => {
+  fixture = TestBed.createComponent(ModificaComponent);
+  component = fixture.componentInstance;
+  fixture.detectChanges();
+});
+
+  it('onsubmit should give error',()=>{
+    let testinput = document.createElement('input');
+    testinput.value='test';
+    let spy=spyOn(document,'getElementById').and.callFake(()=>{
+      return testinput;
+    });
+    let spy2=spyOn(component['api'],'updateUser').and.throwError(new Error('errore'));
+    component.checkform.setValue({
+      nome:"test",
+      cognome:"test",
+      dob:"test",
+      email:"test@test.test"
+    });
+    component.onsubmit();
+    expect(component['api'].updateUser).toHaveBeenCalledTimes(1);
+
+
+  });
+
+
+});
+
+
