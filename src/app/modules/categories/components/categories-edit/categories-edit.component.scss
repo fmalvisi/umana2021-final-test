@@ -2,7 +2,7 @@ form {
   width: 90%;
   margin: auto;
   padding-top: 50px;
-  height: 90vh;
+  height: 80vh;
 
   .form-container {
     padding: 30px;
@@ -38,6 +38,20 @@ form {
         background-color: #212529;
         border-color: #212529;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .form-container {
+    width: 90% !important;
+    label {
+      width: 120px;
+      margin: 5px 0;
+    }
+    input {
+      width: 80%;
+      display: block;
     }
   }
 }

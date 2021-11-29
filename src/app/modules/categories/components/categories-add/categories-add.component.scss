@@ -6,15 +6,15 @@ form {
       font-size: 1.25rem;
     }
     input {
-      width: 30%;
       box-shadow: 1px 1px darkgrey;
       &:focus {
         border-color: #fff3cd;
         box-shadow: 0 0 0 0.25rem rgb(102 77 3 / 25%);
       }
-    }//fine input
+    } //fine input
     // colore del font delle segnalazioni
-    .error, #nameMatch {
+    .error,
+    #nameMatch {
       color: red;
     }
     button {
@@ -24,5 +24,17 @@ form {
       background-color: #dfe0e1;
       border-color: #dfe0e1;
     }
-  }//fine div
+  } //fine div
+}
+
+@media screen and (max-width: 1025px) {
+  input {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  input {
+    width: 40%;
+  }
 }

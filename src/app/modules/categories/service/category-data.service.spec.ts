@@ -22,4 +22,10 @@ describe('CategoryDataService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('ID Called', () => {
+    spyOn(service['messageSource'], 'next');
+    service.getCatId(5);
+    expect(service['messageSource'].next).toHaveBeenCalledWith(5);
+  });
 });
