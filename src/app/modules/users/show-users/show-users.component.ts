@@ -45,4 +45,16 @@ console.log("gli utenti sono:", this.utenti);
     }
     console.log("gli utenti trovati sono:" , this.cercati);
   }
+
+  stampaNomeTrovato(utente : User) : boolean{
+    let controllo = false;
+
+    for (let i = 0; i < this.cercati.length; i++) {
+      if (this.cercati[i].name == utente.name) {
+        controllo = true;
+        break;
+       }
+     }
+     return controllo;
+  }
 }

@@ -29,7 +29,9 @@
          </tr>
        </thead>
        <tbody>
-          <tr *ngFor="let utente of utenti" style="padding: 10%;">
+         <div *ngFor="let utente of utenti" >
+
+           <tr *ngIf="stampaNomeTrovato(utente)" style="padding: 10%;">
             <th scope="row">{{utente.id}}</th>
             <td>{{utente.name}}</td>
             <td>{{utente.surname}}</td>
@@ -40,6 +42,7 @@
               </div> 
             </td>
           </tr>
+        </div>
           
        </tbody>
      </table>
