@@ -109,9 +109,7 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
       oggetto.owner=null;
     }
     console.log('oggetto nel test è' , oggetto);
-    this.items.updateItem(oggetto.id!,oggetto).subscribe(()=>{console.log('andata');this.setitemsprova=true},error=>{
-      console.log(error)
-    });
+    this.items.updateItem(oggetto.id!,oggetto).subscribe(()=>{console.log('tutto bene')},()=>{});
   }
 
   onsubmit(){
@@ -132,9 +130,7 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
       email:email
     }
     this.utente=editUser;
-    this.api.updateUser(id!,editUser).subscribe(resolve=>{},error=>{
-      console.log('errore', error)
-    });
+    this.api.updateUser(id!,editUser).subscribe();
   }
   }
 
@@ -156,9 +152,7 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
       }
     }
     if(posso){
-    this.api.deleteUser(this.utente.id!).subscribe(cancellato=>{},error=>{
-      console.log(error);
-    });
+    this.api.deleteUser(this.utente.id!).subscribe();
     }
   }
   
