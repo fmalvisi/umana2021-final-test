@@ -1,57 +1,61 @@
 form {
-  width: 90%;
-  margin: auto;
-  padding-top: 50px;
-  height: 80vh;
+  margin-top: 1rem;
+  // width: 90%;
+  // margin: auto;
+  // padding-top: 50px;
+  // height: 80vh;
 
   .form-container {
-    padding: 30px;
-    width: 60%;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    // padding: 30px;
+    // width: 60%;
+    //border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
   }
 
-  h1 {
-    margin-bottom: 50px;
+  div {
+    margin-bottom: 1rem;
   }
 
   label {
-    width: 120px;
-    margin: 20px 0;
+    width: 40%;
+    font-size: 1.25rem;
   }
 
   input {
-    width: 50%;
+    width: 40%;
     border: 1px solid rgba(0, 0, 0, 0.125);
+    box-shadow: 1px 1px darkgrey;
   }
 
   .button-wrapper {
     display: block;
 
     button {
-      margin: 20px 50px 0 0;
-      color: #664d03;
-      background-color: #fff3cd;
-      border-color: #ffecb5;
-      &:hover {
-        color: #f8f9fa;
-        background-color: #212529;
-        border-color: #212529;
-      }
+      //margin: 20px 50px 0 0;
+      box-shadow: 1px 1px darkgrey;
+    }
+    .btn-light:hover {
+      background-color: #dfe0e1;
+      border-color: #dfe0e1;
     }
   }
 }
 
 @media screen and (max-width: 1025px) {
-  .form-container {
-    width: 90% !important;
-    label {
-      width: 120px;
-      margin: 5px 0;
-    }
-    input {
-      width: 80%;
-      display: block;
+  // .form-container {
+  //   // width: 90% !important;
+  //   // label {
+  //   //   width: 120px;
+  //   //   margin: 5px 0;
+  //   // }
+  //   // input {
+  //   //   width: 80%;
+  //   //   display: block;
+  //   // }
+  // }
+  form {
+    input, label {
+      width: 100%;
     }
   }
 }
