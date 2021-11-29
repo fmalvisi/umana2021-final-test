@@ -20,6 +20,7 @@ export class ModifyItemComponent implements OnInit {
   category_array:string[]=[]
   user_array:string[]=[]; //salvataggio di tutte le categorie
   user_array_i?:string;
+  goodModifica = false;
 
   url_photo="";
   owner=0;
@@ -248,18 +249,18 @@ export class ModifyItemComponent implements OnInit {
         "category": this.newCategoryId,
         "owner": this.newOwnerId
     }
-      this.updateItem(newItem); 
-      //this.getItems();
-      
-
+      this.updateItem(newItem);
     }
 
 
     updateItem(item:Item){
       this.superService.updateItem(item).subscribe(() =>{
         console.log('oggetto aggiunto!');
-        //this.getItems();   
-      })
+        this.goodModifica = true;
+        setTimeout(() => {
+          this.goodModifica = false; 
+        }, 3000);        
+      });
     }
 
     

@@ -11,10 +11,6 @@ import { ModifyItemComponent } from './modify-item/modify-item.component';
 import { CurrencyEurPipe } from './../../shared/pipes/currency.pipe';
 import { SuperItemService } from './services/superItemService';
 
-
-
-
-
 @NgModule({
   declarations: [
     ListItemsComponent, 
@@ -28,6 +24,8 @@ import { SuperItemService } from './services/superItemService';
     ItemsRoutingModule,
     FormsModule
   ],
-  providers: [SuperItemService],
+  providers: [
+    SuperItemService
+  ]
 })
 export class ItemsModule { }
