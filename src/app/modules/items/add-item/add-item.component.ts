@@ -14,7 +14,7 @@ import { SuperItemService } from '../services/superItemService.service';
 export class AddItemComponent implements OnInit {
   name_objects="";
   description="";
-  price_euro=0;
+  price_euro = 0;
   price_centesimi=0;
   category_objects=0
   category_objects_selected="";
@@ -33,6 +33,7 @@ export class AddItemComponent implements OnInit {
 
   url_img_input=""
   url_controller=false;
+  checkfields:boolean = true;
   newUrl = "";
   message: string|null = null;
   items:Item[] = [];
