@@ -4,6 +4,7 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { DetailsItemComponent } from './details-item/details-item.component';
 import { ListItemsComponent } from './list-items/list-items.component';
 import { ModifyItemComponent } from './modify-item/modify-item.component';
+import { DetailsItemResolver } from './resolvers/details-item.resolver';
 
 const routes: Routes = [
   {  
@@ -18,7 +19,7 @@ const routes: Routes = [
     path: 'dettagli-oggetto/:id',
     component: DetailsItemComponent,
     resolve: {
-      item : DetailsItemComponent,
+      item : DetailsItemResolver,
     },
   },
   {
