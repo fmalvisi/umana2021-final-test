@@ -41,7 +41,7 @@
       <td>
         <button class="btn btn-light" (click)="hide(category.id)">{{toggleClose(category.id)}}</button>
         <span [ngClass]="[willBeDisabled(category.id)]">
-          <button class="btn btn-warning" [ngClass]="[willBeDisabled(category.id)]" (click)="deleteCategory(category.id)">Cancella</button>
+          <button class="btn btn-danger" [ngClass]="[willBeDisabled(category.id)]" (click)="deleteCategory(category.id)">Cancella</button>
         </span>
       </td>
     </tr>
