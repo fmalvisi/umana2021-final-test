@@ -7,7 +7,7 @@ import { Item, ItemsService, User, UsersService } from 'src/app/core/api/generat
   templateUrl: './modifica.component.html',
   styleUrls: ['./modifica.component.scss']
 })
-export class ModificaComponent implements DoCheck,AfterViewInit {
+export class ModificaComponent implements AfterViewInit {
 
   
   oggetti:Array<Item>=[]
@@ -109,9 +109,7 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
       oggetto.owner=null;
     }
     console.log('oggetto nel test è' , oggetto);
-    this.items.updateItem(oggetto.id!,oggetto).subscribe(()=>{console.log('andata');this.setitemsprova=true},error=>{
-      console.log(error)
-    });
+    this.items.updateItem(oggetto.id!,oggetto).subscribe(()=>{console.log('tutto bene')});
   }
 
   onsubmit(){
@@ -132,9 +130,10 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
       email:email
     }
     this.utente=editUser;
-    this.api.updateUser(id!,editUser).subscribe(resolve=>{},error=>{
-      console.log('errore', error)
-    });
+    this.api.updateUser(id!,editUser).subscribe();
+    alert('utente aggiornato!');
+  } else {
+    alert('alcuni campi non sono validi');
   }
   }
 
@@ -156,17 +155,16 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
       }
     }
     if(posso){
-    this.api.deleteUser(this.utente.id!).subscribe(cancellato=>{},error=>{
-      console.log(error);
-    });
+    this.api.deleteUser(this.utente.id!).subscribe();
+    alert('utente distrutto');
+    this.chkurl.navigate(['/users']);
+    }
+    else{
+      alert('timuovi tutti gli oggetti prima di distruggere');
     }
   }
   
-  ngDoCheck(): void {
-  //  if(!this.showForm){
-  //   this.aggiorna();
-  //   }
-  }
+
 
 
   // aggiungiItem(){

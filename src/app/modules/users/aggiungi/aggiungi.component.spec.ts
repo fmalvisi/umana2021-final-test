@@ -63,28 +63,22 @@ describe('AggiungiComponent', () => {
     expect(component).toBeTruthy();  
   });
   
-
-  fit ('onsubmit funziona', (() => {
-    spyOn(component,"onsubmit");
-    let el=fixture.debugElement.query(By.css('button')).nativeElement;
-    el.click()
-    //component.onsubmit(testForm);
-    expect(component.onsubmit).toHaveBeenCalledTimes(1);
-  }));
-
   it('should have Aggiungi  utente', () => {
     const el =fixture.debugElement.nativeElement;
     expect(el.querySelector('h4').textContent).toContain('Aggiungi utente');
   });
 
-  it('onsubmit should not work', ()=> {
-  const el =fixture.debugElement;
-  el.query(By.css(".firstname"))
-  .query(By.css(".lastname"))
-  .query(By.css(".email"))
-  .query(By.css(".dob"))
+  
+  it ('onsubmit funziona', (() => {
+    spyOn(component,"onsubmit");
+    let el=fixture.debugElement.query(By.css('button')).nativeElement;
+    el.click()
+    //component.onsubmit(testForm);
+    expect(component.onsubmit).toHaveBeenCalledTimes(1);
 
-  });
+    
+  }));
+
 
 
 

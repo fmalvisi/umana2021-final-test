@@ -8,6 +8,33 @@
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
       "owner": null
+    },
+    {
+      "id": 2,
+      "name": "Yankee Candle",
+      "description": "Usata, a metà.",
+      "price": 15.5,
+      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
+      "category": null,
+      "owner": null
+    },
+    {
+      "id": 3,
+      "name": "Yankee Candle",
+      "description": "Usata, a metà.",
+      "price": 15.5,
+      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
+      "category": null,
+      "owner": null
+    },
+    {
+      "id": 4,
+      "name": "Yankee Candle",
+      "description": "Usata, a metà.",
+      "price": 15.5,
+      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
+      "category": null,
+      "owner": null
     }
   ],
   "category": [
@@ -20,7 +47,7 @@
   "users": [
     {
       "id": 1,
-      "name": "Mario",
+      "name": "Mariottide",
       "surname": "Rossi",
       "dob": "28-10-1988",
       "email": "mario.rossi@email.com"
@@ -29,29 +56,44 @@
       "id": 2,
       "name": "Paolo",
       "surname": "Bianchi",
-      "email": "paolo.bianchi@email.com",
-      "dob": "02-01-1970"
+      "dob": "07-02-1997",
+      "email": "paolo.bianchi@email.com"
     },
     {
+      "id": 3,
+      "name": "barislasss",
+      "surname": "derrajjji",
+      "dob": "13-03-1992",
+      "email": "barilsidaderraj@gmail.com"
+    },
+    {
+
       "id": 4,
       "name": "Roberto",
       "surname": "Verdicchi",
-      "email": "roberto.verdi@gmail.com",
-      "dob": "23-06-1980"
+      "dob": "17-10-1996",
+      "email": "roberto.verdi@gmail.com"
     },
     {
       "id": 5,
       "name": "Barisla",
       "surname": "derraj",
-      "dob": "22-05-1998",
+      "dob": "07-06-1986",
       "email": "barilsidaderraj@gmail.com"
     },
     {
       "id": 6,
-      "name": "Alessia",
-      "surname": "Verdi",
-      "dob": "11-06-1999",
-      "email": "alessia.v@gmail.com"
+      "name": "leonardo",
+      "surname": "capogna",
+      "dob": "07-06-1995",
+      "email": "leonardocapogna@gmail.com"
+    },
+    {
+      "id": 7,
+      "name": "leoo",
+      "surname": "cap",
+      "dob": "18-05-1995",
+      "email": "leocap76@hotmail.it"
     }
   ]
 }

@@ -13,8 +13,6 @@ export class ShowUsersComponent implements OnInit {
   constructor(private route:ActivatedRoute, private api: UsersService) {
     this.route.data.subscribe(data => {
       this.utenti = data.utente;
-    }, error => {
-      console.log(error);
     })
 
    }
@@ -55,15 +53,15 @@ export class ShowUsersComponent implements OnInit {
 
   mostra = true;
 
-  aggiornaMostra(){
+  aggiornaMostra() : void{
      this.mostra = !this.mostra;
   }
 
-   devoMostrare(){
+   devoMostrare() : any{
      return this.mostra;
    }
 
-   evidenzio(controllo : boolean){
-    return {'bg-primary !important' : controllo}
+   evidenzio(controllo : boolean) : any{
+    return {'bg-light !important' : controllo}
   }
 }
