@@ -26,31 +26,19 @@ export class ModifyItemComponent implements OnInit {
   url_photo="";
   owner=0;
   owner_objects_selected="";
-  
-  //owner_objects_selected="";
-  //owner_selected_id=0;
   prova="";
-
-  prov="";
-
-
+  prov=0;
   url_img_input=""
   url_controller=false;
-  
   message: string|null = null;
   items:Item[] = [];
   item? : Item;
-
   categories:Category[]=[];
   category?:Category;
-  
-  
   users:User[]=[];
   user?:User;
-
   fetchedItems :Item[] = [];
   mostra = true;
-
   id=0;//id per richiamare getitemById
 
   //caricamento immagine
@@ -60,12 +48,8 @@ export class ModifyItemComponent implements OnInit {
     this.url_controller=true;
   }
 
-  send(){
-  }
-  
   //Item
   getItemsId(id:number){
-
     this.superService.getItemById(id).then((res: Item) => {
       this.item = res;
       this.name_objects=this.item.name
@@ -75,21 +59,17 @@ export class ModifyItemComponent implements OnInit {
       this.url_photo=this.item.imgurl!
       this.owner=this.item.owner!
 
-
       this.getCategories();
-      
       this.getUser();
-      
-      
     }).catch((error) => {
       window.alert("errore di chiamata API" + error);
     })
   }
 
-
   //Category
   //richiamata in getItemId()
-  getCategories(){ 
+  getCategories(){
+  
     this.superService.getCategoryList().then((res: Category[]) => {
       this.categories=res;
      
@@ -97,10 +77,6 @@ export class ModifyItemComponent implements OnInit {
   for(let i =1; i<this.categories.length+1; i++){
     this.getCategoryId(i)
     }
-
-      if(this.category_objects!=null){
-        this.getCategoryId(this.category_objects)
-      }
 
     }).catch((error) => {
       window.alert("errore di chiamata API" + error);
@@ -110,23 +86,20 @@ export class ModifyItemComponent implements OnInit {
 
   //richiamata in getCategory()
   getCategoryId(id:number){
-    //this.getCategories();
-
     this.superService.getCategoryById(id).then((res:Category)=>{
       this.category=res;
       this.category_id=this.category.id!;
-       this.prov = this.category.name;
+      //this.prov = this.category.id!;
       
       //riempio category_arrey
       this.category_array.push(this.category.name)
-      //imposto valore category_objects_selected
-      let controller_name=this.category.name;
 
      //imposto valore category_id
      var id_prov = this.category.id;
 
       if(id_prov===this.category_objects){
         this.category_objects_selected=this.category.name;
+        this.sortArrayCategory();
       }
 
     }).catch((error)=>{
@@ -168,7 +141,6 @@ export class ModifyItemComponent implements OnInit {
     })
   }
 
-
   //ordinamento corretto array
   sortArrayUser(){
     let position_0=this.user_array[0];
@@ -180,12 +152,8 @@ export class ModifyItemComponent implements OnInit {
         let i_x = this.owner_objects_selected
         this.user_array[0]=i_x;
         this.user_array[i]=position_0;
-        //console.log("Trovato match " + position_0 + " " + this.user_array[i])
-
-        //this.user_array.splice(i);
-      } console.log("NUOVO ARRAY" + this.user_array[i] +" " + this.user_array[i-1])
-      
     }
+  }
 
   }
 
@@ -199,17 +167,11 @@ export class ModifyItemComponent implements OnInit {
         let i_x = this.category_objects_selected
         this.category_array[0]=i_x;
         this.category_array[i]=position_0;
-        //console.log("Trovato match " + position_0 + " " + this.user_array[i])
-
-        //this.user_array.splice(i);
-      } console.log("NUOVO ARRAYccccc" + this.category_array[i] +" " + this.category_array[i-1])
+      }
       
     }
 
   }
-
-  
-    
 
     showCarouselItems(){
       if (typeof Storage !== "undefined") { 
@@ -251,8 +213,6 @@ export class ModifyItemComponent implements OnInit {
       ) { }
 
 
-    
-
   ngOnInit(): void {
 
     //recupero id da url
@@ -264,7 +224,8 @@ export class ModifyItemComponent implements OnInit {
 
     this.category_objects_selected="Nessuna categoria assegnata";
     this.owner_objects_selected="Nessun utente assegnato"
-    //this.category_array.push(this.owner_objects_selected)
+    this.category_array.push(this.owner_objects_selected)
+    this.user_array.push(this.category_objects_selected)
 
 
     this.getItemsId(this.id);
