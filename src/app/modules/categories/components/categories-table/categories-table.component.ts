@@ -113,25 +113,22 @@ export class CategoriesTableComponent implements OnInit {
     return (this.currentCategory = categoryID);
   }
 
-  toggleClose(categoryID:any){
-    
-
+  toggleClose(categoryID: any) {
     let detailIndex = 0;
-    for(let i = 0 ; i < this.categoryArr.length; i++){
-      if(this.categoryArr[i].id === categoryID){
+    for (let i = 0; i < this.categoryArr.length; i++) {
+      if (this.categoryArr[i].id === categoryID) {
         detailIndex = i;
       }
     }
 
-    if(this.detailCategoryArr[detailIndex]){
+    if (this.detailCategoryArr[detailIndex]) {
       return 'Chiudi';
-    }else {
+    } else {
       return 'Dettagli';
     }
-
   }
- 
-  hide(categoryID: any): void {
+
+  hide(categoryID: number | null): void {
     let areAllFalse = this.detailCategoryArr.every(bool => bool === false);
 
     let detailIndex = 0;
@@ -154,9 +151,5 @@ export class CategoriesTableComponent implements OnInit {
         this.detailCategoryArr[detailIndex] = true;
       }
     }
-
-    // {
-    //   alert('Puoi visualizzare solo i dettagli di una categoria alla volta.')
-    // }
   }
 }
