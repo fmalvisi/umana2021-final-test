@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { CategoryDataService } from './../../service/category-data.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+=======
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+>>>>>>> f3d164a7fe620de92378b4c7e2a41f72ac4db1d5
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CategoriesTableComponent } from './categories-table.component';
 
@@ -12,11 +17,9 @@ describe('CategoriesTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CategoriesTableComponent ],
-      providers: [CategoryDataService],
-      imports: [HttpClientTestingModule]
-    })
-    .compileComponents();
+      declarations: [CategoriesTableComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
