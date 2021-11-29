@@ -49,29 +49,57 @@
       "id": 1,
       "name": "Mariottide",
       "surname": "Rossi",
+<<<<<<< HEAD
       "dob": "16-11-2021",
       "email": "mario.rossi@email.com"
     },
     {
+=======
+      "dob": "21-01-1999",
+      "email": "mario.rossi@email.com"
+    },
+    {
+      "id": 2,
+      "name": "Paolo",
+      "surname": "Bianchi",
+      "dob": "07-02-1997",
+      "email": "paolo.bianchi@email.com"
+    },
+    {
+      "id": 3,
+      "name": "barislasss",
+      "surname": "derrajjji",
+      "dob": "13-03-1992",
+      "email": "barilsidaderraj@gmail.com"
+    },
+    {
+>>>>>>> 3318c390307440f56c80d0efe35094cd9b9e4bc2
       "id": 4,
       "name": "Roberto",
       "surname": "Verdicchi",
-      "email": "roberto.verdi@gmail.com",
-      "dob": "23-06-1980"
+      "dob": "17-10-1996",
+      "email": "roberto.verdi@gmail.com"
     },
     {
       "id": 5,
       "name": "barisla",
       "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "2022-12-31"
+      "dob": "07-06-1986",
+      "email": "barilsidaderraj@gmail.com"
     },
     {
       "id": 6,
-      "name": "Alessia",
-      "surname": "Verdi",
-      "email": "alessia.v@gmail.com",
-      "dob": "1985-10-10"
+      "name": "leonardo",
+      "surname": "capogna",
+      "dob": "07-06-1995",
+      "email": "leonardocapogna@gmail.com"
+    },
+    {
+      "id": 7,
+      "name": "leoo",
+      "surname": "cap",
+      "dob": "18-05-1995",
+      "email": "leocap76@hotmail.it"
     }
   ]
 }
