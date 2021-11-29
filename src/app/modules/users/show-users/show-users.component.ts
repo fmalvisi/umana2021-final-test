@@ -64,6 +64,6 @@ export class ShowUsersComponent implements OnInit {
    }
 
    evidenzio(controllo : boolean){
-    return {'bg-danger !important' : controllo}
+    return {'bg-primary !important' : controllo}
   }
 }
