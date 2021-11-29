@@ -222,12 +222,18 @@ export class ListItemsComponent implements OnInit {
       for(let item of res){
         for(let filtro of this.filtriInUso){
           if(filtro.tipo === 'categoria' && filtro.id === item.category){
-            this.itemsFiltrati.push(item);
+            if(!this.eliminaOggettiDuplicati(item)) {
+              this.itemsFiltrati.push(item);
+            }
           } else {
             if(filtro.tipo === 'utente' && filtro.id === item.owner){
-              this.itemsFiltrati.push(item);
+              if(!this.eliminaOggettiDuplicati(item)) {
+                this.itemsFiltrati.push(item);
+              }
             } else if (filtro.id === item.id && filtro.nome === item.name) {
-              this.itemsFiltrati.push(item);
+              if(!this.eliminaOggettiDuplicati(item)) {
+                this.itemsFiltrati.push(item);
+              }
             }
           }
         }
@@ -236,6 +242,17 @@ export class ListItemsComponent implements OnInit {
       window.alert("errore di chiamata API" + error);
       this.returnHome;
     })
+  }
+
+  eliminaOggettiDuplicati(item: Item): boolean{
+    let variabile = false;
+    console.log('Entrato in elimina duplicati')
+    for(let i=0; i<this.itemsFiltrati.length; i++){
+      if(this.itemsFiltrati[i].id === item.id && this.itemsFiltrati[i].name === item.name) {
+        variabile = true;
+      }
+    }
+    return variabile;
   }
 
 
