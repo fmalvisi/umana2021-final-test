@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { Router } from '@angular/router';
 import { Category, Item, User } from '../../../core/api/generated';  
-import { SuperItemService } from '../services/superItemService';
+import { SuperItemService } from '../services/superItemService.service';
 
 @Component({
   selector: 'app-list-items',

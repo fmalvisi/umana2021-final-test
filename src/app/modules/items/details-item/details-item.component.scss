@@ -1,19 +1,21 @@
 .dettaglistyle{
-    display: flex; 
-    flex-direction: row;
-    width: 100%;
-    //justify-content: center;
-    //align-items: center;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+    height: auto;
 }
-.styleimgurl{
-    width: 33.4%; 
-    margin: auto; 
+
+.col-md-6{
+    padding: 2%;
 }
-.stylecontainerdetails{
-    width: 66.6%; 
-}
+
 img{
     max-width: 450px;
     max-height: auto;
-    margin: auto; 
-    }
+}
+
+.button_container{
+    display: flex;
+    justify-content: flex-end;
+}

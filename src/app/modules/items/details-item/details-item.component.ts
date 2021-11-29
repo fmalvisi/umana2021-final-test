@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Category, Item, User } from '../../../core/api/generated'; 
-import { Observable, of } from 'rxjs';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { SuperItemService } from '../services/superItemService';
+import { Category, Item, User } from '../../../core/api/generated';
+import { ActivatedRoute} from '@angular/router';
+import { SuperItemService } from '../services/superItemService.service';
 
 @Component({
   selector: 'app-details-item',
@@ -26,27 +25,27 @@ export class DetailsItemComponent implements OnInit {
   ownerObj? : User;
   categoryObj? : Category;
   fetchedItems :Item[] = [];
-  itemProva$?: Observable<Item>;
-  itemProva2$ = of(true);
-  mostra = true;
-  id =0 ;
- 
+  mostra = true; 
 
   currentId: String= '';
 
-  constructor(private superService : SuperItemService, private route: ActivatedRoute,) { }
+  constructor(
+    private superService : SuperItemService, 
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       let id = params.get('id');
-      this.id = Number(id)
-      
-  });
-    this.getItemsId(this.id);
+      if (id !== null) {
+        this.getItemsId(+id);
+      }     
+    });    
+    this.route.snapshot.data;
   }
   
   getCategoryId(id:number){
-    
+
     this.superService.getCategoryById(id).then((res: Category) => {
       this.categoryObj = res; 
       this.categoryName = this.categoryObj.name!;
@@ -74,18 +73,19 @@ export class DetailsItemComponent implements OnInit {
       this.name_objects= this.item.name;
       this.description= this.item.description!;
       this.price_euro= this.item.price!; 
-      if(this.item.category != 0){
+      
+      if (this.item.category != 0) {
         this.getCategoryId(this.item.category!); 
-      }else{
+      } else {
         this.categoryName = "Nessuna categoria";
       }
       this.url_photo= this.item.imgurl!;
-      if(this.item.owner != 0){
-      this.getUserId(this.item.owner!);
-      }else{
+      
+      if (this.item.owner != 0) {
+        this.getUserId(this.item.owner!);
+      } else {
         this.ownerName = "Nessun proprietario";
       }
-
     }).catch((error) => {
       window.alert("errore di chiamata API" + error);
     })
@@ -99,6 +99,6 @@ export class DetailsItemComponent implements OnInit {
     }
   }
 
-  }
+}
 
  
