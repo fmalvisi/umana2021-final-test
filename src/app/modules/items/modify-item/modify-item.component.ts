@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Item,Category,User } from '../../../core/api/generated'; 
-import {  ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { SuperItemService } from '../services/superItemService.service';
 
 @Component({
@@ -241,15 +241,11 @@ export class ModifyItemComponent implements OnInit {
             this.newOwnerId = us.id!; 
           }
         }
-<<<<<<< HEAD
         for (let it of this.items) {
           this.lastId = it.id!;  
         }
         this.newItemId = this.lastId + 1; 
         this.checkImgUrl(form.controls["url"].value);
-
-      
-
         let newItem = {
           "id": this.id_object,
           "name": form.controls["name_input"].value,
@@ -259,25 +255,6 @@ export class ModifyItemComponent implements OnInit {
           "category": this.newCategoryId,
           "owner": this.newOwnerId
         }
-=======
-      }
-      for (let it of this.items) {
-        this.lastId = it.id!;  
-      }
-      this.newItemId = this.lastId + 1; 
-      this.checkImgUrl(form.controls["url"].value);
-      let newItem = {
-        "id": this.id_object,
-        "name": form.controls["name_input"].value,
-        "description": form.controls["description_input"].value,
-        "price": form.controls["price_euro"].value,
-        "imgurl": this.url_photo,
-        "category": this.newCategoryId,
-        "owner": this.newOwnerId
-    }
-      this.updateItem(newItem);
-    }
->>>>>>> f7375c81d5f79f9e2888ac9996ef4395d6ff3cfa
 
         this.updateItem(newItem); 
         //this.getItems();
