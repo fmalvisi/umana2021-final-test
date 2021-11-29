@@ -4,7 +4,6 @@ import { User } from 'src/app/core/api/generated';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgModel } from '@angular/forms';
-import { CustomPipeEta } from '../etapipe.pipe';
 
 
 @Component({
@@ -19,7 +18,7 @@ export class AggiungiComponent implements OnInit {
   surname: "",
   email: "",
   dob:"" };
-  constructor(private route: ActivatedRoute, protected router: Router, private api: UsersService, custompipe: CustomPipeEta ) {
+  constructor(private route: ActivatedRoute, protected router: Router, private api: UsersService ) {
    
   }
   anni:any;
