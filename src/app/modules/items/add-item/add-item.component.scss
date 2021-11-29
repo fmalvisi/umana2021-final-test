@@ -2,3 +2,20 @@ img{
     max-width: 450px;
     max-height: auto;
 }
+
+.container-fluid{
+    width: 80%;
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.form-group{
+    padding: 3%;
+}
+
+.button_container{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
