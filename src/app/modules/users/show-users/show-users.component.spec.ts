@@ -1,8 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { User } from 'src/app/core/api/generated';
 import { ShowUsersComponent } from './show-users.component';
 
-describe('ShowUsersComponent', () => {
+class mockdata{
+  utenti : Array<User> = [{
+    id : 1,
+    name : "test1",
+    surname : "test1",
+    email : "test1",
+    dob : "test1"
+  },
+  {
+    id : 2,
+      name : "test2",
+      surname : "test2",
+      email : "test2",
+      dob : "test2"
+  }
+];
+}
+
+fdescribe('ShowUsersComponent', () => {
   let component: ShowUsersComponent;
   let fixture: ComponentFixture<ShowUsersComponent>;
 
