@@ -30,6 +30,7 @@ export class AggiungiComponent implements OnInit {
       let cognome = form.controls['cognome'].value;
       let email = form.controls['email'].value;
       let data = form.controls['data'].value;
+      data=data.substr(8,2)+"-"+data.substr(5,2)+"-"+data.substr(0,4);
       this.utente = { id : null,
       name : nome,
       surname: cognome,
