@@ -1,18 +1,19 @@
 <div class='container-fluid'>  
-    <div class="row">
-        <h1 class='display-4'>Modifica oggetto</h1>
-        <div class="col">
-            <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate>       
-                <div class="form-group">
-                    <!--Nome oggetto:-->
+    <h1 class='display-4'>Modifica oggetto</h1>
+    <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate> 
+        <div class="form-group">
+            <div class="row">
+                <!--col altro-->
+                <div class="col">
+                        <!--Nome oggetto:-->
                     <label for ="name_input">Nome oggetto: </label>
                     <input  type="text" class="form-control" [value]="prova"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
                     <!--controllo required-->
                     <div *ngIf="name_input.errors?.['required']">
-                         campo obbligatorio
+                        campo obbligatorio
                     </div>
                     <br>
-        
+
                     <!--Descrizione oggetto:-->
                     <label for ="description_input">Descrizione ogetto: </label>
                     <input type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
@@ -21,31 +22,24 @@
                         campo obbligatorio
                     </div>
                     <br>
-        
+
                     <!--Prezzo-->
                     <label>Prezzo (in euro): </label>
-                    <div class="row">
-                        <div class="col">
-                            <input type="number" class="form-control" id=price_input  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
-                        </div>
-                        <!--controllo required-->
-                        <div *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
-                            campo obbligatorio
-                        </div>
-                    
+                    <input type="number" class="form-control" id=price_input  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
+            
+                    <!--controllo required-->
+                    <div *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
+                        campo obbligatorio
                     </div>
                     <br>
-        
+                
                     <div class="row">
                         <div class="col">
                             <!--Categoria-->
                             <label><i class="fas fa-list"></i>Categoria</label>
                             <div class="input-group mb-3" >
-
                                 <select class="form-select" id="inputGroupCategory">
-
-                                    <!--<option selected>{{category_objects_selected}}</option>-->
-                                  <option  *ngFor="let a of category_array; let i= index;" [selected]="a == category_objects_selected">{{a}}</option>
+                                    <option  *ngFor="let a of category_array; let i= index;" [selected]="a == category_objects_selected">{{a}}</option>
                                 </select>
                             </div>
                         </div>
@@ -53,52 +47,53 @@
                         <div class="col">
                         <!--Proprietario-->
                         <label> <i class="fas fa-user"></i>Proprietario</label>
-                       
                         <select class="form-select" id="inputGroupUsers">
                             <option *ngFor="let a of user_array; let i= index;" [selected]="a == owner_objects_selected">{{a}}</option>
                         </select>
-
-                      </div>
+                        </div>      
                     </div>  
+
+                </div>
+
+                <!--col url-->
+                <div class="col">
                     <div class="row">
-                        <div class="button_container">
-                            <!-- Testing (click)="send()"-->
-                            <button type="submit" class="btn btn-outline-primary" >Invia</button>
+                        <label for ="url">Carica url immagine (facoltativo)</label>
+                        <div class="col">
+                            <input type="url" class="form-control" [(ngModel)]="url_photo" id ="url" pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})" name="url" #url_link="ngModel">
+                            <!--controllo pattern-->
+                            <div *ngIf="url_link.errors?.['pattern']">
+                                inserire url valido.
+                            </div>
                         </div>
-                    </div>                
-                </div>
-            
-            </form>
-        </div>
-        <div class="col">
-            <!-- da aggiungere todo (ngSubmit)="onFormSubmit(form)" -->
-            <form #caricaImgForm="ngForm"   novalidate>      
-            
-                <div class="row">
-                    <label for ="url">Carica url immagine (facoltativo)</label>
-                    <div class="col">
-                        <input type="url" class="form-control" [(ngModel)]="url_photo" id ="url" pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})" name="url" #url_link="ngModel">
-                         <!--controllo pattern-->
-                        <div *ngIf="url_link.errors?.['pattern']">
-                            inserire url valido.
+
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-primary"(click)="load_url()">Carica immagine</button>
                         </div>
                     </div>
 
-                    <div class="col">
-                        <button type="button" class="btn btn-outline-primary"(click)="load_url()">Carica immagine</button>
+                    <div class="photo_container">
+                        <i *ngIf="!url_controller">carica un url per visualizzare l'immagine in quest'area.</i>
+                        <img *ngIf="url_controller" src={{url_img_input}}>
                     </div>
                 </div>
-
-                <div class="photo_container">
-                    <i *ngIf="!url_controller">carica un url per visualizzare l'immagine in quest'area.</i>
-                    <img *ngIf="url_controller" src={{url_img_input}}>
+            </div>
+            <div class="row">
+                <div class="button_container">
+                    <!-- Testing (click)="send()"-->
+                    <button type="submit" class="btn btn-outline-success" >Invia</button>
+                    <br>
+                    <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">indietro</button>
                 </div>
-        
-            </form>
+            </div>
         </div>
-        
-        <div class="button_container">
-            <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-primary">indietro</button>
 
-    </div>
+        <div class="alert alert-success" role="alert">
+            <p>Oggetto modificato con successo.</p>
+        </div>
+
+    </form>
+
 </div>
+
+
