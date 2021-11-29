@@ -27,19 +27,30 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
     email:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9.]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z0-9]{1,4}$/)]]
   })
   gotdate=false;
-  dobc:string="01-01-1970";
+  dobc:string="placeholder";
 
 
+  formStatus(){
+    console.log("il form è falso:" + this.checkform.invalid);
+    return this.checkform.invalid;
+  }
 
 
   constructor(private api:UsersService, private route:ActivatedRoute, private chkurl:Router, private fb:FormBuilder, private items:ItemsService) {
+
+    //prova fix dob
+
     console.log('parto da qui');
+    console.log(this.route.data);
     this.route.data.subscribe(data=>{
-      //console.log("ok ",data);
+      console.log("ok ",data);
       this.utente=data.utente;
       this.oggetti=[];
       this.aggiorna();
-      this.updateDate();
+
+          //prova fix dob funziona!!!
+          this.updateDate();
+
       for(let oggetto of data.items){
         if(oggetto.owner==this.utente.id || oggetto.owner==null){
           this.oggetti.push(oggetto);
@@ -50,15 +61,12 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
       this.chkurl.navigate(['/users']);
     })
     
-    /*chkurl.events.subscribe((val)=>{
-      this.ngOnInit();
-    })*/
   }
 
   updateDate(){
     try{
       (document.getElementById('dob') as HTMLInputElement).value=this.dobc;
-    }catch(error){};
+    }catch(error){console.log(error)};
   }
 
   mostra(){
@@ -69,20 +77,6 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
     return this.oggetti;
   }
   aggiorna(){
-    /*let fields=['name','surname','email'];
-    let valori=[this.utente.name,this.utente.surname,this.utente.email];
-    
-    for(let c=0;c<fields.length;c++){
-      console.log(fields[c]);
-      (document.getElementById(fields[c]) as HTMLInputElement).value=valori[c];
-      console.log(this.checkform.controls);
-    };
-    let idob=document.getElementById('dob') as HTMLInputElement;
-    let dob=this.utente.dob.substr(7,4)+"-"+this.utente.dob.substr(4,2)+"-"+this.utente.dob.substr(1,2);
-    console.log('dob è '+dob)
-    idob.value=dob;*/
-    //this.dobc=this.utente.dob.substr(7,4)+"-"+this.utente.dob.substr(4,2)+"-"+this.utente.dob.substr(1,2);
-    
     this.showForm=true;
     this.dobc=this.utente.dob.substr(6,4)+"-"+this.utente.dob.substr(3,2)+"-"+this.utente.dob.substr(0,2);
     console.log("dobc è "+this.dobc + " dob è "+this.utente.dob);
@@ -93,7 +87,6 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
       email:this.utente.email
     }
     )
-    //console.log(this.showForm);
   }
 
   showInvalid(controllo:boolean){
@@ -107,15 +100,6 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
   }
 
 
-  prendiUtente(){
-    /*this.api.getUser(this.id).subscribe(user=>{
-      this.utente=user;
-      console.log('ricevuto utente' , this.id,user);
-    },error=>{
-      console.log(error);
-      this.chkurl.navigate(['/users']);
-    });*/
-  }
 
   setItems(oggetto:Item){
     console.log(oggetto);
@@ -130,6 +114,8 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
   }
 
   onsubmit(){
+    console.log("provo il submit");
+    if(this.checkform.valid){
     let id=this.utente.id;
     let name=(document.getElementById('name') as HTMLInputElement).value;
     let surname=(document.getElementById('surname') as HTMLInputElement).value;
@@ -148,7 +134,7 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
     this.api.updateUser(id!,editUser).subscribe(error=>{
       console.log('errore', error)
     });
-    
+  }
   }
 
 
@@ -176,27 +162,18 @@ export class ModificaComponent implements DoCheck,AfterViewInit {
   }
   
   ngDoCheck(): void {
-    /*this.route.params.subscribe(params=>{
-      this.id=params.id;
-      console.log('route attiva:',params.id);
-      this.prendiUtente();
-    })*/
-    if(!this.showForm){
-    this.aggiorna();
-    }
-    /*this.api.updateUser(this.id,this.utente).subscribe(user=>{
-      console.log(user);
-    })*/
-    /*this.api.getUsers().subscribe(users=>{
-      this.nutenti=users.length+1;
-      console.log(users.length);
-    })*/
-    //if(this.id<=this.nutenti){
-      
-  //} else {
-  //  alert('utente non trovato');
-  //  this.chkurl.navigate(['/users']);
-  //}
+  //  if(!this.showForm){
+  //   this.aggiorna();
+  //   }
   }
+
+
+  // aggiungiItem(){
+  //   let placeholder=this.oggetti[0];
+  //   placeholder.id=null;
+  //   this.items.createItem(placeholder).subscribe(error=>{
+  //     console.log("error");
+  //   })
+  // }
 
 }
