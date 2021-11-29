@@ -2,9 +2,11 @@ form {
   margin-top: 1rem;
   div {
     margin-bottom: 1rem;
+
     label {
       font-size: 1.25rem;
     }
+
     input {
       box-shadow: 1px 1px darkgrey;
       &:focus {
@@ -12,6 +14,7 @@ form {
         box-shadow: 0 0 0 0.25rem rgb(102 77 3 / 25%);
       }
     } //fine input
+    
     // colore del font delle segnalazioni
     .error,
     #nameMatch {
