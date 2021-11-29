@@ -287,7 +287,7 @@ describe('ModificaComponent', () => {
   })
 
   it("setitem dovrebbe funzionare",waitForAsync(()=>{
-    component['items']=new MockItemsService as unknown as ItemsService;
+    component['items']=new MockItemsService as unknown as ItemsService;//*************************************************************************************************** 
     let oggetto:Item={
       id:1,
       name:"testitem",

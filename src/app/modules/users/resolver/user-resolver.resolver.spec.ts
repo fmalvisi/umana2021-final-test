@@ -49,7 +49,7 @@ class MockApi{
     return of(this.utenti[id-1]);
   }
 }
-describe('UserResolverResolver', () => {
+fdescribe('UserResolverResolver', () => {
   let resolver: UserResolverResolver;
   let state: RouterStateSnapshot;
   
@@ -124,7 +124,7 @@ class MockEuserService{
   }
 }
 
-describe('resolver errore',()=>{
+fdescribe('resolver errore',()=>{
   let resolver: UserResolverResolver;
   let state: RouterStateSnapshot;
   
@@ -154,11 +154,14 @@ describe('resolver errore',()=>{
   });
   let snapshot:ActivatedRouteSnapshot=new ActivatedRouteSnapshot();
   //snapshot.data={id:1};
-  snapshot.params={id:3};
+  //snapshot.params={id:3};
+  snapshot.params={id:1};
   state = {url: '', root: snapshot};
   it('resolve dovrebbe dare errore',()=>{
-    spyOn(resolver['chkurl'],'navigate').and.callThrough();
+    resolver['api']=new MockEuserService as unknown as UsersService;
+    spyOn(resolver['api'],'getUser').and.callThrough();
     resolver.resolve(snapshot,state);
-    expect(resolver['chkurl'].navigate).toHaveBeenCalledTimes(1);
+    expect(resolver['api'].getUser).toHaveBeenCalledTimes(1);
+
   })
 })

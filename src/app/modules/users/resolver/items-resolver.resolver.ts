@@ -13,6 +13,8 @@ import { Item, ItemsService } from 'src/app/core/api/generated';
 export class ItemsResolverResolver implements Resolve<Array<Item>> {
   constructor(private items:ItemsService){}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Array<Item>> | Promise<Array<Item>>{
-    return this.items.getItems().toPromise().catch(error=>{throw error});
+    return this.items.getItems().toPromise().catch(error=>{
+      throw error;
+    });
   }
 }
