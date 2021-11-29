@@ -295,7 +295,7 @@ export class ModifyItemComponent implements OnInit {
         this.goodModifica = true;
         setTimeout(() => {
           this.goodModifica = false; 
-        }, 3000);        
+        }, 2000);        
       });
     }
 

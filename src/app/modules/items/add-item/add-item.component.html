@@ -1,4 +1,11 @@
+
 <h1 class='display-4' style="margin-top: 2%; text-align: center;">Aggiungi oggetto</h1>
+
+<div *ngIf="goodModifica" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Oggetto creato con successo !</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
 <div class='container-fluid  shadow-lg p-3 mb-5 bg-body rounded'>   
     <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate> 
         <div class="form-group">
@@ -97,5 +104,4 @@
     </form>
 
 </div>
-
-
+ 
