@@ -33,11 +33,13 @@ export class ListItemsComponent implements OnInit {
   }
 
   ngOnInit(): void {      
-    this.getItems();    
+    this.getItems();  
+    console.log("provaprovaprova");  
     this.filtriInUso.splice(0,1);
   }
 
   ngDoCheck(){
+    
     if(this.router.url == "/items"){
       if (typeof Storage !== "undefined") { 
         sessionStorage.setItem("showCarousel", "true");
@@ -94,9 +96,10 @@ export class ListItemsComponent implements OnInit {
     if(index != null || index != 0){
       this.superService.deleteItem(index).subscribe(() =>{
         console.log('oggetto eliminato!')
+        this.getItems();
       })
     }
-    this.getItems();
+    
   } 
 
   getItems(){

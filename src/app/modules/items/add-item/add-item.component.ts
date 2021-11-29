@@ -60,7 +60,7 @@ export class AddItemComponent implements OnInit {
     this.getUser();
     this.getItems();
   }
-  constructor( private superService : SuperItemService, private route: ActivatedRoute, 
+  constructor( private superService : SuperItemService, private route: Router, 
     ) { }
 
   //caricamento immagine
@@ -98,14 +98,14 @@ export class AddItemComponent implements OnInit {
     })
   }
 
-  /*createNewItem(item:Item){
-    this.superService.createItem(item).then((it:Item[])=>{
-      this.items=it; 
-    }).catch((error) => {
-      window.alert("errore di chiamata API4" + error);
-      //this.returnHome;
+  createNewItem(item:Item){
+    this.superService.createItem(item).subscribe(() =>{
+      console.log('oggetto aggiunto!');
+      //this.getItems();   
     })
-  }*/
+    
+    
+  }
     
     showCarouselItems(){
       if (typeof Storage !== "undefined") { 
@@ -114,6 +114,10 @@ export class AddItemComponent implements OnInit {
         console.log( "Sorry, your browser does not support Web Storage...");
       }
     } 
+
+    returnHome() {
+      this.route.navigate(['/items']); 
+    }
  
     onFormSubmit(userForm: NgForm) { 
 
@@ -141,7 +145,10 @@ export class AddItemComponent implements OnInit {
         "category": this.newCategoryId,
         "owner": this.newOwnerId
     }
- 
+      this.createNewItem(newItem); 
+      //this.getItems();
+      this.returnHome();
+      
   }
 
   
