@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-//import { CategoryService, Item, ItemsService, UsersService } from '../../../core/api/generated';
-import { Form, NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { SuperItemService } from 'src/app/core/services/superItemService';
+import { NgForm } from '@angular/forms';
 import { Item,Category,User } from '../../../core/api/generated'; 
-import { Observable, of } from 'rxjs';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import {  ActivatedRoute } from '@angular/router';
+import { SuperItemService } from '../services/superItemService';
 @Component({
   selector: 'app-modify-item',
   templateUrl: './modify-item.component.html',
@@ -50,6 +47,31 @@ export class ModifyItemComponent implements OnInit {
   newOwnerId = 0;
   newItemId = 0;
   lastId = 0;
+
+  constructor( 
+    private superService : SuperItemService, private route: ActivatedRoute, 
+  ) { }
+
+
+  ngOnInit(): void {
+
+    //recupero id da url
+      this.route.paramMap.subscribe(params => {
+        let id = params.get('id');
+        this.id = Number(id);
+    });
+
+
+    this.category_objects_selected="Nessuna categoria assegnata";
+    this.owner_objects_selected="Nessun utente assegnato"
+    this.category_array.push(this.category_objects_selected)
+    this.user_array.push(this.owner_objects_selected)
+
+
+    this.getItemsId(this.id);
+    
+  }
+  
   //caricamento immagine
   load_url(){
     var url = document.getElementById("url") as HTMLInputElement
@@ -243,27 +265,5 @@ export class ModifyItemComponent implements OnInit {
       })
     }
 
-    constructor( private superService : SuperItemService, private route: ActivatedRoute, 
-      ) { }
-
-
-  ngOnInit(): void {
-
-    //recupero id da url
-      this.route.paramMap.subscribe(params => {
-        let id = params.get('id');
-        this.id = Number(id);
-    });
-
-
-    this.category_objects_selected="Nessuna categoria assegnata";
-    this.owner_objects_selected="Nessun utente assegnato"
-    this.category_array.push(this.category_objects_selected)
-    this.user_array.push(this.owner_objects_selected)
-
-
-    this.getItemsId(this.id);
     
-  }
-
 }
