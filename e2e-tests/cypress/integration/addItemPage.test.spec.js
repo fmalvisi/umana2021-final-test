@@ -1,8 +1,8 @@
 const { internet } = require('faker');
 
-describe('001 base tests', () => {
+describe('additemPage tests', () => {
   before(() => {
-    cy.log('will start base tests');
+    cy.log('will start additemPage tests');
   });
 
   it('should load homepage', () => {
