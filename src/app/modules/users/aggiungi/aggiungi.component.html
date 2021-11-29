@@ -5,7 +5,7 @@
   <div class="input-container ic1">
     <input id="firstname" class="input" type="text" placeholder=" " name="nome"required="required" minlength="4"  ngModel #nome="ngModel"/>
     <div class="cut"></div>
-    <label for="firstname" class="placeholder">Nome*</label>
+    <label for="firstname" class="placeholder"></label>
         <div *ngIf="nome.invalid && (nome.dirty || nome.touched)"class="alert">
           <div *ngIf="nome.errors?.['required']" >
             Name is required.</div>
@@ -48,3 +48,5 @@
   <button type="submit" class="submit"(click)="onsubmit(form)">Aggiungi</button>
 </div>
 </form>
+
+<p>{{anni | CustomPipeEta}}</p>
