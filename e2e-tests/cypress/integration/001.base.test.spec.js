@@ -17,5 +17,4 @@ describe('001 base tests', () => {
     cy.contains('Esercitazione Finale').should('be.visible');
     cy.screenshot();
   });
-
 });
