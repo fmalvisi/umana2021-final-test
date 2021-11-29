@@ -1,99 +1,101 @@
 <div class='container-fluid'>  
-    <h1 class='display-4'>Modifica oggetto</h1>
-    <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate> 
-        <div class="form-group">
-            <div class="row">
-                <!--col altro-->
-                <div class="col">
-                        <!--Nome oggetto:-->
-                    <label for ="name_input">Nome oggetto: </label>
-                    <input  type="text" class="form-control" [value]="prova"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
-                    <!--controllo required-->
-                    <div *ngIf="name_input.errors?.['required']">
-                        campo obbligatorio
-                    </div>
-                    <br>
+    <h1 class='display-4' style="text-align: center; margin-top: 2%;">Modifica oggetto</h1>
+    
+    <div *ngIf="goodModifica" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Oggetto modificato con successo !</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+    <div class="wrapper shadow-lg p-3 mb-5 bg-body rounded">
+        <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate> 
+            <div class="form-group">
+                <div class="row">
+                    <!--col altro-->
+                    <div class="col">
+                            <!--Nome oggetto:-->
+                        <label for ="name_input"><strong>Nome oggetto: </strong></label>
+                        <input  type="text" class="form-control" [value]="prova"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
+                        <!--controllo required-->
+                        <div *ngIf="name_input.errors?.['required']">
+                            campo obbligatorio
+                        </div>
+                        <br>
 
-                    <!--Descrizione oggetto:-->
-                    <label for ="description_input">Descrizione ogetto: </label>
-                    <input type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
-                    <!--controllo required-->
-                    <div *ngIf="description_input.errors?.['required']">
-                        campo obbligatorio
-                    </div>
-                    <br>
+                        <!--Descrizione oggetto:-->
+                        <label for ="description_input"><strong>Descrizione oggetto: </strong></label>
+                        <input type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
+                        <!--controllo required-->
+                        <div *ngIf="description_input.errors?.['required']">
+                            campo obbligatorio
+                        </div>
+                        <br>
 
-                    <!--Prezzo-->
-                    <label>Prezzo (in euro): </label>
-                    <input type="number" class="form-control" id=price_input  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
-            
-                    <!--controllo required-->
-                    <div *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
-                        campo obbligatorio
-                    </div>
-                    <br>
+                        <!--Prezzo-->
+                        <label><strong>Prezzo </strong> (in euro): </label>
+                        <input type="number" class="form-control" id=price_input  name="price_euro" min=0 [(ngModel)]="price_euro" ngModel required #price_euto="ngModel">
                 
-                    <div class="row">
-                        <div class="col">
-                            <!--Categoria-->
-                            <label><i class="fas fa-list"></i>Categoria</label>
-                            <div class="input-group mb-3" >
-                                <select class="form-select" id="inputGroupCategory">
-                                    <option id="category_input" *ngFor="let a of category_array; let i= index;" [selected]="a == category_objects_selected">{{a}}</option>
-                                </select>
+                        <!--controllo required-->
+                        <div *ngIf="price_euto.errors?.['required'] ||price_euto.value===0">
+                            campo obbligatorio
+                        </div>
+                        <br>
+                    
+                        <div class="row">
+                            <div class="col">
+                                <!--Categoria-->
+                                <label><i class="fas fa-list"></i>&nbsp;<strong>Categoria: </strong></label>
+                                <div class="input-group mb-3" >
+                                    <select class="form-select" id="inputGroupCategory" [(ngModel)]="categorySelected"  name="categorySelected">
+                                        <option id="category_input" *ngFor="let a of category_array; let i= index;" [selected]="a == category_objects_selected">{{a}}</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-        
-                        <div class="col">
-                        <!--Proprietario-->
-                        <label> <i class="fas fa-user"></i>Proprietario</label>
-                        <select class="form-select" id="inputGroupUsers">
-                            <option *ngFor="let a of user_array; let i= index;" [selected]="a == owner_objects_selected">{{a}}</option>
-                        </select>
-                        </div>      
-                    </div>  
+            
+                            <div class="col">
+                            <!--Proprietario-->
+                            <label> <i class="fas fa-user"></i>&nbsp;<strong>Proprietario: </strong></label>
+                            <select class="form-select" id="inputGroupUsers" name="ownerSelected" [(ngModel)]="ownerSelected">
+                                <option *ngFor="let a of user_array; let i= index;" [selected]="a == owner_objects_selected">{{a}}</option>
+                            </select>
+                            </div>      
+                        </div>  
 
-                </div>
-
-                <!--col url-->
-                <div class="col">
-                    <div class="row">
-                        <label for ="url">Carica url immagine (facoltativo)</label>
-                        <div class="col">
-                            <input type="url" class="form-control" [(ngModel)]="url_photo" id ="url" pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})" name="url" #url_link="ngModel">
-                            <!--controllo pattern-->
-                            <div *ngIf="url_link.errors?.['pattern']">
-                                inserire url valido.
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <button type="button" class="btn btn-outline-primary"(click)="load_url()">Carica immagine</button>
-                        </div>
                     </div>
 
-                    <div class="photo_container">
-                        <i *ngIf="!url_controller">carica un url per visualizzare l'immagine in quest'area.</i>
-                        <img *ngIf="url_controller" src={{url_img_input}}>
+                    <!--col url-->
+                    <div class="col">
+                        <div class="row">
+                            <label for ="url"><strong>Carica URL immagine </strong> (facoltativo)</label>
+                            <div class="col">
+                                <input type="url" class="form-control" [(ngModel)]="url_photo" id ="url" pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})" name="url" #url_link="ngModel">
+                                <!--controllo pattern-->
+                                <div *ngIf="url_link.errors?.['pattern']">
+                                    inserire url valido.
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-primary"(click)="load_url()">Carica immagine</button>
+                            </div>
+                        </div>
+
+                        <div class="photo_container">
+                            <i *ngIf="!url_controller">carica un url per visualizzare l'immagine in quest'area.</i>
+                            <img *ngIf="url_controller" src={{url_img_input}}>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="button_container">
+                        <!-- Testing (click)="send()"-->
+                        <button type="submit" class="btn btn-outline-success" >Invia</button>
+                        <br>
+                        <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">indietro</button>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="button_container">
-                    <!-- Testing (click)="send()"-->
-                    <button type="submit" class="btn btn-outline-success" >Invia</button>
-                    <br>
-                    <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">indietro</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="alert alert-success" role="alert">
-            <p>Oggetto modificato con successo.</p>
-        </div>
-
-    </form>
-
+        </form>
+    </div>
 </div>
 
 

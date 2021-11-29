@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Item,Category,User } from '../../../core/api/generated'; 
-import {  ActivatedRoute } from '@angular/router';
-import { SuperItemService } from '../services/superItemService';
+import { ActivatedRoute } from '@angular/router';
+import { SuperItemService } from '../services/superItemService.service';
+
 @Component({
   selector: 'app-modify-item',
   templateUrl: './modify-item.component.html',
@@ -20,6 +21,7 @@ export class ModifyItemComponent implements OnInit {
   category_array:string[]=[]
   user_array:string[]=[]; //salvataggio di tutte le categorie
   user_array_i?:string;
+  goodModifica = false;
 
   url_photo="";
   owner=0;
@@ -213,56 +215,61 @@ export class ModifyItemComponent implements OnInit {
       }
     }
 
-    onFormSubmit(form: NgForm) {
-
-      /*
-      console.log(form.value);
-      this.name_objects=form.controls["name_input"].value;
-      this.description=form.controls["description_input"].value;
-      this.price_euro=form.controls["price_euro"].value
-      var prov1= document.getElementById("inputGroupCategory") as HTMLInputElement
-      this.category_objects_selected=prov1.value;
-      var prov2= document.getElementById("inputGroupUsers") as HTMLInputElement
-      this.owner_objects_selected=prov2.value;
-      this.url_img_input=form.controls['url'].value;
-      this.category_objects=form.controls["category_input"].value;
-
-      console.log(this.category_objects)*/
-
-      for (let cat of this.categories) {
-        if(cat.name == this.categorySelected){
-          this.newCategoryId = cat.id!; 
-        }
+    checkImgUrl(url:string){
+      if(url == ""){
+        this.url_photo = "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png";
+      }else{
+        this.url_photo = url;
       }
-      for (let us of this.users) {
-        let fullname = us.name + " "+us.surname;
-        if(fullname == this.ownerSelected){
-          this.newOwnerId = us.id!; 
-        }
-      }
-      for (let it of this.items) {
-        this.lastId = it.id!;  
-      }
-      this.newItemId = this.lastId + 1; 
-      let newItem = {
-        "id": this.id_object,
-        "name": form.controls["name_input"].value,
-        "description": form.controls["description_input"].value,
-        "price": form.controls["price_euro"].value,
-        "imgurl": form.controls["url"].value,
-        "category": this.newCategoryId,
-        "owner": this.newOwnerId
-      }
-
-      this.updateItem(newItem); 
     }
 
+    onFormSubmit(form: NgForm) {
 
+      if( form.controls["name_input"].value===""||form.controls["description_input"].value===""||form.controls["price_euro"].value===0){
+        alert("Riempire tutti i campi obbligatori")
+      }else{
+
+        for (let cat of this.categories) {
+          if(cat.name == this.categorySelected){
+            this.newCategoryId = cat.id!; 
+          
+          }
+        }
+        for (let us of this.users) {
+          let fullname = us.name + " "+us.surname;
+          if(fullname == this.ownerSelected){
+            this.newOwnerId = us.id!; 
+          }
+        }
+        for (let it of this.items) {
+          this.lastId = it.id!;  
+        }
+        this.newItemId = this.lastId + 1; 
+        this.checkImgUrl(form.controls["url"].value);
+        let newItem = {
+          "id": this.id_object,
+          "name": form.controls["name_input"].value,
+          "description": form.controls["description_input"].value,
+          "price": form.controls["price_euro"].value,
+          "imgurl": this.url_photo,
+          "category": this.newCategoryId,
+          "owner": this.newOwnerId
+        }
+
+        this.updateItem(newItem); 
+        //this.getItems();
+        
+      }
+
+    }
     updateItem(item:Item){
       this.superService.updateItem(item).subscribe(() =>{
         console.log('oggetto aggiunto!');
-        //this.getItems();   
-      })
+        this.goodModifica = true;
+        setTimeout(() => {
+          this.goodModifica = false; 
+        }, 3000);        
+      });
     }
 
     
