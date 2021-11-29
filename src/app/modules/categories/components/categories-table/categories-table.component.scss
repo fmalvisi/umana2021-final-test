@@ -17,10 +17,10 @@ button {
   margin: 0 5px;
 }
 
-.filter{
-    display: inline-block;
-    margin-bottom: 20px;
-}
+// .filter{
+//     display: inline-block;
+//     margin-bottom: 20px;
+// }
 
 .filter-category{
     border-radius: 5px;
@@ -32,21 +32,43 @@ input::-webkit-calendar-picker-indicator {
     opacity: 0.65;
     }
 
-.right{
-    float: right;
-    display: inline-block;
-    margin-top: 15px;
-    margin-right: 10px;
+// .right{
+//     float: right;
+//     display: inline-block;
+//     margin-top: 15px;
+//     margin-right: 10px;
+// }
+
+.mobile {
+  display: none;
 }
 
 @media screen and (max-width: 800px) {
-    .right{
-        display: block;
-        float: none;
-        margin-top: 5px;
+    // .right{
+    //     display: block;
+    //     float: none;
+    //     margin-top: 5px;
+    // }
+    // .filter{
+    //     margin-bottom: 5px;
+    // }
+    button {
+      margin: 0;
     }
-    .filter{
-        margin-bottom: 5px;
+    .desktop {
+      display: none;
+    }
+    .mobile {
+      display: block;
+    }
+    th, td {
+      width: 4rem;
+    }
+    th:first-of-type, td:first-of-type {
+      width: 1rem;
+    }
+    .top {
+      display: flex;
+      flex-direction: column;
     }
 }
-    
