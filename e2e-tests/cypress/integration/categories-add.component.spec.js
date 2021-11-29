@@ -1,6 +1,6 @@
 describe('Edit details component', () => {
   beforeEach(() => {
-    cy.visit('/#/categories/edit/1');
+    cy.visit('/#/categories/add');
   });
 
   it('should compile form', () => {
@@ -16,6 +16,6 @@ describe('Edit details component', () => {
     cy.get('.btn-light').click();
     cy.url()
       .should('eq', 'http://localhost:4200/#/categories')
-      .and('not.contain', 'edit');
+      .and('not.contain', 'add');
   });
 });

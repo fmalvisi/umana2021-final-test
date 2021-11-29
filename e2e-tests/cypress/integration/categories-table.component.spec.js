@@ -6,7 +6,7 @@ describe('Homepage with table of categories component', () => {
   it('visits the initial project page', () => {
     cy.contains('Nome');
     cy.contains('Descrizione');
-    cy.contains('Numero di oggetti');
+    cy.contains('Quantità');
     cy.get('table').should('be.visible');
   });
 
@@ -22,9 +22,17 @@ describe('Homepage with table of categories component', () => {
   });
 
   it('clicks on add and open a new page', () => {
-    cy.get('.right > .btn').click();
+    cy.get('.top > :nth-child(2) > .btn').click();
     cy.on('url:changed', newUrl => {
       expect(newUrl).to.contain('/add');
+    });
+  });
+
+  it('clicks on details to navigate to edit component', () => {
+    cy.get('.desktop > .btn-light').eq(1).click();
+    cy.get('.alert > .btn').click();
+    cy.on('url:changed', newUrl => {
+      expect(newUrl).to.contain('/edit/');
     });
   });
 });
