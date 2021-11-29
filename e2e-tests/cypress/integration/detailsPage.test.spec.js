@@ -5,17 +5,16 @@ describe('detailsPage tests', () => {
     cy.log('will start detailsPage tests');
   });
 
-  it('should load homepage', () => {
-    cy.visit('');
-    cy.contains('Esercitazione Finale').should('be.visible');
-    cy.screenshot();
-  });
+  it('closing carousel and open details page after click details button', () => {
+    cy.get('carousel-item')
+    .first()
+    .find('button')
+    .get('dropdown-item')
+    .first()
+    .click();
 
-  it('should load homepage (iphone view)', () => {
-    cy.viewport('iphone-6');
-    cy.visit('');
-    cy.contains('Esercitazione Finale').should('be.visible');
-    cy.screenshot();
+    cy.url().should('contain', 'dettagli-oggetto');
   });
+ 
 
 });

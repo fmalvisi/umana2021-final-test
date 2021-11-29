@@ -17,7 +17,7 @@ export class DetailsItemComponent implements OnInit {
   price_euro= 0; 
   categoryId= 0;
   categoryName="";
-  url_photo="url_prova_pipe";
+  url_photo="https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png";
   ownerId=0;
   ownerName="";
   prova="prova";
