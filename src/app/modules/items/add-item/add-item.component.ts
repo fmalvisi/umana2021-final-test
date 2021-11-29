@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Item,Category,User } from '../../../core/api/generated'; 
 import { Router } from '@angular/router';
-import { SuperItemService } from '../services/superItemService';
+import { SuperItemService } from '../services/superItemService.service';
 
 @Component({
   selector: 'app-add-item',

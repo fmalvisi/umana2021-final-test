@@ -19,34 +19,6 @@ export class SuperItemService {
         private userService : UsersService
     ){}
 
-    // getItemList(): Array<Item>{
-    //     console.log("chiamato getItemList");
-    //     let testItems: Item[] = [];
-    //     this.itemsService.getItems().subscribe(itemsObj => {
-    //         for(let item of itemsObj){
-    //             testItems.push(item);
-    //         }
-    //     });
-    //     return testItems;
-    // }
-
-    // getItem(index: number): Item {
-    //     console.log("chiamato getItem");
-    //     let testItem: Item;
-    //     this.itemsService.getItem(index).subscribe(res => {
-    //         testItem = res;
-    //         this.singleItem = testItem
-    //     });
-    //     return this.singleItem!;
-    // }
-
-
-    // getProva(index: number): Observable<Item> {
-    //     return this.itemsService.getItem(index).pipe( tap(values => {
-    //         console.log("valori", values);
-    //     }));
-    // }
-
     /*
     *   ritorna la lista degli oggetti
     */

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Item,Category,User } from '../../../core/api/generated'; 
 import {  ActivatedRoute } from '@angular/router';
-import { SuperItemService } from '../services/superItemService';
+import { SuperItemService } from '../services/superItemService.service';
+
 @Component({
   selector: 'app-modify-item',
   templateUrl: './modify-item.component.html',

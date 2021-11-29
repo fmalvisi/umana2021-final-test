@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category, Item, User } from '../../../core/api/generated';
 import { ActivatedRoute} from '@angular/router';
-import { SuperItemService } from '../services/superItemService';
+import { SuperItemService } from '../services/superItemService.service';
 
 @Component({
   selector: 'app-details-item',
