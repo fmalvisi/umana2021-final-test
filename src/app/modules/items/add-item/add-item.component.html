@@ -81,7 +81,7 @@
 
                     <div class="photo_container">
                         <i *ngIf="!url_controller">carica un url per visualizzare l'immagine in quest'area.</i>
-                        <img *ngIf="url_controller" src={{url_img_input}}>
+                        <img *ngIf="url_controller" id="imagefromurl" src={{url_img_input}}>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                     <!-- Testing (click)="send()"-->
                     <button type="submit" class="btn btn-outline-success" >Invia</button>
                     <br>
-                    <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">Annulla</button>
+                    <button [routerLink]='"/items"' id="annullabottone" (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">Annulla</button>
                 </div>
             </div>
         </div>

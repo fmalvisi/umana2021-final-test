@@ -1,11 +1,11 @@
 const { internet } = require('faker');
 
 describe('modifyPage tests', () => {
-  before(() => {
-    cy.log('will start modifyPage tests');
+  beforeEach(() => {
+    cy.visit("/#/items"); 
   });
 
-  it('should load homepage', () => {
+  it('boh', () => {
      
   });
  
