@@ -1,50 +1,52 @@
-<div class="container">
-  <div>
+<div class="container" style="display: flex; justify-content: center; align-items: center; margin-top: 5%;">
+
+  <div style="width: 60%; height: auto; margin-bottom: 10%; background-color: rgb(226, 226, 157); border-radius: 20px; -webkit-box-shadow: 4px 7px 16px -5px #000000;  -moz-box-shadow: 4px 7px 16px -5px #000000;  -o-box-shadow: 4px 7px 16px -5px #000000;  box-shadow: 4px 7px 16px -5px #000000;">
+    <!-- NAVBAR SEZIONE TABELLA UTENTI -->
+
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: row; margin: 2%;">
+      <!-- SEZIONE DELLA SEARCH -->
+      <div  style="display: flex; justify-content: center; align-items: center; flex-direction: column;"> 
+        <form action="" class="d-flex" (submit)="ricerca()" >        
+          <input class="form-control me-2" type="search" aria-label="Search" name="search" pattern="" required id="cercaNome" style="color: #171717;">
+          <button class="btn btn-outline-success" type="submit">Evidenzia</button>
+          <button class="btn btn-outline-primary" type="button" (click)="aggiornaMostra()">Filtra</button>
+        </form>
+      </div>
+      <!-- FINE SEZIONE DELLA SEARCH -->
+      <!-- SEZIONE AGGIUNGI UN UTENTE -->
+      <div  style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
+        <button class="btn btn-success"  [routerLink]='"/users/aggiungi"'>AGGIUNGI</button>
+      </div>
+      <!-- FINE SEZIONE AGGIUNGI UN UTENTE -->
+    </div> 
     
-    <!-- SEZIONE AGGIUNGI UN UTENTE -->
-    <div  style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: 5%;">
-      <h2>AGGIUNGI UN NUOVO UTENTE</h2>
-      <button class="btn btn-success" style="margin: 5%;"  [routerLink]='"/users/aggiungi"'>AGGIUNGI</button>
-    </div>
-    <!-- FINE SEZIONE AGGIUNGI UN UTENTE -->
-  </div>
-  <!-- SEZIONE DELLA SEARCH -->
-  <div  style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 5%;"> 
-    <form action="" class="d-flex" (submit)="ricerca()">        
-      <input class="form-control me-2" type="search" aria-label="Search" name="search" pattern="" required id="cercaNome" style="color: #171717;">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
- <!-- FINE SEZIONE DELLA SEARCH -->
-
-  <div style="width: 40%; margin: 0 auto;">
-    <table  class="table table-dark table-hover" style="border-radius: 5px !important;">
-      <thead>
-        <tr style="padding: 10%;">
-          <th scope="col">id</th>
-          <th scope="col">nome</th>
-          <th scope="col">cognome</th>
-          <th scope="col">email</th>
-          <th scope="col"></th>
-         </tr>
-       </thead>
-       <tbody>
-         <div *ngFor="let utente of utenti" >
-
-           <tr *ngIf="stampaNomeTrovato(utente)" style="padding: 10%;">
-            <th scope="row">{{utente.id}}</th>
-            <td>{{utente.name}}</td>
-            <td>{{utente.surname}}</td>
-            <td>{{utente.email}}</td>
-            <td>
-              <div style="display: flex; justify-content: center; align-items: center;">
-                <button class="btn btn-success" ><a style="color: white;  outline: none; text-decoration: none;" [routerLink]="['/users/modifica', utente.id] ">edit</a></button>
-              </div> 
-            </td>
+    <div style="width: 80%; margin: 0 auto; margin-top: 10%; margin-bottom: 10%;">
+      <table  class="table " style="border-radius: 5px !important;">
+        <thead>
+          <tr style="padding: 10%;">
+            <th scope="col">id</th>
+            <th scope="col">nome</th>
+            <th scope="col">cognome</th>
+            <th scope="col">email</th>
+            <th scope="col"></th>
           </tr>
-        </div>
-          
-       </tbody>
-     </table>
-   </div>
-</div>
+        </thead>
+
+        <tbody >
+            <tr *ngFor="let utente of utenti">
+              <th *ngIf="stampaNomeTrovato(utente) || devoMostrare()" [ngClass]="evidenzio(stampaNomeTrovato(utente))" scope="row">{{utente.id}}</th>
+              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()">{{utente.name}}</td>
+              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()">{{utente.surname}}</td>
+              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()">{{utente.email}}</td>
+              <td  *ngIf="stampaNomeTrovato(utente) || devoMostrare()">
+                <div  style="display: flex; justify-content: center; align-items: center;">
+                  <button class="btn btn-success" ><a style="color: white;  outline: none; text-decoration: none;" [routerLink]="['/users/modifica', utente.id] ">edit</a></button>
+                </div> 
+              </td>
+            </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+  </div>
