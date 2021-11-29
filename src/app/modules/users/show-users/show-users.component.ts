@@ -27,4 +27,22 @@ export class ShowUsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cercati : Array<User> = [];
+  
+  ricerca() : void{
+    // let cerca = document.getElementById("cercaNome") as HTMLInputElement;
+    // this.api.getUsers(1, undefined, undefined, cerca.value + " ").subscribe(value => {
+    //   this.cercati = value;
+    // },);
+    // console.log(this.cercati);
+console.log("gli utenti sono:", this.utenti);
+
+    let cerca = document.getElementById("cercaNome") as HTMLInputElement;
+    for (let i = 0; i < this.utenti.length; i++) {
+     if (this.utenti[i].name == cerca.value) {
+        this.cercati.push(this.utenti[i]);
+      }
+    }
+    console.log("gli utenti trovati sono:" , this.cercati);
+  }
 }

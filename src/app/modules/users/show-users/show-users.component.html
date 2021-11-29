@@ -1,16 +1,26 @@
 <div class="container">
-  <div class="container" style="display: flex; justify-content: center; align-items: center;">
-    <div  style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 5%;">
+  <div>
+    
+    <!-- SEZIONE AGGIUNGI UN UTENTE -->
+    <div  style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: 5%;">
       <h2>AGGIUNGI UN NUOVO UTENTE</h2>
       <button class="btn btn-success" style="margin: 5%;"  [routerLink]='"/users/aggiungi"'>AGGIUNGI</button>
     </div>
-   
+    <!-- FINE SEZIONE AGGIUNGI UN UTENTE -->
   </div>
-  <div style="width: 40%; margin: 0 auto;">
+  <!-- SEZIONE DELLA SEARCH -->
+  <div  style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 5%;"> 
+    <form action="" class="d-flex" (submit)="ricerca()">        
+      <input class="form-control me-2" type="search" aria-label="Search" name="search" pattern="" required id="cercaNome" style="color: #171717;">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+ <!-- FINE SEZIONE DELLA SEARCH -->
 
-    <table style="background-color: #15172b; border-radius: 20px; box-sizing: border-box; padding: 20%; width: 80%; color: white;">
+  <div style="width: 40%; margin: 0 auto;">
+    <table  class="table table-dark table-hover" style="border-radius: 5px !important;">
       <thead>
-        <tr>
+        <tr style="padding: 10%;">
           <th scope="col">id</th>
           <th scope="col">nome</th>
           <th scope="col">cognome</th>
@@ -19,19 +29,18 @@
          </tr>
        </thead>
        <tbody>
-
-         <tr *ngFor="let utente of utenti">
-           <th scope="row">{{utente.id}}</th>
-           <td>{{utente.name}}</td>
-           <td>{{utente.surname}}</td>
-           <td>{{utente.email}}</td>
-           <td>
-             <div style="display: flex; justify-content: center; align-items: center;">
-               <button class="btn btn-success" ><a style="color: white;  outline: none; text-decoration: none;" [routerLink]="['/users/modifica', utente.id] ">edit</a></button>
-             </div> 
-           </td>
-         </tr>
-
+          <tr *ngFor="let utente of utenti" style="padding: 10%;">
+            <th scope="row">{{utente.id}}</th>
+            <td>{{utente.name}}</td>
+            <td>{{utente.surname}}</td>
+            <td>{{utente.email}}</td>
+            <td>
+              <div style="display: flex; justify-content: center; align-items: center;">
+                <button class="btn btn-success" ><a style="color: white;  outline: none; text-decoration: none;" [routerLink]="['/users/modifica', utente.id] ">edit</a></button>
+              </div> 
+            </td>
+          </tr>
+          
        </tbody>
      </table>
    </div>
