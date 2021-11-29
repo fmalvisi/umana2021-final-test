@@ -10,7 +10,7 @@ import { Category, Item } from 'src/app/core/api/generated';
   styleUrls: ['./categories-table.component.scss'],
 })
 export class CategoriesTableComponent implements OnInit {
-  hideShow = false;
+  
 
   constructor(
     private categoryService: CategoryService,
@@ -87,7 +87,7 @@ export class CategoriesTableComponent implements OnInit {
   }
 
   //Cancella la categoria corrispondente se questa ha 0 oggetti
-  deleteCategory(id: any) {
+  deleteCategory(id: number | any) : void {
     if (this.getNumOfItemsPerCategory(id) === 0) {
       this.categoryService
         .deleteCategory(id)
@@ -103,18 +103,18 @@ export class CategoriesTableComponent implements OnInit {
   }
 
   //Disabilita i bottoni "Cancella" in caso la categoria abbia elementi
-  willBeDisabled(id: any) {
+  willBeDisabled(id: number | null): string {
     if (this.getNumOfItemsPerCategory(id) !== 0) {
       return 'disabled';
     }
     return '';
   }
 
-  updateCurrentCategory(categoryID: number | null) {
-    return (this.currentCategory = categoryID);
+  updateCurrentCategory(categoryID: number | null):void {
+    this.currentCategory = categoryID;
   }
 
-  toggleClose(categoryID: any) {
+  toggleClose(categoryID: number | null):string {
     let detailIndex = 0;
     for (let i = 0; i < this.categoryArr.length; i++) {
       if (this.categoryArr[i].id === categoryID) {
