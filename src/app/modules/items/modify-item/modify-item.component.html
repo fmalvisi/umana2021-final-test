@@ -87,8 +87,7 @@
                 </div>
                 <div class="row">
                     <div class="button_container">
-                        <!-- Testing (click)="send()"-->
-                        <button type="submit" class="btn btn-outline-success" [disabled]="name_objects === '' || description === '' || price_euro === 0 || price_euro === null "  class="btn btn-outline-success"  >Invia</button>
+                        <button type="submit"  id="inviabottone" class="btn btn-outline-success" [disabled]="name_objects === '' || description === '' || price_euro === 0 || price_euro === null "  class="btn btn-outline-success"  >Invia</button>
                         <br>
                         <button [routerLink]='"/items"'  (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">Indietro</button>
                     </div>
