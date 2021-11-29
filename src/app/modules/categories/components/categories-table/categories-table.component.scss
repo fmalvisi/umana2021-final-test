@@ -8,11 +8,13 @@
 }
 
 .btn-light {
-  margin-right: 0.30rem;
+  margin-right: 0.3rem;
 }
 
 button {
   box-shadow: 1px 1px darkgray;
+  min-width: 80px;
+  margin: 0 5px;
 }
 
 .filter{

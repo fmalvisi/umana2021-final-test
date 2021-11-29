@@ -1,8 +1,10 @@
 <section class='my-4'>
     <div class="alert alert-warning">
         <h3>Dettaglio categoria {{name}}</h3>
-        <p>Oggetti nella categoria:</p>
-        <span *ngFor="let items of categoryItems">{{items}}</span>
+        <h6>Oggetti nella categoria:</h6>
+        <ul>
+            <li *ngFor="let items of categoryItems">{{items}}</li>
+        </ul>
         <button class="btn btn-light" (click)="edit()">Modifica la Categoria</button>
     </div>
 </section>
