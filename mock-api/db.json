@@ -22,7 +22,7 @@
       "id": 1,
       "name": "Mario",
       "surname": "Rossi",
-      "dob": "--",
+      "dob": "28-10-1988",
       "email": "mario.rossi@email.com"
     },
     {
@@ -41,17 +41,17 @@
     },
     {
       "id": 5,
-      "name": "barisla",
+      "name": "Barisla",
       "surname": "derraj",
-      "email": "barilsidaderraj@gmail.com",
-      "dob": "2022-12-31"
+      "dob": "22-05-1998",
+      "email": "barilsidaderraj@gmail.com"
     },
     {
       "id": 6,
       "name": "Alessia",
       "surname": "Verdi",
-      "email": "alessia.v@gmail.com",
-      "dob": "1985-10-10"
+      "dob": "11-06-1999",
+      "email": "alessia.v@gmail.com"
     }
   ]
 }

@@ -11,7 +11,7 @@ export class CustomPipeEta implements PipeTransform {
   transform(user: User) {
     
       const z=user.dob.split("-",3);
-  
+      
       let d = z[0];
       let m = z[1];
       let a = z[2]; 

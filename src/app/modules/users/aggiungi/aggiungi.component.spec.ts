@@ -19,9 +19,6 @@ class MockUser {
       "email": "paolo.bianchi@email.com",
       "dob": "'02-01-1970"
   }
-  createUsermock (user: User) {
-    return user;
-  }
 }
 
 const testForm = <NgForm>{
@@ -47,7 +44,7 @@ describe('AggiungiComponent', () => {
       providers: [
         { provide: ActivatedRoute, useValue: { paramMap: of(convertToParamMap({})) }},
         { provide: UsersService, useClass: MockUser},
-          NgForm
+        NgForm
       ]
 
     })
@@ -62,12 +59,12 @@ describe('AggiungiComponent', () => {
   });
  
 
-  fit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();  
   });
   
 
-  it ('onsubmit funziona', (() => {
+  fit ('onsubmit funziona', (() => {
     spyOn(component,"onsubmit");
     let el=fixture.debugElement.query(By.css('button')).nativeElement;
     el.click()
@@ -81,9 +78,13 @@ describe('AggiungiComponent', () => {
   });
 
   it('onsubmit should not work', ()=> {
-    let el = fixture.debugElement.componentInstance;
+  const el =fixture.debugElement;
+  el.query(By.css(".firstname"))
+  .query(By.css(".lastname"))
+  .query(By.css(".email"))
+  .query(By.css(".dob"))
 
-  })
+  });
 
 
 
