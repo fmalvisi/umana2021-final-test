@@ -30,6 +30,7 @@ export class AddItemComponent implements OnInit {
   newOwnerId = 0;
   newItemId = 0;
   lastId = 0;
+  goodModifica = false;
 
   url_img_input=""
   url_controller=false;
@@ -100,7 +101,12 @@ export class AddItemComponent implements OnInit {
   createNewItem(item:Item){
     this.superService.createItem(item).subscribe(() =>{
       console.log('oggetto aggiunto!');
-      //this.getItems();   
+      this.goodModifica = true;
+        setTimeout(() => {
+          this.goodModifica = false; 
+          this.returnHome();
+        }, 2000); 
+        
     }) 
   }
     
@@ -153,7 +159,7 @@ export class AddItemComponent implements OnInit {
     }
       this.createNewItem(newItem); 
       //this.getItems();
-      this.returnHome();
+      //this.returnHome();
       
   }
 

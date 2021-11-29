@@ -93,6 +93,7 @@ export class ModifyItemComponent implements OnInit {
       this.url_photo=this.item.imgurl!
       this.owner=this.item.owner!
 
+      console.log("CATEGORY_OBJECTS" + this.category_objects)
       this.getCategories();
       this.getUser();
     }).catch((error) => {
@@ -225,50 +226,76 @@ export class ModifyItemComponent implements OnInit {
 
     onFormSubmit(form: NgForm) {
 
+      this.newItemId = this.lastId + 1; 
+      this.checkImgUrl(form.controls["url"].value);
+
       if( form.controls["name_input"].value===""||form.controls["description_input"].value===""||form.controls["price_euro"].value===0){
         alert("Riempire tutti i campi obbligatori")
       }else{
 
+
+        //controllo categoria
         for (let cat of this.categories) {
           if(cat.name == this.categorySelected){
             this.newCategoryId = cat.id!; 
-          
+
           }
+          if(this.newOwnerId===0){
+            this.newOwnerId= this.owner;
+          }
+
         }
+
+
         for (let us of this.users) {
           let fullname = us.name + " "+us.surname;
           if(fullname == this.ownerSelected){
             this.newOwnerId = us.id!; 
+
+          }  
+         
+          if(this.newCategoryId===0){
+            this.newCategoryId= this.category_objects;
           }
         }
-        for (let it of this.items) {
-          this.lastId = it.id!;  
-        }
-        this.newItemId = this.lastId + 1; 
-        this.checkImgUrl(form.controls["url"].value);
-        let newItem = {
-          "id": this.id_object,
-          "name": form.controls["name_input"].value,
-          "description": form.controls["description_input"].value,
-          "price": form.controls["price_euro"].value,
-          "imgurl": this.url_photo,
-          "category": this.newCategoryId,
-          "owner": this.newOwnerId
-        }
-
-        this.updateItem(newItem); 
-        //this.getItems();
         
+
+        
+        if(this.categorySelected==="Nessuna categoria assegnata"){
+          this.newItemForUpdate(this.newOwnerId, 0, form)
+        
+        }else if(this.ownerSelected==="Nessun utente assegnato"){
+          this.newItemForUpdate(0, this.newCategoryId, form)
+        
+        }else if(this.ownerSelected==="Nessun utente assegnato"&&this.categorySelected==="Nessuna categoria assegnata"){
+          this.newItemForUpdate(0, 0, form)
+        }else{
+          this.newItemForUpdate(this.newOwnerId, this.newCategoryId, form)
+        }
       }
 
     }
+
+    newItemForUpdate(owner:number, category:number, form:NgForm){
+      let newItem = {
+        "id": this.id_object,
+        "name": form.controls["name_input"].value,
+        "description": form.controls["description_input"].value,
+        "price": form.controls["price_euro"].value,
+        "imgurl": this.url_photo,
+        "category":category,
+        "owner": owner
+      }
+      this.updateItem(newItem); 
+    }
+
     updateItem(item:Item){
       this.superService.updateItem(item).subscribe(() =>{
         console.log('oggetto aggiunto!');
         this.goodModifica = true;
         setTimeout(() => {
           this.goodModifica = false; 
-        }, 3000);        
+        }, 2000);        
       });
     }
 
