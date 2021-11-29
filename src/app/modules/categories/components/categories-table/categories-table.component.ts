@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService, ItemsService } from 'src/app/core/api/generated';
-import { CategoryDataService } from '../../service/category-data.service';
+//import { CategoryDataService } from '../../service/category-data.service';
 import { Category, Item } from 'src/app/core/api/generated';
+//import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories-table',
@@ -13,7 +14,7 @@ export class CategoriesTableComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private itemService: ItemsService,
+    private itemService: ItemsService
   ) {}
 
   currentCategory: number | null = 0;
