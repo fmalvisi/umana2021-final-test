@@ -2,12 +2,12 @@
   "items": [
     {
       "id": 1,
-      "name": "Yankee Candle",
+      "name": "Yankee Candle Rossa",
       "description": "Usata, a metà.",
       "price": 15.5,
       "imgurl": "http://egress.storeden.net/jpg/5ffea3af00f220f2b3c1db01/file.jpg",
-      "category": 3,
-      "owner": 1
+      "category": 0,
+      "owner": 0
     },
     {
       "id": 2,
