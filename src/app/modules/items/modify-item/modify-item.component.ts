@@ -225,55 +225,40 @@ export class ModifyItemComponent implements OnInit {
     }
 
     onFormSubmit(form: NgForm) {
-
       this.newItemId = this.lastId + 1; 
       this.checkImgUrl(form.controls["url"].value);
 
-      if( form.controls["name_input"].value===""||form.controls["description_input"].value===""||form.controls["price_euro"].value===0){
-        alert("Riempire tutti i campi obbligatori")
-      }else{
-
-
-        //controllo categoria
-        for (let cat of this.categories) {
-          if(cat.name == this.categorySelected){
-            this.newCategoryId = cat.id!; 
-
-          }
-          if(this.newOwnerId===0){
-            this.newOwnerId= this.owner;
-          }
-
+      //controllo categoria
+      for (let cat of this.categories) {
+        if(cat.name == this.categorySelected){
+          this.newCategoryId = cat.id!; 
         }
-
-
-        for (let us of this.users) {
-          let fullname = us.name + " "+us.surname;
-          if(fullname == this.ownerSelected){
-            this.newOwnerId = us.id!; 
-
-          }  
-         
-          if(this.newCategoryId===0){
-            this.newCategoryId= this.category_objects;
-          }
-        }
-        
-
-        
-        if(this.categorySelected==="Nessuna categoria assegnata"){
-          this.newItemForUpdate(this.newOwnerId, 0, form)
-        
-        }else if(this.ownerSelected==="Nessun utente assegnato"){
-          this.newItemForUpdate(0, this.newCategoryId, form)
-        
-        }else if(this.ownerSelected==="Nessun utente assegnato"&&this.categorySelected==="Nessuna categoria assegnata"){
-          this.newItemForUpdate(0, 0, form)
-        }else{
-          this.newItemForUpdate(this.newOwnerId, this.newCategoryId, form)
+        if(this.newOwnerId===0){
+          this.newOwnerId= this.owner;
         }
       }
 
+      //Controllo username
+      for (let us of this.users) {
+        let fullname = us.name + " "+us.surname;
+        if(fullname == this.ownerSelected){
+          this.newOwnerId = us.id!; 
+        }  
+        if(this.newCategoryId===0){
+          this.newCategoryId= this.category_objects;
+        }
+      }
+
+      if(this.categorySelected==="Nessuna categoria assegnata"){
+        this.newItemForUpdate(this.newOwnerId, 0, form)
+      }else if(this.ownerSelected==="Nessun utente assegnato"){
+        this.newItemForUpdate(0, this.newCategoryId, form)
+      }else if(this.ownerSelected==="Nessun utente assegnato"&&this.categorySelected==="Nessuna categoria assegnata"){
+        this.newItemForUpdate(0, 0, form)
+      }else{
+        this.newItemForUpdate(this.newOwnerId, this.newCategoryId, form)
+      }
+      
     }
 
     newItemForUpdate(owner:number, category:number, form:NgForm){
