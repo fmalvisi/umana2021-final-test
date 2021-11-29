@@ -7,7 +7,11 @@ import { ReactiveFormsModule, NgForm, FormsModule} from '@angular/forms';
 import { of } from 'rxjs';
 import { User, UsersService } from 'src/app/core/api/generated';
 import { NgModule } from '@angular/core';
+<<<<<<< HEAD
 import { CustomPipeEta } from '../etapipe.pipe';
+=======
+import { By } from '@angular/platform-browser';
+>>>>>>> 46622488c232b79ad21e764c54c68e61354e58cc
 
 mockutente : UsersService;
 
@@ -26,11 +30,10 @@ class MockUser {
 
 const testForm = <NgForm>{
   value: {
-      id:1,
-      name : "Mario",
-      surname: "Rossi",
+      nome : "Mario",
+      cognome: "Rossi",
       email: "mario.rossi@email.com",
-      dob:"02-01-1970"
+      data:"02-01-1970"
   }
 };
 
@@ -64,25 +67,27 @@ xdescribe('AggiungiComponent', () => {
   });
  
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-
-    
+  fit('should create', () => {
+    expect(component).toBeTruthy();  
   });
   
 
-  it ('onsubmit funziona', () => {
-    let spy =spyOn(component['api'], "createUser").and.callThrough();
-    expect(component.onsubmit(testForm));
-    expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(component.utente);
-    
+  it ('onsubmit funziona', (() => {
+    spyOn(component,"onsubmit");
+    let el=fixture.debugElement.query(By.css('button')).nativeElement;
+    el.click()
+    //component.onsubmit(testForm);
+    expect(component.onsubmit).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should have Aggiungi  utente', () => {
+    const el =fixture.debugElement.nativeElement;
+    expect(el.querySelector('h4').textContent).toContain('Aggiungi utente');
   });
 
-  it('should have Aggiungi il tuo utente', () => {
-    const el =fixture.nativeElement;
-    expect(el.querySelector('div.subtitle').textContent).toContain('Aggiungi il tuo utente');
+  it('onsubmit should not work', ()=> {
+    let el = fixture.debugElement.componentInstance;
+
   })
 
 

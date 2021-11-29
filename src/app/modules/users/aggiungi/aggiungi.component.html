@@ -1,9 +1,9 @@
 <form #form="ngForm" >
 <div class="form"  >
-  <div class="title">Aggiungi</div>
-  <div class="subtitle">Aggiungi il tuo utente</div>
+  <div class="title"><h4>Aggiungi utente</h4></div>
+  <div class="subtitle"></div>
   <div class="input-container ic1">
-    <input id="firstname" class="input" type="text" placeholder=" " name="nome"required="required" minlength="4"  ngModel #nome="ngModel"/>
+    <input id="firstname" class="input" type="text" placeholder="Inserisci tuo nome " name="nome"required="required" minlength="4"  ngModel #nome="ngModel"/>
     <div class="cut"></div>
     <label for="firstname" class="placeholder"></label>
         <div *ngIf="nome.invalid && (nome.dirty || nome.touched)"class="alert">
@@ -14,7 +14,7 @@
       </div>
   </div><br><br>
   <div class="input-container ic2">
-    <input id="lastname" class="input" type="text" placeholder=" " name="cognome" ngModel #cognome="ngModel" minlength="4" required="required" />
+    <input id="lastname" class="input" type="text" placeholder="Inserisci tuo cognome " name="cognome" ngModel #cognome="ngModel" minlength="4" required="required" />
     <div class="cut"></div>
     <label for="lastname" class="placeholder"></label>
       <div *ngIf="cognome.invalid && (cognome.dirty || cognome.touched) "class="alert">
@@ -26,16 +26,16 @@
   </div>
   <br><br>
   <div class="input-container ic2">
-    <input id="dob" class="input" type="date" placeholder=" " name="data" ngModel #data="ngModel" required="required" pattern='^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$'/>
+    <input id="dob" class="input" type="date" placeholder=" Inserisci tua data di nascita" name="data" ngModel #data="ngModel" required="required" pattern='^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$'/>
     <div class="cut"></div>
     <label for="dob" class="placeholder" > </label>
         <div *ngIf="email.errors?.['required']">
-            Data is required.</div> 
+            Data di nacsita is required.</div> 
           <div *ngIf="email.errors?.['pattern']">
             Data is not valid.</div> 
   </div><br>
   <br>  <div class="input-container ic2">
-    <input id="email" class="input" type="text" placeholder=" " name="email" ngModel #email="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" size="30" required="required"/>
+    <input id="email" class="input" type="text" placeholder="Inserisci tuo email " name="email" ngModel #email="ngModel"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" size="30" required="required"/>
     <div class="cut cut-short"></div>
     <label for="email" class="placeholder"></label>
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
@@ -48,5 +48,3 @@
   <button type="submit" class="submit"(click)="onsubmit(form)">Aggiungi</button>
 </div>
 </form>
-
-<p>{{anni | CustomPipeEta}}</p>

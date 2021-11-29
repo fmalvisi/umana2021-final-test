@@ -35,10 +35,11 @@
         <tbody >
             <tr *ngFor="let utente of utenti">
               <th *ngIf="stampaNomeTrovato(utente) || devoMostrare()" [ngClass]="evidenzio(stampaNomeTrovato(utente))" scope="row">{{utente.id}}</th>
-              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()">{{utente.name}}</td>
-              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()">{{utente.surname}}</td>
-              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()">{{utente.email}}</td>
-              <td  *ngIf="stampaNomeTrovato(utente) || devoMostrare()">
+              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()" [ngClass]="evidenzio(stampaNomeTrovato(utente))" >{{utente.name}}</td>
+              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()" [ngClass]="evidenzio(stampaNomeTrovato(utente))" >{{utente.surname}}</td>
+              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()" [ngClass]="evidenzio(stampaNomeTrovato(utente))" >{{utente.email}}</td>
+              <td *ngIf="stampaNomeTrovato(utente) || devoMostrare()" [ngClass]="evidenzio(stampaNomeTrovato(utente))" >{{utente | CustomPipeEta}}</td>
+              <td  *ngIf="stampaNomeTrovato(utente) || devoMostrare()" [ngClass]="evidenzio(stampaNomeTrovato(utente))" >
                 <div  style="display: flex; justify-content: center; align-items: center;">
                   <button class="btn btn-success" ><a style="color: white;  outline: none; text-decoration: none;" [routerLink]="['/users/modifica', utente.id] ">edit</a></button>
                 </div> 
