@@ -6,22 +6,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgModel } from '@angular/forms';
 import { CustomPipeEta } from '../etapipe.pipe';
 
+
 @Component({
   selector: 'app-aggiungi',
   templateUrl: './aggiungi.component.html',
   styleUrls: ['./aggiungi.component.scss'],
-  providers: [CustomPipeEta]
+
 })
 export class AggiungiComponent implements OnInit {
-  anni: User={id:null,
+  utente: User={id:null,
   name: "",
   surname: "",
   email: "",
   dob:"" };
-  constructor(private route: ActivatedRoute, protected router: Router, private api: UsersService, private custompipe: CustomPipeEta) {
+  constructor(private route: ActivatedRoute, protected router: Router, private api: UsersService, custompipe: CustomPipeEta ) {
    
   }
-  
+  anni:any;
   ngOnInit(): void { }
 
   onsubmit(form: NgForm){
@@ -30,7 +31,7 @@ export class AggiungiComponent implements OnInit {
       let cognome = form.controls['cognome'].value;
       let email = form.controls['email'].value;
       let data = form.controls['data'].value;
-      let utente : User= { id : null,
+      this.utente = { id : null,
       name : nome,
       surname: cognome,
       email: email,
@@ -38,9 +39,10 @@ export class AggiungiComponent implements OnInit {
       }
     
     if((nome != "") && (cognome != "") && (email != "") && (data != "")){
-        console.log(utente);
-        this.api.createUser(utente).subscribe(error=>{
+        console.log(this.utente);
+        this.api.createUser(this.utente).subscribe(error=>{
         console.log(error);
+        window.location.assign("/users");
         });
      }
     
