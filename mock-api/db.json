@@ -1,31 +1,58 @@
 {
   "items": [
     {
-      "id": 4,
-      "name": "candela",
-      "description": "candela bianca usata",
-      "price": 3.5,
-      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": 1,
-      "owner": 0
-    },
-    {
-      "id": 5,
+      "id": 1,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
       "price": 15.5,
-      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": 0,
+      "imgurl": "http://egress.storeden.net/jpg/5ffea3af00f220f2b3c1db01/file.jpg",
+      "category": 3,
       "owner": 1
     },
     {
-      "id": 6,
-      "name": "Yankee Candle",
+      "id": 2,
+      "name": "Borsa ",
+      "description": "Usata",
+      "price": 25.57,
+      "imgurl": "https://m.media-amazon.com/images/I/71yPIme7gzL._SY500_.jpg",
+      "category": 2,
+      "owner": 2
+    },
+    {
+      "id": 3,
+      "name": "Libro Natura",
       "description": "Usata, a metà.",
+      "price": 9.99,
+      "imgurl": "https://images-na.ssl-images-amazon.com/images/I/51QlkGZfOIL.jpg",
+      "category": 1,
+      "owner": 2
+    },
+    {
+      "id": 4,
+      "name": "Tavolo antico",
+      "description": "Usata, a metà.",
+      "price": 75,
+      "imgurl": "https://cdn20.pamono.com/p/s/3/9/390898_0o35zp26mr/tavolo-antico-in-larice-e-abete-italia.jpg",
+      "category": 1,
+      "owner": 2
+    },
+    {
+      "id": 5,
+      "name": "Bicicletta",
+      "description": "Usata tanto",
+      "price": 50.9,
+      "imgurl": "https://prodottitop.net/wp-content/plugins/aawp/public/image.php?url=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNTFuT1FVMlozR0wuanBn",
+      "category": 3,
+      "owner": 2
+    },
+    {
+      "id": 6,
+      "name": "Pianta ornamentale",
+      "description": "Usata ma bene",
       "price": 15.5,
-      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": null,
-      "owner": null
+      "imgurl": "https://www.cactusmania.it/wp-content/uploads/2020/10/agave-filifera-crestata-vaso-20-1-1-500x500.jpg",
+      "category": 1,
+      "owner": 1
     }
   ],
   "category": [
@@ -36,13 +63,13 @@
     },
     {
       "id": 2,
-      "name": "Categoria prova2",
-      "description": "Test 2"
+      "name": "Borse",
+      "description": "Borse e borsoni"
     },
     {
       "id": 3,
-      "name": "Categoria prova3",
-      "description": "Test 3"
+      "name": "Sport",
+      "description": "Articoli sportivi"
     }
   ],
   "users": [

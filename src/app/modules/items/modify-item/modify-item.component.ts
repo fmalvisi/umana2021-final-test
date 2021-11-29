@@ -93,6 +93,7 @@ export class ModifyItemComponent implements OnInit {
       this.url_photo=this.item.imgurl!
       this.owner=this.item.owner!
 
+      console.log("CATEGORY_OBJECTS" + this.category_objects)
       this.getCategories();
       this.getUser();
     }).catch((error) => {
@@ -232,14 +233,24 @@ export class ModifyItemComponent implements OnInit {
         for (let cat of this.categories) {
           if(cat.name == this.categorySelected){
             this.newCategoryId = cat.id!; 
-          
+
+          }
+          if(this.newOwnerId===0){
+            this.newOwnerId= this.owner;
           }
         }
+
         for (let us of this.users) {
           let fullname = us.name + " "+us.surname;
           if(fullname == this.ownerSelected){
             this.newOwnerId = us.id!; 
+
+          }  
+         
+          if(this.newCategoryId===0){
+            this.newCategoryId= this.category_objects;
           }
+
         }
         for (let it of this.items) {
           this.lastId = it.id!;  
