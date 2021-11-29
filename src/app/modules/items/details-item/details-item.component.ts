@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { SuperItemService } from 'src/app/core/services/superItemService';
 import { Category, Item, User } from '../../../core/api/generated'; 
 import { Observable, of } from 'rxjs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { SuperItemService } from '../services/superItemService';
 
 @Component({
   selector: 'app-details-item',
@@ -17,7 +15,7 @@ export class DetailsItemComponent implements OnInit {
   price_euro= 0; 
   categoryId= 0;
   categoryName="";
-  url_photo="url_prova_pipe";
+  url_photo="https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png";
   ownerId=0;
   ownerName="";
   prova="prova";

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 //import { CategoryService, Item, ItemsService, UsersService } from '../../../core/api/generated';
-import { Form, NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { SuperItemService } from 'src/app/core/services/superItemService';
+import { NgForm } from '@angular/forms';
 import { Item,Category,User } from '../../../core/api/generated'; 
-import { Observable, of } from 'rxjs';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
+import { SuperItemService } from '../services/superItemService';
 
 @Component({
   selector: 'app-add-item',
