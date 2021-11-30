@@ -47,7 +47,7 @@ describe('CategoriesDetailComponent', () => {
     expect(component['categoryDataService'].getCatId).toHaveBeenCalled();
   });
 
-  fit('test', () => {
+  it('test', () => {
     spyOn(component['itemService'], 'getItems').and.returnValue(
       of([
         {
