@@ -49,9 +49,8 @@ export class DetailsItemComponent implements OnInit {
     this.superService.getCategoryById(id).then((res: Category) => {
       this.categoryObj = res; 
       this.categoryName = this.categoryObj.name!;
-      console.log("CATEGORIANOME",this.categoryName);
     }).catch((error) => {
-      window.alert("errore di chiamata API" + error);
+      window.alert("errore di chiamata API");
     })
   }
 
@@ -95,7 +94,7 @@ export class DetailsItemComponent implements OnInit {
     if (typeof Storage !== "undefined") { 
       sessionStorage.setItem("showCarousel", "true");
     } else {
-      console.log( "Sorry, your browser does not support Web Storage...");
+      // console.log( "Sorry, your browser does not support Web Storage...");
     }
   }
 
