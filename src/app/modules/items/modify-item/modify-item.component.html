@@ -1,7 +1,7 @@
 <div class='container-fluid'>  
     <h1 class='display-4' style="text-align: center; margin-top: 2%;">Modifica oggetto</h1>
     
-    <div *ngIf="goodModifica" class="alert alert-success alert-dismissible fade show" role="alert">
+    <div *ngIf="goodModifica"  id="alertsuccessdiv" class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Oggetto modificato con successo !</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
@@ -14,7 +14,7 @@
                     <div class="col">
                             <!--Nome oggetto:-->
                         <label for ="name_input"><strong>Nome oggetto: </strong></label>
-                        <input  type="text" class="form-control"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
+                        <input  type="text" class="form-control" id= name_input name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
                         <!--controllo required-->
                         <div class="mandatoryfields" *ngIf="name_input.errors?.['required']">
                             campo obbligatorio
@@ -23,7 +23,7 @@
 
                         <!--Descrizione oggetto:-->
                         <label for ="description_input"><strong>Descrizione oggetto: </strong></label>
-                        <input type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
+                        <input type="text" class="form-control" id="description_input" name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
                         <!--controllo required-->
                         <div class="mandatoryfields" *ngIf="description_input.errors?.['required']">
                             campo obbligatorio
@@ -89,7 +89,7 @@
                     <div class="button_container">
                         <button type="submit"  id="inviabottone" class="btn btn-outline-success" [disabled]="name_objects === '' || description === '' || price_euro === 0 || price_euro === null "  class="btn btn-outline-success"  >Invia</button>
                         <br>
-                        <button [routerLink]='"/items"' id="annullabottone" (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">Indietro</button>
+                        <button [routerLink]='"/items"' id="indietrobottone" (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">Indietro</button>
                     </div>
                 </div>
             </div>

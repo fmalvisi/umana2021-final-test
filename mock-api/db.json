@@ -1,22 +1,22 @@
 {
   "items": [
     {
-      "id": 5,
-      "name": "Bicicletta",
-      "description": "Usata tanto",
-      "price": 33,
-      "imgurl": "https://prodottitop.net/wp-content/plugins/aawp/public/image.php?url=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNTFuT1FVMlozR0wuanBn",
-      "category": 3,
-      "owner": 2
-    },
-    {
       "id": 7,
-      "name": "io",
-      "description": "iiii",
-      "price": 1,
+      "name": "ioNome",
+      "description": "iiiiDescrizione",
+      "price": 12,
       "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
       "category": 1,
       "owner": 2
+    },
+    {
+      "id": 8,
+      "name": "Bicicletta",
+      "description": "Usata tanto",
+      "price": 20,
+      "imgurl": "https://montagnolirino.it/wp-content/uploads/2015/12/immagine-non-disponibile-300x225.png",
+      "category": 3,
+      "owner": 1
     }
   ],
   "category": [
