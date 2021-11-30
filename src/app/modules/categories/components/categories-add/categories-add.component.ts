@@ -46,9 +46,7 @@ export class CategoriesAddComponent implements OnInit {
         var button = <HTMLButtonElement>document.getElementById('button');
         button.disabled = true;
       } else {
-        this.categoryService
-          .createCategory(category)
-          .subscribe(category => console.log('Nuova categoria:', category));
+        this.categoryService.createCategory(category).subscribe();
       } // fine if...else
     }); // fine subscribe()
   } // fine onSubmit()

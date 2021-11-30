@@ -1,4 +1,4 @@
-describe('Edit details component', () => {
+describe('Edit component', () => {
   beforeEach(() => {
     cy.visit('/#/categories/edit/1');
   });

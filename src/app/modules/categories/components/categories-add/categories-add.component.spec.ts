@@ -17,11 +17,7 @@ describe('CategoriesAddComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CategoriesAddComponent],
       providers: [CategoryDataService],
-      imports: [
-        HttpClientTestingModule,
-        RouterTestingModule,
-        FormsModule,
-      ],
+      imports: [HttpClientTestingModule, RouterTestingModule, FormsModule],
     }).compileComponents();
   });
 
@@ -34,5 +30,15 @@ describe('CategoriesAddComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should return to category main page', () => {
+    spyOn(component['router'], 'navigate');
+    component.goBack();
+    expect(component['router'].navigate).toHaveBeenCalledWith(['categories']);
+  });
+
+  it('controlloGlobal has default value', () => {
+    expect(component.controlloGlobal).toEqual(true);
   });
 });

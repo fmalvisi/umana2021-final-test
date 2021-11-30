@@ -1,7 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs';
 import { CategoryDataService } from '../../service/category-data.service';
 
 import { CategoriesEditComponent } from './categories-edit.component';
@@ -28,16 +27,9 @@ describe('CategoriesEditComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // fit('test', () => {
-  //   component.editCat('Cucina', 'cose per la cucina');
-  //   spyOn(component['categoryService'], 'getCategories').and.returnValue(
-  //     of([
-  //       {
-  //         id: 1,
-  //         name: 'Casa',
-  //         description: 'cose per la casa',
-  //       }
-  //     ]),
-  //   );
-  // });
+  it('should return to category main page', () => {
+    spyOn(component['router'], 'navigate');
+    component.goBack();
+    expect(component['router'].navigate).toHaveBeenCalledWith(['categories']);
+  });
 });

@@ -10,11 +10,9 @@ import { Category, Item } from 'src/app/core/api/generated';
   styleUrls: ['./categories-table.component.scss'],
 })
 export class CategoriesTableComponent implements OnInit {
-  
-
   constructor(
     private categoryService: CategoryService,
-    private itemService: ItemsService
+    private itemService: ItemsService,
   ) {}
 
   currentCategory: number | null = 0;
@@ -61,12 +59,12 @@ export class CategoriesTableComponent implements OnInit {
       for (let c of this.categoryArr) {
         this.detailCategoryArr.push(false);
       }
-      console.log('assigned categories: ', this.categoryArr);
+      // console.log('assigned categories: ', this.categoryArr);
     });
   }
 
   filterCategory(c: string): void {
-    console.log('selezionata categoria: ', c);
+    // console.log('selezionata categoria: ', c);
     let toHide: string[] = [];
     let toShow: string = c.toLowerCase();
 
@@ -75,7 +73,7 @@ export class CategoriesTableComponent implements OnInit {
         toHide.push(category.name.toLowerCase());
       }
     }
-    console.log('categorie da nascondere: ', toHide);
+    // console.log('categorie da nascondere: ', toHide);
     for (let h of toHide) {
       if (toHide.length < this.categoryArr.length) {
         document.getElementById(h)?.classList.add('hidden');
@@ -87,11 +85,11 @@ export class CategoriesTableComponent implements OnInit {
   }
 
   //Cancella la categoria corrispondente se questa ha 0 oggetti
-  deleteCategory(id: number | any) : void {
+  deleteCategory(id: number | any): void {
     if (this.getNumOfItemsPerCategory(id) === 0) {
       this.categoryService
         .deleteCategory(id)
-        .subscribe(category => console.log('eliminata categoria: ', category));
+        .subscribe();
       location.reload();
     } else {
       alert(
@@ -110,11 +108,11 @@ export class CategoriesTableComponent implements OnInit {
     return '';
   }
 
-  updateCurrentCategory(categoryID: number | null):void {
+  updateCurrentCategory(categoryID: number | null): void {
     this.currentCategory = categoryID;
   }
 
-  toggleClose(categoryID: number | null):string {
+  toggleClose(categoryID: number | null): string {
     let detailIndex = 0;
     for (let i = 0; i < this.categoryArr.length; i++) {
       if (this.categoryArr[i].id === categoryID) {
