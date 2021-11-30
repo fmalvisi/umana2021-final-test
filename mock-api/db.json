@@ -63,29 +63,53 @@
     },
     {
       "id": 2,
-      "name": "Borse",
-      "description": "Borse e borsoni"
+      "name": "Casa",
+      "description": "cose per la casa"
+    },    {
+      "id": 3,
+      "name": "Casa",
+      "description": "cose per la casa"
     },
     {
-      "id": 3,
-      "name": "Sport",
-      "description": "Articoli sportivi"
+      "id": 4,
+      "name": "Casa",
+      "description": "cose per la casa"
+    },
+    {
+      "id": 5,
+      "name": "Casa",
+      "description": "cose per la casa"
     }
   ],
   "users": [
     {
-      "id": 1,
-      "name": "Mario",
-      "surname": "Rossi",
-      "email": "mario.rossi@email.com",
-      "dob": "01-01-1970"
+      "id": 3,
+      "name": "barislasss",
+      "surname": "derrajjji",
+      "dob": "13-03-1992",
+      "email": "barilsidaderraj@gmail.com"
     },
     {
-      "id": 2,
-      "name": "Paolo",
-      "surname": "Bianchi",
-      "email": "paolo.bianchi@email.com",
-      "dob": "02-01-1970"
+      "id": 4,
+      "name": "Roberto",
+      "surname": "Verdicchi",
+      "dob": "17-10-1996",
+      "email": "roberto.verdi@gmail.com"
+    },
+    {
+      "id": 5,
+      "name": "barisla",
+      "surname": "derraj",
+      "dob": "07-06-1986",
+      "email": "barilsidaderraj@gmail.com"
+    },
+    {
+      "id": 7,
+      "name": "leoo",
+      "surname": "cap",
+      "dob": "18-05-1995",
+      "email": "leocap76@hotmail.it"
     }
+   
   ]
 }

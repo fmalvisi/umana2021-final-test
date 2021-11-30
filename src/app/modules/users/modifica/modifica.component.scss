@@ -1,0 +1,135 @@
+body {
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .form {
+    -webkit-box-shadow: 4px 7px 16px -5px #000000;
+      -moz-box-shadow: 4px 7px 16px -5px #000000;
+        -o-box-shadow: 4px 7px 16px -5px #000000;
+          box-shadow: 4px 7px 16px -5px #000000;
+
+    background-color: #fff3cd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: auto;
+    padding: 20px;
+  }
+  
+  .title {
+    color: black;
+    font-family: sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 30px;
+  }
+  
+  .subtitle {
+    color:black;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  .input-container {
+    height: 50px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .ic1 {
+    margin-top: 40px;
+  }
+  
+  .ic2 {
+    margin-top: 30px;
+  }
+  
+  input {
+    background-color: #fff3cd;
+    border-radius: 4px;
+    border: solid 1px black;
+    box-sizing: border-box;
+    color: black;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+  }
+  
+  .submit {
+    background-color: #08d;
+    border-radius: 4px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    // outline: 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .submit:active {
+    background-color: #06b;
+  }
+
+  .altezza-in{
+    //height:692.4px-80px-54px;
+    max-height:692.4px-80px-54px;
+  }
+
+
+  .aggiornato{
+    background-color:rgb(189, 237, 164);
+    content:'Utente aggiornato!';
+    font-size:2rem;
+  }
+
+  .notifica{
+    color:black;
+    line-height: 4.5rem;
+  }
+
+  .pericolo{
+    background-color:rgb(242, 80, 80);
+    font-size:1.5rem;
+    line-height: 4.5rem;
+  }
+
+  
+
+  .nondistrutto{
+    content:'rimuovi gli oggetti prima di distruggere';
+  }
+
+  @media screen and (min-width:1200px){
+    .altezza{
+      height:576px;
+      max-height: 576px;
+      margin-left:auto;
+      margin-right:2.5rem;
+      &-dx{
+        margin-right:auto;
+        height:692.4px;
+      max-height: 692.4px;
+      }
+    }
+
+
+      @media screen and (max-width:1199px){
+        body{
+          margin:0px 0px 0px 0px;
+          padding:0px 0px 0px 0px;
+        }
+
+    }
+  }
+    
