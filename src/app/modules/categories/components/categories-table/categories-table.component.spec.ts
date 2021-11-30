@@ -56,7 +56,6 @@ describe('CategoriesTableComponent', () => {
         "name": "Yankee Candle",
         "description": "Usata, a metà.",
         "price": 15.5,
-        "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
         "category": 1,
         "owner": null
       },
@@ -132,7 +131,6 @@ describe('CategoriesTableComponent', () => {
         "name": "Yankee Candle",
         "description": "Usata, a metà.",
         "price": 15.5,
-        "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
         "category": 1,
         "owner": null
       },
@@ -206,7 +204,6 @@ describe('CategoriesTableComponent', () => {
         "name": "Yankee Candle",
         "description": "Usata, a metà.",
         "price": 15.5,
-        "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
         "category": 1,
         "owner": null
       },
