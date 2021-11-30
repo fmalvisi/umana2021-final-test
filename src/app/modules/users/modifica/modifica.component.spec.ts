@@ -565,7 +565,7 @@ class EMockData{
 }
 
 
-describe('ModificaComponent errori', () => {
+xdescribe('ModificaComponent errori', () => {
   let component: ModificaComponent;
   let fixture: ComponentFixture<ModificaComponent>;
   let spiarouter={navigate:jasmine.createSpy("navigate")};
@@ -601,7 +601,7 @@ describe('ModificaComponent errori', () => {
   
 })
 
-describe('errori api',()=>{
+xdescribe('errori api',()=>{
   let component: ModificaComponent;
   let fixture: ComponentFixture<ModificaComponent>;
 beforeEach(async () => {
@@ -630,7 +630,7 @@ beforeEach(() => {
   fixture.detectChanges();
 });
 
-  it('onsubmit should give error',()=>{
+  xit('onsubmit should give error',()=>{
     let testinput = document.createElement('input');
     testinput.value='test';
     let spy=spyOn(document,'getElementById').and.callFake(()=>{
