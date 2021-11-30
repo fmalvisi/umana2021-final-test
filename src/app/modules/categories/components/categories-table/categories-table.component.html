@@ -50,7 +50,7 @@
 
     <tr  id={{category.name.toLowerCase()}}>
       <th scope="row">{{category.id}}</th>
-      <td><span class="icon">{{ category.id | icon }}</span> {{category.name}}</td>
+      <td><img class="icon" src="{{ category.id | icon }}" width="16" height="16" alt="icona"> {{category.name}}</td>
       <td>{{category.description}}</td>
       <td>{{getNumOfItemsPerCategory(category.id)}}</td>
 
@@ -74,6 +74,7 @@
       </td>
     </tr>
     <!-- FINE versione responsive bottoni -->
+
     <tr *ngIf="detailCategoryArr[i]">
       <td colspan="5">
         <app-categories-detail  [categoryName]="currentCategory">
