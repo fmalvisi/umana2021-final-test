@@ -14,41 +14,32 @@ export class ModifyItemComponent implements OnInit {
   name_objects="";
   description="";
   price_euro=0;
-  price_centesimi=0;
   category_objects=0
   category_id=0;
-  category_objects_selected="";//
+  category_objects_selected="Nessuna categoria assegnata";//
   category_array:string[]=[]
   user_array:string[]=[]; //salvataggio di tutte le categorie
-  user_array_i?:string;
-  goodModifica = false;
-
+  //user_array_i?:string;
+  goodModifica = false;//messaggio
   url_photo="";
   owner=0;
-  owner_objects_selected="";
-  prova="";
-  prov=0;
+  owner_objects_selected="Nessun utente assegnato";
   url_img_input=""
   url_controller=false;
-  message: string|null = null;
+  //message: string|null = null;
   items:Item[] = [];
   item? : Item;
   categories:Category[]=[];
   category?:Category;
   users:User[]=[];
   user?:User;
-  fetchedItems :Item[] = [];
-  mostra = true;
+  //fetchedItems :Item[] = []
   id=0;//id per richiamare getitemById
-
-
-
   categorySelected ="null";
   ownerSelected ="null"; 
   newCategoryId = 0;
   newOwnerId = 0;
   newItemId = 0;
-  lastId = 0;
 
   constructor( 
     private superService : SuperItemService, private route: ActivatedRoute, 
@@ -64,8 +55,8 @@ export class ModifyItemComponent implements OnInit {
     });
 
 
-    this.category_objects_selected="Nessuna categoria assegnata";
-    this.owner_objects_selected="Nessun utente assegnato"
+    //this.category_objects_selected="Nessuna categoria assegnata";
+    //this.owner_objects_selected="Nessun utente assegnato"
     this.category_array.push(this.category_objects_selected)
     this.user_array.push(this.owner_objects_selected)
 
@@ -224,8 +215,7 @@ export class ModifyItemComponent implements OnInit {
       }
     }
 
-    onFormSubmit(form: NgForm) {
-      this.newItemId = this.lastId + 1; 
+    onFormSubmit(form: NgForm) { 
       this.checkImgUrl(form.controls["url"].value);
 
       //controllo categoria
