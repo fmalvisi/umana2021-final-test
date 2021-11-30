@@ -1,6 +1,6 @@
-<div class="col-md-4 mx-auto text-center notifica" style="position:fixed;top:25%;left:33%;height:5rem;z-index:999;border:solid 1px black;border-radius:12px;" id='notifica' *ngIf='vedoNotifica' [ngClass]="mostraNotifica()">{{testonotifica}}</div>
+<div class="col-md-4 mx-auto text-center notifica" style="position:fixed;top:25%;left:33%;height:5rem;z-index:999;border:solid 1px black;border-radius:4px;" id='notifica' *ngIf='vedoNotifica' [ngClass]="mostraNotifica()">{{testonotifica}}</div>
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------->
-<div class="row container-fluid px-0">
+<div class="row container-fluid px-0 my-5">
 <div *ngIf="mostra()" (submit)="onsubmit()" class="col-xl-3  altezza">
 
 
@@ -29,7 +29,7 @@
         <label for="email" class="placeholder"></label>
     </div>
     <button type="text" class="submit">submit</button>
-    <div class=" bg-danger p-3" type="button" style="border-radius: 20px; margin-top:38px;" (click)="distruggiUtente()">
+    <div class=" bg-danger p-3" type="button" style="border-radius: 4px; margin-top:38px;" (click)="distruggiUtente()">
         <h2 class="text-center text-dark" style="cursor:pointer;">Distruggi Utente</h2>
     </div>
     </div>
