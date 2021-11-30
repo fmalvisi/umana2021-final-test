@@ -21,8 +21,6 @@ export class AddItemComponent implements OnInit {
   url_photo="";
   owner=0;
   owner_objects_selected="";
-  //owner_objects_selected="";
-  //owner_selected_id=0;
   prova="";
   categorySelected ="null";
   ownerSelected ="null"; 
@@ -69,6 +67,7 @@ export class AddItemComponent implements OnInit {
     this.url_img_input=url.value;
     this.url_controller=true;
   } 
+
   //Category
   //richiamata in getItemId()
   getCategories(){ 
@@ -76,7 +75,6 @@ export class AddItemComponent implements OnInit {
       this.categories=res; 
     }).catch((error) => {
       window.alert("errore di chiamata API2" + error);
-      //this.returnHome;
     })
   }
 
@@ -85,7 +83,6 @@ export class AddItemComponent implements OnInit {
       this.users=res; 
     }).catch((error) => {
       window.alert("errore di chiamata API3" + error);
-      //this.returnHome;
     })
   }
 
@@ -94,7 +91,6 @@ export class AddItemComponent implements OnInit {
       this.items=it; 
     }).catch((error) => {
       window.alert("errore di chiamata API4" + error);
-      //this.returnHome;
     })
   }
 
@@ -105,8 +101,7 @@ export class AddItemComponent implements OnInit {
         setTimeout(() => {
           this.goodModifica = false; 
           this.returnHome();
-        }, 2000); 
-        
+        }, 2000);         
     }) 
   }
     
@@ -157,10 +152,7 @@ export class AddItemComponent implements OnInit {
         "category": this.newCategoryId,
         "owner": this.newOwnerId
     }
-      this.createNewItem(newItem); 
-      //this.getItems();
-      //this.returnHome();
-      
+    this.createNewItem(newItem);      
   }
 
   

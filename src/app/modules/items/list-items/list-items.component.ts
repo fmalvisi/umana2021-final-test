@@ -29,8 +29,7 @@ export class ListItemsComponent implements OnInit {
   constructor(
     private superService : SuperItemService,
     private router : Router
-  ) { 
-  }
+  ) { }
 
   ngOnInit(): void {      
     this.getItems();
@@ -38,7 +37,7 @@ export class ListItemsComponent implements OnInit {
   }
 
   ngDoCheck(){
-    
+
     if(this.router.url == "/items"){
       if (typeof Storage !== "undefined") { 
         sessionStorage.setItem("showCarousel", "true");
@@ -90,15 +89,13 @@ export class ListItemsComponent implements OnInit {
       this.superService.deleteItem(index).subscribe(() =>{
         this.getItems();
       })
-    }
-    
+    }    
   } 
 
   getItems(){
     this.superService.getItemList().then((res: Item[]) => {
       this.items = res;
     }).catch((error) => {
-      window.alert("errore di chiamata API" + error);
       this.returnHome;
     })
   }
@@ -107,7 +104,6 @@ export class ListItemsComponent implements OnInit {
     this.superService.getUserList().then((res: User[]) => {
       this.users = res;
     }).catch((error) => {
-      window.alert("errore di chiamata API" + error);
       this.returnHome;
     })
   }
@@ -116,7 +112,6 @@ export class ListItemsComponent implements OnInit {
     this.superService.getCategoryList().then((res: Category[]) => {
       this.categories = res;
     }).catch((error) => {
-      window.alert("errore di chiamata API" + error);
       this.returnHome;
     })
   }
@@ -131,7 +126,6 @@ export class ListItemsComponent implements OnInit {
         this.saveUser.push(user);
       }
     }).catch((error) => {
-      window.alert("errore di chiamata API" + error);
       this.returnHome;
     })
     //Persistenza per gli oggetti
@@ -140,7 +134,6 @@ export class ListItemsComponent implements OnInit {
         this.saveItems.push(item);
       }
     }).catch((error) => {
-      window.alert("errore di chiamata API" + error);
       this.returnHome;
     })
   }
@@ -234,14 +227,12 @@ export class ListItemsComponent implements OnInit {
         }
       }
     }).catch((error) => {
-      window.alert("errore di chiamata API" + error);
       this.returnHome;
     })
   }
 
   eliminaOggettiDuplicati(item: Item): boolean{
     let variabile = false;
-    console.log('Entrato in elimina duplicati')
     for(let i=0; i<this.itemsFiltrati.length; i++){
       if(this.itemsFiltrati[i].id === item.id && this.itemsFiltrati[i].name === item.name) {
         variabile = true;

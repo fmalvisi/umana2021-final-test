@@ -86,15 +86,16 @@ export class DetailsItemComponent implements OnInit {
       } else {
         this.ownerName = "Nessun proprietario";
       }
+
     }).catch((error) => {
-      window.alert("errore di chiamata API" + error);
+        window.alert("errore di chiamata API" + error);
     })
   }
   
   showCarouselItems(){
     if (typeof Storage !== "undefined") { 
       sessionStorage.setItem("showCarousel", "true");
-    }else{
+    } else {
       console.log( "Sorry, your browser does not support Web Storage...");
     }
   }

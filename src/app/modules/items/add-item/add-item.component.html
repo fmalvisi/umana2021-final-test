@@ -10,9 +10,9 @@
     <form #form="ngForm" (ngSubmit)="onFormSubmit(form)" novalidate> 
         <div class="form-group">
             <div class="row">
-                <!--col altro-->
+                
                 <div class="col">
-                        <!--Nome oggetto:-->
+                    <!--Nome oggetto:-->
                     <label for ="name_input"><strong>Nome oggetto: </strong></label>
                     <input  type="text" class="form-control" [value]="prova"  id="nameinput" name="name_input" [(ngModel)]="name_objects" ngModel required #name_input="ngModel">
                     <!--controllo required-->
@@ -45,13 +45,9 @@
                             <!--Categoria-->
                             <label><i class="fas fa-list"></i>&nbsp;<strong>Categoria: </strong></label>
                             <div class="input-group mb-3" >
-
                                 <select class="form-select" [(ngModel)]="categorySelected" name="categorySelected">
-
-                                    <!--<option selected>{{category_objects_selected}}</option>-->
                                     <option selected >{{category_objects_selected}}</option>
-
-                                  <option  *ngFor="let category of categories">{{category.name}}</option>
+                                    <option  *ngFor="let category of categories">{{category.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -68,8 +64,7 @@
                     </div>  
 
                 </div>
-
-                <!--col url-->
+                
                 <div class="col">
                     <div class="row">
                         <label for ="url"><strong>Carica URL immagine </strong> (facoltativo)</label>
@@ -94,7 +89,6 @@
             </div>
             <div class="row">
                 <div class="button_container">
-                    <!-- Testing (click)="send()"-->
                     <button id="inviabottone" type="submit" [disabled]="name_objects === '' || description === '' || price_euro === 0 || price_euro === null "  class="btn btn-outline-success" >Invia</button>
                     &nbsp;
                     <button [routerLink]='"/items"' id="annullabottone" (click)="showCarouselItems()" type="button" class="btn btn-outline-secondary">Annulla</button>
