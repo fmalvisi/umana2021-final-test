@@ -4,7 +4,7 @@ import { User, UsersService} from "src/app/core/api/generated";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 
-fdescribe('AggiungiComponent', () => {
+describe('AggiungiComponent', () => {
    const pipe = new CustomPipeEta();
     let user: User = {
         id : 1,

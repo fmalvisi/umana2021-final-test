@@ -311,7 +311,7 @@ describe('ModificaComponent', () => {
 
 
   it("mostranotifica dovrebbe funzionare",()=>{
-    expect(component.mostraNotifica()).toBeFalse();
+    expect(component.mostraNotifica()).toBeTruthy();
   })
 
   it("submit dovrebbe funzionare",()=>{
@@ -419,20 +419,20 @@ describe('ModificaComponent', () => {
     }
 
     let controllo=false;
-    let spy=spyOn(component['api'],'deleteUser').and.callFake((id:number)=>{
+    spyOn(component['api'],'deleteUser').and.callFake((id:number)=>{
       return throwError(new Error("errore finto"));
     });
     component.oggetti=[
         oggetto
     ]
     component.distruggiUtente();
-    expect(spy).not.toHaveBeenCalledTimes(1);
+    expect(component['api'].deleteUser).not.toHaveBeenCalledTimes(1);
     oggetto.owner=null;
     component.oggetti=[
       oggetto
     ]
     component.distruggiUtente();
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(component['api'].deleteUser).toHaveBeenCalledTimes(1);
 
 
   })
