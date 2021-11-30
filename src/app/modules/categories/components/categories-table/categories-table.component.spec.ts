@@ -122,7 +122,7 @@ describe('CategoriesTableComponent', () => {
   });
 
 
-  it('should return number of items per category', ()=>{
+  fit('should return number of items per category', ()=>{
 
     component.getNumOfItemsPerCategory(2);
 
@@ -199,7 +199,7 @@ describe('CategoriesTableComponent', () => {
 
   });
 
-  it('should return "disabled" if category has more than 0 items',()=>{
+  fit('should return "disabled" if category has more than 0 items',()=>{
     component.itemArr = [
       {
         "id": 1,
@@ -273,7 +273,74 @@ describe('CategoriesTableComponent', () => {
 
   });
 
-  /* fit('should change variable currentCategory to argument value', ()) */
+  fit('should change variable currentCategory to argument value', ()=>{
+
+    component.updateCurrentCategory(2);
+    expect(component.currentCategory).toBe(2);
+
+  });
+
+  fit('should either return "Dettagli" or "Chiudi" depending on boolean value of the category',()=>{
+    component.categoryArr = [
+      {
+        id : 1,
+        name: 'Casa',
+        description: 'cose per la casa'
+      },
+      {
+        id: 2,
+        name: 'Bagno',
+        description: 'cose per il bagno'
+      },
+      {
+        id: 3,
+        name: 'Giardinaggio',
+        description: 'accessori per il giardino'
+      }
+    ];
+    component.detailCategoryArr = [false, true, false];
+
+    expect(component.toggleClose(1)).toEqual('Dettagli');
+    expect(component.toggleClose(2)).toEqual('Chiudi');
+
+  });
+
+  fit('should handle visibility of ComponentDetails managing boolean values in detailCategoryArr according to 3 different scenarios',()=>{
+
+    component.categoryArr = [
+      {
+        id : 1,
+        name: 'Casa',
+        description: 'cose per la casa'
+      },
+      {
+        id: 2,
+        name: 'Bagno',
+        description: 'cose per il bagno'
+      },
+      {
+        id: 3,
+        name: 'Giardinaggio',
+        description: 'accessori per il giardino'
+      }
+    ];
+    component.detailCategoryArr = [false, false, false];
+
+    component.hide(1);
+    expect(component.detailCategoryArr[0]).toBe(true);
+
+    component.hide(1);
+    expect(component.detailCategoryArr[0]).toBe(false);
+
+    //component.detailCategoryArr = [true, true, false];
+
+    component.hide(2);
+    expect(component.detailCategoryArr[0]).toBe(false);
+    expect(component.detailCategoryArr[1]).toBe(true);
+
+    //component.detailCategoryArr = [false, false, false];
+
+  })
 
   
 /* 
