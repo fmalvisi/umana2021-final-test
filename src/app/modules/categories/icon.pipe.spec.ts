@@ -1,12 +1,3 @@
-// import { IconPipe } from './icon.pipe';
-
-// describe('IconPipe', () => {
-//   fit('create an instance', () => {
-//     const pipe = new IconPipe();
-//     expect(pipe).toBeTruthy();
-//   });
-// });
-
 import { TestBed } from '@angular/core/testing';
 import { IconPipe } from './icon.pipe';
 
@@ -20,5 +11,9 @@ describe('IconPipe', () => {
 
   it('can load instance', () => {
     expect(pipe).toBeTruthy();
+  });
+
+  it('test wip', () => {
+    pipe.transform(2);
   });
 });

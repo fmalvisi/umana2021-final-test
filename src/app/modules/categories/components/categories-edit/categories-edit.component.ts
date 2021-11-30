@@ -52,7 +52,6 @@ export class CategoriesEditComponent implements OnInit {
   // });
 
   // Funzione per il popolare l'array con le modifiche e fare l'update del json
-
   exist = false;
   editCat(name: string, descr: string): void {
     this.categoryService.getCategories().subscribe(cats => {
