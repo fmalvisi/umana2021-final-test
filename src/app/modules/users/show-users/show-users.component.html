@@ -1,6 +1,6 @@
 <div class="container" style="display: flex; justify-content: center; align-items: center; margin-top: 5%;">
 
-  <div style="width: 60%; height: auto; margin-bottom: 10%; background-color: #fff3cd; border-radius: 20px; -webkit-box-shadow: 4px 7px 16px -5px #000000;  -moz-box-shadow: 4px 7px 16px -5px #000000;  -o-box-shadow: 4px 7px 16px -5px #000000;  box-shadow: 4px 7px 16px -5px #000000;">
+  <div style="width: 60%; height: auto; margin-bottom: 10%; background-color: #fff3cd; border-radius: 4px; -webkit-box-shadow: 4px 7px 16px -5px #000000;  -moz-box-shadow: 4px 7px 16px -5px #000000;  -o-box-shadow: 4px 7px 16px -5px #000000;  box-shadow: 4px 7px 16px -5px #000000;">
     <!-- NAVBAR SEZIONE TABELLA UTENTI -->
 
     <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: row; margin: 2%;">
@@ -13,14 +13,11 @@
         </form>
       </div>
       <!-- FINE SEZIONE DELLA SEARCH -->
-      <!-- SEZIONE AGGIUNGI UN UTENTE -->
-      <div  style="display: flex; justify-content: center; align-items: center; flex-direction: row;">
-        <button class="btn btn-success"  [routerLink]='"/users/aggiungi"'>AGGIUNGI</button>
-      </div>
-      <!-- FINE SEZIONE AGGIUNGI UN UTENTE -->
+      
     </div> 
     
     <div style="width: 80%; margin: 0 auto; margin-top: 10%; margin-bottom: 10%;">
+      <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm">
       <table  class="table " style="border-radius: 5px !important;">
         <thead>
           <tr style="padding: 10%;">
@@ -28,7 +25,7 @@
             <th scope="col">nome</th>
             <th scope="col">cognome</th>
             <th scope="col">email</th>
-            <th scope="col"></th>
+            <th scope="col">età</th>
           </tr>
         </thead>
 
@@ -48,6 +45,14 @@
         </tbody>
 
       </table>
+
+      </div>
+      <!-- SEZIONE AGGIUNGI UN UTENTE -->
+      <div  style="display: flex; justify-content: flex-end; align-items: center; flex-direction: row; margin-top: 10%; margin-right: 2%;">
+        <button class="btn btn-primary"  [routerLink]='"/users/aggiungi"'>AGGIUNGI</button>
+      </div>
+      <!-- FINE SEZIONE AGGIUNGI UN UTENTE -->
     </div>
   </div>
   </div>
+  

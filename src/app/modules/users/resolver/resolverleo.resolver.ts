@@ -15,8 +15,6 @@ export class ResolverleoResolver implements Resolve<Array<User>> {
 
   }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Array<User>> | Promise<Array<User>> {
-    return this.api.getUsers().toPromise().catch(error => {
-      throw error;
-    })
+    return this.api.getUsers().toPromise();
   }
 }
