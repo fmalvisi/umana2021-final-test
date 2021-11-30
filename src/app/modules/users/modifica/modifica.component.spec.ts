@@ -1,6 +1,6 @@
 import { HttpEvent } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -245,6 +245,75 @@ describe('ModificaComponent', () => {
     expect(component.checkform.controls.email.valid).toBeFalse();
   })
 
+  it('test submit asinc form invalido',fakeAsync(()=>{
+    let testinput=document.createElement("input");
+    testinput.value="test";
+
+    let result:User={
+      id:1,
+      name:'test',
+      surname:'test',
+      dob:'test',
+      email:'test'
+    }
+
+    let spy=spyOn(document,'getElementById').and.callFake(()=>{
+      return testinput;
+    })
+
+    let startutente=component.utente;
+
+    component.checkform.setValue({
+      nome:"//",
+      cognome:"//",
+      dob:"//",
+      email:"//"
+    });
+    component.onsubmit();
+    fixture.whenStable().then(()=>{
+      tick(1001);
+      expect(component.mostraNotifica).toBeFalse;
+    })
+  }
+  ));
+
+  it('test submit asinc form valido',fakeAsync(()=>{
+    let testinput=document.createElement("input");
+    testinput.value="test";
+
+    let result:User={
+      id:1,
+      name:'test',
+      surname:'test',
+      dob:'test',
+      email:'test'
+    }
+
+    let spy=spyOn(document,'getElementById').and.callFake(()=>{
+      return testinput;
+    })
+
+    let startutente=component.utente;
+
+    component.checkform.setValue({
+      nome:"test",
+      cognome:"test",
+      dob:"test",
+      email:"test@test.test"
+    });
+    component.onsubmit();
+    fixture.whenStable().then(()=>{
+      tick(1001);
+      expect(component.mostraNotifica).toBeFalse;
+    })
+  }
+  ));
+
+
+  it("mostranotifica dovrebbe funzionare",()=>{
+    expect(component.mostraNotifica()).toBeFalse();
+  })
+
   it("submit dovrebbe funzionare",()=>{
 
     let testinput=document.createElement("input");
@@ -367,6 +436,58 @@ describe('ModificaComponent', () => {
 
 
   })
+
+  it('distruggiutente async else',fakeAsync(()=>{
+    let oggetto:Item={
+      id:1,
+      name:"testitem",
+      owner:component.utente.id
+    };
+    
+    let utenteCancellato:User={
+      id:null,
+      name:"",
+      surname:"",
+      dob:"",
+      email:""
+  
+    }
+    component.oggetti=[
+      oggetto
+  ]
+  component.distruggiUtente();
+  spyOn(component['chkurl'],'navigate');
+  fixture.whenStable().then(()=>{
+    tick(1001);
+    expect(component.vedoNotifica).toBeFalse();
+  })
+
+  }))
+
+  it('distruggiutente async if',fakeAsync(()=>{
+    let oggetto:Item={
+      id:1,
+      name:"testitem",
+      owner:component.utente.id
+    };
+    
+    let utenteCancellato:User={
+      id:null,
+      name:"",
+      surname:"",
+      dob:"",
+      email:""
+  
+    }
+    component.oggetti=[]
+  component.distruggiUtente();
+  spyOn(component['chkurl'],'navigate');
+  fixture.whenStable().then(()=>{
+    tick(1001);
+    expect(component['chkurl'].navigate).toHaveBeenCalledTimes(1);
+  })
+
+  }))
 
 });
 

@@ -30,10 +30,10 @@ export class ModificaComponent implements AfterViewInit {
   dobc:string="placeholder";
 
 
-  formStatus(){
+  /*formStatus(){
     console.log("il form è falso:" + this.checkform.invalid);
     return this.checkform.invalid;
-  }
+  }*/
 
 
   constructor(private api:UsersService, private route:ActivatedRoute, private chkurl:Router, private fb:FormBuilder, private items:ItemsService) {
@@ -131,9 +131,28 @@ export class ModificaComponent implements AfterViewInit {
     }
     this.utente=editUser;
     this.api.updateUser(id!,editUser).subscribe();
-    alert('utente aggiornato!');
+    //alert('utente aggiornato!');
+    ///////////////////////////////////////////////////
+    this.vedoNotifica=true;
+    this.classenotifica={
+      'aggiornato':true
+    }
+    this.testonotifica="Utente aggiornato!"
+    // let notifica=document.getElementById('notifica') as HTMLElement;
+    // notifica!.classList.add('bg-success');
+    // notifica!.style.fontSize='3rem';
+    // notifica.innerHTML='Utente aggiornato!';
+    
+    setTimeout(()=>{this.vedoNotifica=false},1000);
+    ///////////////////////////////////////////////////
   } else {
-    alert('alcuni campi non sono validi');
+    console.log('else');
+    this.vedoNotifica=true;
+    this.classenotifica={
+      'pericolo':true,
+    };
+    this.testonotifica="Campi non validi";
+    setTimeout(()=>{this.vedoNotifica=false},1000);
   }
   }
 
@@ -156,11 +175,24 @@ export class ModificaComponent implements AfterViewInit {
     }
     if(posso){
     this.api.deleteUser(this.utente.id!).subscribe();
-    alert('utente distrutto');
-    this.chkurl.navigate(['/users']);
+    console.log('else');
+    this.vedoNotifica=true;
+    this.classenotifica={
+      'pericolo':true,
+    };
+    this.testonotifica="Utente distrutto";
+    setTimeout(()=>{this.chkurl.navigate(['/users'])},1000);
+    
     }
     else{
-      alert('timuovi tutti gli oggetti prima di distruggere');
+      this.api.deleteUser(this.utente.id!).subscribe();
+      console.log('else');
+      this.vedoNotifica=true;
+      this.classenotifica={
+        'pericolo':true,
+      };
+      this.testonotifica="Rimuovi oggetti prima di distruggere";
+      setTimeout(()=>{this.vedoNotifica=false},1000)
     }
   }
   
@@ -175,4 +207,13 @@ export class ModificaComponent implements AfterViewInit {
   //   })
   // }
 
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  vedoNotifica=false;
+  classenotifica={};
+  mostraNotifica():any{
+    return this.classenotifica;
+  }
+  testonotifica:string="";
 }
