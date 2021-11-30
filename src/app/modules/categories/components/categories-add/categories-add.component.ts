@@ -17,7 +17,16 @@ export class CategoriesAddComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  controlloGlobal: boolean = true;
+  /*#controlla usate in fase di sviluppo#
+  controlla che venga creata una nuova categoria solo se non è già presente in db
+  */
+  //controlloGlobal: boolean = true;
+
+  //quando "true" visualizza messaggi di alert in caso la categoria inserita esiste già
+  categoryAlreadyExist: boolean = false;
+
+  //quando "true " visualizza il messaggio che conferma l'avvenuto invio
+  categorySent: boolean = false;
 
   onSubmit(formadd: NgForm) {
     var name = formadd.controls['name'].value;
@@ -36,17 +45,23 @@ export class CategoriesAddComponent implements OnInit {
       var test = categories.filter(c => {
         return nomecat === c.name.toLowerCase();
       }); // fine test
-      console.log('test è uguale a: ', test);
+      //console.log('test è uguale a: ', test);
       if (test.length > 0) {
-        console.log('è stata trovata una corrispondenza');
-        const element: HTMLElement = document.getElementById(
-          'nameMatch',
-        ) as HTMLElement;
-        element.style.display = 'block';
-        var button = <HTMLButtonElement>document.getElementById('button');
-        button.disabled = true;
+        this.categoryAlreadyExist = true;
+        //console.log('è stata trovata una corrispondenza');
+
+        // const element: HTMLElement = document.getElementById(
+        //   'nameMatch',
+        // ) as HTMLElement;
+        // element.style.display = 'block';
+
+        // var button = <HTMLButtonElement>document.getElementById('button');
+        // button.disabled = true;
       } else {
-        this.categoryService.createCategory(category).subscribe();
+        this.categoryService.createCategory(category).subscribe(
+        /*scrivere catch errror*/
+        );
+        this.categorySent = true;
       } // fine if...else
     }); // fine subscribe()
   } // fine onSubmit()

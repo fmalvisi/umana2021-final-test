@@ -52,11 +52,8 @@ export class CategoriesEditComponent implements OnInit {
   // });
 
   // Funzione per il popolare l'array con le modifiche e fare l'update del json
+
   exist = false;
-
-  // quando "true" mostra un messaggio di avvenuta modifica
-  categoryEdited = false;
-
   editCat(name: string, descr: string): void {
     this.categoryService.getCategories().subscribe(cats => {
       for (let i = 0; i < cats.length; i++) {
@@ -79,16 +76,7 @@ export class CategoriesEditComponent implements OnInit {
         this.categoryService
           .updateCategory(this.paramId, this.catt)
           .subscribe();
-        //this.router.navigate(['categories']);
-
-        //impostato un ritardo di 3 secondi per dare il tempo di leggere il messaggio
-        this.categoryEdited = true;
-        setTimeout(() => {
-            this.router.navigate(['categories']);
-          }
-          , 3000
-        );// fine setTimeout()
-
+        this.router.navigate(['categories']);
       } else if (name.length < 3) {
         document.getElementById('error')!.innerHTML =
           'Nome categoria troppo corto.';
@@ -110,7 +98,7 @@ export class CategoriesEditComponent implements OnInit {
       } else if (this.exist) {
         document.getElementById('error')!.innerHTML =
           'Categoria già esistente.';
-      }
+      }// fine else if
     });
   }
 

@@ -33,7 +33,10 @@
           Il nome della categoria deve avere massimo {{categoryname.errors?.['maxlength'].requiredLength}} caratteri.
         </div>
       </div>
-      <div id="nameMatch" style="display:none">
+      <div
+        *ngIf="categoryAlreadyExist"
+        class="error"
+      >
         Questa categoria esiste già, inserisci un altro nome.
       </div>
     </div>
@@ -54,7 +57,6 @@
         #categorydescri="ngModel"
       >
       <div class="error" *ngIf="!categorydescri?.valid && (categorydescri?.dirty || categorydescri?.touched)">
-        La descrizione della categoria non è corretta.
         <div *ngIf="categorydescri.errors?.['required']">
           La descrizione della categoria è obbligatoria.
         </div>
@@ -67,12 +69,18 @@
       </div>
     </div>
 
-    <button
-      id="button"
-      type="submit"
-      class="btn btn-warning"
-      [disabled]="!formadd.valid"
-    >Aggiungi</button>
-    <button class="btn btn-light ms-2" (click)="goBack()">Torna alla tabella</button>
+    <div class="mb-2">
+      <button
+        id="button"
+        type="submit"
+        class="btn btn-warning"
+        [disabled]="!formadd.valid"
+        [disabled]="categoryAlreadyExist"
+      >Aggiungi</button>
+      <button class="btn btn-light ms-2" (click)="goBack()">Torna alla tabella</button>
+    </div>
+    <div *ngIf="categorySent" style="color: #198754;">
+        La categoria {{categoryname.value}} è stata creata.
+    </div>
   </div>
 </form>
