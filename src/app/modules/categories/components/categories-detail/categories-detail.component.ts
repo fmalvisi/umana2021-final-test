@@ -33,12 +33,13 @@ export class CategoriesDetailComponent implements OnInit {
   ngOnInit(): void {
     // assegno nomi e descrizioni alla pagina html
     this.categoryService.getCategories().subscribe(cats => {
-      for (let i = 0; i < cats.length; i++) {
-        this.description = cats[i].description;
-      }
+      // for (let i = 0; i < cats.length; i++) {
+      //   this.description = cats[i].description;
+      // }
+
       // d
-      this.categoryName--;
-      this.name = cats[this.categoryName].name;
+      //this.categoryName--;
+      this.name = cats[this.categoryName-1].name;
     });
   }
   ngOnChanges(): void {
@@ -56,6 +57,6 @@ export class CategoriesDetailComponent implements OnInit {
   // Funzione per salvare ID tramite service e andare alla pagina relativa
   edit(): void {
     this.categoryDataService.getCatId(this.categoryName);
-    this.router.navigate(['categories/edit', this.categoryNames]);
+    this.router.navigate(['categories/edit', this.categoryName]);
   }
 }
