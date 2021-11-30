@@ -19,6 +19,7 @@
   ],
   "users": [
     {
+<<<<<<< HEAD
       "id": 1,
       "name": "Mario",
       "surname": "Rossi",
@@ -33,6 +34,8 @@
       "email": "paolo.bianchi@email.com"
     },
     {
+=======
+>>>>>>> efab25474023be0d3957d8ca36dfacfb52ea6e1a
       "id": 3,
       "name": "barislasss",
       "surname": "derrajjji",
@@ -54,6 +57,7 @@
       "email": "barilsidaderraj@gmail.com"
     },
     {
+<<<<<<< HEAD
       "id": 6,
       "name": "leonardo",
       "surname": "capogna",
@@ -66,6 +70,13 @@
       "surname": "cap",
       "dob": "18-05-1995",
       "email": "leocap76@hotmail.it"
+=======
+      "id": 5,
+      "name": "nome",
+      "surname": "cognome",
+      "email": "prova@prova.it",
+      "dob": "15-11-2021"
+>>>>>>> efab25474023be0d3957d8ca36dfacfb52ea6e1a
     }
   ]
 }
