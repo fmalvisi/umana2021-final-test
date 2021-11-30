@@ -37,8 +37,4 @@ describe('CategoriesAddComponent', () => {
     component.goBack();
     expect(component['router'].navigate).toHaveBeenCalledWith(['categories']);
   });
-
-  it('controlloGlobal has default value', () => {
-    expect(component.controlloGlobal).toEqual(true);
-  });
 });

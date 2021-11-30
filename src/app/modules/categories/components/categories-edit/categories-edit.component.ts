@@ -51,12 +51,12 @@ export class CategoriesEditComponent implements OnInit {
   // this.catName = cats[newLocalId].name;
   // });
 
-  // Funzione per il popolare l'array con le modifiche e fare l'update del json
+  // variabile da assegnare a true se una cateogira con lo stesso nome esiste
   exist = false;
-
   // quando "true" mostra un messaggio di avvenuta modifica
   categoryEdited = false;
 
+  //  funzione che controlla i nomi e le descrizioni delle categorie e svolge la validazione
   editCat(name: string, descr: string): void {
     this.categoryService.getCategories().subscribe(cats => {
       for (let i = 0; i < cats.length; i++) {
@@ -84,11 +84,8 @@ export class CategoriesEditComponent implements OnInit {
         //impostato un ritardo di 3 secondi per dare il tempo di leggere il messaggio
         this.categoryEdited = true;
         setTimeout(() => {
-            this.router.navigate(['categories']);
-          }
-          , 3000
-        );// fine setTimeout()
-
+          this.router.navigate(['categories']);
+        }, 3000); // fine setTimeout()
       } else if (name.length < 3) {
         document.getElementById('error')!.innerHTML =
           'Nome categoria troppo corto.';

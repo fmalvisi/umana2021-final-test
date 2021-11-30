@@ -121,7 +121,7 @@ describe('CategoriesTableComponent', () => {
   });
 
 
-  fit('should return number of items per category', ()=>{
+  it('should return number of items per category', ()=>{
 
     component.getNumOfItemsPerCategory(2);
 
@@ -197,7 +197,7 @@ describe('CategoriesTableComponent', () => {
 
   });
 
-  fit('should return "disabled" if category has more than 0 items',()=>{
+  it('should return "disabled" if category has more than 0 items',()=>{
     component.itemArr = [
       {
         "id": 1,
@@ -270,14 +270,14 @@ describe('CategoriesTableComponent', () => {
 
   });
 
-  fit('should change variable currentCategory to argument value', ()=>{
+  it('should change variable currentCategory to argument value', ()=>{
 
     component.updateCurrentCategory(2);
     expect(component.currentCategory).toBe(2);
 
   });
 
-  fit('should either return "Dettagli" or "Chiudi" depending on boolean value of the category',()=>{
+  it('should either return "Dettagli" or "Chiudi" depending on boolean value of the category',()=>{
     component.categoryArr = [
       {
         id : 1,
@@ -302,7 +302,7 @@ describe('CategoriesTableComponent', () => {
 
   });
 
-  fit('should handle visibility of ComponentDetails managing boolean values in detailCategoryArr according to 3 different scenarios',()=>{
+  it('should handle visibility of ComponentDetails managing boolean values in detailCategoryArr according to 3 different scenarios',()=>{
 
     component.categoryArr = [
       {
