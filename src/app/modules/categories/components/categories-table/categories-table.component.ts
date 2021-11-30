@@ -56,7 +56,7 @@ export class CategoriesTableComponent implements OnInit {
 
         return 0;
       });
-      for (let c of this.categoryArr) {
+      for (let i = 0; i<this.categoryArr.length; i++) {
         this.detailCategoryArr.push(false);
       }
       // console.log('assigned categories: ', this.categoryArr);
