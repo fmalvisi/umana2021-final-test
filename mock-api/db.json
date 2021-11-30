@@ -7,33 +7,6 @@
       "price": 15.5,
       "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": null,
-      "owner": 3
-    },
-    {
-      "id": 2,
-      "name": "Yankee Candle",
-      "description": "Usata, a metà.",
-      "price": 15.5,
-      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": null,
-      "owner": null
-    },
-    {
-      "id": 3,
-      "name": "Yankee Candle",
-      "description": "Usata, a metà.",
-      "price": 15.5,
-      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": null,
-      "owner": null
-    },
-    {
-      "id": 4,
-      "name": "Yankee Candle",
-      "description": "Usata, a metà.",
-      "price": 15.5,
-      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
-      "category": null,
       "owner": null
     }
   ],
@@ -47,24 +20,32 @@
   "users": [
     {
       "id": 3,
-      "name": "leonardotre",
-      "surname": "capogna",
-      "dob": "07-06-1995",
-      "email": "leonardocapogna@gmail.com"
+      "name": "barislasss",
+      "surname": "derrajjji",
+      "dob": "13-03-1992",
+      "email": "barilsidaderraj@gmail.com"
     },
     {
       "id": 4,
-      "name": "leonardoquattro",
-      "surname": "capogna",
-      "dob": "07-06-1995",
-      "email": "leonardocapogna@gmail.com"
+      "name": "Roberto",
+      "surname": "Verdicchi",
+      "dob": "17-10-1996",
+      "email": "roberto.verdi@gmail.com"
     },
     {
       "id": 5,
-      "name": "nome",
-      "surname": "cognome",
-      "email": "prova@prova.it",
-      "dob": "15-11-2021"
+      "name": "barisla",
+      "surname": "derraj",
+      "dob": "07-06-1986",
+      "email": "barilsidaderraj@gmail.com"
+    },
+    {
+      "id": 7,
+      "name": "leoo",
+      "surname": "cap",
+      "dob": "18-05-1995",
+      "email": "leocap76@hotmail.it"
     }
+   
   ]
 }

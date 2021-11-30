@@ -3,54 +3,41 @@ import { AggiungiComponent } from './aggiungi.component';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ReactiveFormsModule, NgForm, FormsModule} from '@angular/forms';
-import { of } from 'rxjs';
+import { ReactiveFormsModule, NgForm, FormsModule, FormControl, Form} from '@angular/forms';
+import { Observable, of } from 'rxjs';
 import { User, UsersService } from 'src/app/core/api/generated';
 import { NgModule } from '@angular/core';
-import { CustomPipeEta } from '../etapipe.pipe';
 import { By } from '@angular/platform-browser';
 
+class Mockuserservice {
 
-mockutente : UsersService;
+  user: Array<User> = [{
+    id : 1,
+    name : "andrea",
+    surname : "andrea",
+    email : "andrea",
+    dob : "andrea"
+  }];
 
-class MockUser {
-  user = {
-    "id": 2,
-      "name": "Paolo",
-      "surname": "Bianchi",
-      "email": "paolo.bianchi@email.com",
-      "dob": "'02-01-1970"
+  createUser (user: User) : Observable<User> {
+    return of(this.user[0]);
   }
-  createUsermock (user: User) {
-    return user;
-  }
-}
 
-const testForm = <NgForm>{
-  value: {
-      nome : "Mario",
-      cognome: "Rossi",
-      email: "mario.rossi@email.com",
-      data:"02-01-1970"
-  }
 };
 
-xdescribe('AggiungiComponent', () => {
+
+describe('AggiungiComponent', () => {
   let component: AggiungiComponent;
   let fixture: ComponentFixture<AggiungiComponent>;
-  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule
-      ],
-      //declarations: [ AggiungiComponent,CustomPipeEta ],
+      imports: [ RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule],
+      declarations: [ AggiungiComponent ],
       providers: [
-        { provide: ActivatedRoute, useValue: { paramMap: of(convertToParamMap({})) }},
-        { provide: UsersService, useClass: MockUser},
-          NgForm,
-          
+        {provide:ActivatedRoute, useValue: { paramMap: of(convertToParamMap({})) }},
+        { provide: UsersService, useClass: Mockuserservice},
+        NgForm, 
       ]
 
     })
@@ -58,7 +45,6 @@ xdescribe('AggiungiComponent', () => {
   });
 
   beforeEach(async() => {
-    httpMock = TestBed.inject(HttpTestingController)
     fixture = await TestBed.createComponent(AggiungiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -69,30 +55,77 @@ xdescribe('AggiungiComponent', () => {
     expect(component).toBeTruthy();  
   });
   
-
-  it ('onsubmit funziona', (() => {
-    spyOn(component,"onsubmit");
-    let el=fixture.debugElement.query(By.css('button')).nativeElement;
-    el.click()
-    //component.onsubmit(testForm);
-    expect(component.onsubmit).toHaveBeenCalledTimes(1);
-  }));
-
   it('should have Aggiungi  utente', () => {
     const el =fixture.debugElement.nativeElement;
     expect(el.querySelector('h4').textContent).toContain('Aggiungi utente');
   });
 
-  it('onsubmit should not work', ()=> {
-    let el = fixture.debugElement.componentInstance;
+  it ('form validate', (() => {
 
-  })
+  const el=fixture.debugElement.nativeElement;
+  //let form : NgForm = new NgForm({nome:"", });
+  
+  const testForm =  {
+    
+    controls :   {
+      nome : {value: "Hello"},
+      cognome: {value: "World"},
+      email: { value: "email"},
+      data: {value: "000000000000000000"}
+    }
+  } as  unknown as  NgForm;
+
+  spyOn(component["api"], "createUser").and.callThrough();
+  component.onsubmit(testForm);
+
+  expect(component["api"].createUser).toHaveBeenCalledTimes(1);  
+      
+
+    }));
+
+it ('test if funziona', ()=>{
+  const testForm = {
+    controls :   {
+      nome: {value: "utente "},
+      cognome: {value: "untente"},
+      email: {value: "untente "},
+      data: {value: "untente "}
+    }
+  } as unknown as NgForm;
+
+  const el=fixture.debugElement.nativeElement;
+  spyOn(component["api"], "createUser").and.callThrough();
+  component.onsubmit(testForm);
+
+  expect(component["api"].createUser).toHaveBeenCalledTimes(1);  
+
+})
+
+it ('test if non funziona', ()=>{
+  const testForm = {
+    controls :   {
+      nome: {value: ""},
+      cognome: {value: ""},
+      email: {value: ""},
+      data: {value: ""}
+    }
+  } as unknown as NgForm;
+
+  const el=fixture.debugElement.nativeElement;
+  spyOn(component["api"], "createUser").and.callThrough();
+  component.onsubmit(testForm);
+
+  expect(component["api"].createUser).toHaveBeenCalledTimes(0);  
+
+})
+
+    
+
+
 
 
 
 })
-
-
 
 
 

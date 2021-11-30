@@ -11,7 +11,7 @@ export class CustomPipeEta implements PipeTransform {
   transform(user: User) {
     
       const z=user.dob.split("-",3);
-  
+      
       let d = z[0];
       let m = z[1];
       let a = z[2]; 
@@ -26,20 +26,18 @@ export class CustomPipeEta implements PipeTransform {
       var ageyear =oggianno-anno;
       var agemonth =oggimese-mese ;
       var ageday = oggidata-date;
+      if (oggidata < date) {
+        agemonth--;
+        ageday = 30 + ageday;
+      }  
       if (agemonth <= 0) {
         ageyear--;
         agemonth = (12 + agemonth);
       }
-      if (oggidata < date) {
-        agemonth--;
-        ageday = 30 + ageday;
-      }  if (agemonth == 12) {
-        ageyear = ageyear + 1;
-        agemonth = 0;
-      }
+      
 
-      console.log(ageyear);
-      return (ageyear+"anni");
+     
+      return (ageyear);
   }
 }
 
