@@ -3,47 +3,44 @@ import { AggiungiComponent } from './aggiungi.component';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ReactiveFormsModule, NgForm, FormsModule} from '@angular/forms';
-import { of } from 'rxjs';
+import { ReactiveFormsModule, NgForm, FormsModule, FormControl, Form} from '@angular/forms';
+import { Observable, of } from 'rxjs';
 import { User, UsersService } from 'src/app/core/api/generated';
 import { NgModule } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-mockutente : UsersService;
+class Mockuserservice {
+ 
+  
+  
+  user: Array<User> = [{
+    id : 1,
+    name : "andrea",
+    surname : "andrea",
+    email : "andrea",
+    dob : "andrea"
+  }];
 
-class MockUser {
-  user = {
-    "id": 2,
-      "name": "Paolo",
-      "surname": "Bianchi",
-      "email": "paolo.bianchi@email.com",
-      "dob": "'02-01-1970"
+  createUser (user: User) : Observable<User> {
+    return of(this.user[0]);
   }
-}
 
-const testForm = <NgForm>{
-  value: {
-      nome : "Mario",
-      cognome: "Rossi",
-      email: "mario.rossi@email.com",
-      data:"02-01-1970"
-  }
 };
+
+
+
 
 describe('AggiungiComponent', () => {
   let component: AggiungiComponent;
   let fixture: ComponentFixture<AggiungiComponent>;
-  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule
-      ],
+      imports: [ RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule, FormsModule],
       declarations: [ AggiungiComponent ],
       providers: [
-        { provide: ActivatedRoute, useValue: { paramMap: of(convertToParamMap({})) }},
-        { provide: UsersService, useClass: MockUser},
+        {provide:ActivatedRoute, useValue: { paramMap: of(convertToParamMap({})) }},
+        { provide: UsersService, useClass: Mockuserservice},
         NgForm
       ]
 
@@ -52,7 +49,6 @@ describe('AggiungiComponent', () => {
   });
 
   beforeEach(async() => {
-    httpMock = TestBed.inject(HttpTestingController)
     fixture = await TestBed.createComponent(AggiungiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -68,23 +64,60 @@ describe('AggiungiComponent', () => {
     expect(el.querySelector('h4').textContent).toContain('Aggiungi utente');
   });
 
-  
-  it ('onsubmit funziona', (() => {
-    spyOn(component,"onsubmit");
-    let el=fixture.debugElement.query(By.css('button')).nativeElement;
-    el.click()
-    //component.onsubmit(testForm);
-    expect(component.onsubmit).toHaveBeenCalledTimes(1);
+  it ('form validate', (() => {
+
+ const el=fixture.debugElement.nativeElement;
+ //let form : NgForm = new NgForm({nome:"", });
+ 
+ const testForm = <NgForm><unknown>{
+   /*value: {
+       nome: "Hello",
+       cognome: "World",
+       email: "email",
+       data: "data"
+   }, */
+   controls:{nome :String,
+      cognome : String,
+      email : String,
+      data : String
+},/*
+   controls :   {
+     nome: "Hello",
+     cognome: "World",
+     email: "email",
+     data: "000000000000000000"
+   }*/
+ };
+spyOn(console,"log").and.callThrough();
+component.onsubmit(testForm);
+
+expect(console.log).toHaveBeenCalledTimes(1);  
+     
+
+  }));
+
+it ('test if funziona', ()=>{
+  const testForm = <NgForm><unknown>{
+    controls :   {
+      nome: "",
+      cognome: "",
+      email: "",
+      data: ""
+    }
+  };
+  const el=fixture.debugElement.nativeElement;
+  spyOn(console,"log").and.callThrough();
+  component.onsubmit(testForm);
+  expect(console.log).toHaveBeenCalledTimes(1);
+})
 
     
-  }));
+
 
 
 
 
 })
-
-
 
 
 

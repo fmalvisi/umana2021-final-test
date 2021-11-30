@@ -1,20 +1,11 @@
 import { from } from "rxjs";
 import { CustomPipeEta } from "./etapipe.pipe";
-import { User, UsersService} from 'src/app/core/api/generated';
+import { User, UsersService} from "src/app/core/api/generated";
+import { TestBed } from "@angular/core/testing";
 
-
-
-
-
-    class MockUser {
-        user = {
-        "id": 2,
-            "name": "Paolo",
-            "surname": "Bianchi",
-            "email": "paolo.bianchi@email.com",
-            "dob": "'02-01-1970"
-        }
-    }
+    
+    let agemonth, oggiData, date, ageyear;
+    ageyear=5;
 
         describe('pipe funziona', () => {
         
@@ -23,10 +14,13 @@ import { User, UsersService} from 'src/app/core/api/generated';
                 expect(pipe).toBeTruthy();
             });
 
-            it('sholud transform 51 anni', ()=>{
+            fit('sholud  age--', ()=>{
                 const pipe = new CustomPipeEta();
-                //let res=pipe.transform(MockUser);
-               // expect(res).toEqual("51 anni");
+                let service=TestBed.compileComponents
+                let month=-1;
+                let ageyear=4;
+                expect(pipe.transform).toEqual(ageyear--);
+
             })
 
 

@@ -20,7 +20,7 @@
       <div *ngIf="cognome.invalid && (cognome.dirty || cognome.touched) "class="alert">
         <div *ngIf="cognome.errors?.['required']">
           Cognome is required.</div>
-        <div *ngIf="cognome.errors?.['pattern']">
+        <div *ngIf="cognome.errors?.['minlength']">
           Cognome is not valid.</div>  
         </div>
   </div>

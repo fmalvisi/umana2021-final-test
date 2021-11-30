@@ -67,7 +67,6 @@
       "email": "barilsidaderraj@gmail.com"
     },
     {
-
       "id": 4,
       "name": "Roberto",
       "surname": "Verdicchi",
@@ -87,13 +86,6 @@
       "surname": "capogna",
       "dob": "07-06-1995",
       "email": "leonardocapogna@gmail.com"
-    },
-    {
-      "id": 7,
-      "name": "leoo",
-      "surname": "cap",
-      "dob": "18-05-1995",
-      "email": "leocap76@hotmail.it"
     }
   ]
 }
