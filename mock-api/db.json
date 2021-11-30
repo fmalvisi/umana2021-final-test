@@ -4,55 +4,66 @@
       "id": 1,
       "name": "Yankee Candle",
       "description": "Usata, a metà.",
-      "price": 15.50,
-      "imgurl": "http://egress.storeden.net/jpg/5ffea3af00f220f2b3c1db01/file.jpg",
+      "price": 15.5,
+      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
       "category": 1,
-      "owner": 1
+      "owner": null
     },
     {
       "id": 2,
-      "name": "Borsa Donna",
-      "description": "Usata",
-      "price": 25.50,
-      "imgurl": "https://m.media-amazon.com/images/I/71yPIme7gzL._SY500_.jpg",
-      "category": 2,
-      "owner": 1
+      "name": "Testcasa",
+      "description": "Usata bene.",
+      "price": 9.99,
+      "category": 1,
+      "owner": null
     },
     {
       "id": 3,
-      "name": "Libro Natura",
-      "description": "Usata, a metà.",
-      "price": 9.99,
-      "imgurl": "https://images-na.ssl-images-amazon.com/images/I/51QlkGZfOIL.jpg",
-      "category": 1,
-      "owner": 2
+      "name": "Testcucina1",
+      "description": "Usata male.",
+      "price": 50,
+      "category": 2,
+      "owner": null
     },
     {
       "id": 4,
-      "name": "Tavolo antico",
-      "description": "Usata, a metà.",
-      "price": 75.00,
-      "imgurl": "https://cdn20.pamono.com/p/s/3/9/390898_0o35zp26mr/tavolo-antico-in-larice-e-abete-italia.jpg",
-      "category": 1,
-      "owner": 2
+      "name": "Testcucina2",
+      "description": "Usata male.",
+      "price": 30,
+      "category": 2,
+      "owner": null
     },
     {
       "id": 5,
-      "name": "Bicicletta",
-      "description": "Usata tanto",
-      "price": 50.90,
-      "imgurl": "https://prodottitop.net/wp-content/plugins/aawp/public/image.php?url=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNTFuT1FVMlozR0wuanBn",
+      "name": "Testbagno1",
+      "description": "Usata bene.",
+      "price": 50,
       "category": 3,
-      "owner": 2
+      "owner": null
     },
     {
       "id": 6,
-      "name": "Pianta ornamentale",
-      "description": "Usata ma bene",
-      "price": 15.50,
-      "imgurl": "https://www.cactusmania.it/wp-content/uploads/2020/10/agave-filifera-crestata-vaso-20-1-1-500x500.jpg",
-      "category": 1,
-      "owner": 1
+      "name": "Testbagno2",
+      "description": "Usata male.",
+      "price": 11.5,
+      "category": 3,
+      "owner": null
+    },
+    {
+      "id": 7,
+      "name": "Testbagno3",
+      "description": "Usata male.",
+      "price": 11.5,
+      "category": 3,
+      "owner": null
+    },
+    {
+      "id": 8,
+      "name": "Rastrello",
+      "description": "Usata male.",
+      "price": 11.5,
+      "category": 4,
+      "owner": null
     }
   ],
   "category": [
@@ -63,22 +74,18 @@
     },
     {
       "id": 2,
-      "name": "Casa",
-      "description": "cose per la casa"
-    },    {
+      "name": "Cucina",
+      "description": "cose per la cucina"
+    },
+    {
       "id": 3,
-      "name": "Casa",
-      "description": "cose per la casa"
+      "name": "Bagno",
+      "description": "cose per il bagno"
     },
     {
       "id": 4,
-      "name": "Casa",
-      "description": "cose per la casa"
-    },
-    {
-      "id": 5,
-      "name": "Casa",
-      "description": "cose per la casa"
+      "name": "Giardinaggio",
+      "description": "accessori per il giardino"
     }
   ],
   "users": [

@@ -1,0 +1,74 @@
+.hidden {
+  display: none;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-light {
+  margin-right: 0.3rem;
+}
+
+button {
+  box-shadow: 1px 1px darkgray;
+  min-width: 80px;
+  margin: 0 5px;
+}
+
+// .filter{
+//     display: inline-block;
+//     margin-bottom: 20px;
+// }
+
+.filter-category{
+    border-radius: 5px;
+    border: 1px solid darkgray;
+}
+
+input::-webkit-calendar-picker-indicator {
+    padding-bottom: 7.5px;
+    opacity: 0.65;
+    }
+
+// .right{
+//     float: right;
+//     display: inline-block;
+//     margin-top: 15px;
+//     margin-right: 10px;
+// }
+
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+    // .right{
+    //     display: block;
+    //     float: none;
+    //     margin-top: 5px;
+    // }
+    // .filter{
+    //     margin-bottom: 5px;
+    // }
+    button {
+      margin: 0;
+    }
+    .desktop {
+      display: none;
+    }
+    .mobile {
+      display: block;
+    }
+    th, td {
+      width: 4rem;
+    }
+    th:first-of-type, td:first-of-type {
+      width: 1rem;
+    }
+    .top {
+      display: flex;
+      flex-direction: column;
+    }
+}

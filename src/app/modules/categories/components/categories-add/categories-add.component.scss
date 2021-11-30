@@ -1,0 +1,42 @@
+form {
+  margin-top: 1rem;
+  div {
+    margin-bottom: 1rem;
+
+    label {
+      font-size: 1.25rem;
+    }
+
+    input {
+      box-shadow: 1px 1px darkgrey;
+      &:focus {
+        border-color: #fff3cd;
+        box-shadow: 0 0 0 0.25rem rgb(102 77 3 / 25%);
+      }
+    } //fine input
+
+    // colore del font delle segnalazioni
+    .error {
+      color: #dc3545;
+    }
+    button {
+      box-shadow: 1px 1px darkgrey;
+    }
+    .btn-light:hover {
+      background-color: #dfe0e1;
+      border-color: #dfe0e1;
+    }
+  } //fine div
+}
+
+@media screen and (max-width: 1025px) {
+  input {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  input {
+    width: 40%;
+  }
+}
