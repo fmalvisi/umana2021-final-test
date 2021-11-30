@@ -59,8 +59,7 @@ export class DetailsItemComponent implements OnInit {
 
     this.superService.getUserById(id).then((res: User) => {
       this.ownerObj = res; 
-      this.ownerName = this.ownerObj.name!;
-      console.log("OWNERNOME",this.ownerName);
+      this.ownerName = this.ownerObj.name + " " + this.ownerObj.surname; 
     }).catch((error) => {
       window.alert("errore di chiamata API22" + error);
     })
