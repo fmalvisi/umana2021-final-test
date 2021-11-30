@@ -46,13 +46,6 @@
   ],
   "users": [
     {
-      "id": 2,
-      "name": "leonardodue",
-      "surname": "capogna",
-      "dob": "07-06-1995",
-      "email": "leonardocapogna@gmail.com"
-    },
-    {
       "id": 3,
       "name": "leonardotre",
       "surname": "capogna",
@@ -67,11 +60,11 @@
       "email": "leonardocapogna@gmail.com"
     },
     {
-      "id": 6,
-      "name": "leonardosei",
-      "surname": "capogna",
-      "dob": "07-06-1995",
-      "email": "leonardocapogna@gmail.com"
+      "id": 5,
+      "name": "nome",
+      "surname": "cognome",
+      "email": "prova@prova.it",
+      "dob": "15-11-2021"
     }
   ]
 }
