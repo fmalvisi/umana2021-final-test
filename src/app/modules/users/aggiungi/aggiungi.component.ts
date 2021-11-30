@@ -44,8 +44,9 @@ export class AggiungiComponent implements OnInit {
         console.log(this.utente);
         this.api.createUser(this.utente).subscribe((error: any)=>{
         console.log(error);
-        this.router.navigate(['/users']);
+        this.router.navigate(['users']);
         });
+
      }
     
     }

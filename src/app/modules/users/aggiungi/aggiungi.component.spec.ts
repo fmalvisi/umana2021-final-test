@@ -10,9 +10,7 @@ import { NgModule } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 class Mockuserservice {
- 
-  
-  
+
   user: Array<User> = [{
     id : 1,
     name : "andrea",
@@ -28,8 +26,6 @@ class Mockuserservice {
 };
 
 
-
-
 describe('AggiungiComponent', () => {
   let component: AggiungiComponent;
   let fixture: ComponentFixture<AggiungiComponent>;
@@ -41,7 +37,7 @@ describe('AggiungiComponent', () => {
       providers: [
         {provide:ActivatedRoute, useValue: { paramMap: of(convertToParamMap({})) }},
         { provide: UsersService, useClass: Mockuserservice},
-        NgForm
+        NgForm, 
       ]
 
     })
@@ -66,49 +62,61 @@ describe('AggiungiComponent', () => {
 
   it ('form validate', (() => {
 
- const el=fixture.debugElement.nativeElement;
- //let form : NgForm = new NgForm({nome:"", });
- 
- const testForm = <NgForm><unknown>{
-   /*value: {
-       nome: "Hello",
-       cognome: "World",
-       email: "email",
-       data: "data"
-   }, */
-   controls:{nome :String,
-      cognome : String,
-      email : String,
-      data : String
-},/*
-   controls :   {
-     nome: "Hello",
-     cognome: "World",
-     email: "email",
-     data: "000000000000000000"
-   }*/
- };
-spyOn(console,"log").and.callThrough();
-component.onsubmit(testForm);
+  const el=fixture.debugElement.nativeElement;
+  //let form : NgForm = new NgForm({nome:"", });
+  
+  const testForm =  {
+    
+    controls :   {
+      nome : {value: "Hello"},
+      cognome: {value: "World"},
+      email: { value: "email"},
+      data: {value: "000000000000000000"}
+    }
+  } as  unknown as  NgForm;
 
-expect(console.log).toHaveBeenCalledTimes(1);  
-     
+  spyOn(component["api"], "createUser").and.callThrough();
+  component.onsubmit(testForm);
 
-  }));
+  expect(component["api"].createUser).toHaveBeenCalledTimes(1);  
+      
+
+    }));
 
 it ('test if funziona', ()=>{
-  const testForm = <NgForm><unknown>{
+  const testForm = {
     controls :   {
-      nome: "",
-      cognome: "",
-      email: "",
-      data: ""
+      nome: {value: "utente "},
+      cognome: {value: "untente"},
+      email: {value: "untente "},
+      data: {value: "untente "}
     }
-  };
+  } as unknown as NgForm;
+
   const el=fixture.debugElement.nativeElement;
-  spyOn(console,"log").and.callThrough();
+  spyOn(component["api"], "createUser").and.callThrough();
   component.onsubmit(testForm);
-  expect(console.log).toHaveBeenCalledTimes(1);
+
+  expect(component["api"].createUser).toHaveBeenCalledTimes(1);  
+
+})
+
+it ('test if non funziona', ()=>{
+  const testForm = {
+    controls :   {
+      nome: {value: ""},
+      cognome: {value: ""},
+      email: {value: ""},
+      data: {value: ""}
+    }
+  } as unknown as NgForm;
+
+  const el=fixture.debugElement.nativeElement;
+  spyOn(component["api"], "createUser").and.callThrough();
+  component.onsubmit(testForm);
+
+  expect(component["api"].createUser).toHaveBeenCalledTimes(0);  
+
 })
 
     

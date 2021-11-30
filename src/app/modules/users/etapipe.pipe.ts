@@ -26,20 +26,18 @@ export class CustomPipeEta implements PipeTransform {
       var ageyear =oggianno-anno;
       var agemonth =oggimese-mese ;
       var ageday = oggidata-date;
+      if (oggidata < date) {
+        agemonth--;
+        ageday = 30 + ageday;
+      }  
       if (agemonth <= 0) {
         ageyear--;
         agemonth = (12 + agemonth);
       }
-      if (oggidata < date) {
-        agemonth--;
-        ageday = 30 + ageday;
-      }  if (agemonth == 12) {
-        ageyear = ageyear + 1;
-        agemonth = 0;
-      }
+      
 
-      console.log(ageyear);
-      return (ageyear+"anni");
+     
+      return (ageyear);
   }
 }
 

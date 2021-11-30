@@ -1,30 +1,94 @@
-import { from } from "rxjs";
+import { from, of } from "rxjs";
 import { CustomPipeEta } from "./etapipe.pipe";
 import { User, UsersService} from "src/app/core/api/generated";
-import { TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+
+
+fdescribe('AggiungiComponent', () => {
+   const pipe = new CustomPipeEta();
+    let user: User = {
+        id : 1,
+        name : "andrea",
+        surname : "andrea",
+        email : "andrea",
+        dob : "18-05-1997"
+      };
+   
+    it ('testing pipe', () => {
+        let anno =pipe.transform(user);
+        expect(anno).toEqual(24);
+   })
+
+   it('testing il primo if age should be age--', () => {
+       let pipe =new CustomPipeEta;
+       let user: User = {
+        id : 1,
+        name : "andrea",
+        surname : "andrea",
+        email : "andrea",
+        dob : "18-12-1997"
+      };
+       let mese=pipe.transform(user);
+       
+       let user2: User = {
+        id : 1,
+        name : "andrea",
+        surname : "andrea",
+        email : "andrea",
+        dob : "18-05-1997"
+
+      };
+      let mese2=pipe.transform(user2);
+
+   })
+
+   it('testing il secondo if age should be age--', () => {
+    let pipe =new CustomPipeEta;
+    let user: User = {
+     id : 1,
+     name : "andrea",
+     surname : "andrea",
+     email : "andrea",
+     dob : "31-11-1997"
+   };
+    let mese=pipe.transform(user);
+    
+    let user2: User = {
+     id : 1,
+     name : "andrea",
+     surname : "andrea",
+     email : "andrea",
+     dob : "18-05-1997"
+
+   };
+   let mese2=pipe.transform(user2);
+
+})
+
+it('testing il terzo if age should be age++', () => {
+    let pipe =new CustomPipeEta;
+    let user: User = {
+     id : 1,
+     name : "andrea",
+     surname : "andrea",
+     email : "andrea",
+     dob : "30-11-1997"
+   };
+    let mese=pipe.transform(user);
+    
+    let user2: User = {
+     id : 1,
+     name : "andrea",
+     surname : "andrea",
+     email : "andrea",
+     dob : "30-05-1997"
+
+   };
+   let mese2=pipe.transform(user2);
+
+})
 
     
-    let agemonth, oggiData, date, ageyear;
-    ageyear=5;
+  
 
-        describe('pipe funziona', () => {
-        
-            it('should create', () => {
-                const pipe=new CustomPipeEta();
-                expect(pipe).toBeTruthy();
-            });
-
-            fit('sholud  age--', ()=>{
-                const pipe = new CustomPipeEta();
-                let service=TestBed.compileComponents
-                let month=-1;
-                let ageyear=4;
-                expect(pipe.transform).toEqual(ageyear--);
-
-            })
-
-
-
-
-        })
-
+})

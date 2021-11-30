@@ -82,6 +82,28 @@ body {
   }
 
 
+  .aggiornato{
+    background-color:rgb(189, 237, 164);
+    content:'Utente aggiornato!';
+    font-size:2rem;
+  }
+
+  .notifica{
+    color:black;
+    line-height: 4.5rem;
+  }
+
+  .pericolo{
+    background-color:rgb(242, 80, 80);
+    font-size:1.5rem;
+    line-height: 4.5rem;
+  }
+
+  
+
+  .nondistrutto{
+    content:'rimuovi gli oggetti prima di distruggere';
+  }
 
   @media screen and (min-width:1200px){
     .altezza{
