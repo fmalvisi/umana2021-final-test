@@ -1,0 +1,71 @@
+.carouselWrapper{
+    width: 90%;
+    height: 1000px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;    
+    background-color: rgba(226, 158, 70, 0.534);
+}
+
+.carousel-inner{
+    overflow-y: scroll;
+}
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 26px;
+  border-radius: 13px;
+  background-clip: padding-box;
+  border: 10px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb {        
+  box-shadow: inset rgb(233, 154, 97) 0 0 0 10px;
+}
+
+.carousel-item{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card{
+    margin: 2%;
+}
+
+.buttonMenu{
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filtriWrapper{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: auto;
+}
+
+.accFilter{
+    margin-top: 4%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.filterTable{
+    margin-top: 2%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}

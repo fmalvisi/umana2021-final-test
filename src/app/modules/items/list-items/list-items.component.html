@@ -1,0 +1,172 @@
+<div id="listitemcontainer" *ngIf="mostra">
+  <h1 class='display-1' style="margin-top: 2%; text-align: center;">Bazar dell'usato</h1>
+
+  <div class="buttonMenu">
+    <div class="addItem"><a type="button addItem" [routerLink]="['aggiungi-oggetto']" (click)="add()" class="btn btn-outline-success"><i class="fas fa-plus"></i>&nbsp;Nuovo Oggetto</a></div>
+  </div>
+
+  <div class="row">    
+
+    <div class="col-md-3">
+
+      <!-- FILTRI -->
+      <div class="filtriWrapper">
+        <button class="btn btn-outline-dark btnFilter" type="button" id="btnFiltriF"  aria-expanded="false" (click)="useFilter()">
+          <i class="fas fa-filter"></i>&nbsp;<strong>&nbsp;Filtri&nbsp;</strong>&nbsp;<i class="fas fa-caret-down" *ngIf="!mostraFiltri"></i><i class="fas fa-caret-up" *ngIf="mostraFiltri"></i>
+        </button>&nbsp;
+        <button class="btn btn-outline-danger" type="button" id="btnFiltriR" *ngIf="mostraFiltri" aria-expanded="false" (click)="rimuoviFiltri()">
+          <i class="fas fa-times"></i>&nbsp;<strong>Rimuovi</strong>
+        </button>&nbsp;
+        <button class="btn btn-outline-success" type="button" id="btnFiltriA" *ngIf="mostraFiltri" aria-expanded="false" (click)="applicaFiltri()">
+          <i class="fas fa-check"></i>&nbsp;<strong>Applica</strong>
+        </button>
+      </div>
+
+      <div class="filterTable"> 
+        <button class="btn" type="button" id="btnFiltri" *ngFor="let filtro of filtriInUso" 
+          (click)="removeOneFilter(filtro.tipo, +filtro.id!, filtro.nome)"><i class="fas fa-times"></i>&nbsp;<strong>{{ filtro.nome }}</strong>
+        </button>
+      </div>
+      
+      <div class="accFilter" *ngIf="mostraFiltri">
+        <div class="accordion" id="accordionFilter">
+          <div class="accordion-item">
+            <h1 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" id="categoryFilter" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="fa" aria-controls="collapseOne">
+                <i class="fas fa-list"></i>&nbsp;<strong>Categorie</strong>
+              </button>
+            </h1>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFilter">
+              <div class="accordion-body">
+                <div class="elencoCategorie">
+                  <div class="form-check form-switch" *ngFor="let category of categories">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" style="cursor: pointer;" 
+                      (click)="chosenFilter('categoria', +category.id!, category.name, $event)">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ category.name }}</label>
+                  </div>
+                  <br/><small style="color: darkred">*Per rimuovere una categoria usare lo switch</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" id="userFilter" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <i class="fas fa-user"></i>&nbsp;<strong>Utenti</strong>
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFilter">
+              <div class="accordion-body">
+                <div>
+                  <div>                    
+                    <a id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none;">
+                      <input type="text" class="form-control" id="inputUtente" placeholder="Inserisci un nome utente" (keyup)="filtraUtenti($event)">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 18%;">
+                      <li>
+                        <a class="dropdown-item listutenti"  *ngFor="let user of searchUser" style="cursor: pointer;"  
+                          (click)="chosenFilter('utente', +user.id!, user.name + ' ' + user.surname)">{{ user.name + ' ' + user.surname }}</a></li>                        
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" id="nomeOggettoFilter" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <i class="fas fa-gift"></i>&nbsp;<strong>Nome Oggetto</strong>
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFilter">
+              <div class="accordion-body">
+                <div>                    
+                  <a id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none;">
+                    <input type="text" class="form-control" id="inputOggetto" placeholder="Inserisci oggetto" (keyup)="filtraOggetti($event)">
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 18%;">
+                    <li>
+                      <a class="dropdown-item listoggetti" *ngFor="let item of searchItems" style="cursor: pointer;" 
+                        (click)="chosenFilter('oggetto', +item.id!, item.name)">{{ item.name }}</a></li>                        
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /FILTRI -->
+      
+    </div>
+
+    <div class="col-md-9">
+
+      <!-- CAROSELLO -->
+      <div id="carouselExampleIndicators" class="carousel slide carouselWrapper" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item">
+            <div *ngFor="let item of items;" [hidden]="oggettiFiltrati" class="card shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+              <img [src]="item.imgurl" class="card-img-top" alt="item">   
+              <div class="card-body">
+                <h4 class="card-title">{{item.name}}</h4><br/>
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-text">{{item.price! | currencyEur}}</h5>  
+                  </div>
+                  <div class="col">
+                    <div class="dropdown" style="display: flex; justify-content: flex-end;">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Opzioni
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" [routerLink]="['dettagli-oggetto/'+item.id]" (click)="details(+item.id!)"><i  class="fas fa-eye"></i>&nbsp;Dettagli</a></li>
+                        <li><hr class="dropdown-divider"></li> 
+                        <li><a  id="modifyItem" class="dropdown-item modifyItem"[routerLink]="['modifica-oggetto/'+item.id]" (click)="modify(+item.id!)"><i class="fas fa-edit"></i>&nbsp;Modifica</a></li>
+                        <li><hr class="dropdown-divider"></li> 
+                        <li><a class="dropdown-item" (click)="deleteItem(+item.id!)" style="cursor: pointer;"><i class="fas fa-trash-alt"></i>&nbsp;Elimina</a></li> 
+                      </ul>
+                    </div>
+                  </div>
+                </div>  
+              </div>    
+            </div> 
+            <div *ngFor="let item of itemsFiltrati;" id="provanattimo" [hidden]="!oggettiFiltrati" class="card card2 shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+              <img [src]="item.imgurl" class="card-img-top" alt="item">   
+              <div class="card-body">
+                <h4 class="card-title">{{item.name}}</h4><br/>
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-text">{{item.price! | currencyEur}}</h5>  
+                  </div>
+                  <div class="col">
+                    <div class="dropdown" style="display: flex; justify-content: flex-end;">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Opzioni
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" [routerLink]="['dettagli-oggetto/'+item.id]" (click)="details(+item.id!)"><i  class="fas fa-eye"></i>&nbsp;Dettagli</a></li>
+                        <li><hr class="dropdown-divider"></li> 
+                        <li><a class="dropdown-item" [routerLink]="['modifica-oggetto/'+item.id]" (click)="modify(+item.id!)"><i class="fas fa-edit"></i>&nbsp;Modifica</a></li>
+                        <li><hr class="dropdown-divider"></li> 
+                        <li><a class="dropdown-item" (click)="deleteItem(+item.id!)" style="cursor: pointer;"><i class="fas fa-trash-alt"></i>&nbsp;Elimina</a></li> 
+                      </ul>
+                    </div>
+                  </div>
+                </div>  
+              </div>    
+            </div> 
+          </div>
+        </div>
+      </div>
+      <!-- /CAROSELLO -->
+
+    </div>
+
+  </div>
+
+</div>
+
+  
+
+
+<router-outlet></router-outlet>

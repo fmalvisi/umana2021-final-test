@@ -1,0 +1,53 @@
+.wrapper{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.alert{
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    z-index: 10;
+}
+
+.mandatoryfields{
+    color:rgb(221, 57, 57);
+}
+
+.modifiystyle{
+    height: 100%;
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button_container{
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 3%;
+    .btn{
+        width:30%;
+        margin-bottom:1%;
+    }
+}
+
+.dropdown{
+    margin-bottom: 1%;
+}
+
+.dropdown-toggle{
+    margin-left: 1%;
+}
+
+.photo_container{
+    img{
+        margin-top: 2%;
+        width:50%;
+        height: 50%;
+    }
+}

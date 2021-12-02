@@ -1,0 +1,87 @@
+<router-outlet></router-outlet>
+
+<!-- <div class="filter">
+  <label class="form-label" for="filter">Filtra: </label><br>
+
+  <input list="filter-opt" class="filter-category" id="filter" name="filter"
+  (change)="filterCategory(filter.value)" #filter>
+
+  <datalist id="filter-opt">
+    <option *ngFor="let category of categoryArr" value={{category.name}}></option>
+  </datalist>
+</div>
+
+<div class="right">
+  <button class="btn btn-warning my-2" routerLink="add" type="button" name="button">Aggiungi una categoria</button>
+</div> -->
+
+<div class="top d-flex justify-content-between">
+  <div>
+    <label class="form-label" for="filter">Filtra: </label><br>
+
+    <input list="filter-opt" class="filter-category" id="filter" name="filter"
+    (change)="filterCategory(filter.value)" #filter>
+
+    <datalist id="filter-opt">
+      <option *ngFor="let category of categoryArr" value={{category.name}}></option>
+    </datalist>
+  </div>
+
+  <div>
+    <button class="btn btn-warning my-2" routerLink="add" type="button" name="button">Aggiungi una categoria</button>
+  </div>
+</div>
+
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrizione</th>
+      <th scope="col">Quantità</th>
+      <th scope="col" class="desktop">Opzioni</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- Generazione dinamica tabella  -->
+    <ng-template ngFor let-category [ngForOf]="categoryArr" let-i="index">
+
+    <tr  id={{category.name.toLowerCase()}}>
+      <th scope="row">{{category.id}}</th>
+      <td><img class="icon" src="{{ category.id | icon }}" width="16" height="16" alt="icona"> {{category.name}}</td>
+      <td>{{category.description}}</td>
+      <td>{{getNumOfItemsPerCategory(category.id)}}</td>
+
+      <!-- versione desktop bottoni -->
+      <td class="desktop">
+        <button class="btn btn-light" (click)="hide(category.id)">{{toggleClose(category.id)}}</button>
+        <span [ngClass]="[willBeDisabled(category.id)]">
+          <button class="btn btn-danger" [ngClass]="[willBeDisabled(category.id)]" (click)="deleteCategory(category.id)">Cancella</button>
+        </span>
+      </td>
+      <!-- FINE versione desktop bottoni -->
+    </tr>
+
+    <!-- versione responsive bottoni -->
+    <tr class="mobile">
+      <td class="d-flex justify-content-between">
+        <button class="btn btn-light" (click)="hide(category.id)">{{toggleClose(category.id)}}</button>
+        <span [ngClass]="[willBeDisabled(category.id)]">
+          <button class="btn btn-danger" [ngClass]="[willBeDisabled(category.id)]" (click)="deleteCategory(category.id)">Cancella</button>
+        </span>
+      </td>
+    </tr>
+    <!-- FINE versione responsive bottoni -->
+
+    <tr *ngIf="detailCategoryArr[i]">
+      <td colspan="5">
+        <app-categories-detail  [categoryName]="currentCategory">
+        </app-categories-detail>
+      </td>
+    </tr>
+
+  </ng-template>
+  </tbody>
+</table>

@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Yankee Candle",
+      "description": "Usata, a metà.",
+      "price": 15.50,
+      "imgurl": "https://m0.her.ie/wp-content/uploads/2018/02/04134743/IMG_8789.jpg",
+      "category": null,
+      "owner": null
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Casa",
+      "description": "cose per la casa"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Mario",
+      "surname": "Rossi",
+      "email": "mario.rossi@email.com",
+      "dob": "01-01-1970"
+    },
+    {
+      "id": 2,
+      "name": "Paolo",
+      "surname": "Bianchi",
+      "email": "paolo.bianchi@email.com",
+      "dob": "02-01-1970"
+    }
+  ]
+}

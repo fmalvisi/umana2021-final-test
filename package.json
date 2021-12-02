@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
+    "test": "jasmine-browser-runner runSpecs",
     "start": "ng serve --host localhost ",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -12,7 +13,10 @@
     "utils:mockapi-local": "cd mock-api && yarn && node ./server.js ",
     "utils:mockapi": "docker-compose up -d mockapi ",
     "utils:openapigen": "npx @openapitools/openapi-generator-cli generate -i openapi/sample.yaml -g typescript-angular -o src/app/core/api/generated",
-    "utils:cypress:open": "cd e2e-tests && yarn && yarn cypress open"
+    "utils:cypress:open": "cd e2e-tests && yarn && yarn cypress open",
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -43,15 +47,18 @@
     "@commitlint/cli": "^13.2.0",
     "@commitlint/config-conventional": "^13.2.0",
     "@commitlint/prompt": "^13.2.0",
+    "@cypress/schematic": "1.6.0",
     "@openapitools/openapi-generator-cli": "^2.1.21",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
+    "cypress": "latest",
     "eslint": "^7.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-rxjs": "^3.3.7",
     "husky": "^7.0.2",
+    "jasmine": "^3.10.0",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

@@ -1,0 +1,50 @@
+<h1 class='display-4' style="margin-top: 2%; text-align: center;">Dettagli</h1>
+
+<div class="dettaglistyle shadow-lg p-3 mb-5 bg-body rounded">  
+    
+    <div class="row">
+        <div class="col-md-6">
+            <img [src]="url_photo" alt="Immagine oggetto">
+        </div> 
+
+        <div class="col-md-6">
+            <form #form="ngForm" novalidate>       
+                <div class="form-group">
+                    <!--Nome oggetto:-->
+                    <label for ="name_input"><strong>Nome oggetto: </strong></label>
+                    <input disabled type="text" class="form-control" [value]="prova"  name="name_input" [(ngModel)]="name_objects" ngModel required #name_objects_input="ngModel">
+                    <br>
+
+                    <!--Descrizione oggetto:-->
+                    <label for ="description_input"><strong>Descrizione oggetto: </strong></label>
+                    <input disabled type="text" class="form-control"  name="description_input"  [(ngModel)]="description" ngModel required #description_input="ngModel">
+                    <br>
+
+                    <!--Prezzo-->
+                    <label><strong>Prezzo: </strong></label>
+                    <div class="row">
+                        <div class="col"> 
+                            <input disabled type="text" class="form-control"  name="price_euro" [ngModel]="price_euro | currencyEur" (ngModelChange)="price_euro=$event" ngModel required #price_euro_input="ngModel" >
+                        </div>
+                    </div>
+                    <br>
+
+                    <!--Categoria oggetto:-->
+                    <label for ="categoria_input"><strong>Categoria oggetto: </strong></label>
+                    <input disabled type="text" class="form-control"  name="categoria_input"  [(ngModel)]="categoryName" ngModel required #category_input="ngModel">
+                    <br>
+
+                    <!--Proprietario oggetto:-->
+                    <label for ="proprietario_input"><strong>Proprietario oggetto: </strong></label>
+                    <input disabled type="text" class="form-control"  name="proprietario_input"  [(ngModel)]="ownerName" ngModel required #owner_input="ngModel">
+                    <br> 
+
+                    <div class="button_container">
+                        <button [routerLink]='"/items"' (click)="showCarouselItems()" id="annullabutton" type="button" class="btn btn-secondary">Annulla</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

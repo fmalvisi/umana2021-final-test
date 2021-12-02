@@ -1,0 +1,86 @@
+<form
+  class="card"
+  #formadd="ngForm"
+  (ngSubmit)="onSubmit(formadd)"
+  novalidate
+>
+  <h1 class="card-title display-4 mb-4">Aggiungi una categoria</h1>
+
+  <div class="card-body">
+    <!-- campo nome della nuova categoria -->
+    <div class="">
+      <label for="add-categ-name" class="form-label">Inserisci il nome di una nuova categoria</label>
+      <input
+        type="text"
+        class="form-control"
+        id="add-categ-name"
+        placeholder="es: Giardinaggio"
+        name="name"
+        ngModel
+        required
+        minlength="2"
+        maxlength="20"
+        #categoryname="ngModel"
+      >
+      <div class="error" *ngIf="!categoryname?.valid && (categoryname?.dirty || categoryname?.touched)">
+        <div *ngIf="categoryname.errors?.['required']">
+          Il nome della categoria è obbligatorio.
+        </div>
+        <div *ngIf="categoryname.errors?.['minlength']">
+          Il nome della categoria deve avere minimo {{categoryname.errors?.['minlength'].requiredLength}} caratteri.
+        </div>
+        <div *ngIf="categoryname.errors?.['maxlength']">
+          Il nome della categoria deve avere massimo {{categoryname.errors?.['maxlength'].requiredLength}} caratteri.
+        </div>
+      </div>
+      <div
+        *ngIf="categoryAlreadyExist"
+        class="error"
+      >
+        Questa categoria esiste già, inserisci un altro nome.
+      </div>
+    </div>
+
+    <!-- campo descrizione della nuova categoria -->
+    <div class="">
+      <label for="add-categ-descr" class="form-label">Inserisci la descrizione della nuova categoria</label>
+      <input
+        type="text"
+        class="form-control"
+        id="add-categ-descr"
+        placeholder="es: accessori per il giardino"
+        name="description"
+        ngModel
+        required
+        minlength="10"
+        maxlength="30"
+        #categorydescri="ngModel"
+      >
+      <div class="error" *ngIf="!categorydescri?.valid && (categorydescri?.dirty || categorydescri?.touched)">
+        <div *ngIf="categorydescri.errors?.['required']">
+          La descrizione della categoria è obbligatoria.
+        </div>
+        <div *ngIf="categorydescri.errors?.['minlength']">
+          La descrizione della categoria deve avere minimo {{categorydescri.errors?.['minlength'].requiredLength}} caratteri.
+        </div>
+        <div *ngIf="categorydescri.errors?.['maxlength']">
+          La descrizione della categoria deve avere massimo {{categorydescri.errors?.['maxlength'].requiredLength}} caratteri.
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <button
+        id="button"
+        type="submit"
+        class="btn btn-warning"
+        [disabled]="!formadd.valid"
+        [disabled]="categoryAlreadyExist"
+      >Aggiungi</button>
+      <button class="btn btn-light ms-2" (click)="goBack()">Torna alla tabella</button>
+    </div>
+    <div *ngIf="categorySent" style="color: #198754;">
+        La categoria {{categoryname.value}} è stata creata.
+    </div>
+  </div>
+</form>
